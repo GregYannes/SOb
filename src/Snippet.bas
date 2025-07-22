@@ -144,32 +144,13 @@ End Property
 ' ################################
 
 ' Format a simulated object for printing.
-Private Function Obj_Format(ByRef obj As Collection, _
-	Optional ByVal class As String = VBA.vbNullString, _
-	Optional ByVal summary As String = VBA.vbNullString, _
-	Optional ByVal detail As String = VBA.vbNullString, _
-	Optional ByVal indent As String = VBA.vbNullString _
-) As String
-	' ...
-End Function
-
-
-' Format the summary descriptor(s) of an object.
-Private Function Obj_Format_Summary(ByVal val As String) As String
-	' ...
-End Function
-
-
-' Format the detailed contents of an object.
-Private Function Obj_Format_Detail(ByVal val As String) As String
-	' ...
-End Function
-
-
-' Format a (single) simulated field for (detailed) printing.
-Private Function Obj_FormatField( _
-	ByVal name As String, _
-	ByVal val As String _
+Private Function Obj_Format( _
+	Optional ByVal cls As String = VBA.vbNullString, _
+	Optional ByVal sim As Boolean = False,
+	Optional ByVal ptr As Boolean = False, _
+	Optional ByVal sum As String = VBA.vbNullString, _
+	Optional ByVal dtl As String = VBA.vbNullString, _
+	Optional ByVal ind As String = VBA.vbNullString _
 ) As String
 	' ...
 End Function
@@ -179,6 +160,107 @@ End Function
 Private Function Obj_FormatFields(ParamArray fields() As Variant) As String
 	' ...
 End Function
+
+
+' .
+Private Function Obj_FormatObj( _
+	Optional ByVal cls As String = VBA.vbNullString, _
+	Optional ByVal sim As Boolean = False,
+	Optional ByVal ptr As String = VBA.vbNullString, _
+	Optional ByVal sum As String = VBA.vbNullString, _
+	Optional ByVal dtl As String = VBA.vbNullString, _
+	Optional ByVal ind As String = VBA.vbTab _
+) As String
+	Const OBJ_OPEN = "<"
+	Const OBJ_CLOSE = ">"
+	Const SIM_PFX = "*"
+	Const DFL_CLS = "?"
+	Const PTR_OPEN = "<"
+	Const PTR_CLOSE = ">"
+	Const PTR_PFX = "@"
+	Const SUM_OPEN = "["
+	Const SUM_CLOSE = "]"
+	Const DTL_OPEN = "{"
+	Const DTL_CLOSE = "}"
+	
+	
+	Dim fmt As String: fmt = ""
+	
+	If cls = VBA.vbNullString Then
+		cls = DFL_CLS
+	End If
+	
+	If sim Then
+		cls = SIM_PFX & cls
+	End If
+	
+	If ptr <> VBA.vbNullString Then
+		ptr = PTR_OPEN & PTR_PFX & ptr & PTR_CLOSE
+	End If
+	
+	If sum <> VBA.vbNullString Then
+		If Text_IsMultiline(sum) Then
+			sum = Text_Indent(sum, )
+		End If
+		
+		
+	End If
+End Function
+
+
+' Format (a set of) simulated fields for (detailed) printing:
+' 	.Fld1 = 1
+' 	.Fld2 = ""
+' 	...
+' 	.FldN = <*Obj>
+Private Function Obj_FormatFields(ParamArray fields() As Variant) As String
+	Const FLD_SEP = VBA.vbNewLine
+	
+	Dim format As String: format = ""
+	Dim up As Long: up = UBound(fields)
+	Dim low As Long: low = LBound(fields)
+	
+	
+	If up < 2 Then
+		Obj_FormatField(
+	End If
+	
+	Dim i As Long
+	For i = 0 To up Step 2
+		
+	Next i
+End Function
+
+
+' Format a single (simulated) field for (detailed) printing: ".name = val"
+Private Function Obj_FormatField( _
+	ByVal name As String, _
+	ByVal val As String _
+) As String
+	Const ASN_OP As String = "="
+	Const ASN_SEP As String = " "
+	
+	' Clean the freeform value for printing.
+	val = Application.WorksheetFunction.Clean(val)
+	
+	' Assemble the format.
+	Obj_FormatField = Obj_FormatFieldName(name) & ASN_SEP & ASN_OP & ASN_SEP & val
+End Function
+
+
+' Format the name of a field for printing: ".name"
+Obj_FormatFieldName(ByVal name As String) As String
+	Const OBJ_SEP As String = "."
+	
+	' Clean the name for printing...
+	name = Application.WorksheetFunction.Clean(name)
+	' ...and trim any whitespace.
+	name = VBA.Trim(name)
+	
+	' Assemble the format.
+	Obj_FormatFieldName = OBJ_SEP & name
+End Function
+
 
 
 ' ####################
