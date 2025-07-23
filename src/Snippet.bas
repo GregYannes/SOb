@@ -208,31 +208,44 @@ Private Function Obj_FormatObj( _
 End Function
 
 
-' Format (a set of) simulated fields for (detailed) printing:
-' 	.Fld1 = 1
-' 	.Fld2 = ""
-' 	...
-' 	.FldN = <*Obj>
-Private Function Obj_FormatFields(ParamArray fields() As Variant) As String
+' Format an array of fields as an array of expressions, for (detailed) printing:
+' {
+' 	".FieldA = True",
+' 	".FieldB = 1",
+' 	".FieldC = 'Yes'",
+' 	...,
+' 	".FieldZ = <Obj>",
+' }
+Private Function Obj_FormatFieldExprs(ParamArray fields() As Variant) As String()
 	Const FLD_SEP = VBA.vbNewLine
-	
-	Dim format As String: format = ""
-	Dim up As Long: up = UBound(fields)
-	Dim low As Long: low = LBound(fields)
+	Const FLD_ARGS = 2
+	Const EXPR_LOW = 1
 	
 	
-	If up < 2 Then
-		Obj_FormatField(
+	Dim fldUp As Long: fldUp = UBound(fields, 1)
+	Dim fldLow As Long: fldLow = UBound(fields, 1)
+	Dim fldN As Long: fldN = fldUp - fldLow + 1
+	
+	Dim exprN As Long: exprN = VBA.Int(fldN / FLD_ARGS)
+	If exprN < 1 Then
+		Exit Function
 	End If
 	
-	Dim i As Long
-	For i = 0 To up Step 2
-		
-	Next i
+	Dim exprUp As Long: exprUp = EXPR_LOW + exprN - 1
+	Dim exprs() As String: ReDim exprs(EXPR_LOW To exprUp)
+	Dim exprI As Long: exprI = EXPR_LOW
+	
+	Dim iFld As Long
+	For iFld = low To up Step FLD_ARGS
+		exprs(exprI) = Obj_FormatField(fields(iFld), fields(iFld + 1))
+		exprI = exprI + 1
+	Next iFld
+	
+	Obj_FormatFieldExprs = 
 End Function
 
 
-' Format a single (simulated) field for (detailed) printing: ".name = val"
+' Format a field as an expression for (detailed) printing: ".name = val"
 Private Function Obj_FormatField( _
 	ByVal name As String, _
 	ByVal val As String _
