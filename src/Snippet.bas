@@ -156,12 +156,12 @@ Private Function Obj_Format( _
 End Function
 
 
-' Format an array of (simulated) fields for (detailed) printing:
-' ".FieldA = True
-'  .FieldB = 1
-'  .FieldC = 'Yes'
-'         ...
-'  .FieldZ = <Obj>"
+' Format a set of (simulated) fields for (detailed) printing:
+'   .FieldA = True
+'   .FieldB = 1
+'   .FieldC = 'Yes'
+'          ...
+'   .FieldZ = <Obj>
 Private Function Obj_FormatFields(ParamArray fields() As Variant) As String
 	Const FLD_SEP As String = VBA.vbNewLine
 	Const FLD_ARGS As Integer = 2
@@ -281,7 +281,15 @@ Private Sub Obj_Secret(ByRef var As String)
 End Sub
 
 
-' .
+' Format the information of a structure (object, etc.) for printing.
+'   <Obj>
+'   <Obj @ 1234567890>
+'   <Obj[...]>
+'   
+'   <Obj: {
+'   	...
+'   	...
+'   }>
 Private Function Obj_FormatStrInfo( _
 	Optional ByVal cls As String = VBA.vbNullString, _
 	Optional ByVal ptr As String = VBA.vbNullString, _
@@ -335,10 +343,10 @@ Private Function Obj_FormatStrInfo( _
 	
 	
 	' Display only the details in the absence of a class...
-	' {
-	' 	...
-	' 	...
-	' }
+	'   {
+	'   	...
+	'   	...
+	'   }
 	If cls = VBA.vbNullString Then
 		fmt = dtl
 		
@@ -349,10 +357,10 @@ Private Function Obj_FormatStrInfo( _
 		
 		
 		' Append any details:
-		' <Obj: {
-		' 	...
-		' 	...
-		' }>
+		'   <Obj: {
+		'   	...
+		'   	...
+		'   }>
 		If dtl <> VBA.vbNullString Then
 			fmt = fmt & DTL_SEP & dtl
 			
@@ -376,7 +384,7 @@ Private Function Obj_FormatStrInfo( _
 End Function
 
 
-' Format a field as an expression for (detailed) printing: ".name = val"
+' Format a field as an expression for (detailed) printing: .name = val
 Private Function Obj_FormatField( _
 	ByVal name As String, _
 	ByVal val As String _
@@ -392,7 +400,7 @@ Private Function Obj_FormatField( _
 End Function
 
 
-' Format the name of a field for printing: ".name"
+' Format the name of a field for printing: .name
 Private Function Obj_FormatFieldName(ByVal name As String) As String
 	Const OBJ_SEP As String = "."
 	
