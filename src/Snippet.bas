@@ -158,69 +158,88 @@ End Function
 ' .
 Private Function Obj_FormatStrInfo( _
 	Optional ByVal cls As String = VBA.vbNullString, _
-	Optional ByVal sim As Boolean = False, _
 	Optional ByVal ptr As String = VBA.vbNullString, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal ind As String = VBA.vbNullString _
 ) As String
+' 	Optional ByVal sim As Boolean = False
 ' 	Optional ByVal bfr As Boolean = False
 	
-	
-	
-	' .
-	Dim fmt As String: fmt = ""
 	Const FMT_IND As String = VBA.vbTab
 	Const OBJ_OPEN As String = "<"
 	Const OBJ_CLOSE As String = ">"
-	Const SIM_PFX As String = "*"
-	Const DFL_CLS As String = "?"
-	Const PTR_OPEN As String = "<"
-	Const PTR_CLOSE As String = ">"
-	Const PTR_PFX As String = "@"
+	Const DTL_SEP As String = ": "
 	Const DTL_OPEN As String = "{"
 	Const DTL_CLOSE As String = "}"
+	Const SUM_SEP As String = ""
 	Const SUM_OPEN As String = "["
 	Const SUM_CLOSE As String = "]"
+	Const PTR_SEP As String = " @ "
+	Const PTR_OPEN As String = ""
+	Const PTR_CLOSE As String = ""
 	
 	
-	' Label an unknown class: ?
-	If cls = VBA.vbNullString Then
-		cls = DFL_CLS
-	End If
+	' Assemble the format.
+	Dim fmt As String: fmt = ""
 	
 	
-	' Mark the class as simulated: *Obj
-	If sim Then
-		cls = SIM_PFX & cls
-	End If
-	
-	
-	' Format the pointer: <@1234567890>
-	If ptr <> VBA.vbNullString Then
-		ptr = PTR_OPEN & PTR_PFX & ptr & PTR_CLOSE
-	End If
-	
-	
-	' Format the summary on a single line: [...]
-	If sum <> VBA.vbNullString Then
+	' Format details across multiple lines...
+	If dtl <> VBA.vbNullString Then
+		dtl = Application.WorksheetFunction.Clean(dtl)
+		
+		dtl = DTL_OPEN & VBA.vbNewLine & _
+			Text_Indent(dtl, ind := FMT_IND, bfr := True) & VBA.vbNewLine & _
+		DTL_CLOSE
+		
+	' ...or alternatively a summary on a single line...
+	ElseIf sum <> VBA.vbNullString Then
+		sum = Application.WorksheetFunction.Clean(sum)
+		
 		' If Text_Contains(sum, VBA.vbNewLine) Then
 		' 	sum = VBA.vbNewLine & Text_Indent(sum, ind := FMT_IND, bfr := True) & VBA.vbNewLine
 		' End If
 		
 		sum = SUM_OPEN & sum & SUM_CLOSE
+		
+	' ...or alternatively a pointer.
+	ElseIf ptr <> VBA.vbNullString Then
+		ptr = PTR_OPEN & ptr & PTR_CLOSE
 	End If
 	
 	
-	' Format the detail across multiple lines:
+	' Display only the details in the absence of a class...
 	' {
 	' 	...
 	' 	...
 	' }
-	If dtl <> VBA.vbNullString Then
-		dtl = DTL_OPEN & VBA.vbNewLine & _
-			Text_Indent(dtl, ind := FMT_IND, bfr := True) & VBA.vbNewLine & _
-		DTL_CLOSE
+	If cls = VBA.vbNullString Then
+		fmt = dtl
+		
+	' ...and otherwise enrich the class info:
+	ElseIf
+		' Name the class itself: <Obj>
+		fmt = cls
+		
+		
+		' Append any details:
+		' <Obj: {
+		' 	...
+		' 	...
+		' }>
+		If dtl <> VBA.vbNullString Then
+			fmt = fmt & DTL_SEP & dtl
+			
+		' Alternatively append a summary: <Obj[...]>
+		ElseIf sum <> VBA.vbNullString Then
+			fmt = fmt & SUM_SEP & sum
+			
+		' Alternatively append a pointer: <Obj @ 1234567890>
+		ElseIf ptr <> VBA.vbNullString Then
+			fmt = fmt & PTR_SEP & ptr
+		End If
+		
+		fmt = OBJ_OPEN & fmt & OBJ_CLOSE
 	End If
 	
 	
