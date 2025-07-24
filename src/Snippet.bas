@@ -164,22 +164,22 @@ Private Function Obj_FormatStrInfo( _
 ) As String
 ' 	Optional ByVal bfr As Boolean = False
 	
-	Const FMT_IND = VBA.vbTab
-	Const OBJ_OPEN = "<"
-	Const OBJ_CLOSE = ">"
-	Const SIM_PFX = "*"
-	Const DFL_CLS = "?"
-	Const PTR_OPEN = "<"
-	Const PTR_CLOSE = ">"
-	Const PTR_PFX = "@"
-	Const DTL_OPEN = "{"
-	Const DTL_CLOSE = "}"
-	Const SUM_OPEN = "["
-	Const SUM_CLOSE = "]"
 	
 	
 	' .
 	Dim fmt As String: fmt = ""
+	Const FMT_IND As String = VBA.vbTab
+	Const OBJ_OPEN As String = "<"
+	Const OBJ_CLOSE As String = ">"
+	Const SIM_PFX As String = "*"
+	Const DFL_CLS As String = "?"
+	Const PTR_OPEN As String = "<"
+	Const PTR_CLOSE As String = ">"
+	Const PTR_PFX As String = "@"
+	Const DTL_OPEN As String = "{"
+	Const DTL_CLOSE As String = "}"
+	Const SUM_OPEN As String = "["
+	Const SUM_CLOSE As String = "]"
 	
 	
 	' Label an unknown class: ?
@@ -236,8 +236,8 @@ End Function
 '         ...
 '  .FieldZ = <Obj>"
 Private Function Obj_FormatFields(ParamArray fields() As Variant) As String
-	Const FLD_SEP = VBA.vbNewLine
-	Const FLD_ARGS = 2
+	Const FLD_SEP As String = VBA.vbNewLine
+	Const FLD_ARGS As Integer = 2
 	
 	Dim up As Long: up = UBound(fields, 1)
 	Dim low As Long: low = LBound(fields, 1)
@@ -330,9 +330,9 @@ Private Sub Obj_FieldKey(ByRef var As String, _
 ' 	ByRef obj As Collection
 ' 	ByVal cls As String
 	
-	Const DEF_CLS = Empty
-	Const FLD_PFX = "Field_"
-	Const KEY_SEP = "."
+	Const DEF_CLS As String = Empty
+	Const FLD_PFX As String = "Field_"
+	Const KEY_SEP As String = "."
 	
 	Dim cls As String, secret As String, key As String
 	' If Obj_HasClass(obj) Then
@@ -355,8 +355,8 @@ End Sub
 
 ' Securely obtain the key for a simulated class: "Class.xxx"
 Private Sub Obj_ClassKey(ByRef var As String)
-	Const CLS_PFX = "Class"
-	Const KEY_SEP = "."
+	Const CLS_PFX As String = "Class"
+	Const KEY_SEP As String = "."
 	
 	Dim key As String, secret As String
 	Obj_Secret secret
@@ -370,8 +370,8 @@ End Sub
 Private Sub Obj_Secret(ByRef var As String)
 ' 	Optional ByVal refresh As Boolean = False
 	
-	Const SEC_PFX = "x"
-	Const REF_SEP = ""
+	Const SEC_PFX As String = "x"
+	Const REF_SEP As String = ""
 	
 	Static secret As String, isInit As Boolean
 	
