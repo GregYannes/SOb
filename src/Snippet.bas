@@ -156,6 +156,131 @@ Private Function Obj_Format( _
 End Function
 
 
+' Format an array of (simulated) fields for (detailed) printing:
+' ".FieldA = True
+'  .FieldB = 1
+'  .FieldC = 'Yes'
+'         ...
+'  .FieldZ = <Obj>"
+Private Function Obj_FormatFields(ParamArray fields() As Variant) As String
+	Const FLD_SEP As String = VBA.vbNewLine
+	Const FLD_ARGS As Integer = 2
+	
+	Dim up As Long: up = UBound(fields, 1)
+	Dim low As Long: low = LBound(fields, 1)
+	Dim lng As Long: lng = up - low + 1
+	Dim n As Long: n = VBA.Int(lng / FLD_ARGS)
+	up = n * FLD_ARGS - 1
+	
+	' Short-circuit for insufficient fields.
+	Obj_FormatFields = ""
+	If n < 1 Then
+		Exit Function
+	End If
+	
+	' Render the first field...
+	Dim i As Long: i = low
+	Obj_FormatFields = Obj_FormatField(fields(i), fields(i + 1))
+	i = i + FLD_ARGS
+	
+	' ...and append any others.
+	For i = i To up Step FLD_ARGS
+		Obj_FormatFields = Obj_FormatFields & FLD_SEP & Obj_FormatField(fields(i), fields(i + 1))
+	Next i
+End Function
+
+
+
+' ####################
+' ## SOBs • Helpers ##
+' ####################
+
+' Test for a simulated class.
+Private Function Obj_HasClass(ByRef obj As Collection) As Boolean
+	Dim key As String: Obj_ClassKey key
+	Obj_HasClass = Clx_Has(obj, key)
+End Function
+
+
+' Get the class of a simulated object.
+Private Property Get Obj_Class(ByRef obj As Collection) As String
+	Dim key As String: Obj_ClassKey key
+	Obj_Class = Clx_Get(obj, key)
+End Property
+
+
+' Set the class of a simulated object.
+Private Property Let Obj_Class(ByRef obj As Collection, _
+	ByVal cls As String _
+)
+	Dim key As String: Obj_ClassKey key
+	Clx_Set obj, key, cls
+End Property
+
+
+' Securely obtain the key for a simulated field: "*.Field_i.xxx"
+Private Sub Obj_FieldKey(ByRef var As String, _
+	ByVal fld As Long _
+)
+' 	ByRef obj As Collection
+' 	ByVal cls As String
+	
+	Const DEF_CLS As String = VBA.vbNullString
+	Const FLD_PFX As String = "Field_"
+	Const KEY_SEP As String = "."
+	
+	Dim cls As String, secret As String, key As String
+	' If Obj_HasClass(obj) Then
+	' 	cls = Obj_Class(obj)
+	' Else
+		cls = DEF_CLS
+	' End If
+	
+	Obj_Secret secret
+	fld = fld + 1
+	
+	key = FLD_PFX & VBA.CStr(fld) & KEY_SEP & secret
+	If cls <> VBA.vbNullString Then
+		key = cls & KEY_SEP & key
+	End If
+	
+	var = key
+End Sub
+
+
+' Securely obtain the key for a simulated class: "Class.xxx"
+Private Sub Obj_ClassKey(ByRef var As String)
+	Const CLS_PFX As String = "Class"
+	Const KEY_SEP As String = "."
+	
+	Dim key As String, secret As String
+	Obj_Secret secret
+	key = CLS_PFX & KEY_SEP & secret
+	
+	var = key
+End Sub
+
+
+' Securely obtain the secret token for keys.
+Private Sub Obj_Secret(ByRef var As String)
+' 	Optional ByVal refresh As Boolean = False
+	
+	Const SEC_PFX As String = "x"
+	Const REF_SEP As String = ""
+	
+	Static secret As String, isInit As Boolean
+	
+	If Not isInit Then  ' Or refresh
+		Dim ref1 As New Collection, ref2 As New Collection
+		secret = SEC_PFX & VBA.Hex(VBA.ObjPtr(ref1)) & REF_SEP & VBA.Hex(VBA.ObjPtr(ref2))
+		
+		isInit = True
+	End If
+	
+	var = secret
+End Sub
+
+
 ' .
 Private Function Obj_FormatStrInfo( _
 	Optional ByVal cls As String = VBA.vbNullString, _
@@ -251,40 +376,6 @@ Private Function Obj_FormatStrInfo( _
 End Function
 
 
-' Format an array of (simulated) fields for (detailed) printing:
-' ".FieldA = True
-'  .FieldB = 1
-'  .FieldC = 'Yes'
-'         ...
-'  .FieldZ = <Obj>"
-Private Function Obj_FormatFields(ParamArray fields() As Variant) As String
-	Const FLD_SEP As String = VBA.vbNewLine
-	Const FLD_ARGS As Integer = 2
-	
-	Dim up As Long: up = UBound(fields, 1)
-	Dim low As Long: low = LBound(fields, 1)
-	Dim lng As Long: lng = up - low + 1
-	Dim n As Long: n = VBA.Int(lng / FLD_ARGS)
-	up = n * FLD_ARGS - 1
-	
-	' Short-circuit for insufficient fields.
-	Obj_FormatFields = ""
-	If n < 1 Then
-		Exit Function
-	End If
-	
-	' Render the first field...
-	Dim i As Long: i = low
-	Obj_FormatFields = Obj_FormatField(fields(i), fields(i + 1))
-	i = i + FLD_ARGS
-	
-	' ...and append any others.
-	For i = i To up Step FLD_ARGS
-		Obj_FormatFields = Obj_FormatFields & FLD_SEP & Obj_FormatField(fields(i), fields(i + 1))
-	Next i
-End Function
-
-
 ' Format a field as an expression for (detailed) printing: ".name = val"
 Private Function Obj_FormatField( _
 	ByVal name As String, _
@@ -314,97 +405,6 @@ Private Function Obj_FormatFieldName(ByVal name As String) As String
 	' Assemble the format.
 	Obj_FormatFieldName = OBJ_SEP & name
 End Function
-
-
-
-' ####################
-' ## SOBs • Helpers ##
-' ####################
-
-' Test for a simulated class.
-Private Function Obj_HasClass(ByRef obj As Collection) As Boolean
-	Dim key As String: Obj_ClassKey key
-	Obj_HasClass = Clx_Has(obj, key)
-End Function
-
-
-' Get the class of a simulated object.
-Private Property Get Obj_Class(ByRef obj As Collection) As String
-	Dim key As String: Obj_ClassKey key
-	Obj_Class = Clx_Get(obj, key)
-End Property
-
-
-' Set the class of a simulated object.
-Private Property Let Obj_Class(ByRef obj As Collection, _
-	ByVal cls As String _
-)
-	Dim key As String: Obj_ClassKey key
-	Clx_Set obj, key, cls
-End Property
-
-
-' Securely obtain the key for a simulated field: "*.Field_i.xxx"
-Private Sub Obj_FieldKey(ByRef var As String, _
-	ByVal fld As Long _
-)
-' 	ByRef obj As Collection
-' 	ByVal cls As String
-	
-	Const DEF_CLS As String = VBA.vbNullString
-	Const FLD_PFX As String = "Field_"
-	Const KEY_SEP As String = "."
-	
-	Dim cls As String, secret As String, key As String
-	' If Obj_HasClass(obj) Then
-	' 	cls = Obj_Class(obj)
-	' Else
-		cls = DEF_CLS
-	' End If
-	
-	Obj_Secret secret
-	fld = fld + 1
-	
-	key = FLD_PFX & VBA.CStr(fld) & KEY_SEP & secret
-	If cls <> VBA.vbNullString Then
-		key = cls & KEY_SEP & key
-	End If
-	
-	var = key
-End Sub
-
-
-' Securely obtain the key for a simulated class: "Class.xxx"
-Private Sub Obj_ClassKey(ByRef var As String)
-	Const CLS_PFX As String = "Class"
-	Const KEY_SEP As String = "."
-	
-	Dim key As String, secret As String
-	Obj_Secret secret
-	key = CLS_PFX & KEY_SEP & secret
-	
-	var = key
-End Sub
-
-
-' Securely obtain the secret token for keys.
-Private Sub Obj_Secret(ByRef var As String)
-' 	Optional ByVal refresh As Boolean = False
-	
-	Const SEC_PFX As String = "x"
-	Const REF_SEP As String = ""
-	
-	Static secret As String, isInit As Boolean
-	
-	If Not isInit Then  ' Or refresh
-		Dim ref1 As New Collection, ref2 As New Collection
-		secret = SEC_PFX & VBA.Hex(VBA.ObjPtr(ref1)) & REF_SEP & VBA.Hex(VBA.ObjPtr(ref2))
-		
-		isInit = True
-	End If
-	
-	var = secret
-End Sub
 
 
 
