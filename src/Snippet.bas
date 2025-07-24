@@ -114,10 +114,8 @@ End Function
 Private Property Get Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Variant
-	If Obj_HasField(obj, fld) Then
-		Dim key As String: Obj_FieldKey key, fld  ' obj := obj
-		Assign Obj_Field, obj.Item(key)
-	End If
+	Dim key As String: Obj_FieldKey key, fld  ' obj := obj
+	Assign Obj_Field, obj.Item(key)  ' Clx_Get(obj, key)
 End Property
 
 
@@ -331,9 +329,9 @@ End Function
 
 ' Get the class of a simulated object.
 Private Property Get Obj_Class(ByRef obj As Collection) As String
+	Dim key As String: Obj_ClassKey key
 	If Obj_HasClass(obj) Then
-		Dim key As String: Obj_ClassKey key
-		Obj_Class = obj.Item(key)
+		Obj_Class = obj.Item(key)  ' Clx_Get(obj, key)
 	End If
 End Property
 
@@ -435,6 +433,16 @@ Fail:
 		Err_Raise VBA.Err
 	End If
 End Function
+
+
+' ' Get an item (safely) from a Collection.
+' Private Function Clx_Get(ByRef clx As Collection, _
+' 	ByVal index As Variant _
+' ) As Variant
+' 	If Clx_Has(clx, index) Then
+' 		Assign Clx_Get, clx.Item(index)
+' 	End If
+' End Function
 
 
 ' Update in a Collection.
