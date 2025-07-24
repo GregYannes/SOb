@@ -14,7 +14,9 @@
 Private Function New_Obj(ByVal cls As String) As Collection
 	Obj_Initialize New_Obj, cls
 End Function
-' Initialize a simulated object.
+
+
+' Initialize a simulated object.
 Private Sub Obj_Initialize(ByRef obj As Collection, _
 	ByVal cls As String _
 )
@@ -229,7 +231,7 @@ Private Function Obj_FormatStrInfo( _
 End Function
 
 
-' Format a set of (simulated) fields for (detailed) printing:
+' Format an array of (simulated) fields for (detailed) printing:
 ' ".FieldA = True
 '  .FieldB = 1
 '  .FieldC = 'Yes'
@@ -285,6 +287,7 @@ Private Function Obj_FormatFieldName(ByVal name As String) As String
 	
 	' Clean the name for printing...
 	name = Application.WorksheetFunction.Clean(name)
+	
 	' ...and trim any whitespace.
 	name = VBA.Trim(name)
 	
@@ -330,7 +333,7 @@ Private Sub Obj_FieldKey(ByRef var As String, _
 ' 	ByRef obj As Collection
 ' 	ByVal cls As String
 	
-	Const DEF_CLS As String = Empty
+	Const DEF_CLS As String = VBA.vbNullString
 	Const FLD_PFX As String = "Field_"
 	Const KEY_SEP As String = "."
 	
@@ -345,7 +348,7 @@ Private Sub Obj_FieldKey(ByRef var As String, _
 	fld = fld + 1
 	
 	key = FLD_PFX & VBA.CStr(fld) & KEY_SEP & secret
-	If cls <> Empty Then
+	If cls <> VBA.vbNullString Then
 		key = cls & KEY_SEP & key
 	End If
 	
