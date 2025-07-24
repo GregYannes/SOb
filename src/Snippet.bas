@@ -56,6 +56,7 @@ Private Function IsObj(ByRef x As Variant, _
 	
 	' Optionally check if the class matches expectations.
 	If IsObj And cls <> VBA.VbNullString Then
+		' TODO: Check if this comparison has any side-effects like (property) assignment.
 		IsObj = (Obj_Class(obj) = cls)
 	End If
 End Function
@@ -127,7 +128,7 @@ Private Property Let Obj_Field(ByRef obj As Collection, _
 	Dim key As String: Obj_FieldKey key, fld  ' obj := obj
 	Clx_Set obj, key, val
 End Property
-' ...and a simulated scalar field.
+' ...and a simulated objective field.
 Private Property Set Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long, _
 	ByRef val As Variant _
@@ -484,9 +485,6 @@ Private Sub Assign( _
 		var = val
 	End If
 End Sub
-
-
-' ...
 
 
 ' Indent text.
