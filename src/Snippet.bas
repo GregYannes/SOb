@@ -33,12 +33,11 @@ End Sub
 ' ## SOBs • API • Typing ##
 ' #########################
 
-' Check for a simulated object.
+' Test for a simulated object.
 Private Function IsObj(ByRef x As Variant, _
 	Optional ByVal cls As String = VBA.vbNullString _
 ) As Boolean
 ' 	Optional ByVal flds() As Long
-	
 	
 	' Check if the underlying (Collection) structure is correct...
 	IsObj = VBA.IsObject(x)
@@ -66,7 +65,6 @@ Private Function AsObj(ByRef x As Variant, _
 ) As Collection
 ' 	Optional ByVal flds() As Long
 	
-	
 	' Cast the underlying structure (to a Collection)...
 	Set AsObj = x  ' = AsCollection(x)
 	
@@ -88,7 +86,6 @@ End Function
 Private Property Get Obj_FieldCount(ByRef obj As Collection) As Long
 ' 	Optional ByVal cls As String = VBA.vbNullString
 	
-	
 	Obj_FieldCount = obj.Count
 	
 	' Omit the class item from the count of field items.
@@ -100,11 +97,11 @@ Private Property Get Obj_FieldCount(ByRef obj As Collection) As Long
 	If Obj_FieldCount < 0 Then
 		Obj_FieldCount = 0
 	End If
-	' Obj_FieldCount = Math_Max(0, Obj_FieldCount)
+	' Obj_FieldCount = Excel.Application.WorksheetFunction.Max(0, Obj_FieldCount)
 End Property
 
 
-' Check for a simulated field.
+' Test for a simulated field.
 Private Function Obj_HasField(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Boolean
@@ -146,7 +143,7 @@ End Property
 ' Format a simulated object for printing.
 Private Function Obj_Format( _
 	Optional ByVal cls As String = VBA.vbNullString, _
-	Optional ByVal sim As Boolean = False,
+	Optional ByVal sim As Boolean = False, _
 	Optional ByVal ptr As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
@@ -156,21 +153,18 @@ Private Function Obj_Format( _
 End Function
 
 
-' Format (a set of) simulated fields for (detailed) printing.
-Private Function Obj_FormatFields(ParamArray fields() As Variant) As String
-	' ...
-End Function
-
-
 ' .
-Private Function Obj_FormatObj( _
+Private Function Obj_FormatStrInfo( _
 	Optional ByVal cls As String = VBA.vbNullString, _
-	Optional ByVal sim As Boolean = False,
+	Optional ByVal sim As Boolean = False, _
 	Optional ByVal ptr As String = VBA.vbNullString, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
-	Optional ByVal ind As String = VBA.vbTab _
+	Optional ByVal ind As String = VBA.vbNullString _
 ) As String
+' 	Optional ByVal bfr As Boolean = False
+	
+	Const FMT_IND = VBA.vbTab
 	Const OBJ_OPEN = "<"
 	Const OBJ_CLOSE = ">"
 	Const SIM_PFX = "*"
@@ -178,70 +172,94 @@ Private Function Obj_FormatObj( _
 	Const PTR_OPEN = "<"
 	Const PTR_CLOSE = ">"
 	Const PTR_PFX = "@"
-	Const SUM_OPEN = "["
-	Const SUM_CLOSE = "]"
 	Const DTL_OPEN = "{"
 	Const DTL_CLOSE = "}"
+	Const SUM_OPEN = "["
+	Const SUM_CLOSE = "]"
 	
 	
+	' .
 	Dim fmt As String: fmt = ""
 	
+	
+	' Label an unknown class: ?
 	If cls = VBA.vbNullString Then
 		cls = DFL_CLS
 	End If
 	
+	
+	' Mark the class as simulated: *Obj
 	If sim Then
 		cls = SIM_PFX & cls
 	End If
 	
+	
+	' Format the pointer: <@1234567890>
 	If ptr <> VBA.vbNullString Then
 		ptr = PTR_OPEN & PTR_PFX & ptr & PTR_CLOSE
 	End If
 	
+	
+	' Format the summary on a single line: [...]
 	If sum <> VBA.vbNullString Then
-		If Text_IsMultiline(sum) Then
-			sum = Text_Indent(sum, )
-		End If
+		' If Text_Contains(sum, VBA.vbNewLine) Then
+		' 	sum = VBA.vbNewLine & Text_Indent(sum, ind := FMT_IND, bfr := True) & VBA.vbNewLine
+		' End If
 		
-		
+		sum = SUM_OPEN & sum & SUM_CLOSE
+	End If
+	
+	
+	' Format the detail across multiple lines:
+	' {
+	' 	...
+	' 	...
+	' }
+	If dtl <> VBA.vbNullString Then
+		dtl = DTL_OPEN & VBA.vbNewLine & _
+			Text_Indent(dtl, ind := FMT_IND, bfr := True) & VBA.vbNewLine & _
+		DTL_CLOSE
+	End If
+	
+	
+	' Propagate any upstream indentation.
+	If ind <> VBA.vbNullString Then
+		fmt = Text_Indent(fmt, ind := ind, bfr := False)  ' bfr := bfr
 	End If
 End Function
 
 
-' Format an array of fields as an array of expressions, for (detailed) printing:
-' {
-' 	".FieldA = True",
-' 	".FieldB = 1",
-' 	".FieldC = 'Yes'",
-' 	...,
-' 	".FieldZ = <Obj>",
-' }
-Private Function Obj_FormatFieldExprs(ParamArray fields() As Variant) As String()
+' Format a set of (simulated) fields for (detailed) printing:
+' ".FieldA = True
+'  .FieldB = 1
+'  .FieldC = 'Yes'
+'         ...
+'  .FieldZ = <Obj>"
+Private Function Obj_FormatFields(ParamArray fields() As Variant) As String
 	Const FLD_SEP = VBA.vbNewLine
 	Const FLD_ARGS = 2
-	Const EXPR_LOW = 1
 	
+	Dim up As Long: up = UBound(fields, 1)
+	Dim low As Long: low = LBound(fields, 1)
+	Dim lng As Long: lng = up - low + 1
+	Dim n As Long: n = VBA.Int(lng / FLD_ARGS)
+	up = n * FLD_ARGS - 1
 	
-	Dim fldUp As Long: fldUp = UBound(fields, 1)
-	Dim fldLow As Long: fldLow = UBound(fields, 1)
-	Dim fldN As Long: fldN = fldUp - fldLow + 1
-	
-	Dim exprN As Long: exprN = VBA.Int(fldN / FLD_ARGS)
-	If exprN < 1 Then
+	' Short-circuit for insufficient fields.
+	Obj_FormatFields = ""
+	If n < 1 Then
 		Exit Function
 	End If
 	
-	Dim exprUp As Long: exprUp = EXPR_LOW + exprN - 1
-	Dim exprs() As String: ReDim exprs(EXPR_LOW To exprUp)
-	Dim exprI As Long: exprI = EXPR_LOW
+	' Render the first field...
+	Dim i As Long: i = low
+	Obj_FormatFields = Obj_FormatField(fields(i), fields(i + 1))
+	i = i + FLD_ARGS
 	
-	Dim iFld As Long
-	For iFld = low To up Step FLD_ARGS
-		exprs(exprI) = Obj_FormatField(fields(iFld), fields(iFld + 1))
-		exprI = exprI + 1
-	Next iFld
-	
-	Obj_FormatFieldExprs = 
+	' ...and append any others.
+	For i = i To up Step FLD_ARGS
+		Obj_FormatFields = Obj_FormatFields & FLD_SEP & Obj_FormatField(fields(i), fields(i + 1))
+	Next i
 End Function
 
 
@@ -262,7 +280,7 @@ End Function
 
 
 ' Format the name of a field for printing: ".name"
-Obj_FormatFieldName(ByVal name As String) As String
+Private Function Obj_FormatFieldName(ByVal name As String) As String
 	Const OBJ_SEP As String = "."
 	
 	' Clean the name for printing...
@@ -280,7 +298,7 @@ End Function
 ' ## SOBs • Helpers ##
 ' ####################
 
-' Check for a simulated class.
+' Test for a simulated class.
 Private Function Obj_HasClass(ByRef obj As Collection) As Boolean
 	Dim key As String: Obj_ClassKey key
 	Obj_HasClass = Clx_Has(obj, key)
@@ -312,11 +330,9 @@ Private Sub Obj_FieldKey(ByRef var As String, _
 ' 	ByRef obj As Collection
 ' 	ByVal cls As String
 	
-	
 	Const DEF_CLS = Empty
 	Const FLD_PFX = "Field_"
 	Const KEY_SEP = "."
-	
 	
 	Dim cls As String, secret As String, key As String
 	' If Obj_HasClass(obj) Then
@@ -354,10 +370,8 @@ End Sub
 Private Sub Obj_Secret(ByRef var As String)
 ' 	Optional ByVal refresh As Boolean = False
 	
-	
 	Const SEC_PFX = "x"
 	Const REF_SEP = ""
-	
 	
 	Static secret As String, isInit As Boolean
 	
@@ -397,6 +411,16 @@ Fail:
 		Err_Raise VBA.Err
 	End If
 End Function
+
+
+' ' Get an item (safely) from a Collection.
+' Private Function Clx_Get(ByRef clx As Collection, _
+' 	ByVal index As Variant _
+' ) As Variant
+' 	If Clx_Has(clx, index) Then
+' 		Assign Clx_Get, clx.Item(index)
+' 	End If
+' End Function
 
 
 ' Update in a Collection.
@@ -443,11 +467,50 @@ End Sub
 ' ...
 
 
-' ' .
-' Private Function Text_Indent(ByVal txt As String, _
-' 	Optional ByVal indent As String = Constants.vbTab _
-' ) As String
-' ' 	Optional ByVal old As String = VBA.vbNullString _
-' 
-' 	' ...
-' End Function
+' Indent text.
+Private Function Text_Indent(ByVal txt As String, _
+	Optional ByVal ind As String = VBA.vbTab, _
+	Optional ByVal bfr As Boolean = True _
+) As String
+' 	Optional ByVal old As String = VBA.vbNullString
+	
+	' Indent the start of every line...
+	txt = VBA.Replace(txt, find := VBA.vbNewLine, replace := VBA.vbNewLine & ind)
+	
+	' ...including (optionally) the beginning.
+	If bfr Then
+		txt = ind & txt
+	End If
+	
+	' ' Optionally append (rather than prepend) to existing indentation...
+	' If old <> VBA.vbNullString Then
+	' 	txt = VBA.Replace(txt, find := VBA.vbNewLine & ind & old, replace := VBA.vbNewLine & old & ind)
+	' 	
+	' 	' ...including (optionally) the beginning.
+	' 	If bfr Then
+	' 		Dim prePfx As String: prePfx = ind & old
+	' 		Dim pfxLen As Long: pfxLen = VBA.Len(prePfx)
+	' 		Dim curPfx As String: curPfx = VBA.Left(txt, pfxLen)
+	' 		
+	' 		If curPfx = prePfx Then
+	' 			Dim txtLen As Long: txtLen = VBA.Len(txt)
+	' 			Dim sfxLen As Long: sfxLen = txtLen - pfxLen
+	' 			Dim sfx As String: sfx = VBA.Right(txt, sfxLen)
+	' 			
+	' 			txt = old & ind & sfx
+	' 		End If
+	' 	End If
+	' End If
+	
+	Text_Indent = txt
+End Function
+
+
+' Test if text contains a substring.
+Private Function Text_Contains(ByVal txt As String, _
+	ByVal sbs As String _
+) As Boolean
+	Const IDX_NONE As Integer = 0
+	
+	Text_Contains = (VBA.InStr(string1 := txt, string2 := sbs) <> IDX_NONE)
+End Function
