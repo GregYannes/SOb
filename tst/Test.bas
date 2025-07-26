@@ -27,7 +27,7 @@ End Enum
 ' #############
 
 ' .
-Sub Test()
+Private Sub Test()
     ' Dim dix As Object:     Obj_Initialize dix, "Dix"
     ' Dim dix As Collection: Obj_Initialize dix, "Dix"
     ' Dim dix As Object:     Set dix = New_Obj("Dix")
@@ -53,6 +53,36 @@ Sub Test()
     Debug.Print "Obj_FieldKey(DixField.Count) = """ & copy & """"
     Debug.Print "Obj_HasField(dix, DixField.Count) = " & Obj_HasField(dix, DixField.count)
     Debug.Print "Obj_Field(dix, DixField.Count) = " & Obj_Field(dix, DixField.count)
+End Sub
+
+
+' .
+Private Sub Test_Format()
+    Dim flds() As Variant: flds = Array( _
+        "x", "True", _
+        "y", "1", _
+        "z", """one""" _
+    )
+    
+    Dim name As String: name = "Dix"
+    Dim dep As Integer: dep = 1
+    Dim pln As Boolean: pln = True
+    Dim ptr As String: ptr = "1234567890"
+    Dim sum As String: sum = "1:9"
+    Dim dtl As String: dtl = Obj_FormatFields(flds)
+    Dim ind As String: ind = "----"
+    
+    ' Debug.Print Obj_FormatDetails()
+    ' Debug.Print Obj_FormatDetails(flds)
+    Debug.Print Obj_FormatStr( _
+        name:=name, _
+        dep:=dep, _
+        pln:=pln, _
+        ptr:=ptr, _
+        sum:=sum, _
+        dtl:=dtl, _
+        ind:=ind _
+    )
 End Sub
 
 
