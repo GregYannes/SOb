@@ -398,29 +398,19 @@ Private Function Obj_FormatField( _
 	ByVal name As String, _
 	ByVal val As String _
 ) As String
+	Const OBJ_SEP As String = "."
 	Const ASN_OP As String = "="
 	Const ASN_SEP As String = " "
 	
-	' Clean the freeform value for printing.
-	val = Application.WorksheetFunction.Clean(val)
-	
-	' Assemble the format.
-	Obj_FormatField = Obj_FormatFieldName(name) & ASN_SEP & ASN_OP & ASN_SEP & val
-End Function
-
-
-' Format the name of a field for printing: .name
-Private Function Obj_FormatFieldName(ByVal name As String) As String
-	Const OBJ_SEP As String = "."
-	
 	' Clean the name for printing...
-	name = Application.WorksheetFunction.Clean(name)
-	
-	' ...and trim any whitespace.
+	name = Excel.Application.WorksheetFunction.Clean(name)
 	name = VBA.Trim(name)
 	
+	' ' ...along with the freeform value for printing.
+	' val = Excel.Application.WorksheetFunction.Clean(val)
+	
 	' Assemble the format.
-	Obj_FormatFieldName = OBJ_SEP & name
+	Obj_FormatField = OBJ_SEP & name & ASN_SEP & ASN_OP & ASN_SEP & val
 End Function
 
 
