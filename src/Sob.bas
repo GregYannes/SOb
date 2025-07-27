@@ -1,5 +1,6 @@
 Attribute VB_Name = "SOb"
 
+Option Explicit
 
 ' Hide these developer functions from end users in Excel.
 Option Private Module
