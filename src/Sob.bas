@@ -165,37 +165,50 @@ Private Function Obj_Format( _
 End Function
 
 
-' Format a set of (simulated) fields for (detailed) printing:
+' Format an array of (simulated) fields...
+'   Array( _
+'   	"FieldA", "True", _
+'   	"FieldB", "1", _
+'   	"FieldC", "'Yes'", _
+'   	...
+'   	"FieldZ", "<Obj>" _
+'   )
+'   
+' ...for (detailed) printing:
 '   .FieldA = True
 '   .FieldB = 1
 '   .FieldC = 'Yes'
 '          ...
 '   .FieldZ = <Obj>
-Private Function Obj_FormatFields(ParamArray fields() As Variant) As String
-	Const FLD_SEP As String = VBA.vbNewLine
+Private Function Obj_FormatFields( _
+	ByRef flds As Variant, _
+	Optional ByVal sep As String = VBA.vbNewLine _
+) As String
 	Const FLD_ARGS As Integer = 2
 	
-	Dim up As Long: up = UBound(fields, 1)
-	Dim low As Long: low = LBound(fields, 1)
+	Dim low As Long: low = LBound(flds, 1)
+	Dim up As Long: up = UBound(flds, 1)
 	Dim lng As Long: lng = up - low + 1
 	Dim n As Long: n = VBA.Int(lng / FLD_ARGS)
 	up = n * FLD_ARGS - 1
 	
-	' Short-circuit for insufficient fields.
-	Obj_FormatFields = ""
+	' Short-circuit for insufficient fields: ""
 	If n < 1 Then
+		Obj_FormatFields = VBA.vbNullString
 		Exit Function
 	End If
 	
 	' Render the first field...
 	Dim i As Long: i = low
-	Obj_FormatFields = Obj_FormatField(fields(i), fields(i + 1))
+	Dim fmt As String: fmt = Obj_FormatField(flds(i), flds(i + 1))
 	i = i + FLD_ARGS
 	
 	' ...and append any others.
 	For i = i To up Step FLD_ARGS
-		Obj_FormatFields = Obj_FormatFields & FLD_SEP & Obj_FormatField(fields(i), fields(i + 1))
+		fmt = fmt & sep & Obj_FormatField(flds(i), flds(i + 1))
 	Next i
+	
+	Obj_FormatFields = fmt
 End Function
 
 
