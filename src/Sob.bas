@@ -155,12 +155,43 @@ End Property
 ' Format a simulated object for printing.
 Private Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal dep As Integer = 1, _
+	Optional ByVal pln As Boolean = False, _
 	Optional ByVal ptr As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal ind As String = VBA.vbNullString _
 ) As String
-	' ...
+	Const DFL_CLS As String = "?"
+	
+	' Format a simulated object...
+	If IsObj(obj) Then
+		' Extract the class or default to a placeholder ("?").
+		Dim cls As String: cls = Obj_Class(obj)
+		If cls = VBA.vbNullString Then
+			cls = DFL_CLS
+		End If
+		
+		' Optionally record the pointer reference.
+		Dim ptrRef As String: ptrRef = VBA.vbNullString
+		If ptr Then
+			ptrRef = VBA.CStr(VBA.ObjPtr(obj))
+		End If
+		
+		' Format the components.
+		Obj_Format = Obj_FormatInfo( _
+			cls := cls, _
+			dep := dep, _
+			pln := pln, _
+			ptr := ptrRef, _
+			sum := sum, _
+			dtl := dtl, _
+			ind := ind _
+		)
+		
+	' ...or display anything else according to VBA defaults.
+	Else
+		Obj_Format = VBA.TypeName(obj)
+	End If
 End Function
 
 
