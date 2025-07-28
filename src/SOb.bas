@@ -20,13 +20,13 @@ Option Private Module
 ' ###########################
 
 ' Construct a simulated object.
-Private Function New_Obj(ByVal cls As String) As Collection
+Public Function New_Obj(ByVal cls As String) As Collection
 	Obj_Initialize New_Obj, cls
 End Function
 
 
 ' Initialize a simulated object.
-Private Sub Obj_Initialize(ByRef obj As Collection, _
+Public Sub Obj_Initialize(ByRef obj As Collection, _
 	ByVal cls As String _
 )
 	If obj Is Nothing Then
@@ -45,7 +45,7 @@ End Sub
 ' #########################
 
 ' Test for a simulated object.
-Private Function IsObj(ByRef x As Variant, _
+Public Function IsObj(ByRef x As Variant, _
 	Optional ByVal cls As String = VBA.vbNullString _
 ) As Boolean
 ' 	Optional ByVal flds() As Long
@@ -72,7 +72,7 @@ End Function
 
 
 ' Cast as a simulated object.
-Private Function AsObj(ByRef x As Variant, _
+Public Function AsObj(ByRef x As Variant, _
 	Optional ByVal cls As String = VBA.vbNullString _
 ) As Collection
 ' 	Optional ByVal flds() As Long
@@ -95,7 +95,7 @@ End Function
 ' ## SOBs • API • Fields ##
 ' #########################
 ' Count simulated fields.
-Private Property Get Obj_FieldCount(ByRef obj As Collection) As Long
+Public Property Get Obj_FieldCount(ByRef obj As Collection) As Long
 ' 	Optional ByVal cls As String = VBA.vbNullString
 	
 	Obj_FieldCount = obj.Count
@@ -114,7 +114,7 @@ End Property
 
 
 ' Test for a simulated field.
-Private Function Obj_HasField(ByRef obj As Collection, _
+Public Function Obj_HasField(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Boolean
 	Dim key As String: Obj_FieldKey key, fld  ' obj := obj
@@ -123,7 +123,7 @@ End Function
 
 
 ' Get a simulated field.
-Private Property Get Obj_Field(ByRef obj As Collection, _
+Public Property Get Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Variant
 	Dim key As String: Obj_FieldKey key, fld  ' obj := obj
@@ -132,7 +132,7 @@ End Property
 
 
 ' Set a simulated scalar field...
-Private Property Let Obj_Field(ByRef obj As Collection, _
+Public Property Let Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long, _
 	ByVal val As Variant _
 )
@@ -142,7 +142,7 @@ End Property
 
 
 ' ...and a simulated objective field.
-Private Property Set Obj_Field(ByRef obj As Collection, _
+Public Property Set Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long, _
 	ByRef val As Variant _
 )
@@ -157,7 +157,7 @@ End Property
 ' ################################
 
 ' Print a simulated object.
-Private Function Obj_Print(ByRef obj As Collection, _
+Public Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal dep As Integer = 1, _
 	Optional ByVal pln As Boolean = False, _
 	Optional ByVal ptr As Boolean = False, _
@@ -183,7 +183,7 @@ End Function
 
 
 ' Format a simulated object for printing.
-Private Function Obj_Format(ByRef obj As Collection, _
+Public Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal dep As Integer = 1, _
 	Optional ByVal pln As Boolean = False, _
 	Optional ByVal ptr As Boolean = False, _
@@ -238,7 +238,7 @@ End Function
 '   
 ' This is done either manually with elegant defaults...
 '   Obj_FormatFields0("FieldA", "True", "FieldB", "1", ...)
-Private Function Obj_FormatFields0(ParamArray flds() As Variant) As String
+Public Function Obj_FormatFields0(ParamArray flds() As Variant) As String
 	Obj_FormatFields0 = Obj_FormatFields(flds)
 End Function
 
@@ -246,7 +246,7 @@ End Function
 ' ...or programmatically with customization:
 '   Dim fields() As Variant: fields = Array("FieldA", "True", "FieldB", "1", ...)
 '   Obj_FormatFields(fields, vbNewLine)
-Private Function Obj_FormatFields( _
+Public Function Obj_FormatFields( _
 	ByRef flds As Variant, _
 	Optional ByVal sep As String = VBA.vbNewLine _
 ) As String
