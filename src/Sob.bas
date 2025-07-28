@@ -308,31 +308,30 @@ Private Sub Obj_Secret(ByRef var As String)
 End Sub
 
 
-' Format the information of a structure (object, etc.) for printing.
-'   <Obj>
-'   <Obj @ 1234567890>
-'   <Obj[...]>
+' Format a structure (object, etc.) for shallow or deep printing in plain format...
+'   {} or {
+'   	...
+'   	...
+'   }
 '   
+' ...or in rich format:
+'   <Obj> or <Obj @ 1234567890> or <Obj[...]> or
 '   <Obj: {
 '   	...
 '   	...
 '   }>
-Private Function Obj_FormatStrInfo( _
-	Optional ByVal cls As String = VBA.vbNullString, _
+Private Function Obj_FormatStr( _
+	Optional ByVal name As String = VBA.vbNullString, _
+	Optional ByVal dep As Integer = 1, _
+	Optional ByVal pln As Boolean = False, _
 	Optional ByVal ptr As String = VBA.vbNullString, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
-	Optional ByVal ind As String = VBA.vbNullString _
+	Optional ByVal ind As String = VBA.vbTab _
 ) As String
-' 	Optional ByVal sim As Boolean = False
-' 	Optional ByVal bfr As Boolean = False
-	
-	Const FMT_IND As String = VBA.vbTab
 	Const OBJ_OPEN As String = "<"
 	Const OBJ_CLOSE As String = ">"
 	Const DTL_SEP As String = ": "
-	Const DTL_OPEN As String = "{"
-	Const DTL_CLOSE As String = "}"
 	Const SUM_SEP As String = ""
 	Const SUM_OPEN As String = "["
 	Const SUM_CLOSE As String = "]"
@@ -340,74 +339,100 @@ Private Function Obj_FormatStrInfo( _
 	Const PTR_OPEN As String = ""
 	Const PTR_CLOSE As String = ""
 	
+	' Sanitize depth.
+	dep = Excel.Application.WorksheetFunction.Max(0, dep)
 	
-	' Assemble the format.
-	Dim fmt As String: fmt = ""
-	
-	
-	' Format details across multiple lines...
-	If dtl <> VBA.vbNullString Then
-		dtl = Application.WorksheetFunction.Clean(dtl)
-		
-		dtl = DTL_OPEN & VBA.vbNewLine & _
-			Text_Indent(dtl, ind := FMT_IND, bfr := True) & VBA.vbNewLine & _
-		DTL_CLOSE
-		
-	' ...or alternatively a summary on a single line...
-	ElseIf sum <> VBA.vbNullString Then
-		sum = Application.WorksheetFunction.Clean(sum)
-		
-		' If Text_Contains(sum, VBA.vbNewLine) Then
-		' 	sum = VBA.vbNewLine & Text_Indent(sum, ind := FMT_IND, bfr := True) & VBA.vbNewLine
-		' End If
-		
-		sum = SUM_OPEN & sum & SUM_CLOSE
-		
-	' ...or alternatively a pointer.
-	ElseIf ptr <> VBA.vbNullString Then
-		ptr = PTR_OPEN & ptr & PTR_CLOSE
+	' Format shallowly when details are absent.
+	If dtl = VBA.vbNullString Then
+		dep = 0
 	End If
 	
-	
-	' Display only the details in the absence of a class...
-	'   {
-	'   	...
-	'   	...
-	'   }
-	If cls = VBA.vbNullString Then
-		fmt = dtl
+	' Assemble plain formatting...
+	Dim fmt As String
+	If pln Then		
+		' Format deeply...
+		'   {
+		'   	...
+		'   	...
+		'   }
+		If dep > 0 Then
+			' dtl = Excel.Application.WorksheetFunction.Clean(dtl)
+			fmt = Obj_FormatDetails(dtl, ind := ind)
+			
+		' ...or shallowly: {}
+		Else
+			fmt = Obj_FormatDetails()
+		End If
 		
-	' ...and otherwise enrich the class info:
-	ElseIf
-		' Name the class itself: <Obj>
-		fmt = cls
+	' ...or rich formatting.
+	Else
+		' Short circuit for missing name: ""
+		If name = VBA.vbNullString Then
+			Obj_FormatStr = VBA.vbNullString
+			Exit Function
+		End If
 		
+		' Clean name
+		name = Excel.Application.WorksheetFunction.Clean(name)
+		name = VBA.Trim(name)
 		
-		' Append any details:
+		fmt = name
+		
+		' Format deeply with details...
 		'   <Obj: {
 		'   	...
 		'   	...
 		'   }>
-		If dtl <> VBA.vbNullString Then
-			fmt = fmt & DTL_SEP & dtl
+		If dep > 0 Then
+			' dtl = Excel.Application.WorksheetFunction.Clean(dtl)
+			fmt = name & DTL_SEP & Obj_FormatDetails(dtl, ind := ind)
 			
-		' Alternatively append a summary: <Obj[...]>
-		ElseIf sum <> VBA.vbNullString Then
-			fmt = fmt & SUM_SEP & sum
-			
-		' Alternatively append a pointer: <Obj @ 1234567890>
-		ElseIf ptr <> VBA.vbNullString Then
-			fmt = fmt & PTR_SEP & ptr
+		' ...or shallowly...
+		Else
+			' ...with maybe a summary: <Obj[...]>
+			If sum <> VBA.vbNullString Then
+				sum = Excel.Application.WorksheetFunction.Clean(sum)
+				fmt = name & SUM_SEP & SUM_OPEN & sum & SUM_CLOSE
+				
+			' ...or maybe a pointer: <Obj @ 1234567890>
+			ElseIf ptr <> VBA.vbNullString Then
+				ptr = Excel.Application.WorksheetFunction.Clean(ptr)
+				ptr = VBA.Trim(ptr)
+				fmt = name & PTR_SEP & PTR_OPEN & ptr & PTR_CLOSE
+				
+			' ...or with only the name: <Obj>
+			End If
 		End If
 		
+		' Wrap result.
 		fmt = OBJ_OPEN & fmt & OBJ_CLOSE
 	End If
 	
+	Obj_FormatStr = fmt
+End Function
+
+
+' Format details for printing.
+'   {} or {
+'   	...
+'   	...
+'   }
+Private Function Obj_FormatDetails( _
+	Optional ByVal dtl As String = VBA.vbNullString, _
+	Optional ByVal ind As String = VBA.vbTab _
+) As String
+	Const DTL_OPEN As String = "{"
+	Const DTL_CLOSE As String = "}"
 	
-	' Propagate any upstream indentation.
-	If ind <> VBA.vbNullString Then
-		fmt = Text_Indent(fmt, ind := ind, bfr := False)  ' bfr := bfr
+	' Indent any details on their own lines.
+	If dtl <> VBA.vbNullString Then
+		dtl = VBA.vbNewLine & Text_Indent(dtl, ind := ind, bfr := True) & VBA.vbNewLine
 	End If
+	
+	' Wrap detail in braces.
+	dtl = DTL_OPEN & dtl & DTL_CLOSE
+	
+	Obj_FormatDetails = dtl
 End Function
 
 
