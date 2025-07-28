@@ -164,26 +164,23 @@ Private Function Obj_Format(ByRef obj As Collection, _
 End Function
 
 
-' Format an array of (simulated) fields...
-'   Array( _
-'   	"FieldA", "True", _
-'   	"FieldB", "1", _
-'   	"FieldC", "'Yes'", _
-'   	...
-'   	"FieldZ", "<Obj>" _
-'   )
-'   
-' ...for (detailed) printing:
+' Format (simulated) fields for (detailed) printing:
 '   .FieldA = True
 '   .FieldB = 1
 '   .FieldC = 'Yes'
 '          ...
 '   .FieldZ = <Obj>
+'   
+' This is done either manually with elegant defaults...
+'   Obj_FormatFields0("FieldA", "True", "FieldB", "1", ...)
 Private Function Obj_FormatFields0(ParamArray flds() As Variant) As String
 	Obj_FormatFields0 = Obj_FormatFields(flds)
 End Function
 
 
+' ...or programmatically with customization:
+'   Dim fields() As Variant: fields = Array("FieldA", "True", "FieldB", "1", ...)
+'   Obj_FormatFields(fields, vbNewLine)
 Private Function Obj_FormatFields( _
 	ByRef flds As Variant, _
 	Optional ByVal sep As String = VBA.vbNewLine _
