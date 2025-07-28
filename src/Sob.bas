@@ -314,7 +314,7 @@ End Sub
 '   }
 '   
 ' ...or in rich format:
-'   <Obj> or <Obj @ 1234567890> or <Obj[...]> or
+'   <Obj> or <Obj @1234567890> or <Obj[...]> or
 '   <Obj: {
 '   	...
 '   	...
@@ -334,8 +334,8 @@ Private Function Obj_FormatInfo( _
 	Const SUM_SEP As String = ""
 	Const SUM_OPEN As String = "["
 	Const SUM_CLOSE As String = "]"
-	Const PTR_SEP As String = " @ "
-	Const PTR_OPEN As String = ""
+	Const PTR_SEP As String = " "
+	Const PTR_OPEN As String = "@"
 	Const PTR_CLOSE As String = ""
 	
 	' Sanitize depth.
