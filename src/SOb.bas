@@ -163,7 +163,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal ptr As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
-	Optional ByVal pvw as Boolean = False,
+	Optional ByVal pvw as Boolean = False, _
 	Optional ByVal ind As String = VBA.vbNullString, _
 	Optional ByVal orf As Boolean = True _
 ) As String
@@ -189,7 +189,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal ptr As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
-	Optional ByVal pvw as Boolean = False,
+	Optional ByVal pvw as Boolean = False, _
 	Optional ByVal ind As String = VBA.vbNullString, _
 	Optional ByVal orf As Boolean = True _
 ) As String
