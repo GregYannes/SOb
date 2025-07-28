@@ -180,6 +180,11 @@ End Function
 '   .FieldC = 'Yes'
 '          ...
 '   .FieldZ = <Obj>
+Private Function Obj_FormatFields0(ParamArray flds() As Variant) As String
+	Obj_FormatFields0 = Obj_FormatFields(flds)
+End Function
+
+
 Private Function Obj_FormatFields( _
 	ByRef flds As Variant, _
 	Optional ByVal sep As String = VBA.vbNewLine _
