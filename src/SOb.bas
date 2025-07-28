@@ -120,7 +120,9 @@ Private Function Obj_HasField(ByRef obj As Collection, _
 	Dim key As String: Obj_FieldKey key, fld  ' obj := obj
 	Obj_HasField = Clx_Has(obj, key)
 End Function
-' Get a simulated field.
+
+
+' Get a simulated field.
 Private Property Get Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Variant
@@ -137,7 +139,9 @@ Private Property Let Obj_Field(ByRef obj As Collection, _
 	Dim key As String: Obj_FieldKey key, fld  ' obj := obj
 	Clx_Set obj, key, val
 End Property
-' ...and a simulated objective field.
+
+
+' ...and a simulated objective field.
 Private Property Set Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long, _
 	ByRef val As Variant _
