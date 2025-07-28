@@ -365,7 +365,6 @@ Private Function Obj_FormatInfo( _
 	Const OBJ_OPEN As String = "<"
 	Const OBJ_CLOSE As String = ">"
 	Const DTL_SEP As String = ": "
-	Const DTL_PVW As String = "…"
 	Const SUM_SEP As String = ""
 	Const SUM_OPEN As String = "["
 	Const SUM_CLOSE As String = "]"
@@ -375,12 +374,6 @@ Private Function Obj_FormatInfo( _
 	
 	' Sanitize depth.
 	dep = Excel.Application.WorksheetFunction.Max(0, dep)
-	
-	' Optionally render a preview of the details: "{}" when empty and "{…}" otherwise.
-	Dim dtlPvw As String: dtlPvw = VBA.vbNullString
-	If dep = 0 And dtl <> VBA.vbNullString And pvw Then
-		dtlPvw = DTL_PVW
-	End If
 	
 	' Assemble plain formatting...
 	Dim fmt As String
@@ -392,11 +385,11 @@ Private Function Obj_FormatInfo( _
 		'   }
 		If dep > 0 Then
 			' dtl = Excel.Application.WorksheetFunction.Clean(dtl)
-			fmt = Obj_FormatDetails(dtl, ind := ind, orf := orf)
+			fmt = Obj_FormatDetails(dtl, pvw := False, ind := ind, orf := orf)
 			
 		' ...or shallowly: {…} or {}
 		Else
-			fmt = Obj_FormatDetails(dtlPvw, orf := False)
+			fmt = Obj_FormatDetails(dtl, pvw := True)
 		End If
 		
 	' ...or rich formatting.
@@ -420,7 +413,7 @@ Private Function Obj_FormatInfo( _
 		'   }>
 		If dep > 0 Then
 			' dtl = Excel.Application.WorksheetFunction.Clean(dtl)
-			fmt = cls & DTL_SEP & Obj_FormatDetails(dtl, ind := ind, orf := orf)
+			fmt = cls & DTL_SEP & Obj_FormatDetails(dtl, pvw := False, ind := ind, orf := orf)
 			
 		' ...or shallowly...
 		Else
@@ -431,7 +424,7 @@ Private Function Obj_FormatInfo( _
 				
 			' ...or maybe a preview of the detail: <Obj: {…}>
 			ElseIf pvw Then
-				fmt = cls & DTL_SEP & Obj_FormatDetails(dtlPvw, orf := False)
+				fmt = cls & DTL_SEP & Obj_FormatDetails(dtl, pvw := True)
 				
 			' ...or maybe a pointer: <Obj @1234567890>
 			ElseIf ptr <> VBA.vbNullString Then
@@ -458,41 +451,51 @@ End Function
 '   }
 Private Function Obj_FormatDetails( _
 	Optional ByVal dtl As String = VBA.vbNullString, _
+	Optional ByVal pvw As Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
 	Const DTL_OPEN As String = "{"
 	Const DTL_CLOSE As String = "}"
+	Const DTL_PVW As String = "…"
 	
-	' Indent details on separate lines: not for missing details ("{}")...
-	Dim brk As Boolean
-	If dtl = VBA.vbNullString Then
-		brk = False
+	' Optionally show only a preview ("{…}") of the details...
+	If pvw Then
+		If dtl <> VBA.vbNullString Then
+			dtl = DTL_PVW
+		End If
+		
+	' ...and otherwise break out details.
 	Else
+		Dim brk As Boolean
+		
+		' Not for missing details ("{}")...
+		If dtl = VBA.vbNullString Then
+			brk = False
+			
 		' ...but certainly for multiline details...
 		'   {
 		'   	...
 		'   	...
 		'   }
-		If Text_Contains(dtl, VBA.vbNewLine) Then
+		ElseIf Text_Contains(dtl, VBA.vbNewLine) Then
 			brk = True
 			
-		' ...and optionally for orphan lines:
+		' ...and optionally for orphan lines...
 		'   {
 		'   	...
 		'   }
-		ElseIf orf Then
-			brk = True
 		Else
-			brk = False
+			brk = orf
+		End If
+		
+		' Indent as needed.
+		If brk Then
+			dtl = VBA.vbNewLine & Text_Indent(dtl, ind := ind, bfr := True) & VBA.vbNewLine
 		End If
 	End If
 	
-	If brk Then
-		dtl = VBA.vbNewLine & Text_Indent(dtl, ind := ind, bfr := True) & VBA.vbNewLine
-	End If
-	
-	' Wrap detail in braces.
+	' Wrap details in braces.
 	dtl = DTL_OPEN & dtl & DTL_CLOSE
 	
 	Obj_FormatDetails = dtl
