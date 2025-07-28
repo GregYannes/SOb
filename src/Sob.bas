@@ -159,6 +159,7 @@ Private Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal ptr As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
+	Optional ByVal pvw as Boolean = False,
 	Optional ByVal ind As String = VBA.vbNullString, _
 	Optional ByVal orf As Boolean = True _
 ) As String
@@ -186,6 +187,7 @@ Private Function Obj_Format(ByRef obj As Collection, _
 			ptr := ptrTxt, _
 			sum := sum, _
 			dtl := dtl, _
+			pvw := pvw, _
 			ind := ind, _
 			orf := orf _
 		)
@@ -338,7 +340,7 @@ End Sub
 
 
 ' Format a (simulated) object for shallow or deep printing in plain format...
-'   {} or {
+'   {} or {…} or {
 '   	...
 '   	...
 '   }
@@ -356,12 +358,14 @@ Private Function Obj_FormatInfo( _
 	Optional ByVal ptr As String = VBA.vbNullString, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
+	Optional ByVal pvw As Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
 	Const OBJ_OPEN As String = "<"
 	Const OBJ_CLOSE As String = ">"
 	Const DTL_SEP As String = ": "
+	Const DTL_PVW As String = "…"
 	Const SUM_SEP As String = ""
 	Const SUM_OPEN As String = "["
 	Const SUM_CLOSE As String = "]"
@@ -372,9 +376,10 @@ Private Function Obj_FormatInfo( _
 	' Sanitize depth.
 	dep = Excel.Application.WorksheetFunction.Max(0, dep)
 	
-	' Format shallowly when details are absent.
-	If dtl = VBA.vbNullString Then
-		dep = 0
+	' Optionally render a preview of the details: "{}" when empty and "{…}" otherwise.
+	Dim dtlPvw As String: dtlPvw = VBA.vbNullString
+	If dep = 0 And dtl <> VBA.vbNullString And pvw Then
+		dtlPvw = DTL_PVW
 	End If
 	
 	' Assemble plain formatting...
@@ -389,9 +394,9 @@ Private Function Obj_FormatInfo( _
 			' dtl = Excel.Application.WorksheetFunction.Clean(dtl)
 			fmt = Obj_FormatDetails(dtl, ind := ind, orf := orf)
 			
-		' ...or shallowly: {}
+		' ...or shallowly: {…} or {}
 		Else
-			fmt = Obj_FormatDetails()
+			fmt = Obj_FormatDetails(dtlPvw, orf := False)
 		End If
 		
 	' ...or rich formatting.
@@ -423,6 +428,10 @@ Private Function Obj_FormatInfo( _
 			If sum <> VBA.vbNullString Then
 				sum = Excel.Application.WorksheetFunction.Clean(sum)
 				fmt = cls & SUM_SEP & SUM_OPEN & sum & SUM_CLOSE
+				
+			' ...or maybe a preview of the detail: <Obj: {…}>
+			ElseIf pvw Then
+				fmt = cls & DTL_SEP & Obj_FormatDetails(dtlPvw, orf := False)
 				
 			' ...or maybe a pointer: <Obj @1234567890>
 			ElseIf ptr <> VBA.vbNullString Then
