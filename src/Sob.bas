@@ -153,7 +153,7 @@ End Property
 ' ################################
 
 ' Format a simulated object for printing.
-Private Function Obj_Format( _
+Private Function Obj_Format(ByVal val As Variant, _
 	Optional ByVal name As String = VBA.vbNullString, _
 	Optional ByVal dep As Integer = 1, _
 	Optional ByVal ptr As Boolean = False, _
@@ -161,6 +161,8 @@ Private Function Obj_Format( _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal ind As String = VBA.vbNullString _
 ) As String
+	Dim typ As Long: typ = VBA.VarType(val)
+	
 	' ...
 End Function
 
