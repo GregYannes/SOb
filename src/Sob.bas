@@ -153,16 +153,13 @@ End Property
 ' ################################
 
 ' Format a simulated object for printing.
-Private Function Obj_Format(ByVal val As Variant, _
-	Optional ByVal name As String = VBA.vbNullString, _
+Private Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal dep As Integer = 1, _
 	Optional ByVal ptr As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal ind As String = VBA.vbNullString _
 ) As String
-	Dim typ As Long: typ = VBA.VarType(val)
-	
 	' ...
 End Function
 
@@ -310,7 +307,7 @@ Private Sub Obj_Secret(ByRef var As String)
 End Sub
 
 
-' Format a structure (object, etc.) for shallow or deep printing in plain format...
+' Format a (simulated) object for shallow or deep printing in plain format...
 '   {} or {
 '   	...
 '   	...
@@ -322,8 +319,8 @@ End Sub
 '   	...
 '   	...
 '   }>
-Private Function Obj_FormatStr( _
-	Optional ByVal name As String = VBA.vbNullString, _
+Private Function Obj_FormatInfo( _
+	Optional ByVal cls As String = VBA.vbNullString, _
 	Optional ByVal dep As Integer = 1, _
 	Optional ByVal pln As Boolean = False, _
 	Optional ByVal ptr As String = VBA.vbNullString, _
@@ -368,17 +365,17 @@ Private Function Obj_FormatStr( _
 		
 	' ...or rich formatting.
 	Else
-		' Short circuit for missing name: ""
-		If name = VBA.vbNullString Then
-			Obj_FormatStr = VBA.vbNullString
+		' Short circuit for missing cls: ""
+		If cls = VBA.vbNullString Then
+			Obj_FormatInfo = VBA.vbNullString
 			Exit Function
 		End If
 		
-		' Clean name
-		name = Excel.Application.WorksheetFunction.Clean(name)
-		name = VBA.Trim(name)
+		' Clean the class name.
+		cls = Excel.Application.WorksheetFunction.Clean(cls)
+		cls = VBA.Trim(cls)
 		
-		fmt = name
+		fmt = cls
 		
 		' Format deeply with details...
 		'   <Obj: {
@@ -387,20 +384,20 @@ Private Function Obj_FormatStr( _
 		'   }>
 		If dep > 0 Then
 			' dtl = Excel.Application.WorksheetFunction.Clean(dtl)
-			fmt = name & DTL_SEP & Obj_FormatDetails(dtl, ind := ind)
+			fmt = cls & DTL_SEP & Obj_FormatDetails(dtl, ind := ind)
 			
 		' ...or shallowly...
 		Else
 			' ...with maybe a summary: <Obj[...]>
 			If sum <> VBA.vbNullString Then
 				sum = Excel.Application.WorksheetFunction.Clean(sum)
-				fmt = name & SUM_SEP & SUM_OPEN & sum & SUM_CLOSE
+				fmt = cls & SUM_SEP & SUM_OPEN & sum & SUM_CLOSE
 				
 			' ...or maybe a pointer: <Obj @ 1234567890>
 			ElseIf ptr <> VBA.vbNullString Then
 				ptr = Excel.Application.WorksheetFunction.Clean(ptr)
 				ptr = VBA.Trim(ptr)
-				fmt = name & PTR_SEP & PTR_OPEN & ptr & PTR_CLOSE
+				fmt = cls & PTR_SEP & PTR_OPEN & ptr & PTR_CLOSE
 				
 			' ...or with only the name: <Obj>
 			End If
@@ -410,7 +407,7 @@ Private Function Obj_FormatStr( _
 		fmt = OBJ_OPEN & fmt & OBJ_CLOSE
 	End If
 	
-	Obj_FormatStr = fmt
+	Obj_FormatInfo = fmt
 End Function
 
 
