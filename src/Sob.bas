@@ -154,8 +154,8 @@ End Property
 
 ' Format a simulated object for printing.
 Private Function Obj_Format( _
-	Optional ByVal cls As String = VBA.vbNullString, _
-	Optional ByVal sim As Boolean = False, _
+	Optional ByVal name As String = VBA.vbNullString, _
+	Optional ByVal dep As Integer = 1, _
 	Optional ByVal ptr As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
