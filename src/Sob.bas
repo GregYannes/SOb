@@ -173,9 +173,9 @@ Private Function Obj_Format(ByRef obj As Collection, _
 		End If
 		
 		' Optionally record the pointer reference.
-		Dim ptrRef As String: ptrRef = VBA.vbNullString
+		Dim ptrTxt As String: ptrTxt = VBA.vbNullString
 		If ptr Then
-			ptrRef = VBA.CStr(VBA.ObjPtr(obj))
+			ptrTxt = VBA.CStr(VBA.ObjPtr(obj))
 		End If
 		
 		' Format the components.
@@ -183,7 +183,7 @@ Private Function Obj_Format(ByRef obj As Collection, _
 			cls := cls, _
 			dep := dep, _
 			pln := pln, _
-			ptr := ptrRef, _
+			ptr := ptrTxt, _
 			sum := sum, _
 			dtl := dtl, _
 			ind := ind, _
@@ -424,7 +424,7 @@ Private Function Obj_FormatInfo( _
 				sum = Excel.Application.WorksheetFunction.Clean(sum)
 				fmt = cls & SUM_SEP & SUM_OPEN & sum & SUM_CLOSE
 				
-			' ...or maybe a pointer: <Obj @ 1234567890>
+			' ...or maybe a pointer: <Obj @1234567890>
 			ElseIf ptr <> VBA.vbNullString Then
 				ptr = Excel.Application.WorksheetFunction.Clean(ptr)
 				ptr = VBA.Trim(ptr)
