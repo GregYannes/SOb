@@ -152,6 +152,32 @@ End Property
 ' ## SOBs • API • Visualization ##
 ' ################################
 
+' Print a simulated object.
+Private Function Obj_Print(ByRef obj As Collection, _
+	Optional ByVal dep As Integer = 1, _
+	Optional ByVal pln As Boolean = False, _
+	Optional ByVal ptr As Boolean = False, _
+	Optional ByVal sum As String = VBA.vbNullString, _
+	Optional ByVal dtl As String = VBA.vbNullString, _
+	Optional ByVal pvw as Boolean = False,
+	Optional ByVal ind As String = VBA.vbNullString, _
+	Optional ByVal orf As Boolean = True _
+) As String
+	Obj_Print = Obj_Format(obj, _
+		dep := dep, _
+		pln := pln, _
+		ptr := ptr, _
+		sum := sum, _
+		dtl := dtl, _
+		pvw := pvw, _
+		ind := ind, _
+		orf := orf _
+	)
+	
+	Debug.Print Obj_Print
+End Function
+
+
 ' Format a simulated object for printing.
 Private Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal dep As Integer = 1, _
