@@ -237,7 +237,8 @@ End Function
 ' This is done either manually with elegant defaults...
 '   Obj_FormatFields0("FieldA", "True", "FieldB", "1", ...)
 Public Function Obj_FormatFields0(ParamArray flds() As Variant) As String
-	Obj_FormatFields0 = Obj_FormatFields(flds)
+	Dim f() As Variant: f = flds
+	Obj_FormatFields0 = Obj_FormatFields(f)
 End Function
 
 
@@ -634,7 +635,7 @@ End Function
 Private Function Text_Contains(ByVal txt As String, _
 	ByVal sbs As String _
 ) As Boolean
-	Const IDX_NONE As Integer = 0
+	Const IDX_NONE As Long = 0
 	
-	Text_Contains = (VBA.InStr(string1 := txt, string2 := sbs) <> IDX_NONE)
+	Text_Contains = (VBA.InStr(txt, sbs) <> IDX_NONE)
 End Function
