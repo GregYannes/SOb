@@ -311,12 +311,12 @@ Private Sub Obj_FieldKey(ByRef var As String, _
 	Const FLD_PFX As String = "Field_"
 	Const KEY_SEP As String = "."
 	
-	Dim secret As String, key As String
+	Dim sec As String, key As String
 	
-	Obj_Secret secret
+	Obj_Secret sec
 	fld = fld + 1
 	
-	key = FLD_PFX & VBA.CStr(fld) & KEY_SEP & secret
+	key = FLD_PFX & VBA.CStr(fld) & KEY_SEP & sec
 	
 	var = key
 End Sub
@@ -327,9 +327,9 @@ Private Sub Obj_ClassKey(ByRef var As String)
 	Const CLS_PFX As String = "Class"
 	Const KEY_SEP As String = "."
 	
-	Dim key As String, secret As String
-	Obj_Secret secret
-	key = CLS_PFX & KEY_SEP & secret
+	Dim key As String, sec As String
+	Obj_Secret sec
+	key = CLS_PFX & KEY_SEP & sec
 	
 	var = key
 End Sub
@@ -340,16 +340,16 @@ Private Sub Obj_Secret(ByRef var As String)
 	Const SEC_PFX As String = "x"
 	Const REF_SEP As String = ""
 	
-	Static secret As String, isInit As Boolean
+	Static sec As String, isInit As Boolean
 	
 	If Not isInit Then
 		Dim ref1 As New Collection, ref2 As New Collection
-		secret = SEC_PFX & VBA.Hex(VBA.ObjPtr(ref1)) & REF_SEP & VBA.Hex(VBA.ObjPtr(ref2))
+		sec = SEC_PFX & VBA.Hex(VBA.ObjPtr(ref1)) & REF_SEP & VBA.Hex(VBA.ObjPtr(ref2))
 		
 		isInit = True
 	End If
 	
-	var = secret
+	var = sec
 End Sub
 
 
