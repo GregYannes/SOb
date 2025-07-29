@@ -7,6 +7,19 @@ Option Private Module
 
 
 
+' ##############
+' ## Metadata ##
+' ##############
+
+' Module info.
+Public Const MOD_NAME As String = "SOb"
+
+Public Const MOD_VERSION As String = "0.1"
+
+Public Const MOD_REPO As String = "https://github.com/GregYannes/SOb"
+
+
+
 ' ##########
 ' ## SOBs ##
 ' ##########
