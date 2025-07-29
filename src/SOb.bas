@@ -20,17 +20,13 @@ Public Const MOD_REPO As String = "https://github.com/GregYannes/SOb"
 
 
 
-' ##########
-' ## SOBs ##
-' ##########
+' #########
+' ## API ##
+' #########
 
-' ################
-' ## SOBs | API ##
-' ################
-
-' ###########################
-' ## SOBs | API | Creation ##
-' ###########################
+' ####################
+' ## API | Creation ##
+' ####################
 
 ' Construct a simulated object.
 Public Function New_Obj(ByVal cls As String) As Collection
@@ -53,9 +49,9 @@ End Sub
 
 
 
-' #########################
-' ## SOBs | API | Typing ##
-' #########################
+' ##################
+' ## API | Typing ##
+' ##################
 
 ' Test for a simulated object.
 Public Function IsObj(ByRef x As Variant, _
@@ -103,9 +99,9 @@ End Function
 
 
 
-' #########################
-' ## SOBs | API | Fields ##
-' #########################
+' ##################
+' ## API | Fields ##
+' ##################
 ' Count simulated fields.
 Public Property Get Obj_FieldCount(ByRef obj As Collection) As Long
 ' 	Optional ByVal cls As String = VBA.vbNullString
@@ -163,9 +159,9 @@ End Property
 
 
 
-' ################################
-' ## SOBs | API | Visualization ##
-' ################################
+' #########################
+' ## API | Visualization ##
+' #########################
 
 ' Print a simulated object.
 Public Function Obj_Print(ByRef obj As Collection, _
@@ -291,9 +287,9 @@ End Function
 
 
 
-' ####################
-' ## SOBs | Helpers ##
-' ####################
+' #############
+' ## Helpers ##
+' #############
 
 ' Test for a simulated class.
 Private Function Obj_HasClass(ByRef obj As Collection) As Boolean
@@ -555,9 +551,9 @@ End Function
 
 
 
-' ######################
-' ## SOBs | Utilities ##
-' ######################
+' ###############
+' ## Utilities ##
+' ###############
 
 ' Test if a Collection contains an item.
 Private Function Clx_Has(ByRef clx As Collection, _
