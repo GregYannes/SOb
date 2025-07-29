@@ -35,8 +35,6 @@ Private Sub Test()
 	' Dim dix As Object:	 Set dix = SOb.New_Obj("Dix")
 	Dim dix As Object: Set dix = New_Dix()
 	
-	SOb.Obj_Field(dix, DixField.Count) = 42
-	
 	
 	Dim copy As String: SOb.Obj_ClassKey copy
 	Debug.Print "Obj_ClassKey() = """ & copy & """"
@@ -51,6 +49,9 @@ Private Sub Test()
 	
 	Debug.Print
 	
+	
+	SOb.Obj_Field(dix, DixField.Count) = 42
+	
 	SOb.Obj_FieldKey copy, DixField.Count  ' obj := dix
 	Debug.Print "Obj_FieldKey(DixField.Count) = """ & copy & """"
 	Debug.Print "Obj_HasField(dix, DixField.Count) = " & SOb.Obj_HasField(dix, DixField.Count)
@@ -59,6 +60,14 @@ Private Sub Test()
 	Debug.Print
 	Debug.Print
 	
+	Debug.Print "IsDix(dix) = " & IsDix(dix)
+	
+	
+	Dix_Count(dix) = 7
+	Debug.Print "Dix_Count(dix) = " & Dix_Count(dix)
+	
+	Debug.Print
+	Debug.Print
 	Test_Print dix
 End Sub
 
@@ -78,7 +87,7 @@ Private Sub Test_Print(ByRef dix As Object)
 	Dim indent As String: indent = VBA.vbTab  ' & "----"
 	Dim orphan As Boolean: orphan = True
 	
-	Debug.Print SOb.Obj_Print(dix, _
+	SOb.Obj_Print dix, _
 		dep := depth, _
 		pln := plain, _
 		ptr := pointer, _
@@ -86,8 +95,18 @@ Private Sub Test_Print(ByRef dix As Object)
 		dtl := detail, _
 		pvw := preview, _
 		ind := indent, _
-		orf := orphan _
-	)
+		orf := orphan
+	
+	Debug.Print
+	Debug.Print
+	
+	Dix_Print dix, _
+		depth := depth, _
+		plain := plain, _
+		pointer := pointer, _
+		preview := preview, _
+		indent := indent, _
+		orphan := orphan
 End Sub
 
 
