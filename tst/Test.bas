@@ -55,35 +55,38 @@ Private Sub Test()
 	Debug.Print "Obj_FieldKey(DixField.Count) = """ & copy & """"
 	Debug.Print "Obj_HasField(dix, DixField.Count) = " & SOb.Obj_HasField(dix, DixField.Count)
 	Debug.Print "Obj_Field(dix, DixField.Count) = " & SOb.Obj_Field(dix, DixField.Count)
+	
+	Debug.Print
+	Debug.Print
+	
+	Test_Print dix
 End Sub
 
 
-' .
-Private Sub Test_Format()
-	Dim flds() As Variant: flds = Array( _
-		"x", "True", _
-		"y", "1", _
-		"z", """one""" _
+' Test printing for a simulated "Dix" object.
+Private Sub Test_Print(ByRef dix As Object)
+	Dim depth As Integer: depth = 1
+	Dim plain As Boolean: plain = False
+	Dim pointer As Boolean: pointer = True
+	Dim summary As String: summary = "" & Dix_Count(dix)
+	Dim detail As String: detail = "" & SOb.Obj_FormatFields0( _
+		"Keys", "Collection[" & Obj_Keys(dix).Count & "]", _
+		"Items", "Collection[" & Obj_Items(dix).Count & "]", _
+		"Count", Dix_Count(dix, DixField.Count) _
 	)
+	Dim preview As Boolean: preview = True
+	Dim indent As String: indent = VBA.vbTab  ' & "----"
+	Dim orphan As Boolean: orphan = True
 	
-	Dim name As String: name = "Dix"
-	Dim dep As Integer: dep = 1
-	Dim pln As Boolean: pln = True
-	Dim ptr As String: ptr = "1234567890"
-	Dim sum As String: sum = "1:9"
-	Dim dtl As String: dtl = Obj_FormatFields(flds)
-	Dim ind As String: ind = "----"
-	
-	' Debug.Print SOb.Obj_FormatDetails()
-	' Debug.Print SOb.Obj_FormatDetails(flds)
-	Debug.Print SOb.Obj_FormatStr( _
-		name:=name, _
-		dep:=dep, _
-		pln:=pln, _
-		ptr:=ptr, _
-		sum:=sum, _
-		dtl:=dtl, _
-		ind:=ind _
+	Debug.Print SOb.Obj_Print(dix, _
+		dep := depth, _
+		pln := plain, _
+		ptr := pointer, _
+		sum := summary, _
+		dtl := detail, _
+		pvw := preview, _
+		ind := indent, _
+		orf := orphan _
 	)
 End Sub
 
