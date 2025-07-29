@@ -62,12 +62,12 @@ Public Function IsObj(ByRef x As Variant, _
 	' Check if the underlying (Collection) structure is correct...
 	IsObj = VBA.IsObject(x)
 	If IsObj Then
-		IsObj = (TypeOf x Is Collection)
+		Dim obj As Object: Set obj = x
+		IsObj = (TypeOf obj Is Collection)
 	End If
 	
 	' ...and that it is marked with a simulated class.
 	If IsObj Then
-		Dim obj As Object: Set obj = x
 		IsObj = Obj_HasClass(obj)
 	End If
 	
