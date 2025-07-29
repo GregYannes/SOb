@@ -12,11 +12,11 @@ Option Private Module
 ' ##########
 
 ' ################
-' ## SOBs ¥ API ##
+' ## SOBs â€¢ API ##
 ' ################
 
 ' ###########################
-' ## SOBs ¥ API ¥ Creation ##
+' ## SOBs â€¢ API â€¢ Creation ##
 ' ###########################
 
 ' Construct a simulated object.
@@ -41,7 +41,7 @@ End Sub
 
 
 ' #########################
-' ## SOBs ¥ API ¥ Typing ##
+' ## SOBs â€¢ API â€¢ Typing ##
 ' #########################
 
 ' Test for a simulated object.
@@ -91,7 +91,7 @@ End Function
 
 
 ' #########################
-' ## SOBs ¥ API ¥ Fields ##
+' ## SOBs â€¢ API â€¢ Fields ##
 ' #########################
 ' Count simulated fields.
 Public Property Get Obj_FieldCount(ByRef obj As Collection) As Long
@@ -151,7 +151,7 @@ End Property
 
 
 ' ################################
-' ## SOBs ¥ API ¥ Visualization ##
+' ## SOBs â€¢ API â€¢ Visualization ##
 ' ################################
 
 ' Print a simulated object.
@@ -279,7 +279,7 @@ End Function
 
 
 ' ####################
-' ## SOBs ¥ Helpers ##
+' ## SOBs â€¢ Helpers ##
 ' ####################
 
 ' Test for a simulated class.
@@ -355,7 +355,7 @@ End Sub
 
 
 ' Format a (simulated) object for shallow or deep printing in plain format...
-'   {} or {É} or {
+'   {} or {â€¦} or {
 '   	...
 '   	...
 '   }
@@ -403,7 +403,7 @@ Private Function Obj_FormatInfo( _
 		If dep > 0 Then
 			fmt = Obj_FormatDetails(dtl, pvw := False, ind := ind, orf := orf)
 			
-		' ...or shallowly: {É} or {}
+		' ...or shallowly: {â€¦} or {}
 		Else
 			fmt = Obj_FormatDetails(dtl, pvw := True)
 		End If
@@ -437,7 +437,7 @@ Private Function Obj_FormatInfo( _
 				sum = Excel.Application.WorksheetFunction.Clean(sum)
 				fmt = cls & SUM_SEP & SUM_OPEN & sum & SUM_CLOSE
 				
-			' ...or maybe a preview of the detail: <Obj: {É}>
+			' ...or maybe a preview of the detail: <Obj: {â€¦}>
 			ElseIf pvw Then
 				fmt = cls & DTL_SEP & Obj_FormatDetails(dtl, pvw := True)
 				
@@ -472,9 +472,9 @@ Private Function Obj_FormatDetails( _
 ) As String
 	Const DTL_OPEN As String = "{"
 	Const DTL_CLOSE As String = "}"
-	Const DTL_PVW As String = "É"
+	Const DTL_PVW As String = "â€¦"
 	
-	' Optionally show only a preview ("{É}") of the details...
+	' Optionally show only a preview ("{â€¦}") of the details...
 	If pvw Then
 		If dtl <> VBA.vbNullString Then
 			dtl = DTL_PVW
@@ -537,7 +537,7 @@ End Function
 
 
 ' ######################
-' ## SOBs ¥ Utilities ##
+' ## SOBs â€¢ Utilities ##
 ' ######################
 
 ' Test if a Collection contains an item.
