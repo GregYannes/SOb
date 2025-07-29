@@ -15,9 +15,9 @@ Const CLS_DIX As String = "Dix"
 
 ' Field support for simulated Dix object.
 Private Enum DixField
-	keys
-	items
-	count
+	Keys
+	Items
+	Count
 End Enum
 
 
@@ -33,7 +33,7 @@ Private Sub Test()
 	' Dim dix As Object:	 Set dix = SOb.New_Obj("Dix")
 	Dim dix As Object: Set dix = New_Dix()
 	
-	SOb.Obj_Field(dix, DixField.count) = 42
+	SOb.Obj_Field(dix, DixField.Count) = 42
 	
 	
 	Dim copy As String: SOb.Obj_ClassKey copy
@@ -49,10 +49,10 @@ Private Sub Test()
 	
 	Debug.Print
 	
-	SOb.Obj_FieldKey copy, DixField.count  ' obj := dix
+	SOb.Obj_FieldKey copy, DixField.Count  ' obj := dix
 	Debug.Print "Obj_FieldKey(DixField.Count) = """ & copy & """"
-	Debug.Print "Obj_HasField(dix, DixField.Count) = " & SOb.Obj_HasField(dix, DixField.count)
-	Debug.Print "Obj_Field(dix, DixField.Count) = " & SOb.Obj_Field(dix, DixField.count)
+	Debug.Print "Obj_HasField(dix, DixField.Count) = " & SOb.Obj_HasField(dix, DixField.Count)
+	Debug.Print "Obj_Field(dix, DixField.Count) = " & SOb.Obj_Field(dix, DixField.Count)
 End Sub
 
 
@@ -111,14 +111,14 @@ Private Sub Dix_Initialize(ByRef dix As Object)
 	Const CLS_NAME = CLS_DIX
 	SOb.Obj_Initialize dix, CLS_NAME
 	
-	If Not SOb.Obj_HasField(dix, DixField.keys) Then
+	If Not SOb.Obj_HasField(dix, DixField.Keys) Then
 		Dim keys As Collection: Set keys = New Collection
-		Set SOb.Obj_Field(dix, DixField.keys) = keys
+		Set SOb.Obj_Field(dix, DixField.Keys) = keys
 	End If
 	
-	If Not SOb.Obj_HasField(dix, DixField.items) Then
+	If Not SOb.Obj_HasField(dix, DixField.Items) Then
 		Dim items As Collection: Set items = New Collection
-		Set SOb.Obj_Field(dix, DixField.items) = items
+		Set SOb.Obj_Field(dix, DixField.Items) = items
 	End If
 End Sub
 
