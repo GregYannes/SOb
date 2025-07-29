@@ -49,9 +49,9 @@ End Sub
 
 
 
-' ##################
-' ## API | Typing ##
-' ##################
+' ####################
+' ## API | Typology ##
+' ####################
 
 ' Test for a simulated object.
 Public Function IsObj(ByRef x As Variant, _
@@ -288,8 +288,12 @@ End Function
 
 
 ' #############
-' ## Helpers ##
+' ## Support ##
 ' #############
+
+' #######################
+' ## Support | Helpers ##
+' #######################
 
 ' Test for a simulated class.
 Private Function Obj_HasClass(ByRef obj As Collection) As Boolean
@@ -551,9 +555,9 @@ End Function
 
 
 
-' ###############
-' ## Utilities ##
-' ###############
+' #########################
+' ## Support | Utilities ##
+' #########################
 
 ' Test if a Collection contains an item.
 Private Function Clx_Has(ByRef clx As Collection, _
