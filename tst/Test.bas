@@ -1,5 +1,7 @@
 Attribute VB_Name = "Test"
 
+
+
 ' ###############
 ' ## Constants ##
 ' ###############
@@ -26,7 +28,7 @@ End Enum
 ' ## Testing ##
 ' #############
 
-' .
+' Test the lifecycle of a simulated "Dix" object.
 Private Sub Test()
 	' Dim dix As Object:	 SOb.Obj_Initialize dix, "Dix"
 	' Dim dix As Collection: SOb.Obj_Initialize dix, "Dix"
@@ -92,7 +94,7 @@ End Sub
 
 
 ' ###################
-' ## Dixionary SOB ##
+' ## Dixionary SOb ##
 ' ###################
 
 ' Constructor.
