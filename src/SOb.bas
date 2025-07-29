@@ -460,7 +460,7 @@ End Function
 
 
 ' Format details for printing.
-'   {} or {...} or {
+'   {} or {…} or {...} or {
 '   	...
 '   	...
 '   }
