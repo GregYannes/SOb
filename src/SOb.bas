@@ -55,7 +55,6 @@ Public Function IsObj(ByRef x As Variant, _
 	If IsObj Then
 		IsObj = (TypeOf x Is Collection)
 	End If
-	' IsObj = IsCollection(x)
 	
 	' ...and that it is marked with a simulated class.
 	If IsObj Then
@@ -78,7 +77,7 @@ Public Function AsObj(ByRef x As Variant, _
 ' 	Optional ByVal flds() As Long
 	
 	' Cast the underlying structure (to a Collection)...
-	Set AsObj = x  ' = AsCollection(x)
+	Set AsObj = x
 	
 	' ...and initialize it.
 	Obj_Initialize AsObj
@@ -109,7 +108,6 @@ Public Property Get Obj_FieldCount(ByRef obj As Collection) As Long
 	If Obj_FieldCount < 0 Then
 		Obj_FieldCount = 0
 	End If
-	' Obj_FieldCount = Excel.Application.WorksheetFunction.Max(0, Obj_FieldCount)
 End Property
 
 
@@ -117,7 +115,7 @@ End Property
 Public Function Obj_HasField(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Boolean
-	Dim key As String: Obj_FieldKey key, fld  ' obj := obj
+	Dim key As String: Obj_FieldKey key, fld
 	Obj_HasField = Clx_Has(obj, key)
 End Function
 
@@ -126,7 +124,7 @@ End Function
 Public Property Get Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Variant
-	Dim key As String: Obj_FieldKey key, fld  ' obj := obj
+	Dim key As String: Obj_FieldKey key, fld
 	Assign Obj_Field, Clx_Get(obj, key)
 End Property
 
@@ -136,7 +134,7 @@ Public Property Let Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long, _
 	ByVal val As Variant _
 )
-	Dim key As String: Obj_FieldKey key, fld  ' obj := obj
+	Dim key As String: Obj_FieldKey key, fld
 	Clx_Set obj, key, val
 End Property
 
@@ -146,7 +144,7 @@ Public Property Set Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long, _
 	ByRef val As Variant _
 )
-	Dim key As String: Obj_FieldKey key, fld  ' obj := obj
+	Dim key As String: Obj_FieldKey key, fld
 	Clx_Set obj, key, val
 End Property
 
@@ -310,27 +308,15 @@ End Property
 Private Sub Obj_FieldKey(ByRef var As String, _
 	ByVal fld As Long _
 )
-' 	ByRef obj As Collection
-' 	ByVal cls As String
-	
-	Const DEF_CLS As String = VBA.vbNullString
 	Const FLD_PFX As String = "Field_"
 	Const KEY_SEP As String = "."
 	
-	Dim cls As String, secret As String, key As String
-	' If Obj_HasClass(obj) Then
-	' 	cls = Obj_Class(obj)
-	' Else
-		cls = DEF_CLS
-	' End If
+	Dim secret As String, key As String
 	
 	Obj_Secret secret
 	fld = fld + 1
 	
 	key = FLD_PFX & VBA.CStr(fld) & KEY_SEP & secret
-	If cls <> VBA.vbNullString Then
-		key = cls & KEY_SEP & key
-	End If
 	
 	var = key
 End Sub
@@ -351,14 +337,12 @@ End Sub
 
 ' Securely obtain the secret token for keys.
 Private Sub Obj_Secret(ByRef var As String)
-' 	Optional ByVal refresh As Boolean = False
-	
 	Const SEC_PFX As String = "x"
 	Const REF_SEP As String = ""
 	
 	Static secret As String, isInit As Boolean
 	
-	If Not isInit Then  ' Or refresh
+	If Not isInit Then
 		Dim ref1 As New Collection, ref2 As New Collection
 		secret = SEC_PFX & VBA.Hex(VBA.ObjPtr(ref1)) & REF_SEP & VBA.Hex(VBA.ObjPtr(ref2))
 		
@@ -403,7 +387,9 @@ Private Function Obj_FormatInfo( _
 	Const PTR_CLOSE As String = ""
 	
 	' Sanitize depth.
-	dep = Excel.Application.WorksheetFunction.Max(0, dep)
+	If dep < 0 Then
+		dep = 0
+	End If
 	
 	' Assemble plain formatting...
 	Dim fmt As String
@@ -414,7 +400,6 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }
 		If dep > 0 Then
-			' dtl = Excel.Application.WorksheetFunction.Clean(dtl)
 			fmt = Obj_FormatDetails(dtl, pvw := False, ind := ind, orf := orf)
 			
 		' ...or shallowly: {…} or {}
@@ -442,7 +427,6 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }>
 		If dep > 0 Then
-			' dtl = Excel.Application.WorksheetFunction.Clean(dtl)
 			fmt = cls & DTL_SEP & Obj_FormatDetails(dtl, pvw := False, ind := ind, orf := orf)
 			
 		' ...or shallowly...
@@ -545,9 +529,6 @@ Private Function Obj_FormatField( _
 	name = Excel.Application.WorksheetFunction.Clean(name)
 	name = VBA.Trim(name)
 	
-	' ' ...along with the freeform value for printing.
-	' val = Excel.Application.WorksheetFunction.Clean(val)
-	
 	' Assemble the format.
 	Obj_FormatField = OBJ_SEP & name & ASN_SEP & ASN_OP & ASN_SEP & val
 End Function
@@ -598,7 +579,6 @@ Private Sub Clx_Set(ByRef clx As Collection, _
 	If Clx_Has(clx, key) Then
 		clx.Remove key
 	End If
-	' Clx_Remove clx, key
 	
 	clx.Add val, key := key
 End Sub
@@ -645,26 +625,6 @@ Private Function Text_Indent(ByVal txt As String, _
 	If bfr Then
 		txt = ind & txt
 	End If
-	
-	' ' Optionally append (rather than prepend) to existing indentation...
-	' If old <> VBA.vbNullString Then
-	' 	txt = VBA.Replace(txt, find := VBA.vbNewLine & ind & old, replace := VBA.vbNewLine & old & ind)
-	' 	
-	' 	' ...including (optionally) the beginning.
-	' 	If bfr Then
-	' 		Dim prePfx As String: prePfx = ind & old
-	' 		Dim pfxLen As Long: pfxLen = VBA.Len(prePfx)
-	' 		Dim curPfx As String: curPfx = VBA.Left(txt, pfxLen)
-	' 		
-	' 		If curPfx = prePfx Then
-	' 			Dim txtLen As Long: txtLen = VBA.Len(txt)
-	' 			Dim sfxLen As Long: sfxLen = txtLen - pfxLen
-	' 			Dim sfx As String: sfx = VBA.Right(txt, sfxLen)
-	' 			
-	' 			txt = old & ind & sfx
-	' 		End If
-	' 	End If
-	' End If
 	
 	Text_Indent = txt
 End Function
