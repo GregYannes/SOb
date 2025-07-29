@@ -12,11 +12,11 @@ Option Private Module
 ' ##########
 
 ' ################
-' ## SOBs • API ##
+' ## SOBs | API ##
 ' ################
 
 ' ###########################
-' ## SOBs • API • Creation ##
+' ## SOBs | API | Creation ##
 ' ###########################
 
 ' Construct a simulated object.
@@ -41,7 +41,7 @@ End Sub
 
 
 ' #########################
-' ## SOBs • API • Typing ##
+' ## SOBs | API | Typing ##
 ' #########################
 
 ' Test for a simulated object.
@@ -91,7 +91,7 @@ End Function
 
 
 ' #########################
-' ## SOBs • API • Fields ##
+' ## SOBs | API | Fields ##
 ' #########################
 ' Count simulated fields.
 Public Property Get Obj_FieldCount(ByRef obj As Collection) As Long
@@ -151,7 +151,7 @@ End Property
 
 
 ' ################################
-' ## SOBs • API • Visualization ##
+' ## SOBs | API | Visualization ##
 ' ################################
 
 ' Print a simulated object.
@@ -279,7 +279,7 @@ End Function
 
 
 ' ####################
-' ## SOBs • Helpers ##
+' ## SOBs | Helpers ##
 ' ####################
 
 ' Test for a simulated class.
@@ -472,12 +472,18 @@ Private Function Obj_FormatDetails( _
 ) As String
 	Const DTL_OPEN As String = "{"
 	Const DTL_CLOSE As String = "}"
-	Const DTL_PVW As String = "…"
+	
+	' Horizontal ellipsis: "…"
+	#If Mac Then
+		Const DTL_PVW As Long = 201
+	#Else
+		Const DTL_PVW As Long = 133
+	#End If
 	
 	' Optionally show only a preview ("{…}") of the details...
 	If pvw Then
 		If dtl <> VBA.vbNullString Then
-			dtl = DTL_PVW
+			dtl = VBA.Chr(DTL_PVW)
 		End If
 		
 	' ...and otherwise break out details.
@@ -537,7 +543,7 @@ End Function
 
 
 ' ######################
-' ## SOBs • Utilities ##
+' ## SOBs | Utilities ##
 ' ######################
 
 ' Test if a Collection contains an item.
