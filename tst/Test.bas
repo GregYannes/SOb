@@ -70,9 +70,9 @@ Private Sub Test_Print(ByRef dix As Object)
 	Dim pointer As Boolean: pointer = True
 	Dim summary As String: summary = "" & Dix_Count(dix)
 	Dim detail As String: detail = "" & SOb.Obj_FormatFields0( _
-		"Keys", "Collection[" & Obj_Keys(dix).Count & "]", _
-		"Items", "Collection[" & Obj_Items(dix).Count & "]", _
-		"Count", Dix_Count(dix, DixField.Count) _
+		"Keys", "Collection[" & Dix_Keys(dix).Count & "]", _
+		"Items", "Collection[" & Dix_Items(dix).Count & "]", _
+		"Count", Dix_Count(dix) _
 	)
 	Dim preview As Boolean: preview = True
 	Dim indent As String: indent = VBA.vbTab  ' & "----"
@@ -157,9 +157,9 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 	End If
 	
 	If IsDix Then
-		Dix_Keys
-		Dix_Items
-		Dix_Count
+		IsDix = IsDix And SOb.Obj_HasField(obj, DixField.Keys)
+		IsDix = IsDix And SOb.Obj_HasField(obj, DixField.Items)
+		IsDix = IsDix And SOb.Obj_HasField(obj, DixField.Count)
 	End If
 End Function
 
@@ -194,14 +194,14 @@ End Property
 
 ' The ".Items" field: the user may neither read...
 Private Property Get Dix_Items(ByRef dix As Object) As Collection
-	Set Dix_Items = SOb.Obj_Field(dix, DixField.Keys)
+	Set Dix_Items = SOb.Obj_Field(dix, DixField.Items)
 End Property
 
 ' ...nor write.
 Private Property Set Dix_Items(ByRef dix As Object, _
 	ByRef val As Collection _
 )
-	Set SOb.Obj_Field(dix, DixField.Keys) = val
+	Set SOb.Obj_Field(dix, DixField.Items) = val
 End Property
 
 
