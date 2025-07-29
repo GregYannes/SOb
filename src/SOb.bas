@@ -171,7 +171,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal pvw as Boolean = False, _
-	Optional ByVal ind As String = VBA.vbNullString, _
+	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
 	Obj_Print = Obj_Format(obj, _
@@ -197,7 +197,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal pvw as Boolean = False, _
-	Optional ByVal ind As String = VBA.vbNullString, _
+	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
 	Const DFL_CLS As String = "?"
