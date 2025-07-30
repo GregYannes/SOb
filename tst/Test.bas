@@ -64,6 +64,7 @@ Public Sub Test()
 	
 	Debug.Print
 	Debug.Print
+	Debug.Print
 	
 	
 	' ### Typology 2 ###
@@ -74,6 +75,7 @@ Public Sub Test()
 	Dix_Count(dix) = 7
 	Debug.Print "Dix_Count(dix) = " & Dix_Count(dix)
 	
+	Debug.Print
 	Debug.Print
 	Debug.Print
 	
@@ -98,7 +100,7 @@ Private Sub Test_Print(ByRef dix As Object)
 	Dim indent As String: indent = VBA.vbTab  ' & "----"
 	Dim orphan As Boolean: orphan = True
 	
-	Debug.Print "> Obj_Print(dix, ...)"
+	Debug.Print ">> Obj_Print(dix, ...)"
 	Debug.Print
 	SOb.Obj_Print dix, _
 		dep := depth, _
@@ -112,8 +114,9 @@ Private Sub Test_Print(ByRef dix As Object)
 	
 	Debug.Print
 	Debug.Print
+	Debug.Print
 	
-	Debug.Print "> Dix_Print(dix, ...)"
+	Debug.Print ">> Dix_Print(dix, ...)"
 	Debug.Print
 	Dix_Print dix, _
 		depth := depth, _
