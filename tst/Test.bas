@@ -30,12 +30,14 @@ End Enum
 
 ' Test the lifecycle of a simulated "Dix" object.
 Private Sub Test()
+	' ### Construction ###
 	' Dim dix As Object:	 SOb.Obj_Initialize dix, "Dix"
 	' Dim dix As Collection: SOb.Obj_Initialize dix, "Dix"
 	' Dim dix As Object:	 Set dix = SOb.New_Obj("Dix")
 	Dim dix As Object: Set dix = New_Dix()
 	
 	
+	' ### Classification ###
 	Dim copy As String: SOb.Obj_ClassKey copy
 	Debug.Print "Obj_ClassKey() = """ & copy & """"
 	Debug.Print "Obj_HasClass(dix) = " & SOb.Obj_HasClass(dix)
@@ -43,6 +45,8 @@ Private Sub Test()
 	
 	Debug.Print
 	
+	
+	' ### Typology 1 ###
 	Debug.Print "IsObj(dix) = " & SOb.IsObj(dix)
 	Debug.Print "IsObj(dix, """ & CLS_DIX & """) = " & SOb.IsObj(dix, CLS_DIX)
 	Debug.Print "IsObj(dix, ""Other"") = " & SOb.IsObj(dix, "Other")
@@ -50,9 +54,10 @@ Private Sub Test()
 	Debug.Print
 	
 	
+	' ### Fields 1 ###
 	SOb.Obj_Field(dix, DixField.Count) = 42
 	
-	SOb.Obj_FieldKey copy, DixField.Count  ' obj := dix
+	SOb.Obj_FieldKey copy, DixField.Count
 	Debug.Print "Obj_FieldKey(DixField.Count) = """ & copy & """"
 	Debug.Print "Obj_HasField(dix, DixField.Count) = " & SOb.Obj_HasField(dix, DixField.Count)
 	Debug.Print "Obj_Field(dix, DixField.Count) = " & SOb.Obj_Field(dix, DixField.Count)
@@ -60,14 +65,20 @@ Private Sub Test()
 	Debug.Print
 	Debug.Print
 	
+	
+	' ### Typology 2 ###
 	Debug.Print "IsDix(dix) = " & IsDix(dix)
 	
 	
+	' ### Fields 2 ###
 	Dix_Count(dix) = 7
 	Debug.Print "Dix_Count(dix) = " & Dix_Count(dix)
 	
 	Debug.Print
 	Debug.Print
+	
+	
+	' ### Visualization ###
 	Test_Print dix
 End Sub
 
@@ -87,6 +98,8 @@ Private Sub Test_Print(ByRef dix As Object)
 	Dim indent As String: indent = VBA.vbTab  ' & "----"
 	Dim orphan As Boolean: orphan = True
 	
+	Debug.Print "> Obj_Print(dix, ...)"
+	Debug.Print
 	SOb.Obj_Print dix, _
 		dep := depth, _
 		pln := plain, _
@@ -100,6 +113,8 @@ Private Sub Test_Print(ByRef dix As Object)
 	Debug.Print
 	Debug.Print
 	
+	Debug.Print "> Dix_Print(dix, ...)"
+	Debug.Print
 	Dix_Print dix, _
 		depth := depth, _
 		plain := plain, _
@@ -169,12 +184,15 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 	Const N_FLDS As String = 3
 	
 	IsDix = SOb.IsObj(x, CLS_NAME)
+	' Set x = SOb.AsObj(x, CLS_NAME)
 	
+	' Ensure the proper number of fields.
 	If IsDix Then
 		Dim obj As Object: Set obj = x
-		IsDix = SOb.Obj_FieldCount(x) = N_FLDS
+		IsDix = (SOb.Obj_FieldCount(obj) = N_FLDS)
 	End If
 	
+	' Ensure the proper fields.
 	If IsDix Then
 		IsDix = IsDix And SOb.Obj_HasField(obj, DixField.Keys)
 		IsDix = IsDix And SOb.Obj_HasField(obj, DixField.Items)
