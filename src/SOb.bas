@@ -93,7 +93,7 @@ Public Function AsObj(ByRef x As Variant, _
 	
 	' Optionally update the class.
 	If cls <> VBA.vbNullString Then
-		Obj_Class(x) = cls
+		Obj_Class(AsObj) = cls
 	End If
 End Function
 
