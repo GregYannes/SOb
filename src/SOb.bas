@@ -512,7 +512,7 @@ Private Function Obj_FormatDetails( _
 		'   	...
 		'   	...
 		'   }
-		ElseIf Text_Contains(dtl, VBA.vbNewLine) Then
+		ElseIf Txt_Contains(dtl, VBA.vbNewLine) Then
 			brk = True
 			
 		' ...and optionally for orphan lines...
@@ -525,7 +525,7 @@ Private Function Obj_FormatDetails( _
 		
 		' Indent as needed.
 		If brk Then
-			dtl = VBA.vbNewLine & Text_Indent(dtl, ind := ind, bfr := True) & VBA.vbNewLine
+			dtl = VBA.vbNewLine & Txt_Indent(dtl, ind := ind, bfr := True) & VBA.vbNewLine
 		End If
 	End If
 	
@@ -632,7 +632,7 @@ End Sub
 
 
 ' Indent text.
-Private Function Text_Indent(ByVal txt As String, _
+Private Function Txt_Indent(ByVal txt As String, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal bfr As Boolean = True _
 ) As String
@@ -646,15 +646,15 @@ Private Function Text_Indent(ByVal txt As String, _
 		txt = ind & txt
 	End If
 	
-	Text_Indent = txt
+	Txt_Indent = txt
 End Function
 
 
 ' Test if text contains a substring.
-Private Function Text_Contains(ByVal txt As String, _
+Private Function Txt_Contains(ByVal txt As String, _
 	ByVal sbs As String _
 ) As Boolean
 	Const IDX_NONE As Long = 0
 	
-	Text_Contains = (VBA.InStr(txt, sbs) <> IDX_NONE)
+	Txt_Contains = (VBA.InStr(txt, sbs) <> IDX_NONE)
 End Function
