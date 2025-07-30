@@ -29,7 +29,7 @@ End Enum
 ' #############
 
 ' Test the lifecycle of a simulated "Dix" object.
-Private Sub Test()
+Public Sub Test()
 	' ### Construction ###
 	' Dim dix As Object:	 SOb.Obj_Initialize dix, "Dix"
 	' Dim dix As Collection: SOb.Obj_Initialize dix, "Dix"
