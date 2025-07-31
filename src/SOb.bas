@@ -313,6 +313,9 @@ End Property
 Private Property Let Obj_Class(ByRef obj As Collection, _
 	ByVal cls As String _
 )
+	cls = Excel.Application.WorksheetFunction.Clean(cls)
+	cls = VBA.Trim(cls)
+	
 	Dim key As String: Obj_ClassKey key
 	Clx_Set obj, key, cls
 End Property
