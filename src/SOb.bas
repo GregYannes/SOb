@@ -99,6 +99,30 @@ End Function
 
 
 
+' ##########################
+' ## API | Classification ##
+' ##########################
+
+' The class of a simulated object: the developer may read it...
+Public Property Get Obj_Class(ByRef obj As Collection) As String
+	Dim key As String: Obj_ClassKey key
+	Obj_Class = Clx_Get(obj, key)
+End Property
+
+
+' ...but never write it directly.
+Private Property Let Obj_Class(ByRef obj As Collection, _
+	ByVal cls As String _
+)
+	cls = Excel.Application.WorksheetFunction.Clean(cls)
+	cls = VBA.Trim(cls)
+	
+	Dim key As String: Obj_ClassKey key
+	Clx_Set obj, key, cls
+End Property
+
+
+
 ' ##################
 ' ## API | Fields ##
 ' ##################
@@ -334,25 +358,6 @@ Private Function Obj_HasClass(ByRef obj As Collection) As Boolean
 	Dim key As String: Obj_ClassKey key
 	Obj_HasClass = Clx_Has(obj, key)
 End Function
-
-
-' Get the class of a simulated object.
-Private Property Get Obj_Class(ByRef obj As Collection) As String
-	Dim key As String: Obj_ClassKey key
-	Obj_Class = Clx_Get(obj, key)
-End Property
-
-
-' Set the class of a simulated object.
-Private Property Let Obj_Class(ByRef obj As Collection, _
-	ByVal cls As String _
-)
-	cls = Excel.Application.WorksheetFunction.Clean(cls)
-	cls = VBA.Trim(cls)
-	
-	Dim key As String: Obj_ClassKey key
-	Clx_Set obj, key, cls
-End Property
 
 
 ' Securely obtain the key for a simulated field: "*.Field_i.xxx"
