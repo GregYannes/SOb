@@ -598,13 +598,13 @@ Private Function Clx_Has(ByRef clx As Collection, _
 	Const POS_ERR_NUMBER As Long = 9  ' Subscript out of range.
 	Const KEY_ERR_NUMBER As Long = 5  ' Invalid procedure call or argument.
 	
-	On Error GoTo Fail
+	On Error GoTo ITEM_ERROR
 	clx.Item index
 	
 	Clx_Has = True
 	Exit Function
 	
-Fail:
+ITEM_ERROR:
 	If VBA.Err.Number = POS_ERR_NUMBER Or VBA.Err.Number = KEY_ERR_NUMBER Then
 		Clx_Has = False
 	Else
@@ -642,11 +642,11 @@ Private Function Arr_Length(ByRef arr As Variant, _
 ) As Long
 	Const EMPTY_ERR_NUMBER As Long = 9  ' Subscript out of range.
 	
-	On Error GoTo Fail
+	On Error GoTo BOUND_ERROR
 	Arr_Length = UBound(arr, dmn) - LBound(arr, dmn) + 1
 	Exit Function
 	
-Fail:
+BOUND_ERROR:
 	If VBA.Err.Number = EMPTY_ERR_NUMBER Or Then
 		Arr_Length = 0
 	Else
