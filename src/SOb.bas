@@ -260,17 +260,17 @@ Public Function Obj_FormatFields( _
 ) As String
 	Const FLD_ARGS As Integer = 2
 	
-	Dim low As Long: low = LBound(flds, 1)
-	Dim up As Long: up = UBound(flds, 1)
-	Dim lng As Long: lng = up - low + 1
+	Dim lng As Long: lng = Arr_Length(flds, 1)
 	Dim n As Long: n = VBA.Int(lng / FLD_ARGS)
-	up = n * FLD_ARGS - 1
 	
 	' Short-circuit for insufficient fields: ""
 	If n < 1 Then
 		Obj_FormatFields = VBA.vbNullString
 		Exit Function
 	End If
+	
+	Dim low As Long: low = LBound(flds, 1)
+	Dim up As Long: up = n * FLD_ARGS - 1
 	
 	' Render the first field...
 	Dim i As Long: i = low
@@ -605,6 +605,25 @@ Private Sub Clx_Set(ByRef clx As Collection, _
 	
 	clx.Add val, key := key
 End Sub
+
+
+' Get the length (along a dimension) of an array.
+Private Function Arr_Length(ByRef arr As Variant, _
+	Optional ByVal dmn As Long = 1 _
+) As Long
+	Const EMPTY_ERR_NUMBER As Long = 9  ' Subscript out of range.
+	
+	On Error GoTo Fail
+	Arr_Length = UBound(arr, dmn) - LBound(arr, dmn) + 1
+	Exit Function
+	
+Fail:
+	If VBA.Err.Number = EMPTY_ERR_NUMBER Or Then
+		Arr_Length = 0
+	Else
+		Err_Raise VBA.Err
+	End If
+End Function
 
 
 ' Throw an error object.
