@@ -204,8 +204,8 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 		)
 	End If
 	
-	' ...and that they have the proper types.
-	On Error GoTo TYPE_ERROR
+	' ...and that their accessors work.
+	On Error GoTo ACCESS_ERROR
 	If IsDix Then
 		Obj_CheckFields _
 			Dix_Keys(obj), _
@@ -215,8 +215,8 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 	
 	Exit Function
 	
-' Handle improper types.
-TYPE_ERROR:
+' Handle inaccessibility.
+ACCESS_ERROR:
 	IsDix = False
 End Function
 
