@@ -207,9 +207,10 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 	' ...and that they have the proper types.
 	On Error GoTo TYPE_ERROR
 	If IsDix Then
-		' Dix_Keys
-		' Dix_Items
-		' Dix_Count
+		Obj_CheckFields _
+			Dix_Keys(obj), _
+			Dix_Items(obj), _
+			Dix_Count(obj)
 	End If
 	
 	Exit Function
