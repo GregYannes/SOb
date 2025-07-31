@@ -103,7 +103,7 @@ End Function
 ' ## API | Fields ##
 ' ##################
 ' Count simulated fields.
-Public Property Get Obj_FieldCount(ByRef obj As Collection) As Long
+Public Function Get Obj_FieldCount(ByRef obj As Collection) As Long
 ' 	Optional ByVal cls As String = VBA.vbNullString
 	
 	Obj_FieldCount = obj.Count
@@ -117,7 +117,7 @@ Public Property Get Obj_FieldCount(ByRef obj As Collection) As Long
 	If Obj_FieldCount < 0 Then
 		Obj_FieldCount = 0
 	End If
-End Property
+End Function
 
 
 ' Test for a simulated field.
