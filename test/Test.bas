@@ -197,9 +197,11 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 	
 	' Ensure the proper fields.
 	If IsDix Then
-		IsDix = IsDix And SOb.Obj_HasField(obj, DixField.Keys)
-		IsDix = IsDix And SOb.Obj_HasField(obj, DixField.Items)
-		IsDix = IsDix And SOb.Obj_HasField(obj, DixField.Count)
+		IsDix = SOb.Obj_HasFields(obj, _
+			DixField.Keys, _
+			DixField.Items, _
+			DixField.Count _
+		)
 	End If
 End Function
 
