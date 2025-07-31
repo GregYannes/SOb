@@ -120,12 +120,41 @@ Public Function Get Obj_FieldCount(ByRef obj As Collection) As Long
 End Function
 
 
-' Test for a simulated field.
+' Test for a single simulated field....
 Public Function Obj_HasField(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Boolean
 	Dim key As String: Obj_FieldKey key, fld
 	Obj_HasField = Clx_Has(obj, key)
+End Function
+
+
+' ...and for multiple such fields.
+Public Function Obj_HasFields(ByRef obj As Collection, _
+	ParamArray flds() As Variant _
+) As Boolean
+	Dim n As Long: n = Arr_Length(flds, 1)
+	
+	' Short-circuit with TRUE for trivial case.
+	If n < 1 Then
+		Obj_HasFields = True
+		Exit Function
+	End If
+	
+	Dim low As Long: low = LBound(flds, 1)
+	Dim up As Long: up = UBound(flds, 1)
+	
+	' Return FALSE if any fields are nonexistent...
+	Dim i As Long
+	For i = low To up
+		If Not Obj_HasField(obj, flds(i)) Then
+			Obj_HasFields = False
+			Exit Function
+		End If
+	Next i
+	
+	' ...and otherwise return TRUE since they all exist.
+	Obj_HasFields = True
 End Function
 
 
