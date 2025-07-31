@@ -195,7 +195,7 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 		IsDix = (SOb.Obj_FieldCount(obj) = N_FLDS)
 	End If
 	
-	' Ensure the proper fields.
+	' Ensure the proper fields exist...
 	If IsDix Then
 		IsDix = SOb.Obj_HasFields(obj, _
 			DixField.Keys, _
@@ -203,6 +203,20 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 			DixField.Count _
 		)
 	End If
+	
+	' ...and that they have the proper types.
+	On Error GoTo TYPE_ERROR
+	If IsDix Then
+		' Dix_Keys
+		' Dix_Items
+		' Dix_Count
+	End If
+	
+	Exit Function
+	
+' Handle improper types.
+TYPE_ERROR:
+	IsDix = False
 End Function
 
 
