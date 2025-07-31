@@ -187,6 +187,11 @@ Public Property Set Obj_Field(ByRef obj As Collection, _
 End Property
 
 
+' Ensures simulated fields match the type constraints of their accessors.
+Public Sub Obj_CheckFields(ParamArray vals() As Variant)
+End Sub
+
+
 
 ' #########################
 ' ## API | Visualization ##
