@@ -212,7 +212,7 @@ Public Property Get Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Variant
 	Dim key As String: Obj_FieldKey key, fld
-	Assign Obj_Field, Clx_Get(obj, key), safe := False
+	Assign Obj_Field, Clx_Get(obj, key)
 End Property
 
 
@@ -414,6 +414,10 @@ End Function
 ' #############
 ' ## Support ##
 ' #############
+
+' #######################
+' ## Support | Helpers ##
+' #######################
 
 ' Test for a simulated class.
 Private Function Obj_HasClass(ByRef obj As Collection) As Boolean
@@ -659,9 +663,9 @@ End Function
 
 
 
-' ###############
-' ## Utilities ##
-' ###############
+' #########################
+' ## Support | Utilities ##
+' #########################
 
 ' Test if a Collection contains an item.
 Private Function Clx_Has(ByRef clx As Collection, _
@@ -690,7 +694,7 @@ Private Function Clx_Get(ByRef clx As Collection, _
 	ByVal index As Variant _
 ) As Variant
 	If Clx_Has(clx, index) Then
-		Assign Clx_Get, clx.Item(index), safe := False
+		Assign Clx_Get, clx.Item(index)
 	End If
 End Function
 
@@ -742,18 +746,13 @@ End Sub
 
 
 ' Assign a value (scalar or objective) to a variable.
-Public Sub Assign( _
+Private Sub Assign( _
 	ByRef var As Variant, _
-	ByVal val As Variant, _
-	Optional ByVal safe As Boolean = True _
+	ByVal val As Variant _
 )
-	If VBA.IsObject(var) Then
-		If safe Then If VBA.IsEmpty(val) Then Set val = Nothing
-		
+	If VBA.IsObject(val) Then
 		Set var = val
 	Else
-		If safe Then If VBA.IsObject(val) Then If val Is Nothing Then Let val = Empty
-		
 		Let var = val
 	End If
 End Sub
