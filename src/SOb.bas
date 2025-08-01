@@ -207,7 +207,22 @@ Private Function Obj_HasFields(ByRef obj As Collection, _
 End Function
 
 
-' Get a simulated field.
+' Safely get a simulated (Property) field.
+Public Sub Obj_Get(ByRef var As Variant, _
+	ByRef obj As Collection, _
+	ByVal fld As Long _
+)
+	Dim val As Variant: Assign val, Obj_Field(obj, fld)
+	
+	' Short-circuit for uninitialized values.
+	If VBA.IsEmpty(val) Then Exit Sub
+	' If VBA.IsObject(val) Then If val Is Nothing Then Exit Sub
+	
+	Assign var, val
+End Sub
+
+
+' Get a simulated field as a Property.
 Public Property Get Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Variant
@@ -216,7 +231,7 @@ Public Property Get Obj_Field(ByRef obj As Collection, _
 End Property
 
 
-' Set a simulated scalar field...
+' Set a simulated scalar field as a Property...
 Public Property Let Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long, _
 	ByVal val As Variant _

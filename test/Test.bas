@@ -242,7 +242,7 @@ End Function
 
 ' The ".Keys" field: the user may neither read...
 Private Property Get Dix_Keys(ByRef dix As Object) As Collection
-	Set Dix_Keys = SOb.Obj_Field(dix, DixField.Keys)
+	Obj_Get Dix_Keys, dix, DixField.Keys
 End Property
 
 ' ...nor write.
@@ -255,7 +255,7 @@ End Property
 
 ' The ".Items" field: the user may neither read...
 Private Property Get Dix_Items(ByRef dix As Object) As Collection
-	Set Dix_Items = SOb.Obj_Field(dix, DixField.Items)
+	Obj_Get Dix_Items, dix, DixField.Items
 End Property
 
 ' ...nor write.
@@ -268,7 +268,7 @@ End Property
 
 ' The ".Count" property: the user may read...
 Public Property Get Dix_Count(ByRef dix As object) As Long
-	Dix_Count = SOb.Obj_Field(dix, DixField.Count)
+	Obj_Get Dix_Count, dix, DixField.Count
 	' Dix_Count = Dix_Keys(dix).Count
 End Property
 
