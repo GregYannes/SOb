@@ -61,21 +61,22 @@ Public Function IsObj(ByRef x As Variant, _
 	
 	' Check if the underlying (Collection) structure is correct...
 	IsObj = VBA.IsObject(x)
-	If IsObj Then
-		Dim obj As Object: Set obj = x
-		IsObj = (TypeOf obj Is Collection)
-	End If
+	If Not IsObj Then Exit Function
+	
+	Dim obj As Object: Set obj = x
+	IsObj = (TypeOf obj Is Collection)
+	If Not IsObj Then Exit Function
 	
 	' ...and that it is marked with a simulated class.
-	If IsObj Then
-		IsObj = Obj_HasClass(obj)
-	End If
+	IsObj = Obj_HasClass(obj)
+	If Not IsObj Then Exit Function
 	
 	' Optionally check if the class matches expectations.
-	If IsObj And cls <> VBA.VbNullString Then
+	If cls <> VBA.VbNullString Then
 		' TODO: Check if this comparison has any side-effects like (property) assignment.
 		IsObj = (Obj_Class(obj) = cls)
 	End If
+	If Not IsObj Then Exit Function
 End Function
 
 

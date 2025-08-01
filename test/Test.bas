@@ -188,19 +188,21 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 	
 	IsDix = SOb.IsObj(x, CLS_NAME)
 	' Set x = SOb.AsObj(x, CLS_NAME)
+	If Not IsDix Then Exit Function
 	
 	' Ensure the proper number of fields.
-	If IsDix Then
-		Dim obj As Object: Set obj = x
-		IsDix = (SOb.Obj_FieldCount(obj) = N_FLDS)
-	End If
+	Dim obj As Object: Set obj = x
+	IsDix = (SOb.Obj_FieldCount(obj) = N_FLDS)
+	' IsDix = (SOb.Obj_FieldCount(obj) >= N_FLDS)
+	If Not IsDix Then Exit Function
 	
 	' Ensure the proper fields exist...
-	If IsDix Then IsDix = SOb.Obj_HasFields(obj, _
+	IsDix = SOb.Obj_HasFields(obj, _
 		Dix_Field.Keys, _
 		Dix_Field.Items, _
 		Dix_Field.Count _
 	)
+	If Not IsDix Then Exit Function
 	
 	' ...and that their accessors work.
 	On Error GoTo CHECK_ERROR
@@ -208,6 +210,7 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 		Dix_Keys(obj), _
 		Dix_Items(obj), _
 		Dix_Count(obj)
+	If Not IsDix Then Exit Function
 	
 	Exit Function
 	
