@@ -415,10 +415,6 @@ End Function
 ' ## Support ##
 ' #############
 
-' #######################
-' ## Support | Helpers ##
-' #######################
-
 ' Test for a simulated class.
 Private Function Obj_HasClass(ByRef obj As Collection) As Boolean
 	Dim key As String: Obj_ClassKey key
@@ -663,9 +659,9 @@ End Function
 
 
 
-' #########################
-' ## Support | Utilities ##
-' #########################
+' ###############
+' ## Utilities ##
+' ###############
 
 ' Test if a Collection contains an item.
 Private Function Clx_Has(ByRef clx As Collection, _
