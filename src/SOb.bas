@@ -748,19 +748,11 @@ Public Sub Assign( _
 	Optional ByVal safe As Boolean = True _
 )
 	If VBA.IsObject(val) Then
-		If safe Then
-			If Not VBA.IsObject(var) Then
-				Exit Sub
-			End If
-		End If
+		If safe Then If Not VBA.IsObject(var) Then Exit Sub
 		
 		Set var = val
 	Else
-		If safe Then
-			If VBA.IsObject(var) Then
-				Exit Sub
-			End If
-		End If
+		If safe Then If VBA.IsObject(var) Then Exit Sub
 		
 		Let var = val
 	End If
