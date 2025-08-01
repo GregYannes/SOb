@@ -196,22 +196,18 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 	End If
 	
 	' Ensure the proper fields exist...
-	If IsDix Then
-		IsDix = SOb.Obj_HasFields(obj, _
-			DixField.Keys, _
-			DixField.Items, _
-			DixField.Count _
-		)
-	End If
+	If IsDix Then IsDix = SOb.Obj_HasFields(obj, _
+		Dix_Field.Keys, _
+		Dix_Field.Items, _
+		Dix_Field.Count _
+	)
 	
 	' ...and that their accessors work.
 	On Error GoTo CHECK_ERROR
-	If IsDix Then
-		Obj_Check _
-			Dix_Keys(obj), _
-			Dix_Items(obj), _
-			Dix_Count(obj)
-	End If
+	If IsDix Then Obj_Check _
+		Dix_Keys(obj), _
+		Dix_Items(obj), _
+		Dix_Count(obj)
 	
 	Exit Function
 	
