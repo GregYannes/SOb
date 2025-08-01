@@ -747,12 +747,12 @@ Public Sub Assign( _
 	ByVal val As Variant, _
 	Optional ByVal safe As Boolean = True _
 )
-	If VBA.IsObject(val) Then
-		If safe Then If Not VBA.IsObject(var) Then Exit Sub
+	If VBA.IsObject(var) Then
+		If safe Then If VBA.IsEmpty(val) Then Set val = Nothing
 		
 		Set var = val
 	Else
-		If safe Then If VBA.IsObject(var) Then Exit Sub
+		If safe Then If VBA.IsObject(val) Then If val Is Nothing Then Let val = Empty
 		
 		Let var = val
 	End If
