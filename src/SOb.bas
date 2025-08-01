@@ -212,13 +212,14 @@ Public Sub Obj_Get(ByRef var As Variant, _
 	ByRef obj As Collection, _
 	ByVal fld As Long _
 )
-	Dim val As Variant: Assign val, Obj_Field(obj, fld)
+	Dim has As Boolean
+	Dim key As String: Obj_FieldKey key, fld
+	Dim val As Variant: Assign val, Clx_Get(obj, key, has := has)
 	
-	' Short-circuit for uninitialized values.
-	If VBA.IsEmpty(val) Then Exit Sub
-	' If VBA.IsObject(val) Then If val Is Nothing Then Exit Sub
-	
-	Assign var, val
+	' Store the value when the field is present.
+	If has Then
+		Assign var, val
+	End If
 End Sub
 
 
@@ -226,6 +227,7 @@ End Sub
 Public Property Get Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Variant
+	' Obj_Get Obj_Field, obj, fld
 	Dim key As String: Obj_FieldKey key, fld
 	Assign Obj_Field, Clx_Get(obj, key)
 End Property
@@ -706,9 +708,12 @@ End Function
 
 ' Get an item (safely) from a Collection.
 Private Function Clx_Get(ByRef clx As Collection, _
-	ByVal index As Variant _
+	ByVal index As Variant, _
+	Optional ByRef has As Boolean _
 ) As Variant
-	If Clx_Has(clx, index) Then
+	has = Clx_Has(clx, index)
+	
+	If has Then
 		Assign Clx_Get, clx.Item(index)
 	End If
 End Function
