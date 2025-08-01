@@ -267,11 +267,11 @@ End Sub
 Public Function Obj_Error(Optional ByRef e ErrObject = Nothing, _
 	Optional ByVal typ As Boolean = True _
 ) As Boolean
-' 	Optional ByVal typScl As Boolean = True
-' 	Optional ByVal typObj As Boolean = True
+' 	Optional ByVal typ_scl As Boolean = True
+' 	Optional ByVal typ_obj As Boolean = True
 	
-	Const OBJ_TYP_ERR_NUMBER As Integer = 13   ' Invalid type.
-	Const SCL_TYP_ERR_NUMBER As Integer = 450  ' Wrong number of arguments or invalid property assignment.
+	Const TYP_OBJ_ERR_NUMBER As Integer = 13   ' Invalid type.
+	Const TYP_SCL_ERR_NUMBER As Integer = 450  ' Wrong number of arguments or invalid property assignment.
 	
 	' Default to last error.
 	If e Is Nothing Then
@@ -282,7 +282,7 @@ Public Function Obj_Error(Optional ByRef e ErrObject = Nothing, _
 	
 	' Catch type errors.
 	If Obj_Error And typ Then
-		If e.Number = SCL_TYP_ERR_NUMBER Or OBJ_TYP_ERR_NUMBER Then
+		If e.Number = TYP_SCL_ERR_NUMBER Or TYP_OBJ_ERR_NUMBER Then
 			GoTo RAISE_ERROR
 		Else
 			Obj_Error = False
