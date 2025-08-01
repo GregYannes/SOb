@@ -145,7 +145,7 @@ Public Function Get Obj_FieldCount(ByRef obj As Collection) As Long
 End Function
 
 
-' Test for a single simulated field....
+' Test for a single simulated field.
 Public Function Obj_HasField(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Boolean
@@ -154,9 +154,18 @@ Public Function Obj_HasField(ByRef obj As Collection, _
 End Function
 
 
-' ...and for multiple such fields.
-Public Function Obj_HasFields(ByRef obj As Collection, _
+' Test manually for multiple simulated fields...
+Public Function Obj_HasFields0(ByRef obj As Collection, _
 	ParamArray flds() As Variant _
+) As Boolean
+	Dim f() As Variant: f = flds
+	Obj_HasFields0 = Obj_HasFields(obj, flds := f)
+End Function
+
+
+' ...or test programmatically.
+Private Function Obj_HasFields(ByRef obj As Collection, _
+	ByRef flds As Variant _
 ) As Boolean
 	Dim n As Long: n = Arr_Length(flds, 1)
 	
