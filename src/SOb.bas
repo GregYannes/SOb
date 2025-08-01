@@ -42,7 +42,12 @@ Public Sub Obj_Initialize(ByRef obj As Collection, _
 		Set obj = New Collection
 	End If
 	
+	' Update the class if it is missing...
 	If Not Obj_HasClass(obj) Then
+		Obj_Class(obj) = cls
+		
+	' ...or is blank.
+	ElseIf Obj_Class(obj) = VBA.vbNullString Then
 		Obj_Class(obj) = cls
 	End If
 End Sub
@@ -105,7 +110,11 @@ Public Function AsObj(ByRef x As Variant, _
 	Set AsObj = x
 	
 	' ...and initialize it.
-	Obj_Initialize AsObj
+	If cls = VBA.vbNullString Then
+		Obj_Initialize AsObj, VBA.vbNullString
+	Else
+		Obj_Initialize AsObj, cls
+	End If
 	
 	' Optionally update the class.
 	If cls <> VBA.vbNullString Then
@@ -345,8 +354,15 @@ Public Function Obj_Format(ByRef obj As Collection, _
 	
 	' Format a simulated object...
 	If IsObj(obj) Then
-		' Extract the class or default to a placeholder ("?").
-		Dim cls As String: cls = Obj_Class(obj)
+		' Extract any class...
+		Dim cls As String
+		If Obj_HasClass(obj) Then
+			cls = Obj_Class(obj)
+		Else
+			cls = VBA.vbNullString
+		End If
+		
+		' ...and default to a placeholder for an unknown: "?"
 		If cls = VBA.vbNullString Then
 			cls = DFL_CLS
 		End If
