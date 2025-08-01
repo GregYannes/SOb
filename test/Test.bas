@@ -219,21 +219,14 @@ End Function
 
 ' Cast to simulated "Dix" object.
 Public Function AsDix(ByRef x As Variant) As Object
-	Const CLS_NAME As String = CLS_DIX
+	' Cast the input to a (generic) simulated object...
+	Dim obj As Object: Set obj = SOb.AsObj(x)
 	
-	Set AsDix = SOb.AsObj(x, CLS_NAME)
+	' ...and extract its fields into a new "Dix" object.
+	Set AsDix = New_Dix()
 	
-	Dix_Initialize AsDix
-	
-	' Ensure the accessors work...
-	Obj_Check _
-		Dix_Keys(obj), _
-		Dix_Items(obj), _
-		Dix_Count(obj)
-	
-	' ...and that their types are properly coerced.
-	Dix_Keys(AsDix) = Dix_Keys(AsDix)
-	Dix_Items(AsDix) = Dix_Items(AsDix)
+	Dix_Keys(AsDix) = Dix_Keys(obj)
+	Dix_Items(AsDix) = Dix_Items(obj)
 	Dix_Count(AsDix) = Dix_Count(AsDix)
 End Function
 
