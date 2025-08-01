@@ -212,7 +212,7 @@ Public Property Get Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Variant
 	Dim key As String: Obj_FieldKey key, fld
-	Assign Obj_Field, Clx_Get(obj, key)
+	Assign Obj_Field, Clx_Get(obj, key), safe := False
 End Property
 
 
@@ -694,7 +694,7 @@ Private Function Clx_Get(ByRef clx As Collection, _
 	ByVal index As Variant _
 ) As Variant
 	If Clx_Has(clx, index) Then
-		Assign Clx_Get, clx.Item(index)
+		Assign Clx_Get, clx.Item(index), safe := False
 	End If
 End Function
 
@@ -746,13 +746,26 @@ End Sub
 
 
 ' Assign a value (scalar or objective) to a variable.
-Private Sub Assign( _
+Public Sub Assign( _
 	ByRef var As Variant, _
-	ByVal val As Variant _
+	ByVal val As Variant, _
+	Optional ByVal safe As Boolean = True _
 )
 	If VBA.IsObject(val) Then
+		If safe Then
+			If Not VBA.IsObject(var) Then
+				Exit Sub
+			End If
+		End If
+		
 		Set var = val
 	Else
+		If safe Then
+			If VBA.IsObject(var) Then
+				Exit Sub
+			End If
+		End If
+		
 		Let var = val
 	End If
 End Sub
