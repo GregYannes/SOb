@@ -55,7 +55,9 @@ End Sub
 
 ' Test for a simulated object.
 Public Function IsObj(ByRef x As Variant, _
-	Optional ByVal cls As String = VBA.vbNullString _
+	Optional ByVal cls As String = VBA.vbNullString, _
+	Optional ByRef flds As Variant, _
+	Optional ByVal strict As Boolean = True _
 ) As Boolean
 ' 	Optional ByVal flds() As Long
 	
@@ -77,6 +79,19 @@ Public Function IsObj(ByRef x As Variant, _
 		IsObj = (Obj_Class(obj) = cls)
 	End If
 	If Not IsObj Then Exit Function
+	
+	' Optionally check for the presence of specific fields.
+	If Not VBA.IsMissing(flds) Then
+		IsObj = Obj_HasFields(obj, flds := flds))
+	End If
+	If Not IsObj Then Exit Function
+	
+	' Optionally cap the fields at strictly those specified, rather than a superset.
+	If strict Then
+		Dim nFlds As Long: nFlds = Arr_Length(flds, 1)
+		IsObj = (Obj_FieldCount(obj) = nFlds)
+	End If
+	' If Not IsObj Then Exit Function
 End Function
 
 
