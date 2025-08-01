@@ -224,6 +224,17 @@ Public Function AsDix(ByRef x As Variant) As Object
 	Set AsDix = SOb.AsObj(x, CLS_NAME)
 	
 	Dix_Initialize AsDix
+	
+	' Ensure the accessors work...
+	Obj_Check _
+		Dix_Keys(obj), _
+		Dix_Items(obj), _
+		Dix_Count(obj)
+	
+	' ...and that their types are properly coerced.
+	Dix_Keys(AsDix) = Dix_Keys(AsDix)
+	Dix_Items(AsDix) = Dix_Items(AsDix)
+	Dix_Count(AsDix) = Dix_Count(AsDix)
 End Function
 
 
