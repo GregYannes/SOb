@@ -211,9 +211,49 @@ Public Property Set Obj_Field(ByRef obj As Collection, _
 End Property
 
 
-' Ensures simulated fields match the type constraints of their accessors.
-Public Sub Obj_CheckFields(ParamArray vals() As Variant)
+
+' ######################
+' ## API | Validation ##
+' ######################
+
+' Checks that simulated fields match the type constraints of their accessors.
+Public Sub Obj_Check(ParamArray flds() As Variant)
 End Sub
+
+
+' Catches errors for certain checks and propagates all others.
+Public Function Obj_Error(Optional ByRef e ErrObject = Nothing, _
+	Optional ByVal typ As Boolean = True _
+) As Boolean
+' 	Optional ByVal typScl As Boolean = True
+' 	Optional ByVal typObj As Boolean = True
+	
+	Const OBJ_TYP_ERR_NUMBER As Integer = 13   ' Invalid type.
+	Const SCL_TYP_ERR_NUMBER As Integer = 450  ' Wrong number of arguments or invalid property assignment.
+	
+	' Default to last error.
+	If e Is Nothing Then
+		Set e = VBA.Err
+	End If
+	
+	Obj_Error = True
+	
+	' Catch type errors.
+	If Obj_Error And typ Then
+		If e.Number = SCL_TYP_ERR_NUMBER Or OBJ_TYP_ERR_NUMBER Then
+			GoTo RAISE_ERROR
+		Else
+			Obj_Error = False
+		End If
+	End If
+	
+	' ...
+	
+	Exit Function
+	
+RAISE_ERROR:
+	Err_Raise e
+End Function
 
 
 
