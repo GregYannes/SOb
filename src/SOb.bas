@@ -753,7 +753,7 @@ Private Sub Assign( _
 	If VBA.IsObject(val) Then
 		Set var = val
 	Else
-		var = val
+		Let var = val
 	End If
 End Sub
 

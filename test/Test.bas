@@ -229,9 +229,9 @@ Public Function AsDix(ByRef x As Variant) As Object
 	' ...and extract its fields into a new "Dix" object.
 	Set AsDix = New_Dix()
 	
-	Dix_Keys(AsDix) = Dix_Keys(obj)
-	Dix_Items(AsDix) = Dix_Items(obj)
-	Dix_Count(AsDix) = Dix_Count(AsDix)
+	Set Dix_Keys(AsDix) = Dix_Keys(obj)
+	Set Dix_Items(AsDix) = Dix_Items(obj)
+	Let Dix_Count(AsDix) = Dix_Count(AsDix)
 End Function
 
 
