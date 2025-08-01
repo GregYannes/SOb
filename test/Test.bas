@@ -212,6 +212,7 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 		Dix_Count(obj)
 	If Not IsDix Then Exit Function
 	
+	' Return the result in lieu of errors.
 	Exit Function
 	
 ' Handle inaccessibility.

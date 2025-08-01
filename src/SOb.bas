@@ -250,6 +250,7 @@ Public Function Obj_Error(Optional ByRef e ErrObject = Nothing, _
 	
 	' ...
 	
+	' Return the result (FALSE) in lieu of errors.
 	Exit Function
 	
 RAISE_ERROR:
