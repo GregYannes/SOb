@@ -62,20 +62,19 @@ Public Sub Dix_Initialize(ByRef dix As Object)
 	SOb.Obj_Initialize dix, CLS_NAME
 	
 	
-	' TODO: Initialize any missing fields to appropriate values.
 	If Not SOb.Obj_HasField(dix, Dix_Field.Keys) Then
-		Dim f1 As Boolean: ' Let f1 = ...
-		Set Dix_Keys(dix) = f1
+		Dim keys As Collection: Set keys = New Collection
+		Set Dix_Keys(dix) = keys
 	End If
 	
 	If Not SOb.Obj_HasField(dix, Dix_Field.Items) Then
-		Dim f2 As Range: ' Set f2 = ...
-		Set Dix_Items(dix) = f2
+		Dim items As Collection: Set items = New Collection
+		Set Dix_Items(dix) = items
 	End If
 	
 	If Not SOb.Obj_HasField(dix, Dix_Field.Count) Then
-		Dim f3 As Variant: ' SOb.Assign f3, ...
-		Let Dix_Count(dix) = f3
+		Dim count As Long: count = Dix_Keys(dix).Count
+		Let Dix_Count(dix) = count
 	End If
 	
 	' ...
