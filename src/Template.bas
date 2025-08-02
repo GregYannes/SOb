@@ -32,6 +32,10 @@ End Enum
 ' ## * ##
 ' #######
 
+' ##################
+' ## * | Creation ##
+' ##################
+
 ' Constructor.
 Public Function New_*() As Object
 	*_Initialize New_*
@@ -45,6 +49,11 @@ Public Sub *_Initialize(ByRef * As Object)
 	' ...
 End Sub
 
+
+
+' ##################
+' ## * | Typology ##
+' ##################
 
 ' Identifier.
 Public Function Is*(ByRef x As Variant) As Boolean
@@ -103,5 +112,25 @@ End Function
 
 ' .
 Public Sub *_Method2(ByRef * As Object, ...)
+	' ...
+End Sub
+
+
+' ...
+
+
+
+' #######################
+' ## * | Visualization ##
+' #######################
+
+' .
+Public Function *_Print(ByRef * As Object, ...) As Variant
+	' ...
+End Function
+
+
+' .
+Public Function *_Format(ByRef * As Object, ...) As String
 	' ...
 End Sub
