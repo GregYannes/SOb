@@ -196,6 +196,8 @@ Public Function IsDix(ByRef x As Variant, _
 	If Not IsDix Then Exit Function
 	
 	' ...and that their accessors work.
+	Dim obj As Object: Set obj = x
+	
 	On Error GoTo CHECK_ERROR
 	If IsDix Then SOb.Obj_Check _
 		Dix_Keys(obj), _
