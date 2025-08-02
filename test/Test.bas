@@ -206,7 +206,7 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 	
 	' ...and that their accessors work.
 	On Error GoTo CHECK_ERROR
-	If IsDix Then Obj_Check _
+	If IsDix Then SOb.Obj_Check _
 		Dix_Keys(obj), _
 		Dix_Items(obj), _
 		Dix_Count(obj)
@@ -217,7 +217,7 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 	
 ' Handle inaccessibility.
 CHECK_ERROR:
-	IsDix = Obj_Error(typ := True)
+	IsDix = SOb.Obj_Error(typ := True)
 End Function
 
 
@@ -242,7 +242,7 @@ End Function
 
 ' The ".Keys" field: the user may neither read...
 Private Property Get Dix_Keys(ByRef dix As Object) As Collection
-	Obj_Get Dix_Keys, dix, DixField.Keys
+	SOb.Obj_Get Dix_Keys, dix, DixField.Keys
 End Property
 
 ' ...nor write.
@@ -255,7 +255,7 @@ End Property
 
 ' The ".Items" field: the user may neither read...
 Private Property Get Dix_Items(ByRef dix As Object) As Collection
-	Obj_Get Dix_Items, dix, DixField.Items
+	SOb.Obj_Get Dix_Items, dix, DixField.Items
 End Property
 
 ' ...nor write.
@@ -268,7 +268,7 @@ End Property
 
 ' The ".Count" property: the user may read...
 Public Property Get Dix_Count(ByRef dix As object) As Long
-	Obj_Get Dix_Count, dix, DixField.Count
+	SOb.Obj_Get Dix_Count, dix, DixField.Count
 	' Dix_Count = Dix_Keys(dix).Count
 End Property
 
