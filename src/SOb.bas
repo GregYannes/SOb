@@ -312,7 +312,15 @@ End Function
 ' ## API | Visualization ##
 ' #########################
 
-' Print a simulated object.
+' Print a simulated object verbatim...
+Public Function Obj_Print0(Optional ByRef fmt As String = VBA.vbNullString) As String
+	Obj_Print0 = fmt
+	
+	Debug.Print Obj_Print0
+End Function
+
+
+' ...or with automatic formatting.
 Public Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal dep As Integer = 1, _
 	Optional ByVal pln As Boolean = False, _
@@ -334,7 +342,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 		orf := orf _
 	)
 	
-	Debug.Print Obj_Print
+	Obj_Print0 Obj_Print
 End Function
 
 
