@@ -61,7 +61,7 @@ End Sub
 ' ## * | Typology ##
 ' ##################
 
-' Identifier.
+' Identify simulated "*" objects.
 Public Function Is*(ByRef x As Variant) As Boolean
 	Const CLS_NAME As String = *_CLS
 	
@@ -71,7 +71,7 @@ Public Function Is*(ByRef x As Variant) As Boolean
 End Function
 
 
-' Caster.
+' Cast to simulated "*" object.
 Public Function As*(ByRef x As Variant) As Object
 	Const CLS_NAME As String = *_CLS
 	
@@ -86,21 +86,23 @@ End Function
 ' ## * | Fields ##
 ' ################
 
-' The "Field1" field.
+' The scalar "Field1" field: the user may read it...
 Public Property Get *_Field1(ByRef * As Object) As Integer
 	Let *_Field1 = Obj_Field(*, *_Field.Field1)
 End Property
 
+' ...and also write it.
 Public Property Let *_Field1(ByRef * As Object, ByVal val As Integer)
 	Let Obj_Field(*, *_Field.Field1) = val
 End Property
 
 
-' The "Field2" field.
+' The objective "Field2" field: the user may read it...
 Public Property Get *_Field2(ByRef * As Object) As Range
 	Set *_Field2 = Obj_Field(*, *_Field.Field2)
 End Property
 
+' ...but never write it.
 Private Property Set *_Field2(ByRef * As Object, ByRef val As Range) As Range
 	Set Obj_Field(*, *_Field.Field2) = val
 End Property
