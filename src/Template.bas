@@ -110,44 +110,44 @@ Public Function Is*(ByRef x As Variant, _
 	If Not Is* Then Exit Function
 	
 	
-	' ### Accessors ###
-	
-	' Treat as an object moving forward.
-	Dim obj As Object: Set obj = x
-	
-	' Ensure the field accessors all work.
-	On Error GoTo CHECK_ERROR
-	
-	' TODO: Call all your field accessors within this 'Check()'.
-	If Is* Then SOb.Obj_Check _
-		*_FieldOne(obj), _
-		*_FieldTwo(obj), _
-		*_FieldThree(obj) _
-		 _
-		 _
-		 _
-	
-	On Error GoTo 0
-	If Not Is* Then Exit Function
-	
-	
-	' ...
-	If Not Is* Then Exit Function
-	
-	
-	' TODO: Any further validation you desire.
-	
-	
-	' ...
-	If Not Is* Then Exit Function
+	' ' ### Accessors ###
+	' 
+	' ' Treat as an object moving forward.
+	' Dim obj As Object: Set obj = x
+	' 
+	' ' Ensure the field accessors all work.
+	' On Error GoTo CHECK_ERROR
+	' 
+	' ' TODO: Call all your field accessors within this 'Check()'.
+	' If Is* Then SOb.Obj_Check _
+	' 	*_FieldOne(obj), _
+	' 	*_FieldTwo(obj), _
+	' 	*_FieldThree(obj) _
+	' 	 _
+	' 	 _
+	' 	 _
+	' 
+	' On Error GoTo 0
+	' If Not Is* Then Exit Function
+	' 
+	' 
+	' ' ...
+	' If Not Is* Then Exit Function
+	' 
+	' 
+	' ' TODO: Any further validation you desire.
+	' 
+	' 
+	' ' ...
+	' If Not Is* Then Exit Function
 	
 	
 	' Return the result in lieu of errors.
 	Exit Function
 	
-' Handle inaccessibility.
-CHECK_ERROR:
-	Is* = SOb.Obj_Error(typ := True)
+' ' Handle inaccessibility.
+' CHECK_ERROR:
+' 	Is* = SOb.Obj_Error(typ := True)
 End Function
 
 
