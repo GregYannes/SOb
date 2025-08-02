@@ -38,12 +38,18 @@ End Enum
 
 ' Constructor.
 Public Function New_*() As Object
-	*_Initialize New_*
+	Const CLS_NAME As String = *_CLS
+	
+	*_Initialize New_*, CLS_NAME
+	
+	' ...
 End Function
 
 
 ' Initializer.
 Public Sub *_Initialize(ByRef * As Object)
+	Const CLS_NAME As String = *_CLS
+	
 	Obj_Initialize *, CLS_*
 	
 	' ...
@@ -57,7 +63,9 @@ End Sub
 
 ' Identifier.
 Public Function Is*(ByRef x As Variant) As Boolean
-	Is* = IsObj(x, CLS_*)
+	Const CLS_NAME As String = *_CLS
+	
+	Is* = IsObj(x, CLS_NAME)
 	
 	' ...
 End Function
@@ -65,7 +73,9 @@ End Function
 
 ' Caster.
 Public Function As*(ByRef x As Variant) As Object
-	Set As* = AsObj(x, CLS_*)
+	Const CLS_NAME As String = *_CLS
+	
+	Set As* = AsObj(x, CLS_NAME)
 	
 	' ...
 End Function
