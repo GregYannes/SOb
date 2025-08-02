@@ -267,11 +267,9 @@ Public Function Dix_Format(ByRef dix As Object, _
 	)
 	
 	' Adjust settings to your satisfaction.
-	' TODO: Pass any such summary ('sum') or detail ('dtl') to 'Obj_Format()'.
 	Dix_Format = SOb.Obj_Format(dix, _
-		 _
-		 _
-		 _
+		sum := sum, _
+		dtl := dtl, _
 		dep := depth, _
 		pln := plain, _
 		ptr := pointer, _
