@@ -6,16 +6,8 @@ Attribute VB_Name = "Test_Dix"
 ' ## Constants ##
 ' ###############
 
-' Class name for the simulated "Dix" object.
+' Class name for simulated Dix object.
 Public Const DIX_CLS As String = "Dix"
-
-
-
-
-
-' ...
-
-
 
 
 
@@ -23,7 +15,7 @@ Public Const DIX_CLS As String = "Dix"
 ' ## Enumerations ##
 ' ##################
 
-' Fields for the simulated "Dix" object.
+' Field support for simulated Dix object.
 Public Enum Dix_Field
 	Keys
 	Items
@@ -32,35 +24,27 @@ End Enum
 
 
 
+' ###################
+' ## Dixionary SOb ##
+' ###################
 
+' ##############################
+' ## Dixionary SOb | Creation ##
+' ##############################
 
-' ...
-
-
-
-
-
-' #########
-' ## Dix ##
-' #########
-
-' ####################
-' ## Dix | Creation ##
-' ####################
-
-' Construct a simulated "Dix" object.
+' Constructor.
 Public Function New_Dix() As Object
+	Const CLS_NAME As String = DIX_CLS
+	
 	Dix_Initialize New_Dix
 End Function
 
 
-
-' Initialize a simulated "Dix" object.
+' Initializer.
 Public Sub Dix_Initialize(ByRef dix As Object)
 	Const CLS_NAME As String = DIX_CLS
 	
 	SOb.Obj_Initialize dix, CLS_NAME
-	
 	
 	If Not SOb.Obj_HasField(dix, Dix_Field.Keys) Then
 		Dim keys As Collection: Set keys = New Collection
@@ -72,60 +56,42 @@ Public Sub Dix_Initialize(ByRef dix As Object)
 		Set Dix_Items(dix) = items
 	End If
 	
+	' Initialize to count of keys.
 	If Not SOb.Obj_HasField(dix, Dix_Field.Count) Then
 		Dim count As Long: count = Dix_Keys(dix).Count
 		Let Dix_Count(dix) = count
 	End If
-	
-	' ...
 End Sub
 
 
 
-' ####################
-' ## Dix | Typology ##
-' ####################
+' ##############################
+' ## Dixionary SOb | Typology ##
+' ##############################
 
-' Identify a simulated "Dix" object.
+' Test for simulated "Dix" object.
 Public Function IsDix(ByRef x As Variant, _
 	Optional ByVal strict As Boolean = False _
 ) As Boolean
 	Const CLS_NAME As String = DIX_CLS
 	
-	
-	' ### Class and Fields ###
-	
-	' Ensure an accurate class with its proper set of fields.
+	' Ensure an accurate class with its proper set of fields...
 	IsDix = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
 		Dix_Field.Keys, _
 		Dix_Field.Items, _
 		Dix_Field.Count _
-		 _
-		 _
-		 _
 	))
 	If Not IsDix Then Exit Function
 	
-	
-	' ### Accessors ###
-	
-	' Treat as an object moving forward.
+	' ...and that their accessors work.
 	Dim obj As Object: Set obj = x
 	
-	' Ensure the field accessors all work.
 	On Error GoTo CHECK_ERROR
-	
 	If IsDix Then SOb.Obj_Check _
 		Dix_Keys(obj), _
 		Dix_Items(obj), _
-		Dix_Count(obj) _
-		 _
-		 _
-		 _
-	
+		Dix_Count(obj)
 	On Error GoTo 0
-	If Not IsDix Then Exit Function
-	
 	
 	' Return the result in lieu of errors.
 	Exit Function
@@ -136,8 +102,7 @@ CHECK_ERROR:
 End Function
 
 
-
-' Cast to a simulated "Dix" object.
+' Cast to simulated "Dix" object.
 Public Function AsDix(ByRef x As Variant) As Object
 	' Cast the input to a (generic) simulated object...
 	Dim obj As Object: Set obj = SOb.AsObj(x)
@@ -152,79 +117,63 @@ End Function
 
 
 
-' ##################
-' ## Dix | Fields ##
-' ##################
+' ############################
+' ## Dixionary SOb | Fields ##
+' ############################
 
-' The keys to the items in the dictionary.
+' The ".Keys" field: the user may neither read...
 Public Property Get Dix_Keys(ByRef dix As Object) As Collection
-	Set Dix_Keys = SOb.Obj_Field(dix, Dix_Field.Keys)
+	SOb.Obj_Get Dix_Keys, dix, Dix_Field.Keys
 End Property
 
-Public Property Set Dix_Keys(ByRef dix As Object, ByVal val As Collection)
+' ...nor write.
+Public Property Set Dix_Keys(ByRef dix As Object, _
+	ByRef val As Collection _
+)
 	Set SOb.Obj_Field(dix, Dix_Field.Keys) = val
 End Property
 
 
-
-' The items in the dictionary.
+' The ".Items" field: the user may neither read...
 Public Property Get Dix_Items(ByRef dix As Object) As Collection
-	Set Dix_Items = SOb.Obj_Field(dix, Dix_Field.Items)
+	SOb.Obj_Get Dix_Items, dix, Dix_Field.Items
 End Property
 
-Public Property Set Dix_Items(ByRef dix As Object, ByRef val As Collection)
+' ...nor write.
+Public Property Set Dix_Items(ByRef dix As Object, _
+	ByRef val As Collection _
+)
 	Set SOb.Obj_Field(dix, Dix_Field.Items) = val
 End Property
 
 
-
-' The count of items in the dictionary.
-Public Property Get Dix_Count(ByRef dix As Object) As Long
-	Let Dix_Count = SOb.Obj_Field(dix, Dix_Field.Count)
+' The ".Count" property: the user may read...
+Public Property Get Dix_Count(ByRef dix As object) As Long
+	SOb.Obj_Get Dix_Count, dix, Dix_Field.Count
+	' Let Dix_Count = Dix_Keys(dix).Count
 End Property
 
-Public Property Let Dix_Count(ByRef dix As Object, ByVal val As Long)
+' ...but not write.
+Public Property Let Dix_Count(ByRef dix As Object, _
+	ByVal val As Long _
+)
 	Let SOb.Obj_Field(dix, Dix_Field.Count) = val
 End Property
 
 
 
-' ###################
-' ## Dix | Methods ##
-' ###################
+' #############################
+' ## Dixionary SOb | Methods ##
+' #############################
 
-' ' An external method which your user may call for a return value.
-' Public Function Dix_MethodOne(ByRef dix As Object, _
-' 	 _
-' 	 _
-' 	 _
-' ) As Integer
-' 	' ...
-' 	
-' 	' Let MethodOne = ...
-' End Function
-
-
-
-' ' An internal method which your user may NOT call.
-' Public Sub Dix_MethodTwo(ByRef dix As Object, _
-' 	 _
-' 	 _
-' 	 _
-' )
-' 	' ...
-' End Sub
-
-
-
-' TODO: Procedures for any further methods you desire.
 ' ...
 
 
 
-' #########################
-' ## Dix | Visualization ##
-' #########################
+
+' ###################################
+' ## Dixionary SOb | Visualization ##
+' ###################################
 
 ' Print a simulated "Dix" object.
 Public Function Dix_Print(ByRef dix As Object, _
@@ -248,7 +197,6 @@ Public Function Dix_Print(ByRef dix As Object, _
 End Function
 
 
-
 ' Format a simulated "Dix" object for printing.
 Public Function Dix_Format(ByRef dix As Object, _
 	Optional ByVal depth = 1, _
@@ -266,7 +214,6 @@ Public Function Dix_Format(ByRef dix As Object, _
 		"Count", Dix_Count(dix) _
 	)
 	
-	' Adjust settings to your satisfaction.
 	Dix_Format = SOb.Obj_Format(dix, _
 		sum := sum, _
 		dtl := dtl, _
