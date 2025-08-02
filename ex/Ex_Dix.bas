@@ -7,7 +7,7 @@ Attribute VB_Name = "Ex_Dix"
 ' ###############
 
 ' Class name for the simulated "Dix" object.
-Public Const DIX_CLS As String = "Dix"
+Private Const DIX_CLS As String = "Dix"
 
 
 
@@ -24,7 +24,7 @@ Public Const DIX_CLS As String = "Dix"
 ' ##################
 
 ' Fields for the simulated "Dix" object.
-Public Enum Dix_Field
+Private Enum Dix_Field
 	Keys
 	Items
 	Count
@@ -157,22 +157,22 @@ End Function
 ' ##################
 
 ' The keys to the items in the dictionary.
-Public Property Get Dix_Keys(ByRef dix As Object) As Collection
+Private Property Get Dix_Keys(ByRef dix As Object) As Collection
 	Set Dix_Keys = SOb.Obj_Field(dix, Dix_Field.Keys)
 End Property
 
-Public Property Set Dix_Keys(ByRef dix As Object, ByVal val As Collection)
+Private Property Set Dix_Keys(ByRef dix As Object, ByVal val As Collection)
 	Set SOb.Obj_Field(dix, Dix_Field.Keys) = val
 End Property
 
 
 
 ' The items in the dictionary.
-Public Property Get Dix_Items(ByRef dix As Object) As Collection
+Private Property Get Dix_Items(ByRef dix As Object) As Collection
 	Set Dix_Items = SOb.Obj_Field(dix, Dix_Field.Items)
 End Property
 
-Public Property Set Dix_Items(ByRef dix As Object, ByRef val As Collection)
+Private Property Set Dix_Items(ByRef dix As Object, ByRef val As Collection)
 	Set SOb.Obj_Field(dix, Dix_Field.Items) = val
 End Property
 
@@ -183,7 +183,7 @@ Public Property Get Dix_Count(ByRef dix As Object) As Long
 	Let Dix_Count = SOb.Obj_Field(dix, Dix_Field.Count)
 End Property
 
-Public Property Let Dix_Count(ByRef dix As Object, ByVal val As Long)
+Private Property Let Dix_Count(ByRef dix As Object, ByVal val As Long)
 	Let SOb.Obj_Field(dix, Dix_Field.Count) = val
 End Property
 
@@ -207,7 +207,7 @@ End Property
 
 
 ' ' An internal method which your user may NOT call.
-' Public Sub Dix_MethodTwo(ByRef dix As Object, _
+' Private Sub Dix_MethodTwo(ByRef dix As Object, _
 ' 	 _
 ' 	 _
 ' 	 _
