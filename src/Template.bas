@@ -16,7 +16,7 @@ Private Const CLS_* As String = "*"
 ' ##################
 
 ' Fields for simulated "*" object.
-Private Enum *Field
+Private Enum *_Field
 	Field1
 	Field2
 	' ...
@@ -69,21 +69,21 @@ End Function
 
 ' The "Field1" field.
 Public Property Get *_Field1(ByRef * As Object) As Integer
-	Let *_Field1 = Obj_Field(*, *Field.Field1)
+	Let *_Field1 = Obj_Field(*, *_Field.Field1)
 End Property
 
 Public Property Let *_Field1(ByRef * As Object, ByVal val As Integer)
-	Let Obj_Field(*, *Field.Field1) = val
+	Let Obj_Field(*, *_Field.Field1) = val
 End Property
 
 
 ' The "Field2" field.
 Public Property Get *_Field2(ByRef * As Object) As Range
-	Set *_Field2 = Obj_Field(*, *Field.Field2)
+	Set *_Field2 = Obj_Field(*, *_Field.Field2)
 End Property
 
 Public Property Set *_Field2(ByRef * As Object, ByRef val As Range) As Range
-	Set Obj_Field(*, *Field.Field2) = val
+	Set Obj_Field(*, *_Field.Field2) = val
 End Property
 
 

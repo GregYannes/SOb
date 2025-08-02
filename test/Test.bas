@@ -16,7 +16,7 @@ Private Const CLS_DIX As String = "Dix"
 ' ##################
 
 ' Field support for simulated Dix object.
-Private Enum DixField
+Private Enum Dix_Field
 	Keys
 	Items
 	Count
@@ -55,12 +55,12 @@ Public Sub Test()
 	
 	
 	' ### Fields 1 ###
-	SOb.Obj_Field(dix, DixField.Count) = 42
+	SOb.Obj_Field(dix, Dix_Field.Count) = 42
 	
-	SOb.Obj_FieldKey copy, DixField.Count
-	Debug.Print "Obj_FieldKey(DixField.Count) = """ & copy & """"
-	Debug.Print "Obj_HasField(dix, DixField.Count) = " & SOb.Obj_HasField(dix, DixField.Count)
-	Debug.Print "Obj_Field(dix, DixField.Count) = " & SOb.Obj_Field(dix, DixField.Count)
+	SOb.Obj_FieldKey copy, Dix_Field.Count
+	Debug.Print "Obj_FieldKey(Dix_Field.Count) = """ & copy & """"
+	Debug.Print "Obj_HasField(dix, Dix_Field.Count) = " & SOb.Obj_HasField(dix, Dix_Field.Count)
+	Debug.Print "Obj_Field(dix, Dix_Field.Count) = " & SOb.Obj_Field(dix, Dix_Field.Count)
 	
 	Debug.Print
 	Debug.Print
@@ -158,18 +158,18 @@ Private Sub Dix_Initialize(ByRef dix As Object)
 	
 	SOb.Obj_Initialize dix, CLS_NAME
 	
-	If Not SOb.Obj_HasField(dix, DixField.Keys) Then
+	If Not SOb.Obj_HasField(dix, Dix_Field.Keys) Then
 		Dim keys As Collection: Set keys = New Collection
 		Set Dix_Keys(dix) = keys
 	End If
 	
-	If Not SOb.Obj_HasField(dix, DixField.Items) Then
+	If Not SOb.Obj_HasField(dix, Dix_Field.Items) Then
 		Dim items As Collection: Set items = New Collection
 		Set Dix_Items(dix) = items
 	End If
 	
 	' Initialize to count of keys.
-	If Not SOb.Obj_HasField(dix, DixField.Count) Then
+	If Not SOb.Obj_HasField(dix, Dix_Field.Count) Then
 		Dim count As Long: count = Dix_Keys(dix).Count
 		Dix_Count(dix) = count
 	End If
@@ -249,7 +249,7 @@ End Property
 Private Property Set Dix_Keys(ByRef dix As Object, _
 	ByRef val As Collection _
 )
-	Set SOb.Obj_Field(dix, DixField.Keys) = val
+	Set SOb.Obj_Field(dix, Dix_Field.Keys) = val
 End Property
 
 
@@ -262,7 +262,7 @@ End Property
 Private Property Set Dix_Items(ByRef dix As Object, _
 	ByRef val As Collection _
 )
-	Set SOb.Obj_Field(dix, DixField.Items) = val
+	Set SOb.Obj_Field(dix, Dix_Field.Items) = val
 End Property
 
 
@@ -276,7 +276,7 @@ End Property
 Private Property Let Dix_Count(ByRef dix As Object, _
 	ByVal val As Long _
 )
-	SOb.Obj_Field(dix, DixField.Count) = val
+	SOb.Obj_Field(dix, Dix_Field.Count) = val
 End Property
 
 
