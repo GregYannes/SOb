@@ -2,12 +2,17 @@
 ' ## Constants ##
 ' ###############
 
-' Class name for simulated "*" object.
-Private Const CLS_* As String = "*"
+' Class name for the simulated "*" object.
+' TODO: Name your object.
+Private Const *_CLS As String = "*"
+
+
 
 
 
 ' ...
+
+
 
 
 
@@ -15,16 +20,22 @@ Private Const CLS_* As String = "*"
 ' ## Enumerations ##
 ' ##################
 
-' Fields for simulated "*" object.
+' Fields for the simulated "*" object.
 Private Enum *_Field
-	Field1
-	Field2
+	' TODO: Enumerate all fields in your object.
+	FieldOne    ' The 1st field.
+	FieldTwo    ' The 2nd field.
+	FieldThree  ' The 3rd field.
 	' ...
 End Enum
 
 
 
+
+
 ' ...
+
+
 
 
 
@@ -36,21 +47,37 @@ End Enum
 ' ## * | Creation ##
 ' ##################
 
-' Constructor.
+' Construct a simulated "*" object.
 Public Function New_*() As Object
 	Const CLS_NAME As String = *_CLS
 	
 	*_Initialize New_*, CLS_NAME
-	
-	' ...
 End Function
 
 
-' Initializer.
+
+' Initialize a simulated "*" object.
 Public Sub *_Initialize(ByRef * As Object)
 	Const CLS_NAME As String = *_CLS
 	
-	Obj_Initialize *, CLS_*
+	SOb.Obj_Initialize *, CLS_NAME
+	
+	
+	' TODO: Initialize any missing fields to appropriate values.
+	If Not SOb.Obj_HasField(*, *_Field.FieldOne) Then
+		Dim f1 As Boolean: ' Let f1 = ...
+		Let *_FieldOne(*) = f1
+	End If
+	
+	If Not SOb.Obj_HasField(*, *_Field.FieldTwo) Then
+		Dim f2 As Range: ' Set f2 = ...
+		Set *_FieldTwo(*) = f2
+	End If
+	
+	If Not SOb.Obj_HasField(*, *_Field.FieldThree) Then
+		Dim f3 As Variant: ' SOb.Assign f3, ...
+		SOb.Assign *_FieldThree(*), f3
+	End If
 	
 	' ...
 End Sub
@@ -61,22 +88,77 @@ End Sub
 ' ## * | Typology ##
 ' ##################
 
-' Identify simulated "*" objects.
-Public Function Is*(ByRef x As Variant) As Boolean
+' Identify a simulated "*" object.
+Public Function Is*(ByRef x As Variant, _
+	Optional ByVal strict As Boolean = False _
+) As Boolean
 	Const CLS_NAME As String = *_CLS
 	
-	Is* = IsObj(x, CLS_NAME)
+	
+	' ### Class and Fields ###
+	' Ensure an accurate class with its proper set of fields.
+	' TODO: Enumerate all fields for "*" within this 'Array()'.
+	Is* = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
+		*_Field.FieldOne, _
+		*_Field.FieldTwo, _
+		*_Field.FieldThree, _
+		 _
+		 _
+		 _
+	))
+	If Not Is* Then Exit Function
+	
+	
+	' Treat as an object moving forward.
+	Dim obj As Object: Set obj = x
+	
+	
+	' ### Accessors ###
+	' Ensure the field accessors all work.
+	' TODO: Call all your field accessors within this 'Check()'.
+	If Is* Then SOb.Obj_Check _
+		*_FieldOne(obj), _
+		*_FieldTwo(obj), _
+		*_FieldThree(obj) _
+		 _
+		 _
+		 _
+	If Not Is* Then Exit Function
+	
 	
 	' ...
+	If Not Is* Then Exit Function
+	
+	
+	' TODO: Any further validation you desire.
+	
+	
+	' ...
+	If Not Is* Then Exit Function
+	
+	
+	' Return the result in lieu of errors.
+	Exit Function
+	
+' Handle inaccessibility.
+CHECK_ERROR:
+	Is* = SOb.Obj_Error(typ := True)
 End Function
 
 
-' Cast to simulated "*" object.
+
+' Cast to a simulated "*" object.
 Public Function As*(ByRef x As Variant) As Object
-	Const CLS_NAME As String = *_CLS
+	' Cast the input to a generic simulated object...
+	Dim obj As Object: Set obj = SOb.AsObj(x)
 	
-	Set As* = AsObj(x, CLS_NAME)
+	' ...and extract its fields into a new "*" object.
+	Set As* = New_*()
 	
+	' TODO: Assign each field from 'obj' to its corresponding field in 'As*'.
+	Let *_FieldOne(As*) = *_FieldOne(obj)
+	Set *_FieldTwo(As*) = *_FieldTwo(obj)
+	SOb.Assign *_FieldThree(As*), *_FieldThree(obj)
 	' ...
 End Function
 
@@ -86,28 +168,44 @@ End Function
 ' ## * | Fields ##
 ' ################
 
-' The scalar "Field1" field: the user may read it...
-Public Property Get *_Field1(ByRef * As Object) As Integer
-	Let *_Field1 = Obj_Field(*, *_Field.Field1)
+' A simulated (scalar) field which your user may read AND write.
+Public Property Get *_FieldOne(ByRef * As Object) As Boolean
+	Let *_FieldOne = SOb.Obj_Field(*, *_Field.FieldOne)
 End Property
 
-' ...and also write it.
-Public Property Let *_Field1(ByRef * As Object, ByVal val As Integer)
-	Let Obj_Field(*, *_Field.Field1) = val
-End Property
-
-
-' The objective "Field2" field: the user may read it...
-Public Property Get *_Field2(ByRef * As Object) As Range
-	Set *_Field2 = Obj_Field(*, *_Field.Field2)
-End Property
-
-' ...but never write it.
-Private Property Set *_Field2(ByRef * As Object, ByRef val As Range) As Range
-	Set Obj_Field(*, *_Field.Field2) = val
+Public Property Let *_FieldOne(ByRef * As Object, ByVal val As Boolean)
+	Let SOb.Obj_Field(*, *_Field.FieldOne) = val
 End Property
 
 
+
+' A simulated (objective) field which your user may read but NOT write.
+Public Property Get *_FieldTwo(ByRef * As Object) As Range
+	Set *_FieldTwo = SOb.Obj_Field(*, *_Field.FieldTwo)
+End Property
+
+Private Property Set *_FieldTwo(ByRef * As Object, ByRef val As Range)
+	Set SOb.Obj_Field(*, *_Field.FieldTwo) = val
+End Property
+
+
+
+' A simulated (variant) field which your user may NEITHER read NOR write.
+Private Property Get *_FieldThree(ByRef * As Object) As Variant
+	SOb.Assign *_FieldThree, SOb.Obj_Field(*, *_Field.FieldThree)
+End Property
+
+Private Property Let *_FieldThree(ByRef * As Object, ByVal val As Variant)
+	Let SOb.Obj_Field(*, *_Field.FieldThree) = val
+End Property
+
+Private Property Set *_FieldThree(ByRef * As Object, ByRef val As Object)
+	Set SOb.Obj_Field(*, *_Field.FieldThree) = val
+End Property
+
+
+
+' TODO: Accessors for any further fields you enumerated.
 ' ...
 
 
@@ -116,18 +214,31 @@ End Property
 ' ## * | Methods ##
 ' #################
 
-' .
-Function *_Method1(ByRef * As Object, ...) As Variant
-	' ...
-End Function
+' ' An external method which your user may call for a return value.
+' Public Function *_MethodOne(ByRef * As Object, _
+' 	 _
+' 	 _
+' 	 _
+' ) As Integer
+' 	' ...
+' 	
+' 	' Let MethodOne = ...
+' End Function
 
 
-' .
-Sub *_Method2(ByRef * As Object, ...)
-	' ...
-End Sub
+
+' ' An internal method which your user may NOT call.
+' Private Sub *_MethodTwo(ByRef * As Object, _
+' 	 _
+' 	 _
+' 	 _
+' )
+' 	' ...
+' End Sub
 
 
+
+' TODO: Procedures for any further methods you desire.
 ' ...
 
 
@@ -136,13 +247,52 @@ End Sub
 ' ## * | Visualization ##
 ' #######################
 
-' .
-Public Function *_Print(ByRef * As Object, ...) As Variant
-	' ...
+' Print a simulated "*" object.
+Public Function *_Print(ByRef * As Object, _
+	Optional ByVal depth = 1, _
+	Optional ByVal plain As Boolean = False, _
+	Optional ByVal pointer As Boolean = False, _
+	Optional ByVal preview As Boolean = False, _
+	Optional ByVal indent As String = VBA.vbTab, _
+	Optional ByVal orphan As Boolean = True _
+) As String
+	*_Print = *_Format(*, _
+		depth := depth, _
+		plain := plain, _
+		pointer := pointer, _
+		preview := preview, _
+		indent := indent, _
+		orphan := orphan _
+	)
+	
+	SOb.Obj_Print0 *_Print
 End Function
 
 
-' .
-Public Function *_Format(ByRef * As Object, ...) As String
+
+' Format a simulated "*" object for printing.
+Public Function *_Format(ByRef * As Object, _
+	Optional ByVal depth = 1, _
+	Optional ByVal plain As Boolean = False, _
+	Optional ByVal pointer As Boolean = False, _
+	Optional ByVal preview As Boolean = False, _
+	Optional ByVal indent As String = VBA.vbTab, _
+	Optional ByVal orphan As Boolean = True _
+) As String
+	' TODO: Create any summary ('sum') or detail ('dtl') you desire for 'Obj_Format()'.
 	' ...
+	
+	' Adjust settings to your satisfaction.
+	' TODO: Pass any such summary ('sum') or detail ('dtl') to 'Obj_Format()'.
+	*_Format = SOb.Obj_Format(*, _
+		 _
+		 _
+		 _
+		dep := depth, _
+		pln := plain, _
+		ptr := pointer, _
+		pvw := preview, _
+		ind := ind, _
+		orf := orphan _
+	)
 End Sub
