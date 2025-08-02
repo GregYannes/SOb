@@ -58,6 +58,25 @@ End Sub
 ' ## API | Typology ##
 ' ####################
 
+' The class of a simulated object: the developer may read it...
+Public Property Get Obj_Class(ByRef obj As Collection) As String
+	Dim key As String: Obj_ClassKey key
+	Obj_Class = Clx_Get(obj, key)
+End Property
+
+
+' ...but never write it directly.
+Private Property Let Obj_Class(ByRef obj As Collection, _
+	ByVal cls As String _
+)
+	cls = Excel.Application.WorksheetFunction.Clean(cls)
+	cls = VBA.Trim(cls)
+	
+	Dim key As String: Obj_ClassKey key
+	Clx_Set obj, key, cls
+End Property
+
+
 ' Test for a simulated object.
 Public Function IsObj(ByRef x As Variant, _
 	Optional ByVal cls As String = VBA.vbNullString, _
@@ -123,113 +142,9 @@ End Function
 
 
 
-' ##########################
-' ## API | Classification ##
-' ##########################
-
-' The class of a simulated object: the developer may read it...
-Public Property Get Obj_Class(ByRef obj As Collection) As String
-	Dim key As String: Obj_ClassKey key
-	Obj_Class = Clx_Get(obj, key)
-End Property
-
-
-' ...but never write it directly.
-Private Property Let Obj_Class(ByRef obj As Collection, _
-	ByVal cls As String _
-)
-	cls = Excel.Application.WorksheetFunction.Clean(cls)
-	cls = VBA.Trim(cls)
-	
-	Dim key As String: Obj_ClassKey key
-	Clx_Set obj, key, cls
-End Property
-
-
-
 ' ##################
 ' ## API | Fields ##
 ' ##################
-' Count simulated fields.
-Public Function Obj_FieldCount(ByRef obj As Collection) As Long
-' 	Optional ByVal cls As String = VBA.vbNullString
-	
-	Obj_FieldCount = obj.Count
-	
-	' Omit the class item from the count of field items.
-	If Obj_HasClass(obj) Then
-		Obj_FieldCount = Obj_FieldCount - 1
-	End If
-	
-	' Enforce a nonnegative count.
-	If Obj_FieldCount < 0 Then
-		Obj_FieldCount = 0
-	End If
-End Function
-
-
-' Test for a single simulated field.
-Public Function Obj_HasField(ByRef obj As Collection, _
-	ByVal fld As Long _
-) As Boolean
-	Dim key As String: Obj_FieldKey key, fld
-	Obj_HasField = Clx_Has(obj, key)
-End Function
-
-
-' Test manually for multiple simulated fields...
-Public Function Obj_HasFields0(ByRef obj As Collection, _
-	ParamArray flds() As Variant _
-) As Boolean
-	Dim f() As Variant: f = flds
-	Obj_HasFields0 = Obj_HasFields(obj, flds := f)
-End Function
-
-
-' ...or test programmatically.
-Private Function Obj_HasFields(ByRef obj As Collection, _
-	ByRef flds As Variant _
-) As Boolean
-	Dim n As Long: n = Arr_Length(flds, 1)
-	
-	' Short-circuit with TRUE for trivial case.
-	If n < 1 Then
-		Obj_HasFields = True
-		Exit Function
-	End If
-	
-	Dim low As Long: low = LBound(flds, 1)
-	Dim up As Long: up = UBound(flds, 1)
-	
-	' Return FALSE if any fields are nonexistent...
-	Dim i As Long
-	For i = low To up
-		If Not Obj_HasField(obj, flds(i)) Then
-			Obj_HasFields = False
-			Exit Function
-		End If
-	Next i
-	
-	' ...and otherwise return TRUE since they all exist.
-	Obj_HasFields = True
-End Function
-
-
-' Safely get a simulated (Property) field.
-Public Sub Obj_Get(ByRef var As Variant, _
-	ByRef obj As Collection, _
-	ByVal fld As Long _
-)
-	Dim has As Boolean
-	Dim key As String: Obj_FieldKey key, fld
-	Dim val As Variant: Assign val, Clx_Get(obj, key, has := has)
-	
-	' Store the value when the field is present.
-	If has Then
-		Assign var, val
-	End If
-End Sub
-
 
 ' Get a simulated field as a Property.
 Public Property Get Obj_Field(ByRef obj As Collection, _
@@ -259,6 +174,87 @@ Public Property Set Obj_Field(ByRef obj As Collection, _
 	Dim key As String: Obj_FieldKey key, fld
 	Clx_Set obj, key, val
 End Property
+
+
+' Safely get a simulated (Property) field.
+Public Sub Obj_Get(ByRef var As Variant, _
+	ByRef obj As Collection, _
+	ByVal fld As Long _
+)
+	Dim has As Boolean
+	Dim key As String: Obj_FieldKey key, fld
+	Dim val As Variant: Assign val, Clx_Get(obj, key, has := has)
+	
+	' Store the value when the field is present.
+	If has Then
+		Assign var, val
+	End If
+End Sub
+
+
+' Count simulated fields.
+Public Function Obj_FieldCount(ByRef obj As Collection) As Long
+' 	Optional ByVal cls As String = VBA.vbNullString
+	
+	Obj_FieldCount = obj.Count
+	
+	' Omit the class item from the count of field items.
+	If Obj_HasClass(obj) Then
+		Obj_FieldCount = Obj_FieldCount - 1
+	End If
+	
+	' Enforce a nonnegative count.
+	If Obj_FieldCount < 0 Then
+		Obj_FieldCount = 0
+	End If
+End Function
+
+
+' Test for a single simulated field.
+Public Function Obj_HasField(ByRef obj As Collection, _
+	ByVal fld As Long _
+) As Boolean
+	Dim key As String: Obj_FieldKey key, fld
+	Obj_HasField = Clx_Has(obj, key)
+End Function
+
+
+' Test programmatically for multiple simulated fields...
+Private Function Obj_HasFields(ByRef obj As Collection, _
+	ByRef flds As Variant _
+) As Boolean
+	Dim n As Long: n = Arr_Length(flds, 1)
+	
+	' Short-circuit with TRUE for trivial case.
+	If n < 1 Then
+		Obj_HasFields = True
+		Exit Function
+	End If
+	
+	Dim low As Long: low = LBound(flds, 1)
+	Dim up As Long: up = UBound(flds, 1)
+	
+	' Return FALSE if any fields are nonexistent...
+	Dim i As Long
+	For i = low To up
+		If Not Obj_HasField(obj, flds(i)) Then
+			Obj_HasFields = False
+			Exit Function
+		End If
+	Next i
+	
+	' ...and otherwise return TRUE since they all exist.
+	Obj_HasFields = True
+End Function
+
+
+' ...or test manually.
+Public Function Obj_HasFields0(ByRef obj As Collection, _
+	ParamArray flds() As Variant _
+) As Boolean
+	Dim f() As Variant: f = flds
+	Obj_HasFields0 = Obj_HasFields(obj, flds := f)
+End Function
 
 
 
@@ -312,15 +308,7 @@ End Function
 ' ## API | Visualization ##
 ' #########################
 
-' Print a simulated object verbatim...
-Public Function Obj_Print0(Optional ByRef fmt As String = VBA.vbNullString) As String
-	Obj_Print0 = fmt
-	
-	Debug.Print Obj_Print0
-End Function
-
-
-' ...or with automatic formatting.
+' Print a simulated object with automatic formatting...
 Public Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal dep As Integer = 1, _
 	Optional ByVal pln As Boolean = False, _
@@ -343,6 +331,14 @@ Public Function Obj_Print(ByRef obj As Collection, _
 	)
 	
 	Obj_Print0 Obj_Print
+End Function
+
+
+' ...or verbatim.
+Public Function Obj_Print0(Optional ByRef fmt As String = VBA.vbNullString) As String
+	Obj_Print0 = fmt
+	
+	Debug.Print Obj_Print0
 End Function
 
 
@@ -407,15 +403,7 @@ End Function
 '          ...
 '   .FieldZ = <Obj>
 '   
-' This is done either manually with elegant defaults...
-'   Obj_FormatFields0("FieldA", "True", "FieldB", "1", ...)
-Public Function Obj_FormatFields0(ParamArray flds() As Variant) As String
-	Dim f() As Variant: f = flds
-	Obj_FormatFields0 = Obj_FormatFields(f)
-End Function
-
-
-' ...or programmatically with customization:
+' This is done either programmatically with customization...
 '   Dim fields() As Variant: fields = Array("FieldA", "True", "FieldB", "1", ...)
 '   Obj_FormatFields(fields, vbNewLine)
 Public Function Obj_FormatFields( _
@@ -447,6 +435,14 @@ Public Function Obj_FormatFields( _
 	Next i
 	
 	Obj_FormatFields = fmt
+End Function
+
+
+' ...or manually with elegant defaults.
+'   Obj_FormatFields0("FieldA", "True", "FieldB", "1", ...)
+Public Function Obj_FormatFields0(ParamArray flds() As Variant) As String
+	Dim f() As Variant: f = flds
+	Obj_FormatFields0 = Obj_FormatFields(f)
 End Function
 
 
@@ -703,6 +699,38 @@ End Function
 ' ## Utilities ##
 ' ###############
 
+' Assign a value (scalar or objective) to a variable.
+Public Sub Assign( _
+	ByRef var As Variant, _
+	ByVal val As Variant _
+)
+	If VBA.IsObject(val) Then
+		Set var = val
+	Else
+		Let var = val
+	End If
+End Sub
+
+
+' Indent text.
+Public Function Txt_Indent(ByVal txt As String, _
+	Optional ByVal ind As String = VBA.vbTab, _
+	Optional ByVal bfr As Boolean = True _
+) As String
+' 	Optional ByVal old As String = VBA.vbNullString
+	
+	' Indent the start of every line...
+	txt = VBA.Replace(txt, find := VBA.vbNewLine, replace := VBA.vbNewLine & ind)
+	
+	' ...including (optionally) the beginning.
+	If bfr Then
+		txt = ind & txt
+	End If
+	
+	Txt_Indent = txt
+End Function
+
+
 ' Test if a Collection contains an item.
 Private Function Clx_Has(ByRef clx As Collection, _
 	ByVal index As Variant _
@@ -782,38 +810,6 @@ Private Sub Err_Raise(Optional ByRef e As ErrObject = Nothing)
 		helpFile := e.HelpFile, _
 		helpContext := e.HelpContext
 End Sub
-
-
-' Assign a value (scalar or objective) to a variable.
-Public Sub Assign( _
-	ByRef var As Variant, _
-	ByVal val As Variant _
-)
-	If VBA.IsObject(val) Then
-		Set var = val
-	Else
-		Let var = val
-	End If
-End Sub
-
-
-' Indent text.
-Public Function Txt_Indent(ByVal txt As String, _
-	Optional ByVal ind As String = VBA.vbTab, _
-	Optional ByVal bfr As Boolean = True _
-) As String
-' 	Optional ByVal old As String = VBA.vbNullString
-	
-	' Indent the start of every line...
-	txt = VBA.Replace(txt, find := VBA.vbNewLine, replace := VBA.vbNewLine & ind)
-	
-	' ...including (optionally) the beginning.
-	If bfr Then
-		txt = ind & txt
-	End If
-	
-	Txt_Indent = txt
-End Function
 
 
 ' Test if text contains a substring.
