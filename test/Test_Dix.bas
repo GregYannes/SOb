@@ -25,11 +25,9 @@ Private Const DIX_CLS As String = "Dix"
 
 ' Fields for the simulated "Dix" object.
 Private Enum Dix_Field
-	' TODO: Enumerate all fields in your object.
-	FieldOne    ' The 1st field.
-	FieldTwo    ' The 2nd field.
-	FieldThree  ' The 3rd field.
-	' ...
+	Keys
+	Items
+	Count
 End Enum
 
 
@@ -65,17 +63,17 @@ Public Sub Dix_Initialize(ByRef dix As Object)
 	
 	
 	' TODO: Initialize any missing fields to appropriate values.
-	If Not SOb.Obj_HasField(dix, Dix_Field.FieldOne) Then
+	If Not SOb.Obj_HasField(dix, Dix_Field.Keys) Then
 		Dim f1 As Boolean: ' Let f1 = ...
 		Let Dix_FieldOne(dix) = f1
 	End If
 	
-	If Not SOb.Obj_HasField(dix, Dix_Field.FieldTwo) Then
+	If Not SOb.Obj_HasField(dix, Dix_Field.Items) Then
 		Dim f2 As Range: ' Set f2 = ...
 		Set Dix_FieldTwo(dix) = f2
 	End If
 	
-	If Not SOb.Obj_HasField(dix, Dix_Field.FieldThree) Then
+	If Not SOb.Obj_HasField(dix, Dix_Field.Count) Then
 		Dim f3 As Variant: ' SOb.Assign f3, ...
 		SOb.Assign Dix_FieldThree(dix), f3
 	End If
@@ -101,9 +99,9 @@ Public Function IsDix(ByRef x As Variant, _
 	' Ensure an accurate class with its proper set of fields.
 	' TODO: Enumerate all fields for "Dix" within this 'Array()'.
 	IsDix = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
-		Dix_Field.FieldOne, _
-		Dix_Field.FieldTwo, _
-		Dix_Field.FieldThree _
+		Dix_Field.Keys, _
+		Dix_Field.Items, _
+		Dix_Field.Count _
 		 _
 		 _
 		 _
@@ -176,37 +174,37 @@ End Function
 
 ' A simulated (scalar) field which your user may read AND write.
 Public Property Get Dix_FieldOne(ByRef dix As Object) As Boolean
-	Let Dix_FieldOne = SOb.Obj_Field(dix, Dix_Field.FieldOne)
+	Let Dix_FieldOne = SOb.Obj_Field(dix, Dix_Field.Keys)
 End Property
 
 Public Property Let Dix_FieldOne(ByRef dix As Object, ByVal val As Boolean)
-	Let SOb.Obj_Field(dix, Dix_Field.FieldOne) = val
+	Let SOb.Obj_Field(dix, Dix_Field.Keys) = val
 End Property
 
 
 
 ' A simulated (objective) field which your user may read but NOT write.
 Public Property Get Dix_FieldTwo(ByRef dix As Object) As Range
-	Set Dix_FieldTwo = SOb.Obj_Field(dix, Dix_Field.FieldTwo)
+	Set Dix_FieldTwo = SOb.Obj_Field(dix, Dix_Field.Items)
 End Property
 
 Private Property Set Dix_FieldTwo(ByRef dix As Object, ByRef val As Range)
-	Set SOb.Obj_Field(dix, Dix_Field.FieldTwo) = val
+	Set SOb.Obj_Field(dix, Dix_Field.Items) = val
 End Property
 
 
 
 ' A simulated (variant) field which your user may NEITHER read NOR write.
 Private Property Get Dix_FieldThree(ByRef dix As Object) As Variant
-	SOb.Assign Dix_FieldThree, SOb.Obj_Field(dix, Dix_Field.FieldThree)
+	SOb.Assign Dix_FieldThree, SOb.Obj_Field(dix, Dix_Field.Count)
 End Property
 
 Private Property Let Dix_FieldThree(ByRef dix As Object, ByVal val As Variant)
-	Let SOb.Obj_Field(dix, Dix_Field.FieldThree) = val
+	Let SOb.Obj_Field(dix, Dix_Field.Count) = val
 End Property
 
 Private Property Set Dix_FieldThree(ByRef dix As Object, ByRef val As Object)
-	Set SOb.Obj_Field(dix, Dix_Field.FieldThree) = val
+	Set SOb.Obj_Field(dix, Dix_Field.Count) = val
 End Property
 
 
