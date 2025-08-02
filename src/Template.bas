@@ -16,11 +16,10 @@ Private Const CLS_* As String = "*"
 ' ##################
 
 ' Fields for simulated "*" object.
-Private Enum *Fields
-	Fld1
-	Fld2
+Private Enum *Field
+	Field1
+	Field2
 	' ...
-	FldN
 End Enum
 
 
@@ -68,23 +67,23 @@ End Function
 ' ## * | Fields ##
 ' ################
 
-' The "Fld1" field.
-Public Property Get *_Fld1(ByRef * As Object) As Integer
-	Let *_Field1 = Obj_Field(*, *Fields.Fld1)
+' The "Field1" field.
+Public Property Get *_Field1(ByRef * As Object) As Integer
+	Let *_Field1 = Obj_Field(*, *Field.Field1)
 End Property
 
-Public Property Let *_Fld1(ByRef * As Object, ByVal val As Integer)
-	Let Obj_Field(*, *Fields.Fld1) = val
+Public Property Let *_Field1(ByRef * As Object, ByVal val As Integer)
+	Let Obj_Field(*, *Field.Field1) = val
 End Property
 
 
-' The "Fld2" field.
-Public Property Get *_Fld2(ByRef * As Object) As Range
-	Set *_Fld2 = Obj_Field(*, *Fields.Fld2)
+' The "Field2" field.
+Public Property Get *_Field2(ByRef * As Object) As Range
+	Set *_Field2 = Obj_Field(*, *Field.Field2)
 End Property
 
-Public Property Set *_Fld2(ByRef * As Object, ByRef val As Range) As Range
-	Set Obj_Field(*, *Fields.Fld2) = val
+Public Property Set *_Field2(ByRef * As Object, ByRef val As Range) As Range
+	Set Obj_Field(*, *Field.Field2) = val
 End Property
 
 
@@ -97,12 +96,12 @@ End Property
 ' #################
 
 ' .
-Public Function *_Mtd1(ByRef * As Object, ...) As Variant
+Public Function *_Method1(ByRef * As Object, ...) As Variant
 	' ...
 End Function
 
 
 ' .
-Public Sub *_Mtd2(ByRef * As Object, ...)
+Public Sub *_Method2(ByRef * As Object, ...)
 	' ...
 End Sub
