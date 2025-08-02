@@ -1,4 +1,4 @@
-Attribute VB_Name = "Test_Dix"
+Attribute VB_Name = "Ex_Dix"
 
 
 
