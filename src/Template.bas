@@ -91,7 +91,7 @@ Public Property Get *_Field2(ByRef * As Object) As Range
 	Set *_Field2 = Obj_Field(*, *_Field.Field2)
 End Property
 
-Public Property Set *_Field2(ByRef * As Object, ByRef val As Range) As Range
+Private Property Set *_Field2(ByRef * As Object, ByRef val As Range) As Range
 	Set Obj_Field(*, *_Field.Field2) = val
 End Property
 
@@ -105,13 +105,13 @@ End Property
 ' #################
 
 ' .
-Public Function *_Method1(ByRef * As Object, ...) As Variant
+Function *_Method1(ByRef * As Object, ...) As Variant
 	' ...
 End Function
 
 
 ' .
-Public Sub *_Method2(ByRef * As Object, ...)
+Sub *_Method2(ByRef * As Object, ...)
 	' ...
 End Sub
 
