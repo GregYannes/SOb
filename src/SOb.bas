@@ -447,10 +447,6 @@ End Function
 ' ## Support ##
 ' #############
 
-' #######################
-' ## Support | Helpers ##
-' #######################
-
 ' Test for a simulated class.
 Private Function Obj_HasClass(ByRef obj As Collection) As Boolean
 	Dim key As String: Obj_ClassKey key
@@ -695,9 +691,9 @@ End Function
 
 
 
-' #########################
-' ## Support | Utilities ##
-' #########################
+' ###############
+' ## Utilities ##
+' ###############
 
 ' Test if a Collection contains an item.
 Private Function Clx_Has(ByRef clx As Collection, _
@@ -781,7 +777,7 @@ End Sub
 
 
 ' Assign a value (scalar or objective) to a variable.
-Private Sub Assign( _
+Public Sub Assign( _
 	ByRef var As Variant, _
 	ByVal val As Variant _
 )
@@ -794,7 +790,7 @@ End Sub
 
 
 ' Indent text.
-Private Function Txt_Indent(ByVal txt As String, _
+Public Function Txt_Indent(ByVal txt As String, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal bfr As Boolean = True _
 ) As String
