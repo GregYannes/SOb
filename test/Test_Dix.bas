@@ -7,7 +7,7 @@ Attribute VB_Name = "Test_Dix"
 ' ###############
 
 ' Class name for the simulated "Dix" object.
-Private Const Dix_CLS As String = "Dix"
+Private Const DIX_CLS As String = "Dix"
 
 
 
@@ -42,13 +42,13 @@ End Enum
 
 
 
-' #######
+' #########
 ' ## Dix ##
-' #######
+' #########
 
-' ##################
+' ####################
 ' ## Dix | Creation ##
-' ##################
+' ####################
 
 ' Construct a simulated "Dix" object.
 Public Function New_Dix() As Object
@@ -58,26 +58,26 @@ End Function
 
 
 ' Initialize a simulated "Dix" object.
-Public Sub Dix_Initialize(ByRef Dix As Object)
-	Const CLS_NAME As String = Dix_CLS
+Public Sub Dix_Initialize(ByRef dix As Object)
+	Const CLS_NAME As String = DIX_CLS
 	
-	SOb.Obj_Initialize Dix, CLS_NAME
+	SOb.Obj_Initialize dix, CLS_NAME
 	
 	
 	' TODO: Initialize any missing fields to appropriate values.
-	If Not SOb.Obj_HasField(Dix, Dix_Field.FieldOne) Then
+	If Not SOb.Obj_HasField(dix, Dix_Field.FieldOne) Then
 		Dim f1 As Boolean: ' Let f1 = ...
-		Let Dix_FieldOne(Dix) = f1
+		Let Dix_FieldOne(dix) = f1
 	End If
 	
-	If Not SOb.Obj_HasField(Dix, Dix_Field.FieldTwo) Then
+	If Not SOb.Obj_HasField(dix, Dix_Field.FieldTwo) Then
 		Dim f2 As Range: ' Set f2 = ...
-		Set Dix_FieldTwo(Dix) = f2
+		Set Dix_FieldTwo(dix) = f2
 	End If
 	
-	If Not SOb.Obj_HasField(Dix, Dix_Field.FieldThree) Then
+	If Not SOb.Obj_HasField(dix, Dix_Field.FieldThree) Then
 		Dim f3 As Variant: ' SOb.Assign f3, ...
-		SOb.Assign Dix_FieldThree(Dix), f3
+		SOb.Assign Dix_FieldThree(dix), f3
 	End If
 	
 	' ...
@@ -85,15 +85,15 @@ End Sub
 
 
 
-' ##################
+' ####################
 ' ## Dix | Typology ##
-' ##################
+' ####################
 
 ' Identify a simulated "Dix" object.
 Public Function IsDix(ByRef x As Variant, _
 	Optional ByVal strict As Boolean = False _
 ) As Boolean
-	Const CLS_NAME As String = Dix_CLS
+	Const CLS_NAME As String = DIX_CLS
 	
 	
 	' ### Class and Fields ###
@@ -170,43 +170,43 @@ End Function
 
 
 
-' ################
+' ##################
 ' ## Dix | Fields ##
-' ################
+' ##################
 
 ' A simulated (scalar) field which your user may read AND write.
-Public Property Get Dix_FieldOne(ByRef Dix As Object) As Boolean
-	Let Dix_FieldOne = SOb.Obj_Field(Dix, Dix_Field.FieldOne)
+Public Property Get Dix_FieldOne(ByRef dix As Object) As Boolean
+	Let Dix_FieldOne = SOb.Obj_Field(dix, Dix_Field.FieldOne)
 End Property
 
-Public Property Let Dix_FieldOne(ByRef Dix As Object, ByVal val As Boolean)
-	Let SOb.Obj_Field(Dix, Dix_Field.FieldOne) = val
+Public Property Let Dix_FieldOne(ByRef dix As Object, ByVal val As Boolean)
+	Let SOb.Obj_Field(dix, Dix_Field.FieldOne) = val
 End Property
 
 
 
 ' A simulated (objective) field which your user may read but NOT write.
-Public Property Get Dix_FieldTwo(ByRef Dix As Object) As Range
-	Set Dix_FieldTwo = SOb.Obj_Field(Dix, Dix_Field.FieldTwo)
+Public Property Get Dix_FieldTwo(ByRef dix As Object) As Range
+	Set Dix_FieldTwo = SOb.Obj_Field(dix, Dix_Field.FieldTwo)
 End Property
 
-Private Property Set Dix_FieldTwo(ByRef Dix As Object, ByRef val As Range)
-	Set SOb.Obj_Field(Dix, Dix_Field.FieldTwo) = val
+Private Property Set Dix_FieldTwo(ByRef dix As Object, ByRef val As Range)
+	Set SOb.Obj_Field(dix, Dix_Field.FieldTwo) = val
 End Property
 
 
 
 ' A simulated (variant) field which your user may NEITHER read NOR write.
-Private Property Get Dix_FieldThree(ByRef Dix As Object) As Variant
-	SOb.Assign Dix_FieldThree, SOb.Obj_Field(Dix, Dix_Field.FieldThree)
+Private Property Get Dix_FieldThree(ByRef dix As Object) As Variant
+	SOb.Assign Dix_FieldThree, SOb.Obj_Field(dix, Dix_Field.FieldThree)
 End Property
 
-Private Property Let Dix_FieldThree(ByRef Dix As Object, ByVal val As Variant)
-	Let SOb.Obj_Field(Dix, Dix_Field.FieldThree) = val
+Private Property Let Dix_FieldThree(ByRef dix As Object, ByVal val As Variant)
+	Let SOb.Obj_Field(dix, Dix_Field.FieldThree) = val
 End Property
 
-Private Property Set Dix_FieldThree(ByRef Dix As Object, ByRef val As Object)
-	Set SOb.Obj_Field(Dix, Dix_Field.FieldThree) = val
+Private Property Set Dix_FieldThree(ByRef dix As Object, ByRef val As Object)
+	Set SOb.Obj_Field(dix, Dix_Field.FieldThree) = val
 End Property
 
 
@@ -216,12 +216,12 @@ End Property
 
 
 
-' #################
+' ###################
 ' ## Dix | Methods ##
-' #################
+' ###################
 
 ' ' An external method which your user may call for a return value.
-' Public Function Dix_MethodOne(ByRef Dix As Object, _
+' Public Function Dix_MethodOne(ByRef dix As Object, _
 ' 	 _
 ' 	 _
 ' 	 _
@@ -234,7 +234,7 @@ End Property
 
 
 ' ' An internal method which your user may NOT call.
-' Private Sub Dix_MethodTwo(ByRef Dix As Object, _
+' Private Sub Dix_MethodTwo(ByRef dix As Object, _
 ' 	 _
 ' 	 _
 ' 	 _
@@ -249,12 +249,12 @@ End Property
 
 
 
-' #######################
+' #########################
 ' ## Dix | Visualization ##
-' #######################
+' #########################
 
 ' Print a simulated "Dix" object.
-Public Function Dix_Print(ByRef Dix As Object, _
+Public Function Dix_Print(ByRef dix As Object, _
 	Optional ByVal depth = 1, _
 	Optional ByVal plain As Boolean = False, _
 	Optional ByVal pointer As Boolean = False, _
@@ -262,7 +262,7 @@ Public Function Dix_Print(ByRef Dix As Object, _
 	Optional ByVal indent As String = VBA.vbTab, _
 	Optional ByVal orphan As Boolean = True _
 ) As String
-	Dix_Print = Dix_Format(Dix, _
+	Dix_Print = Dix_Format(dix, _
 		depth := depth, _
 		plain := plain, _
 		pointer := pointer, _
@@ -277,7 +277,7 @@ End Function
 
 
 ' Format a simulated "Dix" object for printing.
-Public Function Dix_Format(ByRef Dix As Object, _
+Public Function Dix_Format(ByRef dix As Object, _
 	Optional ByVal depth = 1, _
 	Optional ByVal plain As Boolean = False, _
 	Optional ByVal pointer As Boolean = False, _
@@ -290,7 +290,7 @@ Public Function Dix_Format(ByRef Dix As Object, _
 	
 	' Adjust settings to your satisfaction.
 	' TODO: Pass any such summary ('sum') or detail ('dtl') to 'Obj_Format()'.
-	Dix_Format = SOb.Obj_Format(Dix, _
+	Dix_Format = SOb.Obj_Format(dix, _
 		 _
 		 _
 		 _
