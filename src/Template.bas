@@ -115,6 +115,8 @@ Public Function Is*(ByRef x As Variant, _
 	
 	' ### Accessors ###
 	' Ensure the field accessors all work.
+	On Error GoTo CHECK_ERROR
+	
 	' TODO: Call all your field accessors within this 'Check()'.
 	If Is* Then SOb.Obj_Check _
 		*_FieldOne(obj), _
@@ -123,6 +125,8 @@ Public Function Is*(ByRef x As Variant, _
 		 _
 		 _
 		 _
+	
+	On Error GoTo 0
 	If Not Is* Then Exit Function
 	
 	

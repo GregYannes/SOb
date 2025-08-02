@@ -91,6 +91,7 @@ Public Function IsDix(ByRef x As Variant, _
 		Dix_Keys(obj), _
 		Dix_Items(obj), _
 		Dix_Count(obj)
+	On Error GoTo 0
 	
 	' Return the result in lieu of errors.
 	Exit Function
