@@ -36,7 +36,7 @@ End Enum
 Public Function New_Dix() As Object
 	Const CLS_NAME As String = DIX_CLS
 	
-	Dix_Initialize New_Dix, CLS_NAME
+	Dix_Initialize New_Dix
 End Function
 
 
