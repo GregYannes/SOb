@@ -83,8 +83,6 @@ Public Function IsObj(ByRef x As Variant, _
 	Optional ByRef flds As Variant, _
 	Optional ByVal strict As Boolean = True _
 ) As Boolean
-' 	Optional ByVal flds() As Long
-	
 	' Check if the underlying (Collection) structure is correct...
 	IsObj = VBA.IsObject(x)
 	If Not IsObj Then Exit Function
@@ -99,7 +97,6 @@ Public Function IsObj(ByRef x As Variant, _
 	
 	' Optionally check if the class matches expectations.
 	If cls <> VBA.VbNullString Then
-		' TODO: Check if this comparison has any side-effects like (property) assignment.
 		IsObj = (Obj_Class(obj) = cls)
 	End If
 	If Not IsObj Then Exit Function
@@ -122,8 +119,6 @@ End Function
 Public Function AsObj(ByRef x As Variant, _
 	Optional ByVal cls As String = VBA.vbNullString _
 ) As Collection
-' 	Optional ByVal flds() As Long
-	
 	' Cast the underlying structure (to a Collection)...
 	Set AsObj = x
 	
@@ -150,7 +145,6 @@ End Function
 Public Property Get Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Variant
-	' Obj_Get Obj_Field, obj, fld
 	Dim key As String: Obj_FieldKey key, fld
 	Assign Obj_Field, Clx_Get(obj, key)
 End Property
@@ -194,8 +188,6 @@ End Sub
 
 ' Count simulated fields.
 Public Function Obj_FieldCount(ByRef obj As Collection) As Long
-' 	Optional ByVal cls As String = VBA.vbNullString
-	
 	Obj_FieldCount = obj.Count
 	
 	' Omit the class item from the count of field items.
@@ -271,9 +263,6 @@ End Sub
 Public Function Obj_Error(Optional ByRef e As ErrObject = Nothing, _
 	Optional ByVal typ As Boolean = True _
 ) As Boolean
-' 	Optional ByVal typ_scl As Boolean = True
-' 	Optional ByVal typ_obj As Boolean = True
-	
 	Const TYP_OBJ_ERR_NUMBER As Integer = 13   ' Invalid type.
 	Const TYP_SCL_ERR_NUMBER As Integer = 450  ' Wrong number of arguments or invalid property assignment.
 	
@@ -292,8 +281,6 @@ Public Function Obj_Error(Optional ByRef e As ErrObject = Nothing, _
 			Obj_Error = False
 		End If
 	End If
-	
-	' ...
 	
 	' Return the result (FALSE) in lieu of errors.
 	Exit Function
@@ -717,8 +704,6 @@ Public Function Txt_Indent(ByVal txt As String, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal bfr As Boolean = True _
 ) As String
-' 	Optional ByVal old As String = VBA.vbNullString
-	
 	' Indent the start of every line...
 	txt = VBA.Replace(txt, find := VBA.vbNewLine, replace := VBA.vbNewLine & ind)
 	
