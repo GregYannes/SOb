@@ -49,9 +49,7 @@ End Enum
 
 ' Construct a simulated "*" object.
 Public Function New_*() As Object
-	Const CLS_NAME As String = *_CLS
-	
-	*_Initialize New_*, CLS_NAME
+	*_Initialize New_*
 End Function
 
 
@@ -102,7 +100,7 @@ Public Function Is*(ByRef x As Variant, _
 	Is* = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
 		*_Field.FieldOne, _
 		*_Field.FieldTwo, _
-		*_Field.FieldThree, _
+		*_Field.FieldThree _
 		 _
 		 _
 		 _
@@ -154,7 +152,7 @@ End Function
 
 ' Cast to a simulated "*" object.
 Public Function As*(ByRef x As Variant) As Object
-	' Cast the input to a generic simulated object...
+	' Cast the input to a (generic) simulated object...
 	Dim obj As Object: Set obj = SOb.AsObj(x)
 	
 	' ...and extract its fields into a new "*" object.
@@ -297,7 +295,7 @@ Public Function *_Format(ByRef * As Object, _
 		pln := plain, _
 		ptr := pointer, _
 		pvw := preview, _
-		ind := ind, _
+		ind := indent, _
 		orf := orphan _
 	)
-End Sub
+End Function
