@@ -6,9 +6,8 @@ Attribute VB_Name = "Test_Dix"
 ' ## Constants ##
 ' ###############
 
-' Class name for the simulated "*" object.
-' TODO: Name your object.
-Private Const *_CLS As String = "*"
+' Class name for the simulated "Dix" object.
+Private Const Dix_CLS As String = "Dix"
 
 
 
@@ -24,8 +23,8 @@ Private Const *_CLS As String = "*"
 ' ## Enumerations ##
 ' ##################
 
-' Fields for the simulated "*" object.
-Private Enum *_Field
+' Fields for the simulated "Dix" object.
+Private Enum Dix_Field
 	' TODO: Enumerate all fields in your object.
 	FieldOne    ' The 1st field.
 	FieldTwo    ' The 2nd field.
@@ -44,41 +43,41 @@ End Enum
 
 
 ' #######
-' ## * ##
+' ## Dix ##
 ' #######
 
 ' ##################
-' ## * | Creation ##
+' ## Dix | Creation ##
 ' ##################
 
-' Construct a simulated "*" object.
-Public Function New_*() As Object
-	*_Initialize New_*
+' Construct a simulated "Dix" object.
+Public Function New_Dix() As Object
+	Dix_Initialize New_Dix
 End Function
 
 
 
-' Initialize a simulated "*" object.
-Public Sub *_Initialize(ByRef * As Object)
-	Const CLS_NAME As String = *_CLS
+' Initialize a simulated "Dix" object.
+Public Sub Dix_Initialize(ByRef Dix As Object)
+	Const CLS_NAME As String = Dix_CLS
 	
-	SOb.Obj_Initialize *, CLS_NAME
+	SOb.Obj_Initialize Dix, CLS_NAME
 	
 	
 	' TODO: Initialize any missing fields to appropriate values.
-	If Not SOb.Obj_HasField(*, *_Field.FieldOne) Then
+	If Not SOb.Obj_HasField(Dix, Dix_Field.FieldOne) Then
 		Dim f1 As Boolean: ' Let f1 = ...
-		Let *_FieldOne(*) = f1
+		Let Dix_FieldOne(Dix) = f1
 	End If
 	
-	If Not SOb.Obj_HasField(*, *_Field.FieldTwo) Then
+	If Not SOb.Obj_HasField(Dix, Dix_Field.FieldTwo) Then
 		Dim f2 As Range: ' Set f2 = ...
-		Set *_FieldTwo(*) = f2
+		Set Dix_FieldTwo(Dix) = f2
 	End If
 	
-	If Not SOb.Obj_HasField(*, *_Field.FieldThree) Then
+	If Not SOb.Obj_HasField(Dix, Dix_Field.FieldThree) Then
 		Dim f3 As Variant: ' SOb.Assign f3, ...
-		SOb.Assign *_FieldThree(*), f3
+		SOb.Assign Dix_FieldThree(Dix), f3
 	End If
 	
 	' ...
@@ -87,29 +86,29 @@ End Sub
 
 
 ' ##################
-' ## * | Typology ##
+' ## Dix | Typology ##
 ' ##################
 
-' Identify a simulated "*" object.
-Public Function Is*(ByRef x As Variant, _
+' Identify a simulated "Dix" object.
+Public Function IsDix(ByRef x As Variant, _
 	Optional ByVal strict As Boolean = False _
 ) As Boolean
-	Const CLS_NAME As String = *_CLS
+	Const CLS_NAME As String = Dix_CLS
 	
 	
 	' ### Class and Fields ###
 	
 	' Ensure an accurate class with its proper set of fields.
-	' TODO: Enumerate all fields for "*" within this 'Array()'.
-	Is* = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
-		*_Field.FieldOne, _
-		*_Field.FieldTwo, _
-		*_Field.FieldThree _
+	' TODO: Enumerate all fields for "Dix" within this 'Array()'.
+	IsDix = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
+		Dix_Field.FieldOne, _
+		Dix_Field.FieldTwo, _
+		Dix_Field.FieldThree _
 		 _
 		 _
 		 _
 	))
-	If Not Is* Then Exit Function
+	If Not IsDix Then Exit Function
 	
 	
 	' ' ### Accessors ###
@@ -121,27 +120,27 @@ Public Function Is*(ByRef x As Variant, _
 	' On Error GoTo CHECK_ERROR
 	' 
 	' ' TODO: Call all your field accessors within this 'Check()'.
-	' If Is* Then SOb.Obj_Check _
-	' 	*_FieldOne(obj), _
-	' 	*_FieldTwo(obj), _
-	' 	*_FieldThree(obj) _
+	' If IsDix Then SOb.Obj_Check _
+	' 	Dix_FieldOne(obj), _
+	' 	Dix_FieldTwo(obj), _
+	' 	Dix_FieldThree(obj) _
 	' 	 _
 	' 	 _
 	' 	 _
 	' 
 	' On Error GoTo 0
-	' If Not Is* Then Exit Function
+	' If Not IsDix Then Exit Function
 	' 
 	' 
 	' ' ...
-	' If Not Is* Then Exit Function
+	' If Not IsDix Then Exit Function
 	' 
 	' 
 	' ' TODO: Any further validation you desire.
 	' 
 	' 
 	' ' ...
-	' If Not Is* Then Exit Function
+	' If Not IsDix Then Exit Function
 	
 	
 	' Return the result in lieu of errors.
@@ -149,65 +148,65 @@ Public Function Is*(ByRef x As Variant, _
 	
 ' ' Handle inaccessibility.
 ' CHECK_ERROR:
-' 	Is* = SOb.Obj_Error(typ := True)
+' 	IsDix = SOb.Obj_Error(typ := True)
 End Function
 
 
 
-' Cast to a simulated "*" object.
-Public Function As*(ByRef x As Variant) As Object
+' Cast to a simulated "Dix" object.
+Public Function AsDix(ByRef x As Variant) As Object
 	' Cast the input to a (generic) simulated object...
 	Dim obj As Object: Set obj = SOb.AsObj(x)
 	
-	' ...and extract its fields into a new "*" object.
-	Set As* = New_*()
+	' ...and extract its fields into a new "Dix" object.
+	Set AsDix = New_Dix()
 	
-	' TODO: Assign each field from 'obj' to its corresponding field in 'As*'.
-	Let *_FieldOne(As*) = *_FieldOne(obj)
-	Set *_FieldTwo(As*) = *_FieldTwo(obj)
-	SOb.Assign *_FieldThree(As*), *_FieldThree(obj)
+	' TODO: Assign each field from 'obj' to its corresponding field in 'AsDix'.
+	Let Dix_FieldOne(AsDix) = Dix_FieldOne(obj)
+	Set Dix_FieldTwo(AsDix) = Dix_FieldTwo(obj)
+	SOb.Assign Dix_FieldThree(AsDix), Dix_FieldThree(obj)
 	' ...
 End Function
 
 
 
 ' ################
-' ## * | Fields ##
+' ## Dix | Fields ##
 ' ################
 
 ' A simulated (scalar) field which your user may read AND write.
-Public Property Get *_FieldOne(ByRef * As Object) As Boolean
-	Let *_FieldOne = SOb.Obj_Field(*, *_Field.FieldOne)
+Public Property Get Dix_FieldOne(ByRef Dix As Object) As Boolean
+	Let Dix_FieldOne = SOb.Obj_Field(Dix, Dix_Field.FieldOne)
 End Property
 
-Public Property Let *_FieldOne(ByRef * As Object, ByVal val As Boolean)
-	Let SOb.Obj_Field(*, *_Field.FieldOne) = val
+Public Property Let Dix_FieldOne(ByRef Dix As Object, ByVal val As Boolean)
+	Let SOb.Obj_Field(Dix, Dix_Field.FieldOne) = val
 End Property
 
 
 
 ' A simulated (objective) field which your user may read but NOT write.
-Public Property Get *_FieldTwo(ByRef * As Object) As Range
-	Set *_FieldTwo = SOb.Obj_Field(*, *_Field.FieldTwo)
+Public Property Get Dix_FieldTwo(ByRef Dix As Object) As Range
+	Set Dix_FieldTwo = SOb.Obj_Field(Dix, Dix_Field.FieldTwo)
 End Property
 
-Private Property Set *_FieldTwo(ByRef * As Object, ByRef val As Range)
-	Set SOb.Obj_Field(*, *_Field.FieldTwo) = val
+Private Property Set Dix_FieldTwo(ByRef Dix As Object, ByRef val As Range)
+	Set SOb.Obj_Field(Dix, Dix_Field.FieldTwo) = val
 End Property
 
 
 
 ' A simulated (variant) field which your user may NEITHER read NOR write.
-Private Property Get *_FieldThree(ByRef * As Object) As Variant
-	SOb.Assign *_FieldThree, SOb.Obj_Field(*, *_Field.FieldThree)
+Private Property Get Dix_FieldThree(ByRef Dix As Object) As Variant
+	SOb.Assign Dix_FieldThree, SOb.Obj_Field(Dix, Dix_Field.FieldThree)
 End Property
 
-Private Property Let *_FieldThree(ByRef * As Object, ByVal val As Variant)
-	Let SOb.Obj_Field(*, *_Field.FieldThree) = val
+Private Property Let Dix_FieldThree(ByRef Dix As Object, ByVal val As Variant)
+	Let SOb.Obj_Field(Dix, Dix_Field.FieldThree) = val
 End Property
 
-Private Property Set *_FieldThree(ByRef * As Object, ByRef val As Object)
-	Set SOb.Obj_Field(*, *_Field.FieldThree) = val
+Private Property Set Dix_FieldThree(ByRef Dix As Object, ByRef val As Object)
+	Set SOb.Obj_Field(Dix, Dix_Field.FieldThree) = val
 End Property
 
 
@@ -218,11 +217,11 @@ End Property
 
 
 ' #################
-' ## * | Methods ##
+' ## Dix | Methods ##
 ' #################
 
 ' ' An external method which your user may call for a return value.
-' Public Function *_MethodOne(ByRef * As Object, _
+' Public Function Dix_MethodOne(ByRef Dix As Object, _
 ' 	 _
 ' 	 _
 ' 	 _
@@ -235,7 +234,7 @@ End Property
 
 
 ' ' An internal method which your user may NOT call.
-' Private Sub *_MethodTwo(ByRef * As Object, _
+' Private Sub Dix_MethodTwo(ByRef Dix As Object, _
 ' 	 _
 ' 	 _
 ' 	 _
@@ -251,11 +250,11 @@ End Property
 
 
 ' #######################
-' ## * | Visualization ##
+' ## Dix | Visualization ##
 ' #######################
 
-' Print a simulated "*" object.
-Public Function *_Print(ByRef * As Object, _
+' Print a simulated "Dix" object.
+Public Function Dix_Print(ByRef Dix As Object, _
 	Optional ByVal depth = 1, _
 	Optional ByVal plain As Boolean = False, _
 	Optional ByVal pointer As Boolean = False, _
@@ -263,7 +262,7 @@ Public Function *_Print(ByRef * As Object, _
 	Optional ByVal indent As String = VBA.vbTab, _
 	Optional ByVal orphan As Boolean = True _
 ) As String
-	*_Print = *_Format(*, _
+	Dix_Print = Dix_Format(Dix, _
 		depth := depth, _
 		plain := plain, _
 		pointer := pointer, _
@@ -272,13 +271,13 @@ Public Function *_Print(ByRef * As Object, _
 		orphan := orphan _
 	)
 	
-	SOb.Obj_Print0 *_Print
+	SOb.Obj_Print0 Dix_Print
 End Function
 
 
 
-' Format a simulated "*" object for printing.
-Public Function *_Format(ByRef * As Object, _
+' Format a simulated "Dix" object for printing.
+Public Function Dix_Format(ByRef Dix As Object, _
 	Optional ByVal depth = 1, _
 	Optional ByVal plain As Boolean = False, _
 	Optional ByVal pointer As Boolean = False, _
@@ -291,7 +290,7 @@ Public Function *_Format(ByRef * As Object, _
 	
 	' Adjust settings to your satisfaction.
 	' TODO: Pass any such summary ('sum') or detail ('dtl') to 'Obj_Format()'.
-	*_Format = SOb.Obj_Format(*, _
+	Dix_Format = SOb.Obj_Format(Dix, _
 		 _
 		 _
 		 _
