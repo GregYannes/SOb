@@ -88,15 +88,14 @@ Public Function IsObj(ByRef x As Variant, _
 	' Optionally check for the presence of specific fields.
 	If Not VBA.IsMissing(flds) Then
 		IsObj = Obj_HasFields(obj, flds := flds)
+		
+		' Optionally cap the fields at strictly those specified, rather than a superset.
+		If strict Then
+			Dim nFlds As Long: nFlds = Arr_Length(flds, 1)
+			IsObj = (Obj_FieldCount(obj) = nFlds)
+		End If
 	End If
 	If Not IsObj Then Exit Function
-	
-	' Optionally cap the fields at strictly those specified, rather than a superset.
-	If strict Then
-		Dim nFlds As Long: nFlds = Arr_Length(flds, 1)
-		IsObj = (Obj_FieldCount(obj) = nFlds)
-	End If
-	' If Not IsObj Then Exit Function
 End Function
 
 
