@@ -87,7 +87,7 @@ Public Function IsObj(ByRef x As Variant, _
 	
 	' Optionally check for the presence of specific fields.
 	If Not VBA.IsMissing(flds) Then
-		IsObj = Obj_HasFields(obj, flds := flds))
+		IsObj = Obj_HasFields(obj, flds := flds)
 	End If
 	If Not IsObj Then Exit Function
 	
@@ -152,7 +152,7 @@ End Property
 ' ## API | Fields ##
 ' ##################
 ' Count simulated fields.
-Public Function Get Obj_FieldCount(ByRef obj As Collection) As Long
+Public Function Obj_FieldCount(ByRef obj As Collection) As Long
 ' 	Optional ByVal cls As String = VBA.vbNullString
 	
 	Obj_FieldCount = obj.Count
@@ -273,7 +273,7 @@ End Sub
 
 
 ' Catches errors for certain checks and propagates all others.
-Public Function Obj_Error(Optional ByRef e ErrObject = Nothing, _
+Public Function Obj_Error(Optional ByRef e As ErrObject = Nothing, _
 	Optional ByVal typ As Boolean = True _
 ) As Boolean
 ' 	Optional ByVal typ_scl As Boolean = True
@@ -759,7 +759,7 @@ Private Function Arr_Length(ByRef arr As Variant, _
 	Exit Function
 	
 BOUND_ERROR:
-	If VBA.Err.Number = EMPTY_ERR_NUMBER Or Then
+	If VBA.Err.Number = EMPTY_ERR_NUMBER Then
 		Arr_Length = 0
 	Else
 		Err_Raise VBA.Err
