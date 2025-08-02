@@ -96,6 +96,7 @@ Public Function Is*(ByRef x As Variant, _
 	
 	
 	' ### Class and Fields ###
+	
 	' Ensure an accurate class with its proper set of fields.
 	' TODO: Enumerate all fields for "*" within this 'Array()'.
 	Is* = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
@@ -109,11 +110,11 @@ Public Function Is*(ByRef x As Variant, _
 	If Not Is* Then Exit Function
 	
 	
+	' ### Accessors ###
+	
 	' Treat as an object moving forward.
 	Dim obj As Object: Set obj = x
 	
-	
-	' ### Accessors ###
 	' Ensure the field accessors all work.
 	On Error GoTo CHECK_ERROR
 	
