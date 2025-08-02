@@ -7,7 +7,7 @@ Attribute VB_Name = "Test"
 ' ###############
 
 ' Class name for simulated Dix object.
-Private Const CLS_DIX As String = "Dix"
+Private Const DIX_CLS As String = "Dix"
 
 
 
@@ -48,7 +48,7 @@ Public Sub Test()
 	
 	' ### Typology 1 ###
 	Debug.Print "IsObj(dix) = " & SOb.IsObj(dix)
-	Debug.Print "IsObj(dix, """ & CLS_DIX & """) = " & SOb.IsObj(dix, CLS_DIX)
+	Debug.Print "IsObj(dix, """ & DIX_CLS & """) = " & SOb.IsObj(dix, DIX_CLS)
 	Debug.Print "IsObj(dix, ""Other"") = " & SOb.IsObj(dix, "Other")
 	
 	Debug.Print
@@ -143,18 +143,15 @@ End Sub
 
 ' Constructor.
 Public Function New_Dix() As Object
-	Const CLS_NAME As String = CLS_DIX
+	Const CLS_NAME As String = DIX_CLS
 	
-	Dim dix As Object: Set dix = SOb.New_Obj(CLS_NAME)
-	Dix_Initialize dix
-	
-	Set New_Dix = dix
+	Dix_Initialize New_Dix, CLS_NAME
 End Function
 
 
 ' Initializer.
 Private Sub Dix_Initialize(ByRef dix As Object)
-	Const CLS_NAME As String = CLS_DIX
+	Const CLS_NAME As String = DIX_CLS
 	
 	SOb.Obj_Initialize dix, CLS_NAME
 	
@@ -171,7 +168,7 @@ Private Sub Dix_Initialize(ByRef dix As Object)
 	' Initialize to count of keys.
 	If Not SOb.Obj_HasField(dix, Dix_Field.Count) Then
 		Dim count As Long: count = Dix_Keys(dix).Count
-		Dix_Count(dix) = count
+		Let Dix_Count(dix) = count
 	End If
 End Sub
 
@@ -185,7 +182,7 @@ End Sub
 Public Function IsDix(ByRef x As Variant, _
 	Optional ByVal strict As Boolean = False _
 ) As Boolean
-	Const CLS_NAME As String = CLS_DIX
+	Const CLS_NAME As String = DIX_CLS
 	
 	' Ensure an accurate class with its proper set of fields...
 	IsDix = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
@@ -261,14 +258,14 @@ End Property
 ' The ".Count" property: the user may read...
 Public Property Get Dix_Count(ByRef dix As object) As Long
 	SOb.Obj_Get Dix_Count, dix, Dix_Field.Count
-	' Dix_Count = Dix_Keys(dix).Count
+	' Let Dix_Count = Dix_Keys(dix).Count
 End Property
 
 ' ...but not write.
 Private Property Let Dix_Count(ByRef dix As Object, _
 	ByVal val As Long _
 )
-	SOb.Obj_Field(dix, Dix_Field.Count) = val
+	Let SOb.Obj_Field(dix, Dix_Field.Count) = val
 End Property
 
 
@@ -304,7 +301,7 @@ Public Function Dix_Print(ByRef dix As Object, _
 		orphan := orphan _
 	)
 	
-	Debug.Print Dix_Print
+	SOb.Obj_Print0 Dix_Print
 End Function
 
 
@@ -317,13 +314,17 @@ Public Function Dix_Format(ByRef dix As Object, _
 	Optional ByVal indent As String = VBA.vbTab, _
 	Optional ByVal orphan As Boolean = True _
 ) As String
+	Dim sum As String: sum = Dix_Count(dix)
+	
+	Dim dtl As String: dtl = SOb.Obj_FormatFields0( _
+		"Keys",  "Collection[" & Dix_Keys(dix).Count & "]", _
+		"Items", "Collection[" & Dix_Items(dix).Count & "]", _
+		"Count", Dix_Count(dix) _
+	)
+	
 	Dix_Format = SOb.Obj_Format(dix, _
-		sum := Dix_Count(dix), _
-		dtl := SOb.Obj_FormatFields0( _
-			"Keys",  "Collection[" & Dix_Keys(dix).Count & "]", _
-			"Items", "Collection[" & Dix_Items(dix).Count & "]", _
-			"Count", Dix_Count(dix) _
-		), _
+		sum := sum, _
+		dtl := dtl, _
 		dep := depth, _
 		pln := plain, _
 		ptr := pointer, _
