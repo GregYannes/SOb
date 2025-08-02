@@ -182,26 +182,17 @@ End Sub
 ' ##############################
 
 ' Test for simulated "Dix" object.
-Public Function IsDix(ByRef x As Variant) As Boolean
+Public Function IsDix(ByRef x As Variant, _
+	Optional ByVal strict As Boolean = False _
+) As Boolean
 	Const CLS_NAME As String = CLS_DIX
-	Const N_FLDS As String = 3
 	
-	IsDix = SOb.IsObj(x, CLS_NAME)
-	' Set x = SOb.AsObj(x, CLS_NAME)
-	If Not IsDix Then Exit Function
-	
-	' Ensure the proper number of fields.
-	Dim obj As Object: Set obj = x
-	IsDix = (SOb.Obj_FieldCount(obj) = N_FLDS)
-	' IsDix = (SOb.Obj_FieldCount(obj) >= N_FLDS)
-	If Not IsDix Then Exit Function
-	
-	' Ensure the proper fields exist...
-	IsDix = SOb.Obj_HasFields(obj, _
+	' Ensure an accurate class with its proper set of fields...
+	IsDix = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
 		Dix_Field.Keys, _
 		Dix_Field.Items, _
 		Dix_Field.Count _
-	)
+	))
 	If Not IsDix Then Exit Function
 	
 	' ...and that their accessors work.
@@ -210,7 +201,6 @@ Public Function IsDix(ByRef x As Variant) As Boolean
 		Dix_Keys(obj), _
 		Dix_Items(obj), _
 		Dix_Count(obj)
-	If Not IsDix Then Exit Function
 	
 	' Return the result in lieu of errors.
 	Exit Function
@@ -231,7 +221,7 @@ Public Function AsDix(ByRef x As Variant) As Object
 	
 	Set Dix_Keys(AsDix) = Dix_Keys(obj)
 	Set Dix_Items(AsDix) = Dix_Items(obj)
-	Let Dix_Count(AsDix) = Dix_Count(AsDix)
+	Let Dix_Count(AsDix) = Dix_Count(obj)
 End Function
 
 
