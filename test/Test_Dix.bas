@@ -145,11 +145,9 @@ Public Function AsDix(ByRef x As Variant) As Object
 	' ...and extract its fields into a new "Dix" object.
 	Set AsDix = New_Dix()
 	
-	' TODO: Assign each field from 'obj' to its corresponding field in 'AsDix'.
 	Set Dix_Keys(AsDix) = Dix_Keys(obj)
 	Set Dix_Items(AsDix) = Dix_Items(obj)
 	Let Dix_Count(AsDix) = Dix_Count(obj)
-	' ...
 End Function
 
 
