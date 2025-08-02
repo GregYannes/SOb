@@ -12,7 +12,7 @@ Public Sub Test()
 	' Dim dix As Object:	 SOb.Obj_Initialize dix, "Dix"
 	' Dim dix As Collection: SOb.Obj_Initialize dix, "Dix"
 	' Dim dix As Object:	 Set dix = SOb.New_Obj("Dix")
-	Dim dix As Object: Set dix = New_Dix()
+	Dim dix As Object: Set dix = Dix.New_Dix()
 	
 	
 	' ### Classification ###
@@ -26,19 +26,19 @@ Public Sub Test()
 	
 	' ### Typology 1 ###
 	Debug.Print "IsObj(dix) = " & SOb.IsObj(dix)
-	Debug.Print "IsObj(dix, """ & DIX_CLS & """) = " & SOb.IsObj(dix, DIX_CLS)
+	Debug.Print "IsObj(dix, """ & Dix.DIX_CLS & """) = " & SOb.IsObj(dix, Dix.DIX_CLS)
 	Debug.Print "IsObj(dix, ""Other"") = " & SOb.IsObj(dix, "Other")
 	
 	Debug.Print
 	
 	
 	' ### Fields 1 ###
-	SOb.Obj_Field(dix, Dix_Field.Count) = 42
+	SOb.Obj_Field(dix, Dix.Dix_Field.Count) = 42
 	
-	SOb.Obj_FieldKey copy, Dix_Field.Count
+	SOb.Obj_FieldKey copy, Dix.Dix_Field.Count
 	Debug.Print "Obj_FieldKey(Dix_Field.Count) = """ & copy & """"
-	Debug.Print "Obj_HasField(dix, Dix_Field.Count) = " & SOb.Obj_HasField(dix, Dix_Field.Count)
-	Debug.Print "Obj_Field(dix, Dix_Field.Count) = " & SOb.Obj_Field(dix, Dix_Field.Count)
+	Debug.Print "Obj_HasField(dix, Dix_Field.Count) = " & SOb.Obj_HasField(dix, Dix.Dix_Field.Count)
+	Debug.Print "Obj_Field(dix, Dix_Field.Count) = " & SOb.Obj_Field(dix, Dix.Dix_Field.Count)
 	
 	Debug.Print
 	Debug.Print
@@ -46,12 +46,12 @@ Public Sub Test()
 	
 	
 	' ### Typology 2 ###
-	Debug.Print "IsDix(dix) = " & IsDix(dix)
+	Debug.Print "IsDix(dix) = " & Dix.IsDix(dix)
 	
 	
 	' ### Fields 2 ###
-	Dix_Count(dix) = 7
-	Debug.Print "Dix_Count(dix) = " & Dix_Count(dix)
+	Dix.Dix_Count(dix) = 7
+	Debug.Print "Dix_Count(dix) = " & Dix.Dix_Count(dix)
 	
 	Debug.Print
 	Debug.Print
@@ -68,11 +68,11 @@ Private Sub Test_Print(ByRef dix As Object)
 	Dim depth As Integer: depth = 1
 	Dim plain As Boolean: plain = False
 	Dim pointer As Boolean: pointer = True
-	Dim summary As String: summary = "" & Dix_Count(dix)
+	Dim summary As String: summary = "" & Dix.Dix_Count(dix)
 	Dim detail As String: detail = "" & SOb.Obj_FormatFields0( _
-		"Keys", "Collection[" & Dix_Keys(dix).Count & "]", _
-		"Items", "Collection[" & Dix_Items(dix).Count & "]", _
-		"Count", Dix_Count(dix) _
+		"Keys", "Collection[" & Dix.Dix_Keys(dix).Count & "]", _
+		"Items", "Collection[" & Dix.Dix_Items(dix).Count & "]", _
+		"Count", Dix.Dix_Count(dix) _
 	)
 	Dim preview As Boolean: preview = True
 	Dim indent As String: indent = VBA.vbTab  ' & "----"
@@ -96,7 +96,7 @@ Private Sub Test_Print(ByRef dix As Object)
 	
 	Debug.Print ">> Dix_Print(dix, ...)"
 	Debug.Print
-	Dix_Print dix, _
+	Dix.Dix_Print dix, _
 		depth := depth, _
 		plain := plain, _
 		pointer := pointer, _

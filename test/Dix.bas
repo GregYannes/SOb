@@ -7,7 +7,7 @@ Attribute VB_Name = "Dix"
 ' ###############
 
 ' Class name for simulated Dix object.
-Private Const DIX_CLS As String = "Dix"
+Public Const DIX_CLS As String = "Dix"
 
 
 
@@ -16,7 +16,7 @@ Private Const DIX_CLS As String = "Dix"
 ' ##################
 
 ' Field support for simulated Dix object.
-Private Enum Dix_Field
+Public Enum Dix_Field
 	Keys
 	Items
 	Count
@@ -41,7 +41,7 @@ End Function
 
 
 ' Initializer.
-Private Sub Dix_Initialize(ByRef dix As Object)
+Public Sub Dix_Initialize(ByRef dix As Object)
 	Const CLS_NAME As String = DIX_CLS
 	
 	SOb.Obj_Initialize dix, CLS_NAME
@@ -121,12 +121,12 @@ End Function
 ' ############################
 
 ' The ".Keys" field: the user may neither read...
-Private Property Get Dix_Keys(ByRef dix As Object) As Collection
+Public Property Get Dix_Keys(ByRef dix As Object) As Collection
 	SOb.Obj_Get Dix_Keys, dix, Dix_Field.Keys
 End Property
 
 ' ...nor write.
-Private Property Set Dix_Keys(ByRef dix As Object, _
+Public Property Set Dix_Keys(ByRef dix As Object, _
 	ByRef val As Collection _
 )
 	Set SOb.Obj_Field(dix, Dix_Field.Keys) = val
@@ -134,12 +134,12 @@ End Property
 
 
 ' The ".Items" field: the user may neither read...
-Private Property Get Dix_Items(ByRef dix As Object) As Collection
+Public Property Get Dix_Items(ByRef dix As Object) As Collection
 	SOb.Obj_Get Dix_Items, dix, Dix_Field.Items
 End Property
 
 ' ...nor write.
-Private Property Set Dix_Items(ByRef dix As Object, _
+Public Property Set Dix_Items(ByRef dix As Object, _
 	ByRef val As Collection _
 )
 	Set SOb.Obj_Field(dix, Dix_Field.Items) = val
@@ -153,7 +153,7 @@ Public Property Get Dix_Count(ByRef dix As object) As Long
 End Property
 
 ' ...but not write.
-Private Property Let Dix_Count(ByRef dix As Object, _
+Public Property Let Dix_Count(ByRef dix As Object, _
 	ByVal val As Long _
 )
 	Let SOb.Obj_Field(dix, Dix_Field.Count) = val
