@@ -107,44 +107,32 @@ Public Function IsDix(ByRef x As Variant, _
 	If Not IsDix Then Exit Function
 	
 	
-	' ' ### Accessors ###
-	' 
-	' ' Treat as an object moving forward.
-	' Dim obj As Object: Set obj = x
-	' 
-	' ' Ensure the field accessors all work.
-	' On Error GoTo CHECK_ERROR
-	' 
-	' ' TODO: Call all your field accessors within this 'Check()'.
-	' If IsDix Then SOb.Obj_Check _
-	' 	Dix_Keys(obj), _
-	' 	Dix_Items(obj), _
-	' 	Dix_Count(obj) _
-	' 	 _
-	' 	 _
-	' 	 _
-	' 
-	' On Error GoTo 0
-	' If Not IsDix Then Exit Function
-	' 
-	' 
-	' ' ...
-	' If Not IsDix Then Exit Function
-	' 
-	' 
-	' ' TODO: Any further validation you desire.
-	' 
-	' 
-	' ' ...
-	' If Not IsDix Then Exit Function
+	' ### Accessors ###
+	
+	' Treat as an object moving forward.
+	Dim obj As Object: Set obj = x
+	
+	' Ensure the field accessors all work.
+	On Error GoTo CHECK_ERROR
+	
+	If IsDix Then SOb.Obj_Check _
+		Dix_Keys(obj), _
+		Dix_Items(obj), _
+		Dix_Count(obj) _
+		 _
+		 _
+		 _
+	
+	On Error GoTo 0
+	If Not IsDix Then Exit Function
 	
 	
 	' Return the result in lieu of errors.
 	Exit Function
 	
-' ' Handle inaccessibility.
-' CHECK_ERROR:
-' 	IsDix = SOb.Obj_Error(typ := True)
+' Handle inaccessibility.
+CHECK_ERROR:
+	IsDix = SOb.Obj_Error(typ := True)
 End Function
 
 
