@@ -1,6 +1,6 @@
 # SOb #
 
-The **`SOb`** framework lets you simulate "objects" in Excel VBA.
+The **`SOb`** framework lets you simulate "objects" in VBA for Excel.
 
 With a [full suite][sob_suite] of features at your fingertips — including [pretty printing][sob_print] — your simulated object ("**SOb**") can replicate an [object][vba_cls] or [UDT][vba_udt] without the [frustrating downsides][vba_cons].  No matter how many **SOb**s you need, or where you need them, this framework supports them within your _existing_ code.  No imports are needed!
 
@@ -14,14 +14,14 @@ Like me, you might desire several such data structures, where _some_ fields are 
 
 ### Old Problems ###
 
-Unfortunately, neither objects nor UDTs achieve the outcome above!  Every object requires users to install an extra class module, and ["classes are a pain"][obj_cons] to develop.  Furthermore, their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].  But if objects are painful, then ["UDTs are _notoriously_ problematic"][udt_cons].
+Unfortunately, neither objects nor UDTs achieve the outcome above!  For every object you include, your users must install an additional class module, and ["classes are a pain"][obj_cons] to develop.  Furthermore, their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].  But if objects are painful, then ["UDTs are _notoriously_ problematic"][udt_cons].
 
-While UDTs are generally [siloed][udt_silo] within your module, their fields are still [vulnerable to editing][udt_tamp].  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj], nor can you store them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].  To avoid burdening users with [prohibitive setup][udt_dll], developers have often resorted to [dubious][udt_hack_srl] [hacks][udt_hack_prg]!
+While UDTs are restrictively [siloed][udt_silo] within your module, their fields are still [vulnerable to editing][udt_tamp].  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj], nor can you store them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].  To avoid burdening users with [prohibitive setup][udt_dll], developers have often resorted to [dubious][udt_hack_srl] [hacks][udt_hack_prg]!
 
 
 ### New Solution ###
 
-The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  You may let other modules access your SOb, yet its fields are ["encrypted"][sob_secure] against the more insidious tampering.  And while you may store your SObs as [`Object`][vba_obj]s, they require no class modules whatsoever—instead you can [easily set them up][sob_setup] all within your existing module!
+The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  You may let other modules access your SOb, yet its fields are ["encrypted"][sob_secure] against the more insidious tampering.  And while you may store your SObs as [`Object`][vba_obj]s, they require no class modules whatsoever—instead you can [easily set them all up][sob_setup] within your existing module!
 
 
 ## Setup ##
@@ -65,7 +65,7 @@ Ascertain the "type" of an SOb...
 
 ### Fields ###
 
-Access simulated fields in an SOb...
+Access simulated "fields" in an SOb...
 
   - [`Obj_Field()`][sob_flds]: Read ([`Get`][vba_prp_get]) and write ([`Let`][vba_prp_let] or [`Set`][vba_prp_set]) the field as a [`Property`][vba_prp].
   - [`Obj_Get()`][sob_flds]: A delegate of [`Property Get`][vba_prp_get] with protection against missing fields.
@@ -88,7 +88,7 @@ Validate SObs within advanced implementations of [`Is*()`][sob_tmpl_chk].
 
 ### Visualization ###
 
-Textually visualize the entire object...
+Textually visualize the entire SOb...
 
   - [`Obj_Print()`][sob_vis]: Print (`String`) an SOb to the [console][vba_immed] with automatic formatting.
   - [`Obj_Print0()`][sob_vis]: Print something (`String`) verbatim to the console.
