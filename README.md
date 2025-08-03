@@ -21,7 +21,7 @@ While UDTs are generally [siloed][udt_silo] within your module, their fields are
 
 ### New Solution ###
 
-The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  You may let other modules access your SOb, yet its fields are "encrypted" against the more insidious tampering.  And while you may store your SObs as [`Object`][vba_obj]s, they require no class modules whatsoever—instead you can [easily set them up][sob_setup] all within your existing module!
+The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  You may let other modules access your SOb, yet its fields are ["encrypted"][sob_secure] against the more insidious tampering.  And while you may store your SObs as [`Object`][vba_obj]s, they require no class modules whatsoever—instead you can [easily set them up][sob_setup] all within your existing module!
 
 
 ## Setup ##
@@ -137,6 +137,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [udt_hack_srl]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5542053
   [udt_hack_prg]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541375
   [vba_clx]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
+  [sob_secure]:   src/SOb.bas#L479-L494
   [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
   [sob_setup]:    #setup
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
