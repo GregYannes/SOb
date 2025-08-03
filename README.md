@@ -39,7 +39,7 @@ Here are all the features provided by **`SOb`** for developers.  To avoid confus
 Describe the **`SOb`** module _itself_.
 
   - [`MOD_NAME`][sob_meta]: The name (`String`) of the module: `"SOb"`.
-  - [`MOD_VERSION`][sob_meta]: Its current [version][sem_ver] (`String`): `"0.1"`.
+  - [`MOD_VERSION`][sob_meta]: Its current [version][sem_ver] (`String`): `"0.1.0"`.
   - [`MOD_REPO`][sob_meta]: The URL (`String`) to its repo: `"https://github.com/GregYannes/SOb"`
 
 
