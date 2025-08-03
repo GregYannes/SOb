@@ -7,7 +7,9 @@ With a [full suite][sob_suite] of features at your fingertips — including [pre
 
 ## The **`SOb`** Story ##
 
-You might desire several data structures, where _some_ fields are accessible (or not) to outside users.  These structures (like UDTs) are self-contained within your module, yet (like objects) they can be used by other modules.  Ideally these other modules should still compile in the absence of yours, which should be easy for lay users to (re)install.
+I first encountered this use case when developing [**`GitHelp`**][gh_repo], which simulates a fielded "library" of documentation.
+
+Like me, you might desire several such data structures, where _some_ fields are accessible (or not) to outside users.  These structures (like UDTs) are self-contained within your module, yet (like objects) they can be used by other modules.  Ideally these other modules should still compile in the absence of yours, which should be easy for lay users to (re)install.
 
 
 ### Old Problems ###
@@ -121,6 +123,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [vba_cls]:      https://vbaplanet.com/objects.php
   [vba_udt]:      https://learn.microsoft.com/office/vba/language/how-to/user-defined-data-type
   [vba_cons]:     #the-sob-story
+  [gh_repo]:      https://github.com/GregYannes/GitHelp
   [obj_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5995379
   [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
   [udt_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971117
