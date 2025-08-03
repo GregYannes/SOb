@@ -26,7 +26,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 
 ## Setup ##
 
-...
+![](med/banner_unfinished.png)
 
 
 ## API ##
