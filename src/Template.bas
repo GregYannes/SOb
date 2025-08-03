@@ -173,7 +173,7 @@ End Function
 
 ' A simulated (scalar) field which your user may read AND write.
 Public Property Get *_FieldOne(ByRef * As Object) As Boolean
-	Let *_FieldOne = SOb.Obj_Field(*, *_Field.FieldOne)
+	SOb.Obj_Get *_FieldOne, *, *_Field.FieldOne
 End Property
 
 Public Property Let *_FieldOne(ByRef * As Object, ByVal val As Boolean)
@@ -184,7 +184,7 @@ End Property
 
 ' A simulated (objective) field which your user may read but NOT write.
 Public Property Get *_FieldTwo(ByRef * As Object) As Range
-	Set *_FieldTwo = SOb.Obj_Field(*, *_Field.FieldTwo)
+	SOb.Obj_Get *_FieldTwo, *, *_Field.FieldTwo
 End Property
 
 Private Property Set *_FieldTwo(ByRef * As Object, ByRef val As Range)
@@ -195,7 +195,7 @@ End Property
 
 ' A simulated (variant) field which your user may NEITHER read NOR write.
 Private Property Get *_FieldThree(ByRef * As Object) As Variant
-	SOb.Assign *_FieldThree, SOb.Obj_Field(*, *_Field.FieldThree)
+	SOb.Obj_Get *_FieldThree, *, *_Field.FieldThree
 End Property
 
 Private Property Let *_FieldThree(ByRef * As Object, ByVal val As Variant)
