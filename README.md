@@ -14,7 +14,7 @@ Like me, you might desire several such data structures, where _some_ fields are 
 
 ### Old Problems ###
 
-Unfortunately, neither objects nor UDTs achieve the outcome above!  Every object requires users to install an extra class module, and ["classes are a pain"][obj_cons] to develop.  Furthermore, their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].  But if object are painful, then ["UDTs are _notoriously_ problematic"][udt_cons].
+Unfortunately, neither objects nor UDTs achieve the outcome above!  Every object requires users to install an extra class module, and ["classes are a pain"][obj_cons] to develop.  Furthermore, their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].  But if objects are painful, then ["UDTs are _notoriously_ problematic"][udt_cons].
 
 While UDTs are generally [siloed][udt_silo] within your module, their fields are still [vulnerable to editing][udt_tamp].  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj], nor can you store them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].  To avoid burdening users with [prohibitive setup][udt_dll], developers have often resorted to [convoluted][udt_hack_prg] [hacks][udt_hack_srl]!
 
