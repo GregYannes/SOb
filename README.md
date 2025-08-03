@@ -27,8 +27,6 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 ...
 
 
------
-
 ## API ##
 
 Here are all the features provided by **`SOb`** for developers.  To avoid confusing _your_ users, any **`SOb`** module hides its own functions from Excel, via [`Option Private`][vba_opt_priv].
@@ -38,84 +36,84 @@ Here are all the features provided by **`SOb`** for developers.  To avoid confus
 
 Describe the **`SOb`** module _itself_.
 
-- [**`MOD_NAME`**][sob_meta]: The name (`String`) of the module: `"SOb"`.
-- [**`MOD_VERSION`**][sob_meta]: Its current [version][sem_ver] (`String`): `"0.1"`.
-- [**`MOD_REPO`**][sob_meta]: The URL (`String`) to its repo: `"https://github.com/GregYannes/SOb"`
+- [`MOD_NAME`][sob_meta]: The name (`String`) of the module: `"SOb"`.
+- [`MOD_VERSION`][sob_meta]: Its current [version][sem_ver] (`String`): `"0.1"`.
+- [`MOD_REPO`][sob_meta]: The URL (`String`) to its repo: `"https://github.com/GregYannes/SOb"`
 
 
 ### Creation ###
 
 "Declare" a new SOb.
 
-- [**`New_Obj()`**][sob_cre]: Returns an initialized SOb (`Object`).
-- [**`Obj_Initialize()`**][sob_cre]: Initializes a generic `Object` as an SOb.
+- [`New_Obj()`][sob_cre]: Returns an initialized SOb (`Object`).
+- [`Obj_Initialize()`][sob_cre]: Initializes a generic `Object` as an SOb.
 
 
 ### Typology ###
 
 Ascertain the "type" of an SOb...
 
-- [**`Obj_Class()`**][sob_typo]: Retrieve the simulated "class" (`String`) of an SOb.
-- [**`IsObj()`**][sob_typo]: Test (`Boolean`) if something is an SOb.
+- [`Obj_Class()`][sob_typo]: Retrieve the simulated "class" (`String`) of an SOb.
+- [`IsObj()`][sob_typo]: Test (`Boolean`) if something is an SOb.
 
 ...and manipulate that type.
 
-- [**`AsObj()`**][sob_typo]: Cast something as an SOb (`Object`).
+- [`AsObj()`][sob_typo]: Cast something as an SOb (`Object`).
 
 
 ### Fields ###
 
 Access simulated fields in an SOb...
 
-- [**`Obj_Field()`**][sob_flds]: Read ([`Get`][vba_prp_get]) and write ([`Let`][vba_prp_let] or [`Set`][vba_prp_set]) the field as a [`Property`][vba_prp].
-- [**`Obj_Get()`**][sob_flds]: A delegate of [`Property Get`][vba_prp_get] with protection against missing fields.
+- [`Obj_Field()`][sob_flds]: Read ([`Get`][vba_prp_get]) and write ([`Let`][vba_prp_let] or [`Set`][vba_prp_set]) the field as a [`Property`][vba_prp].
+- [`Obj_Get()`][sob_flds]: A delegate of [`Property Get`][vba_prp_get] with protection against missing fields.
 
 ...along with metadata about such fields.
 
-- [**`Obj_FieldCount()`**][sob_flds]: The (maximum) count (`Long`) of simulated fields in an SOb.
-- [**`Obj_HasField()`**][sob_flds]: Test (`Boolean`) if an SOb has a certain field.
-- [**`Obj_HasFields()`**][sob_flds]: Test (`Boolean`) if an SOb has an entire set of fields, given in an [array][vba_arr_fn]...
-- [**`Obj_HasFields0()`**][sob_flds]: ...or entered manually.
+- [`Obj_FieldCount()`][sob_flds]: The (maximum) count (`Long`) of simulated fields in an SOb.
+- [`Obj_HasField()`][sob_flds]: Test (`Boolean`) if an SOb has a certain field.
+- [`Obj_HasFields()`][sob_flds]: Test (`Boolean`) if an SOb has an entire set of fields, given in an [array][vba_arr_fn]...
+- [`Obj_HasFields0()`][sob_flds]: ...or entered manually.
 
 
 ### Validation ###
 
 Validate SObs within advanced implementations of [`Is*()`][sob_tmpl_chk].
 
-- [**`Obj_Check()`**][sob_vali]: [Call][vba_prp_call] your [accessors][sob_tmpl_acc] without assignment, merely to test (say) their type integrity.
-- [**`Obj_Error()`**][sob_vali]: Test (`Boolean`) if certain errors (like type) invalidate the check, but propagates other errors.
+- [`Obj_Check()`][sob_vali]: [Call][vba_prp_call] your [accessors][sob_tmpl_acc] without assignment, merely to test (say) their type integrity.
+- [`Obj_Error()`][sob_vali]: Test (`Boolean`) if certain errors (like type) invalidate the check, but propagates other errors.
 
 
 ### Visualization ###
 
 Textually visualize the entire object...
 
-- [**`Obj_Print()`**][sob_vis]: Print (`String`) an SOb to the [console][vba_immed] with automatic formatting.
-- [**`Obj_Print0()`**][sob_vis]: Print something (`String`) verbatim to the console.
-- [**`Obj_Format()`**][sob_vis]: Automatically format (`String`) an SOb for printing.
+- [`Obj_Print()`][sob_vis]: Print (`String`) an SOb to the [console][vba_immed] with automatic formatting.
+- [`Obj_Print0()`][sob_vis]: Print something (`String`) verbatim to the console.
+- [`Obj_Format()`][sob_vis]: Automatically format (`String`) an SOb for printing.
 
 ...or specifically its fields in detail.
 
-- [**`Obj_FormatFields()`**][sob_vis]: Automatically format (`String`) a set of simulated fields, given in an [array][vba_arr_fn]...
-- [**`Obj_FormatFields0()`**][sob_vis]: ...or entered manually with default settings.
+- [`Obj_FormatFields()`][sob_vis]: Automatically format (`String`) a set of simulated fields, given in an [array][vba_arr_fn]...
+- [`Obj_FormatFields0()`][sob_vis]: ...or entered manually with default settings.
 
 
 ### Utilities ###
 
 Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
 
-- [**`Assign()`**][sob_util]: Assign any value (scalar or objective) to a variable (by [reference][vba_byref]).
-- [**`Txt_Indent()`**][sob_util]: Indent (`String`) some lines of text.
+- [`Assign()`][sob_util]: Assign any value (scalar or objective) to a variable (by [reference][vba_byref]).
+- [`Txt_Indent()`][sob_util]: Indent (`String`) some lines of text.
 
 ...along with further ([`Private`][vba_priv]) tasks via an SOb snippet in your own module.
 
-- [**`Clx_Has()`**][sob_util]: Test (`Boolean`) if a [`Collection`][vba_clx] contains an item.
-- [**`Clx_Get()`**][sob_util]: Safely retrieve any item (`Variant`) from a `Collection`.
-- [**`Clx_Set()`**][sob_util]: Set the value of an item in a `Collection`.
+- [`Clx_Has()`][sob_util]: Test (`Boolean`) if a [`Collection`][vba_clx] contains an item.
+- [`Clx_Get()`][sob_util]: Safely retrieve any item (`Variant`) from a `Collection`.
+- [`Clx_Set()`][sob_util]: Set the value of an item in a `Collection`.
 
-- [**`Arr_Length()`**][sob_util]: Get the length (`Long`) of an [array][vba_arr].
-- [**`Err_Raise()`**][sob_util]: Raise an [error object][vba_err_obj] directly.
-- [**`Txt_Contains()`**][sob_util]: Test (`Boolean`) if text contains a substring.
+- [`Arr_Length()`][sob_util]: Get the length (`Long`) of an [array][vba_arr].
+- [`Err_Raise()`][sob_util]: Raise an [error object][vba_err_obj] directly.
+- [`Txt_Contains()`][sob_util]: Test (`Boolean`) if text contains a substring.
 
 
 
@@ -140,24 +138,24 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
   [sob_setup]:    #setup
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
-  [sob_meta]: docs/Metadata.md
+  [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
-  [sob_cre]: docs/Creation.md
-  [sob_typo]: docs/Typology.md
-  [sob_flds]: docs/Fields.md
+  [sob_cre]:      docs/Creation.md
+  [sob_typo]:     docs/Typology.md
+  [sob_flds]:     docs/Fields.md
   [vba_prp_get]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
   [vba_prp_let]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-let-statement
   [vba_prp_set]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-set-statement
   [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
   [vba_arr_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
   [sob_tmpl_chk]: src/Template.bas#L111-L140
-  [sob_vali]: docs/Validation.md
+  [sob_vali]:     docs/Validation.md
   [vba_prp_call]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-property-procedures
   [sob_tmpl_acc]: src/Template.bas#L170-L212
-  [sob_vis]: docs/Visualization.md
+  [sob_vis]:      docs/Visualization.md
   [vba_immed]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/immediate-window
   [vba_pub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/public-statement
-  [sob_util]: docs/Utilities.md
+  [sob_util]:     docs/Utilities.md
   [vba_byref]:    https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
   [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
   [vba_arr]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
