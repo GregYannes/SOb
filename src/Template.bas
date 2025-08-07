@@ -21,7 +21,7 @@ Private Const *_CLS As String = "*"
 ' ##################
 
 ' Fields for the simulated "*" object.
-Private Enum *_Field
+Private Enum *__Field
 	' TODO: Enumerate all fields in your object.
 	FieldOne    ' The 1st field.
 	FieldTwo    ' The 2nd field.
@@ -62,17 +62,17 @@ Private Sub *_Initialize(ByRef * As Object)
 	
 	
 	' TODO: Initialize any missing fields to appropriate values.
-	If Not SOb.Obj_HasField(*, *_Field.FieldOne) Then
+	If Not SOb.Obj_HasField(*, *__Field.FieldOne) Then
 		Dim f1 As Boolean: ' Let f1 = ...
 		Let *_FieldOne(*) = f1
 	End If
 	
-	If Not SOb.Obj_HasField(*, *_Field.FieldTwo) Then
+	If Not SOb.Obj_HasField(*, *__Field.FieldTwo) Then
 		Dim f2 As Range: ' Set f2 = ...
 		Set *_FieldTwo(*) = f2
 	End If
 	
-	If Not SOb.Obj_HasField(*, *_Field.FieldThree) Then
+	If Not SOb.Obj_HasField(*, *__Field.FieldThree) Then
 		Dim f3 As Variant: ' SOb.Assign f3, ...
 		SOb.Assign *_FieldThree(*), f3
 	End If
@@ -98,9 +98,9 @@ Public Function Is*(ByRef x As Variant, _
 	' Ensure an accurate class with its proper set of fields.
 	' TODO: List all fields for "*" within this 'Array()'.
 	Is* = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
-		*_Field.FieldOne, _
-		*_Field.FieldTwo, _
-		*_Field.FieldThree _
+		*__Field.FieldOne, _
+		*__Field.FieldTwo, _
+		*__Field.FieldThree _
 		 _
 		 _
 		 _
@@ -173,37 +173,37 @@ End Function
 
 ' A simulated (scalar) field which your user may read AND write.
 Public Property Get *_FieldOne(ByRef * As Object) As Boolean
-	SOb.Obj_Get *_FieldOne, *, *_Field.FieldOne
+	SOb.Obj_Get *_FieldOne, *, *__Field.FieldOne
 End Property
 
 Public Property Let *_FieldOne(ByRef * As Object, ByVal val As Boolean)
-	Let SOb.Obj_Field(*, *_Field.FieldOne) = val
+	Let SOb.Obj_Field(*, *__Field.FieldOne) = val
 End Property
 
 
 
 ' A simulated (objective) field which your user may read but NOT write.
 Public Property Get *_FieldTwo(ByRef * As Object) As Range
-	SOb.Obj_Get *_FieldTwo, *, *_Field.FieldTwo
+	SOb.Obj_Get *_FieldTwo, *, *__Field.FieldTwo
 End Property
 
 Private Property Set *_FieldTwo(ByRef * As Object, ByRef val As Range)
-	Set SOb.Obj_Field(*, *_Field.FieldTwo) = val
+	Set SOb.Obj_Field(*, *__Field.FieldTwo) = val
 End Property
 
 
 
 ' A simulated (variant) field which your user may NEITHER read NOR write.
 Private Property Get *_FieldThree(ByRef * As Object) As Variant
-	SOb.Obj_Get *_FieldThree, *, *_Field.FieldThree
+	SOb.Obj_Get *_FieldThree, *, *__Field.FieldThree
 End Property
 
 Private Property Let *_FieldThree(ByRef * As Object, ByVal val As Variant)
-	Let SOb.Obj_Field(*, *_Field.FieldThree) = val
+	Let SOb.Obj_Field(*, *__Field.FieldThree) = val
 End Property
 
 Private Property Set *_FieldThree(ByRef * As Object, ByRef val As Object)
-	Set SOb.Obj_Field(*, *_Field.FieldThree) = val
+	Set SOb.Obj_Field(*, *__Field.FieldThree) = val
 End Property
 
 
