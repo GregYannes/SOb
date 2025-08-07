@@ -129,7 +129,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [vba_udt]:      https://learn.microsoft.com/office/vba/language/how-to/user-defined-data-type
   [vba_cons]:     #old-problems
   [gh_repo]:      https://github.com/GregYannes/GitHelp
-  [so_sugg]:      https://codereview.stackexchange.com/q/293168
+  [so_sugg]:      https://codereview.stackexchange.com/posts/comments/583913
   [obj_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5995379
   [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
   [udt_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971117
