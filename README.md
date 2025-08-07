@@ -7,7 +7,7 @@ With a [full suite][sob_suite] of features at your fingertips — including [pre
 
 ## The **`SOb`** Story ##
 
-I first encountered this use case when developing [**`GitHelp`**][gh_repo], which simulates a fielded "library" of documentation.  It demanded an innovative approach, and as seasoned developers [chimed in][so_sugg], this took on a life of its own!
+I first encountered this use case when developing [**`GitHelp`**][gh_repo], which simulates a fielded "library" of documentation.  It demanded an [innovative approach][so_post], and as seasoned developers [chimed][so_comm_1] [in][so_comm_2], this took on a life of its own!
 
 Like me, you might desire several such data structures, where _some_ fields are accessible (or not) to outside users.  These structures (like UDTs) are self-contained within your module, yet (like objects) they can be used by other modules.  Ideally these other modules should still compile in the absence of yours, which should be easy for lay users to (re)install.
 
@@ -129,7 +129,9 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [vba_udt]:      https://learn.microsoft.com/office/vba/language/how-to/user-defined-data-type
   [vba_cons]:     #old-problems
   [gh_repo]:      https://github.com/GregYannes/GitHelp
-  [so_sugg]:      https://codereview.stackexchange.com/posts/comments/583913
+  [so_post]:      https://codereview.stackexchange.com/q/293168
+  [so_comm_1]:    https://codereview.stackexchange.com/posts/comments/583913
+  [so_comm_2]:    https://codereview.stackexchange.com/posts/comments/584856
   [obj_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5995379
   [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
   [udt_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971117
