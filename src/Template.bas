@@ -55,7 +55,7 @@ End Function
 
 
 ' Initialize a simulated "*" object.
-Public Sub *_Initialize(ByRef * As Object)
+Private Sub *_Initialize(ByRef * As Object)
 	Const CLS_NAME As String = *_CLS
 	
 	SOb.Obj_Initialize *, CLS_NAME
@@ -96,7 +96,7 @@ Public Function Is*(ByRef x As Variant, _
 	' ### Class and Fields ###
 	
 	' Ensure an accurate class with its proper set of fields.
-	' TODO: Enumerate all fields for "*" within this 'Array()'.
+	' TODO: List all fields for "*" within this 'Array()'.
 	Is* = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
 		*_Field.FieldOne, _
 		*_Field.FieldTwo, _
