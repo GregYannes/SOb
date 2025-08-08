@@ -26,7 +26,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 
 ## Setup ##
 
-Setup is quick and painless with a handy template!  Simply fill out [`SObTemplate.bas`][sob_tmpl] under every [`TODO`][sob_todo], and then paste it into your module.
+Setup is quick and painless with [handy templates][sob_tmpls].  Simply fill out the [`TODO`][sob_todos]s and paste the result in your module!
 
 
 ### Instructions ###
@@ -148,8 +148,8 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [sob_secure]:   src/SOb.bas#L479-L494
   [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
   [sob_setup]:    #setup
-  [sob_tmpl]:     src/SObTemplate.bas
-  [sob_todo]:     ../../search?type=code&q=path%3Asrc%2F*Template.bas+content:TODO:
+  [sob_tmpls]:    ../../search?type=code&q=path%3Asrc%2F*Template.bas
+  [sob_todos]:    ../../search?type=code&q=path%3Asrc%2F*Template.bas+content:TODO:
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
