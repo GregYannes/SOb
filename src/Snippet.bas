@@ -1,41 +1,19 @@
-Attribute VB_Name = "SOb"
+' ##########
+' ## SOBs ##
+' ##########
 
-Option Explicit
-
-' Hide these developer functions from end users in Excel.
-Option Private Module
-
-
-
-' ##############
-' ## Metadata ##
-' ##############
-
-' Module info.
-Public Const MOD_NAME As String = "SOb"
-
-Public Const MOD_VERSION As String = "0.1.0"
-
-Public Const MOD_REPO As String = "https://github.com/GregYannes/SOb"
-
-
-
-' #########
-' ## API ##
-' #########
-
-' ####################
-' ## API | Creation ##
-' ####################
+' #####################
+' ## SOBs | Creation ##
+' #####################
 
 ' Construct a simulated object.
-Public Function New_Obj(ByVal cls As String) As Collection
+Private Function New_Obj(ByVal cls As String) As Collection
 	Obj_Initialize New_Obj, cls
 End Function
 
 
 ' Initialize a simulated object.
-Public Sub Obj_Initialize(ByRef obj As Collection, _
+Private Sub Obj_Initialize(ByRef obj As Collection, _
 	ByVal cls As String _
 )
 	If obj Is Nothing Then
@@ -54,12 +32,12 @@ End Sub
 
 
 
-' ####################
-' ## API | Typology ##
-' ####################
+' #####################
+' ## SOBs | Typology ##
+' #####################
 
 ' The class of a simulated object: the developer may read it...
-Public Property Get Obj_Class(ByRef obj As Collection) As String
+Private Property Get Obj_Class(ByRef obj As Collection) As String
 	Dim key As String: Obj_ClassKey key
 	Obj_Class = Clx_Get(obj, key)
 End Property
@@ -78,7 +56,7 @@ End Property
 
 
 ' Test for a simulated object.
-Public Function IsObj(ByRef x As Variant, _
+Private Function IsObj(ByRef x As Variant, _
 	Optional ByVal cls As String = VBA.vbNullString, _
 	Optional ByRef flds As Variant, _
 	Optional ByVal strict As Boolean = True _
@@ -116,7 +94,7 @@ End Function
 
 
 ' Cast as a simulated object.
-Public Function AsObj(ByRef x As Variant, _
+Private Function AsObj(ByRef x As Variant, _
 	Optional ByVal cls As String = VBA.vbNullString _
 ) As Collection
 	' Cast the underlying structure (to a Collection)...
@@ -137,12 +115,12 @@ End Function
 
 
 
-' ##################
-' ## API | Fields ##
-' ##################
+' ###################
+' ## SOBs | Fields ##
+' ###################
 
 ' Get a simulated field as a Property.
-Public Property Get Obj_Field(ByRef obj As Collection, _
+Private Property Get Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Variant
 	Dim key As String: Obj_FieldKey key, fld
@@ -151,7 +129,7 @@ End Property
 
 
 ' Set a simulated scalar field as a Property...
-Public Property Let Obj_Field(ByRef obj As Collection, _
+Private Property Let Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long, _
 	ByVal val As Variant _
 )
@@ -161,7 +139,7 @@ End Property
 
 
 ' ...and a simulated objective field.
-Public Property Set Obj_Field(ByRef obj As Collection, _
+Private Property Set Obj_Field(ByRef obj As Collection, _
 	ByVal fld As Long, _
 	ByRef val As Variant _
 )
@@ -171,7 +149,7 @@ End Property
 
 
 ' Safely get a simulated (Property) field.
-Public Sub Obj_Get(ByRef var As Variant, _
+Private Sub Obj_Get(ByRef var As Variant, _
 	ByRef obj As Collection, _
 	ByVal fld As Long _
 )
@@ -187,7 +165,7 @@ End Sub
 
 
 ' Count simulated fields.
-Public Function Obj_FieldCount(ByRef obj As Collection) As Long
+Private Function Obj_FieldCount(ByRef obj As Collection) As Long
 	Obj_FieldCount = obj.Count
 	
 	' Omit the class item from the count of field items.
@@ -203,7 +181,7 @@ End Function
 
 
 ' Test for a single simulated field.
-Public Function Obj_HasField(ByRef obj As Collection, _
+Private Function Obj_HasField(ByRef obj As Collection, _
 	ByVal fld As Long _
 ) As Boolean
 	Dim key As String: Obj_FieldKey key, fld
@@ -241,7 +219,7 @@ End Function
 
 
 ' ...or test manually.
-Public Function Obj_HasFields0(ByRef obj As Collection, _
+Private Function Obj_HasFields0(ByRef obj As Collection, _
 	ParamArray flds() As Variant _
 ) As Boolean
 	Dim f() As Variant: f = flds
@@ -250,17 +228,17 @@ End Function
 
 
 
-' ######################
-' ## API | Validation ##
-' ######################
+' #######################
+' ## SOBs | Validation ##
+' #######################
 
 ' Checks that simulated fields match the type constraints of their accessors.
-Public Sub Obj_Check(ParamArray flds() As Variant)
+Private Sub Obj_Check(ParamArray flds() As Variant)
 End Sub
 
 
 ' Catches errors for certain checks and propagates all others.
-Public Function Obj_Error(Optional ByRef e As ErrObject = Nothing, _
+Private Function Obj_Error(Optional ByRef e As ErrObject = Nothing, _
 	Optional ByVal typ As Boolean = True _
 ) As Boolean
 	Const TYP_OBJ_ERR_NUMBER As Integer = 13   ' Invalid type.
@@ -291,12 +269,12 @@ End Function
 
 
 
-' #########################
-' ## API | Visualization ##
-' #########################
+' ##########################
+' ## SOBs | Visualization ##
+' ##########################
 
 ' Print a simulated object with automatic formatting...
-Public Function Obj_Print(ByRef obj As Collection, _
+Private Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal dep As Integer = 1, _
 	Optional ByVal pln As Boolean = False, _
 	Optional ByVal ptr As Boolean = False, _
@@ -322,7 +300,7 @@ End Function
 
 
 ' ...or verbatim.
-Public Function Obj_Print0(Optional ByRef fmt As String = VBA.vbNullString) As String
+Private Function Obj_Print0(Optional ByRef fmt As String = VBA.vbNullString) As String
 	Obj_Print0 = fmt
 	
 	Debug.Print Obj_Print0
@@ -330,7 +308,7 @@ End Function
 
 
 ' Format a simulated object for printing.
-Public Function Obj_Format(ByRef obj As Collection, _
+Private Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal dep As Integer = 1, _
 	Optional ByVal pln As Boolean = False, _
 	Optional ByVal ptr As Boolean = False, _
@@ -393,7 +371,7 @@ End Function
 ' This is done either programmatically with customization...
 '   Dim fields() As Variant: fields = Array("FieldA", "True", "FieldB", "1", ...)
 '   Obj_FormatFields(fields, vbNewLine)
-Public Function Obj_FormatFields( _
+Private Function Obj_FormatFields( _
 	ByRef flds As Variant, _
 	Optional ByVal sep As String = VBA.vbNewLine _
 ) As String
@@ -427,16 +405,16 @@ End Function
 
 ' ...or manually with elegant defaults.
 '   Obj_FormatFields0("FieldA", "True", "FieldB", "1", ...)
-Public Function Obj_FormatFields0(ParamArray flds() As Variant) As String
+Private Function Obj_FormatFields0(ParamArray flds() As Variant) As String
 	Dim f() As Variant: f = flds
 	Obj_FormatFields0 = Obj_FormatFields(f)
 End Function
 
 
 
-' #############
-' ## Support ##
-' #############
+' ####################
+' ## SOBs | Support ##
+' ####################
 
 ' Test for a simulated class.
 Private Function Obj_HasClass(ByRef obj As Collection) As Boolean
@@ -687,7 +665,7 @@ End Function
 ' ###############
 
 ' Assign a value (scalar or objective) to a variable.
-Public Sub Assign( _
+Private Sub Assign( _
 	ByRef var As Variant, _
 	ByVal val As Variant _
 )
@@ -700,7 +678,7 @@ End Sub
 
 
 ' Indent text.
-Public Function Txt_Indent(ByVal txt As String, _
+Private Function Txt_Indent(ByVal txt As String, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal bfr As Boolean = True _
 ) As String
