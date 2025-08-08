@@ -58,23 +58,23 @@ End Function
 Private Sub *_Initialize(ByRef * As Object)
 	Const CLS_NAME As String = *_CLS
 	
-	SOb.Obj_Initialize *, CLS_NAME
+	Obj_Initialize *, CLS_NAME
 	
 	
 	' TODO: Initialize any missing fields to appropriate values.
-	If Not SOb.Obj_HasField(*, *__Field.FieldOne) Then
+	If Not Obj_HasField(*, *__Field.FieldOne) Then
 		Dim f1 As Boolean: ' Let f1 = ...
 		Let *_FieldOne(*) = f1
 	End If
 	
-	If Not SOb.Obj_HasField(*, *__Field.FieldTwo) Then
+	If Not Obj_HasField(*, *__Field.FieldTwo) Then
 		Dim f2 As Range: ' Set f2 = ...
 		Set *_FieldTwo(*) = f2
 	End If
 	
-	If Not SOb.Obj_HasField(*, *__Field.FieldThree) Then
-		Dim f3 As Variant: ' SOb.Assign f3, ...
-		SOb.Assign *_FieldThree(*), f3
+	If Not Obj_HasField(*, *__Field.FieldThree) Then
+		Dim f3 As Variant: ' Assign f3, ...
+		Assign *_FieldThree(*), f3
 	End If
 	
 	' ...
@@ -97,7 +97,7 @@ Public Function Is*(ByRef x As Variant, _
 	
 	' Ensure an accurate class with its proper set of fields.
 	' TODO: List all fields for "*" within this 'Array()'.
-	Is* = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
+	Is* = IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
 		*__Field.FieldOne, _
 		*__Field.FieldTwo, _
 		*__Field.FieldThree _
@@ -117,7 +117,7 @@ Public Function Is*(ByRef x As Variant, _
 	' On Error GoTo CHECK_ERROR
 	' 
 	' ' TODO: Call all your field accessors within this 'Check()'.
-	' If Is* Then SOb.Obj_Check _
+	' If Is* Then Obj_Check _
 	' 	*_FieldOne(obj), _
 	' 	*_FieldTwo(obj), _
 	' 	*_FieldThree(obj) _
@@ -145,7 +145,7 @@ Public Function Is*(ByRef x As Variant, _
 	
 ' ' Handle inaccessibility.
 ' CHECK_ERROR:
-' 	Is* = SOb.Obj_Error(typ := True)
+' 	Is* = Obj_Error(typ := True)
 End Function
 
 
@@ -153,7 +153,7 @@ End Function
 ' Cast to a simulated "*" object.
 Public Function As*(ByRef x As Variant) As Object
 	' Cast the input to a (generic) simulated object...
-	Dim obj As Object: Set obj = SOb.AsObj(x)
+	Dim obj As Object: Set obj = AsObj(x)
 	
 	' ...and extract its fields into a new "*" object.
 	Set As* = New_*()
@@ -161,7 +161,7 @@ Public Function As*(ByRef x As Variant) As Object
 	' TODO: Assign each field from 'obj' to its corresponding field in 'As*'.
 	Let *_FieldOne(As*) = *_FieldOne(obj)
 	Set *_FieldTwo(As*) = *_FieldTwo(obj)
-	SOb.Assign *_FieldThree(As*), *_FieldThree(obj)
+	Assign *_FieldThree(As*), *_FieldThree(obj)
 	' ...
 End Function
 
@@ -173,37 +173,37 @@ End Function
 
 ' A simulated (scalar) field which your user may read AND write.
 Public Property Get *_FieldOne(ByRef * As Object) As Boolean
-	SOb.Obj_Get *_FieldOne, *, *__Field.FieldOne
+	Obj_Get *_FieldOne, *, *__Field.FieldOne
 End Property
 
 Public Property Let *_FieldOne(ByRef * As Object, ByVal val As Boolean)
-	Let SOb.Obj_Field(*, *__Field.FieldOne) = val
+	Let Obj_Field(*, *__Field.FieldOne) = val
 End Property
 
 
 
 ' A simulated (objective) field which your user may read but NOT write.
 Public Property Get *_FieldTwo(ByRef * As Object) As Range
-	SOb.Obj_Get *_FieldTwo, *, *__Field.FieldTwo
+	Obj_Get *_FieldTwo, *, *__Field.FieldTwo
 End Property
 
 Private Property Set *_FieldTwo(ByRef * As Object, ByRef val As Range)
-	Set SOb.Obj_Field(*, *__Field.FieldTwo) = val
+	Set Obj_Field(*, *__Field.FieldTwo) = val
 End Property
 
 
 
 ' A simulated (variant) field which your user may NEITHER read NOR write.
 Private Property Get *_FieldThree(ByRef * As Object) As Variant
-	SOb.Obj_Get *_FieldThree, *, *__Field.FieldThree
+	Obj_Get *_FieldThree, *, *__Field.FieldThree
 End Property
 
 Private Property Let *_FieldThree(ByRef * As Object, ByVal val As Variant)
-	Let SOb.Obj_Field(*, *__Field.FieldThree) = val
+	Let Obj_Field(*, *__Field.FieldThree) = val
 End Property
 
 Private Property Set *_FieldThree(ByRef * As Object, ByRef val As Object)
-	Set SOb.Obj_Field(*, *__Field.FieldThree) = val
+	Set Obj_Field(*, *__Field.FieldThree) = val
 End Property
 
 
@@ -268,7 +268,7 @@ Public Function *_Print(ByRef * As Object, _
 		orphan := orphan _
 	)
 	
-	SOb.Obj_Print0 *_Print
+	Obj_Print0 *_Print
 End Function
 
 
@@ -287,7 +287,7 @@ Public Function *_Format(ByRef * As Object, _
 	
 	' Adjust settings to your satisfaction.
 	' TODO: Pass any such summary ('sum') or detail ('dtl') to 'Obj_Format()'.
-	*_Format = SOb.Obj_Format(*, _
+	*_Format = Obj_Format(*, _
 		 _
 		 _
 		 _
