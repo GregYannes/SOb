@@ -148,8 +148,8 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [sob_secure]:   src/SOb.bas#L479-L494
   [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
   [sob_setup]:    #setup
-  [sob_tmpls]:    ../../search?type=code&q=path%3Asrc%2F*Template.bas
-  [sob_todos]:    ../../search?type=code&q=path%3Asrc%2F*Template.bas+content:TODO:
+  [sob_tmpls]:    ../../search?type=code&q=path:src/*Template.bas
+  [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
