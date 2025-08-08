@@ -26,7 +26,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 
 ## Setup ##
 
-Setup is quick and painless with a handy template!  Simply fill out [`Template.bas`][sob_tmpl] under every [`TODO`][sob_todo], and then paste it into your module.
+Setup is quick and painless with a handy template!  Simply fill out [`SObTemplate.bas`][sob_tmpl] under every [`TODO`][sob_todo], and then paste it into your module.
 
 
 ### Instructions ###
@@ -148,8 +148,8 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [sob_secure]:   src/SOb.bas#L479-L494
   [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
   [sob_setup]:    #setup
-  [sob_tmpl]:     src/Template.bas
-  [sob_todo]:     ../../search?type=code&q=path%3Asrc%2FTemplate.bas+TODO:
+  [sob_tmpl]:     src/SObTemplate.bas
+  [sob_todo]:     ../../search?type=code&q=path%3Asrc%2FSObTemplate.bas+TODO:
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
@@ -161,10 +161,10 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [vba_prp_set]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-set-statement
   [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
   [vba_arr_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
-  [sob_tmpl_chk]: src/Template.bas#L111-L140
+  [sob_tmpl_chk]: src/SObTemplate.bas#L111-L140
   [sob_vali]:     docs/Validation.md
   [vba_prp_call]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-property-procedures
-  [sob_tmpl_acc]: src/Template.bas#L170-L212
+  [sob_tmpl_acc]: src/SObTemplate.bas#L170-L212
   [sob_vis]:      docs/Visualization.md
   [vba_immed]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/immediate-window
   [vba_pub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/public-statement
