@@ -28,8 +28,15 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 
 Setup is quick and painless with [handy templates][sob_tmpls].  Simply fill out the [`TODO`][sob_todos]s and paste the result in your module!
 
-  - **Consolidated**: To consolidate everything within your existing module, then **(a)** fill out [`SnippetTemplate.bas`][sob_snp_tmpl] in your module; and **(b)** paste [`Snippet.bas`][sob_snp] alongside it.
-  - **Dependency**: To outsource the SOb framework to a single external dependency, then **(a)** fill out [`SObTemplate.bas`][sob_mod_tmpl]; and **(b)** instruct your end user to import the [`SOb.bas`][sob_mod] module, which you may reference as a [submodule][ghub_submod] in your repo.
+
+### Consolidated ###
+
+To consolidate everything within your existing module, fill out [`SnippetTemplate.bas`][sob_snp_tmpl] and paste into your module.  Then paste [`Snippet.bas`][sob_snp] alongside it.
+
+
+### Dependency ###
+
+To outsource the SOb framework to a single external dependency, fill out [`SObTemplate.bas`][sob_mod_tmpl] and paste into your module.  Then instruct your end user to import the [`SOb.bas`][sob_mod] module, which you may reference as a [submodule][ghub_submod] in your repo.
 
 
 ### Instructions ###
