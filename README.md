@@ -7,7 +7,7 @@ With a [full suite][sob_suite] of features at your fingertips — including [pre
 
 ## The **`SOb`** Story ##
 
-I first encountered this use case when developing [**`GitHelp`**][gh_repo], which simulates a fielded "library" of documentation.  It demanded an [innovative approach][so_post], and as seasoned developers [chimed][so_comm_1] [in][so_comm_2], this took on a life of its own!
+I first encountered this use case when developing [**`GitHelp`**][ghlp_repo], which simulates a fielded "library" of documentation.  It demanded an [innovative approach][so_post], and as seasoned developers [chimed][so_comm_1] [in][so_comm_2], this took on a life of its own!
 
 Like me, you might desire several such data structures, where _some_ fields are accessible (or not) to outside users.  These structures (like UDTs) are self-contained within your module, yet (like objects) they can be used by other modules.  Ideally these other modules should still compile in the absence of yours, which should be easy for lay users to (re)install.
 
@@ -27,6 +27,9 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 ## Setup ##
 
 Setup is quick and painless with [handy templates][sob_tmpls].  Simply fill out the [`TODO`][sob_todos]s and paste the result in your module!
+
+  - **Consolidated**: To consolidate everything within your existing module, then **(a)** fill out [`SnippetTemplate.bas`][sob_snp_tmpl] in your module; and **(b)** paste [`Snippet.bas`][sob_snp] alongside it.
+  - **Dependency**: To outsource the SOb framework to a single external dependency, then **(a)** fill out [`SObTemplate.bas`][sob_mod_tmpl]; and **(b)** instruct your end user to import the [`SOb.bas`][sob_mod] module, which you may reference as a [submodule][ghub_submod] in your repo.
 
 
 ### Instructions ###
@@ -128,7 +131,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [vba_cls]:      https://vbaplanet.com/objects.php
   [vba_udt]:      https://learn.microsoft.com/office/vba/language/how-to/user-defined-data-type
   [vba_cons]:     #old-problems
-  [gh_repo]:      https://github.com/GregYannes/GitHelp
+  [ghlp_repo]:    https://github.com/GregYannes/GitHelp
   [so_post]:      https://codereview.stackexchange.com/q/293168
   [so_comm_1]:    https://codereview.stackexchange.com/posts/comments/583913
   [so_comm_2]:    https://codereview.stackexchange.com/posts/comments/584856
@@ -150,6 +153,11 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [sob_setup]:    #setup
   [sob_tmpls]:    ../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
+  [sob_snp_tmpl]: src/SnippetTemplate.bas
+  [sob_snp]:      src/Snippet.bas
+  [sob_mod_tmpl]: src/SObTemplate.bas
+  [sob_mod]:      src/SOb.bas
+  [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
