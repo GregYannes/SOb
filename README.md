@@ -41,7 +41,91 @@ To outsource the SOb framework to a single external dependency, fill out [`SObTe
 
 ### Instructions ###
 
-![](med/banner_unfinished.png)
+Fill out either template according to these steps:
+
+  1. [`TODO`][sob_todo_1]: Replace every [`*`][sob_tmpl_ast] with the (["class"][sob_cls]) name you desire for your SOb.  A simple **Find & Replace** should suffice.
+     
+     So if you name your SOb something like "`Foo`", this should yield a `FOO_CLASS` [constant][vba_const] atop your module; along with a `Foo__Field` [enumeration][vba_enum] below; followed by [procedures][vba_proc] of the form `Foo_…()` with a `foo` [argument][vba_arg].
+     
+  1. [`TODO`][sob_todo_2]: Enumerate the [fields][sob_tmpl_enm] you desire for your SOb.  Currently there are three placeholders for these fields: [`FieldOne`][sob_tmpl_f1] and [`FieldTwo`][sob_tmpl_f2] and [`FieldThree`][sob_tmpl_f3].  Feel free to **Find & Replace** these, and to append further fields of your own.
+     
+     This way, you can specify a field to (say) [`Obj_Field()`][sob_flds] by simply selecting it from the [dropdown][vbe_drop] for [`Foo__Field.…`][sob_tmpl_fld].
+     
+  1. [`TODO`][sob_todo_8]: Implement [accessors][sob_tmpl_acc] for your [`Foo__Field.…`][sob_tmpl_fld] fields.  Each should be a [`Property`][vba_prp] of the form `Foo_…(ByRef foo As Object)`, and you may restrict it to internal usage via the [`Private`][vba_priv] statement.
+     
+     Simply wrap [`Obj_Get()`][sob_flds] with a [`Property Get`][vba_prp_get] to [_retrieve_][sob_tmpl_get] a field...
+     
+     ```vba
+     Property Get Foo_FieldOne(ByRef foo As Object) As Integer
+     	Obj_Get Foo_FieldOne, foo, Foo__Field.FieldOne
+     End Property
+     ```
+     
+     ...but implement a [`Property Let`][vba_prp_let] to _update_ a [scalar field][sob_tmpl_scl]...
+     
+     ```vba
+     Property Let Foo_FieldOne(ByRef foo As Object, ByVal val As Integer)
+     	Let Foo_FieldOne = val
+     End Property
+     ```
+     
+     ...or a [`Property Set`][vba_prp_set] to update an [objective field][sob_tmpl_obj].
+     
+     ```vba
+     Property Set Foo_FieldTwo(ByRef foo As Object, ByRef val As Range)
+     	Set Foo_FieldTwo = val
+     End Property
+     ```
+     
+  1. [`TODO`][sob_todo_3]: Initialize the values for your fields, within [`Foo_Initialize()`][sob_tmpl_ini].  Use [`Obj_HasField()`][sob_flds] to test whether a field exists, and when it does not, use your [accessor][sob_tmpl_acc] to set its initial value.
+     
+  1. [`TODO`][sob_todo_4]: List all your [`Foo__Field.…`][sob_tmpl_fld] fields in the [`Array(...)`][sob_tmpl_arr] call, within [`IsFoo()`][sob_tmpl_is].
+     
+     This way, `IsFoo()` checks that a "Foo" object has all its fields.
+     
+  1. [`TODO`][sob_todo_5]: _Optionally_ call all your field accessors like [`Foo_FieldOne()`][sob_tmpl_p1], in the [`Check ...`][sob_tmpl_chk] call within [`IsFoo()`][sob_tmpl_is].
+     
+     This way, `IsFoo()` also checks that the "Foo" fields are of the expected type, and so forth.
+     
+  1. [`TODO`][sob_todo_6]: _Optionally_ apply any [further validation][sob_tmpl_vld] you wish [`IsFoo()`][sob_tmpl_is] to perform.  Each validation step should assign a `Boolean` value to `IsFoo`...
+     
+     ```vba
+     	IsFoo = ...
+     ```
+     
+     ...and finish by [short-circuiting][sob_tmpl_cir] when `False`.
+     
+     ```vba
+     	If Not IsFoo Then Exit Function
+     ```
+     
+  1. [`TODO`][sob_todo_7]: Using your accessors, [assign each field][sob_tmpl_asn] from `obj` to its corresponding field in `AsFoo`, within [`AsFoo()`][sob_tmpl_as].
+     
+     This way, `AsFoo()` can coerce any input (`x`) into a "Foo" object, by extracting fields from the former into the latter.
+     
+  1. [`TODO`][sob_todo_10]: Create any summary (`sum`) or detail (`dtl`) you wish, to visually represent your object within [`Foo_Format()`][sob_tmpl_fmt].  The **`SOb`** framework _automatically_ formats these for you: summaries display on a single line...
+     
+     > ```
+     > <Foo[sum]>
+     > ```
+     
+     ...and details display across multiple lines:
+     
+     > ```
+     > <Foo: {
+     > 	dtl_1
+     > 	dtl_2
+     > 	…
+     > }>
+     > ```
+     
+  1. [`TODO`][sob_todo_11]: Pass any summary (`sum`) or detail (`dtl`) to [`Obj_Format()`][sob_vis], along with all arguments from [`Foo_Format()`][sob_tmpl_fmt].
+     
+     This way, others can apply various settings when printing your "Foo" object, including developers who wish to build their own SObs upon "Foo".
+     
+  1. [`TODO`][sob_todo_9]: Implement any [methods][sob_tmpl_mtd] you desire, which operate on your "Foo" object.  Each should be a [`Function`][vba_fun] or [`Sub`routine][vba_sub] of the form `Foo_…(ByRef foo As Object, …)` where `foo` is followed by any [arguments][vba_arg] needed by the method.  You may restrict it to internal usage via the [`Private`][vba_priv] statement.
+
+Now you are ready to work with "Foo" objects, within your module and elsewhere!
 
 
 ## API ##
@@ -165,6 +249,44 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
   [sob_mod_tmpl]: src/SObTemplate.bas
   [sob_mod]:      src/SOb.bas
   [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
+  [sob_todo_1]:   src/SObTemplate.bas#L6
+  [sob_tmpl_ast]: ../../search?type=code&q=path:src/*Template.bas+content:*
+  [sob_cls]:      #typology
+  [vba_const]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/declaring-constants
+  [vba_enum]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
+  [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
+  [vba_arg]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
+  [sob_todo_2]:   src/SObTemplate.bas#L25
+  [sob_tmpl_enm]: src/SObTemplate.bas#L26-L29
+  [vbe_drop]:     https://stackoverflow.com/a/57894889
+  [sob_tmpl_fld]: ../../search?type=code&q=path:src/*Template.bas+content:*__Field.
+  [sob_tmpl_f1]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldOne
+  [sob_tmpl_f2]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldTwo
+  [sob_tmpl_f3]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldThree
+  [sob_todo_3]:   src/SObTemplate.bas#L64
+  [sob_todo_4]:   src/SObTemplate.bas#L99
+  [sob_tmpl_ini]: src/SObTemplate.bas#L65-L80
+  [sob_todo_5]:   src/SObTemplate.bas#L119
+  [sob_tmpl_arr]: src/SObTemplate.bas#L101-L106
+  [sob_tmpl_is]:  src/SObTemplate.bas#L89-L149
+  [sob_todo_6]:   src/SObTemplate.bas#L136
+  [sob_tmpl_p1]:  src/SObTemplate.bas#L174-L181
+  [sob_todo_7]:   src/SObTemplate.bas#L161
+  [sob_tmpl_vld]: src/SObTemplate.bas#L130-L140
+  [sob_tmpl_cir]: src/SObTemplate.bas#L108
+  [sob_todo_8]:   src/SObTemplate.bas#L211
+  [sob_tmpl_asn]: src/SObTemplate.bas#L162-L165
+  [sob_tmpl_as]:  src/SObTemplate.bas#L153-L166
+  [sob_todo_9]:   src/SObTemplate.bas#L244
+  [sob_tmpl_fmt]: src/SObTemplate.bas#L276-L301
+  [sob_todo_10]:  src/SObTemplate.bas#L285
+  [sob_todo_11]:  src/SObTemplate.bas#L289
+  [sob_tmpl_mtd]: src/SObTemplate.bas#L216-L245
+  [vba_fun]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/function-statement
+  [vba_sub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/sub-statement
+  [sob_tmpl_get]: src/SObTemplate.bas#L175-L177
+  [sob_tmpl_scl]: src/SObTemplate.bas#L179-L181
+  [sob_tmpl_obj]: src/SObTemplate.bas#L190-L192
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
