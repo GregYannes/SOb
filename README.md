@@ -111,11 +111,11 @@ You may _optionally_ enhance "Foo" with further steps:
 
   9. [`TODO`][sob_todo_9]: Implement any [methods][sob_tmpl_mtd] you desire, which operate on your "Foo" object.  Each should be a [`Function`][vba_fun] or [`Sub`routine][vba_sub] of the form `Foo_…(ByRef foo As Object, …)` where `foo` is followed by any [arguments][vba_arg] needed by the method.  You may restrict it to internal usage via the [`Private`][vba_priv] statement.
      
-  9. [`TODO`][sob_todo_5]: _Optionally_ call all your field accessors like [`Foo_FieldOne()`][sob_tmpl_p1], in the [`Check ...`][sob_tmpl_chk] call within [`IsFoo()`][sob_tmpl_is].
+  9. [`TODO`][sob_todo_5]: Call all your field accessors like [`Foo_FieldOne()`][sob_tmpl_p1], in the [`Check ...`][sob_tmpl_chk] call within [`IsFoo()`][sob_tmpl_is].
      
      This way, `IsFoo()` also checks that the "Foo" fields are of the expected type, and so forth.
      
-  9. [`TODO`][sob_todo_6]: _Optionally_ apply any [further validation][sob_tmpl_vld] you wish [`IsFoo()`][sob_tmpl_is] to perform.  Each validation step should assign a `Boolean` value to `IsFoo`...
+  9. [`TODO`][sob_todo_6]: Customize any [further validation][sob_tmpl_vld] you wish [`IsFoo()`][sob_tmpl_is] to perform.  Each validation step should assign a `Boolean` value to `IsFoo`...
      
      ```vba
      	IsFoo = ...
