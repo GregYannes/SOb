@@ -132,12 +132,12 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
 
 ## API ##
 
-Here are all the features provided by **`SOb`** for developers.  To avoid confusing _your_ users, any **`SOb`** module hides its own functions from Excel, via [`Option Private`][vba_opt_priv].
+Here are all the features provided by **`SOb`** for developers.  To avoid confusing _your_ users, the [**`SOb`** module][sob_mod] hides its own functions from Excel, via [`Option Private`][vba_opt_priv].
 
 
 ### Metadata ###
 
-Describe the **`SOb`** module _itself_.
+Describe the [**`SOb`** module][sob_mod] _itself_.
 
   - [`MOD_NAME`][sob_meta]: The name (`String`) of the module: `"SOb"`.
   - [`MOD_VERSION`][sob_meta]: Its current [version][sem_ver] (`String`): `"0.1.0"`.
@@ -203,12 +203,12 @@ Textually visualize the entire SOb...
 
 ### Utilities ###
 
-Perform broadly useful ([`Public`][vba_pub]) tasks via an **`SOb`** module...
+Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][sob_mod]...
 
   - [`Assign()`][sob_util]: Assign any value (scalar or objective) to a variable (by [reference][vba_byref]).
   - [`Txt_Indent()`][sob_util]: Indent (`String`) some lines of text.
 
-...along with further ([`Private`][vba_priv]) tasks via an SOb snippet in your own module.
+...along with further ([`Private`][vba_priv]) tasks via an [SOb snippet][sob_snp] in your own module.
 
   - [`Clx_Has()`][sob_util]: Test (`Boolean`) if a [`Collection`][vba_clx] contains an item.
   - [`Clx_Get()`][sob_util]: Safely retrieve any item (`Variant`) from a `Collection`.
