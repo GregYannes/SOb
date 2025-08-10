@@ -191,7 +191,7 @@ Validate SObs within advanced implementations of [`Is*()`][sob_tmpl_chk].
 
 Textually visualize the entire SOb...
 
-  - [`Obj_Print()`][sob_vis]: Print (`String`) an SOb to the [console][vba_immed] with automatic formatting.
+  - [`Obj_Print()`][sob_vis]: Print (`String`) an SOb to the [console][vbe_immed] with automatic formatting.
   - [`Obj_Print0()`][sob_vis]: Print something (`String`) verbatim to the console.
   - [`Obj_Format()`][sob_vis]: Automatically format (`String`) an SOb for printing.
 
@@ -224,7 +224,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vba_cls]:      https://vbaplanet.com/objects.php
   [vba_udt]:      https://learn.microsoft.com/office/vba/language/how-to/user-defined-data-type
   [vba_cons]:     #old-problems
-  [ghlp_repo]:    https://github.com/GregYannes/GitHelp
+  [ghlp_repo]:    https://github.com/GregYannes/GitHelp#readme
   [so_post]:      https://codereview.stackexchange.com/q/293168
   [so_comm_1]:    https://codereview.stackexchange.com/posts/comments/583913
   [so_comm_2]:    https://codereview.stackexchange.com/posts/comments/584856
@@ -305,7 +305,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vba_prp_call]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-property-procedures
   [sob_tmpl_acc]: src/SObTemplate.bas#L170-L212
   [sob_vis]:      docs/Visualization.md
-  [vba_immed]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/immediate-window
+  [vbe_immed]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/immediate-window
   [vba_pub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/public-statement
   [sob_util]:     docs/Utilities.md
   [vba_byref]:    https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
