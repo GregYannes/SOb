@@ -106,11 +106,11 @@ Fill out either template according to these steps:
   1. [`TODO`][sob_todo_11]: Pass any summary (`sum`) or detail (`dtl`) to [`Obj_Format()`][sob_vis], along with all arguments from [`Foo_Format()`][sob_tmpl_fmt].
      
      This way, others can apply various settings when printing your "Foo" object, including developers who wish to build their own SObs upon "Foo".
-     
-  1. [`TODO`][sob_todo_9]: Implement any [methods][sob_tmpl_mtd] you desire, which operate on your "Foo" object.  Each should be a [`Function`][vba_fun] or [`Sub`routine][vba_sub] of the form `Foo_…(ByRef foo As Object, …)` where `foo` is followed by any [arguments][vba_arg] needed by the method.  You may restrict it to internal usage via the [`Private`][vba_priv] statement.
 
 You may _optionally_ enhance "Foo" with further steps:
 
+  9. [`TODO`][sob_todo_9]: Implement any [methods][sob_tmpl_mtd] you desire, which operate on your "Foo" object.  Each should be a [`Function`][vba_fun] or [`Sub`routine][vba_sub] of the form `Foo_…(ByRef foo As Object, …)` where `foo` is followed by any [arguments][vba_arg] needed by the method.  You may restrict it to internal usage via the [`Private`][vba_priv] statement.
+     
   10. [`TODO`][sob_todo_5]: _Optionally_ call all your field accessors like [`Foo_FieldOne()`][sob_tmpl_p1], in the [`Check ...`][sob_tmpl_chk] call within [`IsFoo()`][sob_tmpl_is].
       
       This way, `IsFoo()` also checks that the "Foo" fields are of the expected type, and so forth.
