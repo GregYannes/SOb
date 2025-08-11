@@ -2,7 +2,7 @@
 
 The **`SOb`** framework lets you simulate "objects" in VBA for Excel.
 
-With a [full suite][sob_suite] of features at your fingertips — including [pretty printing][sob_print] — your simulated object ("**SOb**") can replicate an [object][vba_cls] or [UDT][vba_udt] without the [frustrating downsides][vba_cons].  No matter how many **SOb**s you need, or where you need them, this framework supports them within your _existing_ code.  No imports are needed!
+With a [full suite][sob_suite] of features at your fingertips — including [pretty printing][sob_print] — your <ins>**s**</ins>imulated <ins>**ob**</ins>ject ("**SOb**") can replicate an [object][vba_cls] or [UDT][vba_udt] without the [frustrating downsides][vba_cons].  No matter how many **SOb**s you need, or where you need them, this framework supports them within your _existing_ code.  No imports are needed!
 
 
 ## The **`SOb`** Story ##
@@ -36,7 +36,7 @@ To consolidate everything within your existing module, fill out [`SnippetTemplat
 
 ### Dependency ###
 
-To outsource the SOb framework to a single external dependency, fill out [`SObTemplate.bas`][sob_mod_tmpl] and paste into your module.  Then instruct your end user to import the [`SOb.bas`][sob_mod] module, which you may reference as a [submodule][ghub_submod] in your repo.
+To outsource the **`SOb`** framework to a single external dependency, fill out [`SObTemplate.bas`][sob_mod_tmpl] and paste into your module.  Then instruct your end user to import the [`SOb.bas`][sob_mod] module, which you may reference as a [submodule][ghub_submod] in your repo.
 
 
 ### Instructions ###
@@ -208,7 +208,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   - [`Assign()`][sob_util]: Assign any value (scalar or objective) to a variable (by [reference][vba_byref]).
   - [`Txt_Indent()`][sob_util]: Indent (`String`) some lines of text.
 
-...along with further ([`Private`][vba_priv]) tasks via an [SOb snippet][sob_snp] in your own module.
+…along with further ([`Private`][vba_priv]) tasks via an [**`SOb`** snippet][sob_snp] in your own module.
 
   - [`Clx_Has()`][sob_util]: Test (`Boolean`) if a [`Collection`][vba_clx] contains an item.
   - [`Clx_Get()`][sob_util]: Safely retrieve any item (`Variant`) from a `Collection`.
