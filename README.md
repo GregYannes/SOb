@@ -184,7 +184,7 @@ Access simulated "fields" in an SOb...
 Validate SObs within advanced implementations of [`Is*()`][sob_tmpl_chk].
 
   - [`Obj_Check()`][sob_vali]: [Call][vba_prp_call] your [accessors][sob_tmpl_acc] without assignment, merely to test (say) their type integrity.
-  - [`Obj_Error()`][sob_vali]: Test (`Boolean`) if _certain_ errors (like type) invalidate the check, but propagate any _other_ errors.
+  - [`Obj_CheckError()`][sob_vali]: Test (`Boolean`) if _certain_ errors (like type) invalidate the check, but propagate any _other_ errors.
 
 
 ### Visualization ###
