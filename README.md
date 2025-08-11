@@ -39,7 +39,7 @@ To consolidate everything within your existing module, fill out [`SnippetTemplat
 To outsource the **`SOb`** framework to a single external dependency, fill out [`SObTemplate.bas`][sob_mod_tmpl] and paste into your module.  Then instruct your end user to import the [`SOb.bas`][sob_mod] module, which you may reference as a [submodule][ghub_submod] in your repo.
 
 
-### Instructions ###
+### Template ###
 
 Fill out either template according to these steps:
 
