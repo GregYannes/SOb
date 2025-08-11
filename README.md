@@ -241,7 +241,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [udt_hack_srl]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5542053
   [udt_hack_prg]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541375
   [vba_clx]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
-  [sob_secure]:   src/SOb.bas#L479-L494
+  [sob_secure]:   src/SOb.bas#L489-L504
   [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
   [sob_setup]:    #setup
   [sob_tmpls]:    ../../search?type=code&q=path:src/*Template.bas

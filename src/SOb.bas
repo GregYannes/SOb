@@ -263,6 +263,7 @@ End Sub
 Public Function Obj_Error(Optional ByRef e As ErrObject = Nothing, _
 	Optional ByVal typ As Boolean = True _
 ) As Boolean
+	Const NO_ERR_NUMBER As Integer = 0         ' No error.
 	Const TYP_OBJ_ERR_NUMBER As Integer = 13   ' Invalid type.
 	Const TYP_SCL_ERR_NUMBER As Integer = 450  ' Wrong number of arguments or invalid property assignment.
 	
@@ -271,22 +272,31 @@ Public Function Obj_Error(Optional ByRef e As ErrObject = Nothing, _
 		Set e = VBA.Err
 	End If
 	
-	Obj_Error = True
+	' Handle various errors.
+	Dim cat As Boolean
+	Select Case e.Number
+		' Short-circuit with TRUE for no error.
+		Case NO_ERR_NUMBER
+			Obj_Error = True
+			Exit Function
+			
+		' Mark specific errors for catching as desired: namely mismatched data types.
+		Case TYP_SCL_ERR_NUMBER, TYP_OBJ_ERR_NUMBER
+			cat = typ
+			
+		' Mark all other errors for propagation.
+		Case Else
+			cat = False
+	End Select
 	
-	' Catch type errors.
-	If Obj_Error And typ Then
-		If e.Number = TYP_SCL_ERR_NUMBER Or TYP_OBJ_ERR_NUMBER Then
-			GoTo RAISE_ERROR
-		Else
-			Obj_Error = False
-		End If
+	' Return FALSE for errors that should be caught...
+	If cat Then
+		Obj_Error = False
+		
+	' ...and propagate all others.
+	Else
+		Err_Raise e
 	End If
-	
-	' Return the result (FALSE) in lieu of errors.
-	Exit Function
-	
-RAISE_ERROR:
-	Err_Raise e
 End Function
 
 
