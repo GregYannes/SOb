@@ -51,7 +51,7 @@ Fill out either template according to these steps:
      
      This way, you can specify a field to (say) [`Obj_Field()`][sob_flds] by simply selecting it from the [dropdown][vbe_drop] for [`Foo__Field.…`][sob_tmpl_fld].
      
-  1. [`TODO`][sob_todo_8]: Implement [accessors][sob_tmpl_acc] for your [`Foo__Field.…`][sob_tmpl_fld] fields.  Each should be a [`Property`][vba_prp] of the form `Foo_…(ByRef foo As Object)`, and you may restrict it to internal usage via the [`Private`][vba_priv] statement.
+  1. [`TODO`][sob_todo_9]: Implement [accessors][sob_tmpl_acc] for your [`Foo__Field.…`][sob_tmpl_fld] fields.  Each should be a [`Property`][vba_prp] of the form `Foo_…(ByRef foo As Object)`, and you may restrict it to internal usage via the [`Private`][vba_priv] statement.
      
      Simply wrap [`Obj_Get()`][sob_flds] with a [`Property Get`][vba_prp_get] to [_retrieve_][sob_tmpl_get] a field...
      
@@ -83,11 +83,11 @@ Fill out either template according to these steps:
      
      This way, `IsFoo()` checks that a "Foo" object has all its fields.
      
-  1. [`TODO`][sob_todo_7]: Using your accessors, [assign each field][sob_tmpl_asn] from `obj` to its corresponding field in `AsFoo`, within [`AsFoo()`][sob_tmpl_as].
+  1. [`TODO`][sob_todo_8]: Using your accessors, [assign each field][sob_tmpl_asn] from `obj` to its corresponding field in `AsFoo`, within [`AsFoo()`][sob_tmpl_as].
      
      This way, `AsFoo()` can coerce any input (`x`) into a "Foo" object, by extracting fields from the former into the latter.
      
-  1. [`TODO`][sob_todo_10]: Create any summary (`sum`) or detail (`dtl`) you wish, to visually represent your object within [`Foo_Format()`][sob_tmpl_fmt].  The **`SOb`** framework _automatically_ formats these for you: summaries display on a single line...
+  1. [`TODO`][sob_todo_11]: Create any summary (`sum`) or detail (`dtl`) you wish, to visually represent your object within [`Foo_Format()`][sob_tmpl_fmt].  The **`SOb`** framework _automatically_ formats these for you: summaries display on a single line...
      
      > ```
      > <Foo[sum]>
@@ -103,13 +103,13 @@ Fill out either template according to these steps:
      > }>
      > ```
      
-  1. [`TODO`][sob_todo_11]: Pass any summary (`sum`) or detail (`dtl`) to [`Obj_Format()`][sob_vis], along with all arguments from [`Foo_Format()`][sob_tmpl_fmt].
+  1. [`TODO`][sob_todo_12]: Pass any summary (`sum`) or detail (`dtl`) to [`Obj_Format()`][sob_vis], along with all arguments from [`Foo_Format()`][sob_tmpl_fmt].
      
      This way, others can apply various settings when printing your "Foo" object, including developers who wish to build their own SObs upon "Foo".
 
 You may _optionally_ enhance "Foo" with further steps:
 
-  9. [`TODO`][sob_todo_9]: Implement any [methods][sob_tmpl_mtd] you desire, which operate on your "Foo" object.  Each should be a [`Function`][vba_fun] or [`Sub`routine][vba_sub] of the form `Foo_…(ByRef foo As Object, …)` where `foo` is followed by any [arguments][vba_arg] needed by the method.  You may restrict it to internal usage via the [`Private`][vba_priv] statement.
+  9. [`TODO`][sob_todo_10]: Implement any [methods][sob_tmpl_mtd] you desire, which operate on your "Foo" object.  Each should be a [`Function`][vba_fun] or [`Sub`routine][vba_sub] of the form `Foo_…(ByRef foo As Object, …)` where `foo` is followed by any [arguments][vba_arg] needed by the method.  You may restrict it to internal usage via the [`Private`][vba_priv] statement.
      
   9. [`TODO`][sob_todo_5]: Call all your field accessors like [`Foo_FieldOne()`][sob_tmpl_p1], in the [`Check ...`][sob_tmpl_chk] call within [`IsFoo()`][sob_tmpl_is].
      
@@ -266,7 +266,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_flds]:     docs/Fields.md
   [vbe_drop]:     https://stackoverflow.com/a/57894889
   [sob_tmpl_fld]: ../../search?type=code&q=path:src/*Template.bas+content:*__Field.
-  [sob_todo_8]:   src/SObTemplate.bas#L212
+  [sob_todo_9]:   src/SObTemplate.bas#L212
   [sob_tmpl_acc]: src/SObTemplate.bas#L171-L213
   [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
   [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
@@ -281,14 +281,14 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_todo_4]:   src/SObTemplate.bas#L99
   [sob_tmpl_arr]: src/SObTemplate.bas#L101-L106
   [sob_tmpl_is]:  src/SObTemplate.bas#L89-L150
-  [sob_todo_7]:   src/SObTemplate.bas#L162
+  [sob_todo_8]:   src/SObTemplate.bas#L162
   [sob_tmpl_asn]: src/SObTemplate.bas#L163-L166
   [sob_tmpl_as]:  src/SObTemplate.bas#L154-L167
-  [sob_todo_10]:  src/SObTemplate.bas#L286
+  [sob_todo_11]:  src/SObTemplate.bas#L286
   [sob_tmpl_fmt]: src/SObTemplate.bas#L277-L302
-  [sob_todo_11]:  src/SObTemplate.bas#L290
+  [sob_todo_12]:  src/SObTemplate.bas#L290
   [sob_vis]:      docs/Visualization.md
-  [sob_todo_9]:   src/SObTemplate.bas#L245
+  [sob_todo_10]:  src/SObTemplate.bas#L245
   [sob_tmpl_mtd]: src/SObTemplate.bas#L217-L246
   [vba_fun]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/function-statement
   [vba_sub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/sub-statement
