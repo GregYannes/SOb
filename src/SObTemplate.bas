@@ -145,7 +145,7 @@ Public Function Is*(ByRef x As Variant, _
 	
 ' ' Handle inaccessibility.
 ' CHECK_ERROR:
-' 	Is* = SOb.Obj_Error(typ := True)
+' 	Is* = SOb.Obj_CheckError(typ := True)
 End Function
 
 

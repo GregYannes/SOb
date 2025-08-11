@@ -260,7 +260,7 @@ End Sub
 
 
 ' Catches errors for certain checks and propagates all others.
-Public Function Obj_Error(Optional ByRef e As ErrObject = Nothing, _
+Public Function Obj_CheckError(Optional ByRef e As ErrObject = Nothing, _
 	Optional ByVal typ As Boolean = True _
 ) As Boolean
 	Const NO_ERR_NUMBER As Integer = 0         ' No error.
@@ -277,7 +277,7 @@ Public Function Obj_Error(Optional ByRef e As ErrObject = Nothing, _
 	Select Case e.Number
 		' Short-circuit with TRUE for no error.
 		Case NO_ERR_NUMBER
-			Obj_Error = True
+			Obj_CheckError = True
 			Exit Function
 			
 		' Mark specific errors for catching as desired: namely mismatched data types.
@@ -291,7 +291,7 @@ Public Function Obj_Error(Optional ByRef e As ErrObject = Nothing, _
 	
 	' Return FALSE for errors that should be caught...
 	If cat Then
-		Obj_Error = False
+		Obj_CheckError = False
 		
 	' ...and propagate all others.
 	Else
