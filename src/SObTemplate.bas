@@ -145,6 +145,7 @@ Public Function Is*(ByRef x As Variant, _
 	
 ' ' Handle inaccessibility.
 ' CHECK_ERROR:
+' 	' TODO: Specify (TRUE) which validation errors (like type) you desire to report as FALSE.
 ' 	Is* = SOb.Obj_CheckError(typ := True)
 End Function
 

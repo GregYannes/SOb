@@ -266,34 +266,34 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_flds]:     docs/Fields.md
   [vbe_drop]:     https://stackoverflow.com/a/57894889
   [sob_tmpl_fld]: ../../search?type=code&q=path:src/*Template.bas+content:*__Field.
-  [sob_todo_8]:   src/SObTemplate.bas#L211
-  [sob_tmpl_acc]: src/SObTemplate.bas#L170-L212
+  [sob_todo_8]:   src/SObTemplate.bas#L212
+  [sob_tmpl_acc]: src/SObTemplate.bas#L171-L213
   [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
   [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
   [vba_prp_get]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
-  [sob_tmpl_get]: src/SObTemplate.bas#L175-L177
+  [sob_tmpl_get]: src/SObTemplate.bas#L176-L178
   [vba_prp_let]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-let-statement
-  [sob_tmpl_scl]: src/SObTemplate.bas#L179-L181
+  [sob_tmpl_scl]: src/SObTemplate.bas#L180-L182
   [vba_prp_set]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-set-statement
-  [sob_tmpl_obj]: src/SObTemplate.bas#L190-L192
+  [sob_tmpl_obj]: src/SObTemplate.bas#L191-L193
   [sob_todo_3]:   src/SObTemplate.bas#L64
   [sob_tmpl_ini]: src/SObTemplate.bas#L65-L80
   [sob_todo_4]:   src/SObTemplate.bas#L99
   [sob_tmpl_arr]: src/SObTemplate.bas#L101-L106
-  [sob_tmpl_is]:  src/SObTemplate.bas#L89-L149
-  [sob_todo_7]:   src/SObTemplate.bas#L161
-  [sob_tmpl_asn]: src/SObTemplate.bas#L162-L165
-  [sob_tmpl_as]:  src/SObTemplate.bas#L153-L166
-  [sob_todo_10]:  src/SObTemplate.bas#L285
-  [sob_tmpl_fmt]: src/SObTemplate.bas#L276-L301
-  [sob_todo_11]:  src/SObTemplate.bas#L289
+  [sob_tmpl_is]:  src/SObTemplate.bas#L89-L150
+  [sob_todo_7]:   src/SObTemplate.bas#L162
+  [sob_tmpl_asn]: src/SObTemplate.bas#L163-L166
+  [sob_tmpl_as]:  src/SObTemplate.bas#L154-L167
+  [sob_todo_10]:  src/SObTemplate.bas#L286
+  [sob_tmpl_fmt]: src/SObTemplate.bas#L277-L302
+  [sob_todo_11]:  src/SObTemplate.bas#L290
   [sob_vis]:      docs/Visualization.md
-  [sob_todo_9]:   src/SObTemplate.bas#L244
-  [sob_tmpl_mtd]: src/SObTemplate.bas#L216-L245
+  [sob_todo_9]:   src/SObTemplate.bas#L245
+  [sob_tmpl_mtd]: src/SObTemplate.bas#L217-L246
   [vba_fun]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/function-statement
   [vba_sub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/sub-statement
   [sob_todo_5]:   src/SObTemplate.bas#L119
-  [sob_tmpl_p1]:  src/SObTemplate.bas#L174-L181
+  [sob_tmpl_p1]:  src/SObTemplate.bas#L175-L182
   [sob_tmpl_chk]: src/SObTemplate.bas#L111-L140
   [sob_todo_6]:   src/SObTemplate.bas#L136
   [sob_tmpl_vld]: src/SObTemplate.bas#L130-L140
