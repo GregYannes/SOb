@@ -115,6 +115,10 @@ You may _optionally_ enhance "Foo" with further steps:
      
      This way, `IsFoo()` also checks that the "Foo" fields are of the expected type, and so forth.
      
+  9. [`TODO`][sob_todo_7]: Specify which validation errors (like type) you wish to catch, via arguments to the [`Obj_CheckError(...)`][sob_tmpl_err] call within [`IsFoo()`][sob_tmpl_is].  See [`Obj_CheckError()`][sob_err_args] for details.
+     
+     This way, `IsFoo()` returns `False` when errors disqualify `x` as a "Foo" object, while "bubbling up" other errors for (say) improper usage.
+     
   9. [`TODO`][sob_todo_6]: Customize any [further validation][sob_tmpl_vld] you wish [`IsFoo()`][sob_tmpl_is] to perform.  Each validation step should assign a `Boolean` value to `IsFoo`...
      
      ```vba
@@ -298,6 +302,9 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_todo_6]:   src/SObTemplate.bas#L136
   [sob_tmpl_vld]: src/SObTemplate.bas#L130-L140
   [sob_tmpl_cir]: src/SObTemplate.bas#L108
+  [sob_todo_7]:   src/SObTemplate.bas#L148
+  [sob_tmpl_err]: src/SObTemplate.bas#L149
+  [sob_err_args]: docs/Validation.md#syntax
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
