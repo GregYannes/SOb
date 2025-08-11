@@ -1,9 +1,9 @@
 ' ##########
-' ## SOBs ##
+' ## SObs ##
 ' ##########
 
 ' #####################
-' ## SOBs | Creation ##
+' ## SObs | Creation ##
 ' #####################
 
 ' Construct a simulated object.
@@ -33,7 +33,7 @@ End Sub
 
 
 ' #####################
-' ## SOBs | Typology ##
+' ## SObs | Typology ##
 ' #####################
 
 ' The class of a simulated object: the developer may read it...
@@ -116,7 +116,7 @@ End Function
 
 
 ' ###################
-' ## SOBs | Fields ##
+' ## SObs | Fields ##
 ' ###################
 
 ' Get a simulated field as a Property.
@@ -229,7 +229,7 @@ End Function
 
 
 ' #######################
-' ## SOBs | Validation ##
+' ## SObs | Validation ##
 ' #######################
 
 ' Checks that simulated fields match the type constraints of their accessors.
@@ -280,7 +280,7 @@ End Function
 
 
 ' ##########################
-' ## SOBs | Visualization ##
+' ## SObs | Visualization ##
 ' ##########################
 
 ' Print a simulated object with automatic formatting...
@@ -423,7 +423,7 @@ End Function
 
 
 ' ####################
-' ## SOBs | Support ##
+' ## SObs | Support ##
 ' ####################
 
 ' Test for a simulated class.
