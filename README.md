@@ -21,7 +21,7 @@ While UDTs are restrictively [siloed][udt_silo] within your module, their fields
 
 ### New Solution ###
 
-The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  You may let other modules access your SOb, yet its fields are ["encrypted"][sob_secure] against the more insidious tampering.  And while you may store your SObs as [`Object`][vba_obj]s, they require no class modules whatsoever—instead you can [easily set them all up][sob_setup] within your existing module!
+The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  You may let other modules access your SOb, yet its fields are ["encrypted"][sob_secure] against the more insidious tampering.  And while you may store your SObs as generic [`Object`][vba_obj]s, they require no class modules whatsoever—instead you can [easily set them all up][sob_setup] within your existing module!
 
 
 ## Setup ##
@@ -118,11 +118,11 @@ You may _optionally_ enhance "Foo" with further steps:
      
   9. [`TODO`][sob_todo_5]: Call all your field accessors like [`Foo_FieldOne()`][sob_tmpl_p1], in the [`Check ...`][sob_tmpl_chk] call within [`IsFoo()`][sob_tmpl_is].
      
-     This way, `IsFoo()` also checks that the "Foo" fields are of the expected type, and so forth.
+     This way, `IsFoo()` also validates that the "Foo" fields are of the expected type, and so forth.
      
   9. [`TODO`][sob_todo_7]: Specify which validation errors (like type) you wish to catch, via arguments to the [`Obj_CheckError(...)`][sob_tmpl_err] call within [`IsFoo()`][sob_tmpl_is].  See [`Obj_CheckError()`][sob_err_args] for details.
      
-     This way, `IsFoo()` returns `False` when errors disqualify `x` as a "Foo" object, while "bubbling up" other errors for (say) improper usage.
+     This way, `IsFoo()` returns `False` when errors disqualify the input (`x`) as a "Foo" object, while ["bubbling up"][vba_ppg_err] other errors for (say) improper usage.
      
   9. [`TODO`][sob_todo_6]: Customize any [further validation][sob_tmpl_vld] you wish [`IsFoo()`][sob_tmpl_is] to perform.  Each validation step should assign a `Boolean` value to `IsFoo`...
      
@@ -148,8 +148,8 @@ Here are all the features provided by **`SOb`** for developers.  To avoid confus
 
 Describe the [**`SOb`** module][sob_mod] _itself_.
 
-  - [`MOD_NAME`][sob_meta]: The name (`String`) of the module: `"SOb"`.
-  - [`MOD_VERSION`][sob_meta]: Its current [version][sem_ver] (`String`): `"0.1.0"`.
+  - [`MOD_NAME`][sob_meta]: The name (`String`) of the module: `"SOb"`
+  - [`MOD_VERSION`][sob_meta]: Its current [version][sem_ver] (`String`): `"0.1.0"`
   - [`MOD_REPO`][sob_meta]: The URL (`String`) to its repo: `"https://github.com/GregYannes/SOb"`
 
 
@@ -311,6 +311,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_todo_7]:   src/SObTemplate.bas#L148
   [sob_tmpl_err]: src/SObTemplate.bas#L149
   [sob_err_args]: docs/Validation.md#syntax
+  [vba_ppg_err]:  https://www.fastercapital.com/content/Error-Handling--Error-Handling-Excellence--Bulletproofing-Your-VBA-Code.html#Error-Bubbling-and-Propagation
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
