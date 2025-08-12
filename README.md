@@ -39,6 +39,11 @@ To consolidate everything within your existing module, fill out [`SnippetTemplat
 To outsource the **`SOb`** framework to a single external dependency, fill out [`SObTemplate.bas`][sob_mod_tmpl] and paste into your module.  Then instruct your end user to import the [`SOb.bas`][sob_mod] module, which you may reference as a [submodule][ghub_submod] in your repo.
 
 
+> [!WARNING]
+> 
+> By outsourcing, you reduce your security against tampering!  The ["encryption"][sob_secure] is no longer scoped to your module, so others can edit your "private" fields by simply calling [`SOb.Obj_Field()`][sob_flds] on your SOb.
+
+
 ### Template ###
 
 Fill out either template according to these steps:
@@ -255,6 +260,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_mod_tmpl]: src/SObTemplate.bas
   [sob_mod]:      src/SOb.bas
   [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
+  [sob_flds]:     docs/Fields.md
   [sob_todo_1]:   src/SObTemplate.bas#L6
   [sob_tmpl_ast]: ../../search?type=code&q=path:src/*Template.bas+content:*
   [sob_cls]:      #typology
@@ -267,7 +273,6 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_tmpl_f1]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldOne
   [sob_tmpl_f2]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldTwo
   [sob_tmpl_f3]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldThree
-  [sob_flds]:     docs/Fields.md
   [vbe_drop]:     https://stackoverflow.com/a/57894889
   [sob_tmpl_fld]: ../../search?type=code&q=path:src/*Template.bas+content:*__Field.
   [sob_todo_9]:   src/SObTemplate.bas#L212
