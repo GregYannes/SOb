@@ -40,17 +40,17 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Secure             | Are its fields secure against unauthorized editing?          |   | Yes[^9]        | Yes                | No             |
 
 
-[^1]: A class module may [call procedures from standard modules][vba_cls_call], like your own module or even the [**`SOb`** module][sob_mod].
-[^2]: Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
-[^3]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
-[^4]: Via the [`TypeName()`][vba_type_fn] function or the [`TypeOf`][vba_type_op] operator.
-[^5]: Technically these ["methods"][sob_tmpl_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, ...)`, where the `sob` is passed [by reference][vba_byref].
-[^6]: Technically you _could_ mimic an SOb and implement "methods"[^5] of the form `UDT_Method(udt, ...)`, where the `udt` is passed [by reference][vba_byref].
-[^7]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
-[^8]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
-[^9]: Others cannot _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
-      
-      However, if you [outsource the framework][sob_depend] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
+  [^1]: A class module may [call procedures from standard modules][vba_cls_call], like your own module or even the [**`SOb`** module][sob_mod].
+  [^2]: Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
+  [^3]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
+  [^4]: Via the [`TypeName()`][vba_type_fn] function or the [`TypeOf`][vba_type_op] operator.
+  [^5]: Technically these ["methods"][sob_tmpl_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, ...)`, where the `sob` is passed [by reference][vba_byref].
+  [^6]: Technically you _could_ mimic an SOb and implement "methods"[^5] of the form `UDT_Method(udt, ...)`, where the `udt` is passed [by reference][vba_byref].
+  [^7]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
+  [^8]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
+  [^9]: Others cannot _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
+    
+    However, if you [outsource the framework][sob_depend] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
 
 
 ## Setup ##
@@ -257,111 +257,111 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
 
 
 
-[sob_suite]:    #api
-[sob_print]:    #visualization
-[vba_cls]:      https://vbaplanet.com/objects.php
-[vba_udt]:      https://learn.microsoft.com/office/vba/language/how-to/user-defined-data-type
-[vba_cons]:     #old-problems
-[ghlp_repo]:    https://github.com/GregYannes/GitHelp#readme
-[so_post]:      https://codereview.stackexchange.com/q/293168
-[so_comm_1]:    https://codereview.stackexchange.com/posts/comments/583913
-[so_comm_2]:    https://codereview.stackexchange.com/posts/comments/584856
-[obj_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5995379
-[vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
-[udt_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971117
-[udt_silo]:     https://stackoverflow.com/q/38361276
-[udt_tamp]:     http://cpearson.com/excel/classes.aspx
-[udt_pass_var]: https://vbforums.com/showthread.php?304617-Storing-a-UDT-in-a-variant-type-mismatch#post1785101
-[udt_pass_obj]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5540423
-[udt_pass_clx]: https://vbforums.com/showthread.php?599355-RESOLVED-Addin-a-user-defined-type-to-a-collection
-[udt_pass_dix]: https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971115
-[udt_dll]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541509
-[udt_hack_srl]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5542053
-[udt_hack_prg]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541375
-[vba_clx]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
-[sob_secure]:   src/SOb.bas#L489-L504
-[vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
-[vba_var]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
-[sob_setup]:    #setup
-[vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
-[vba_cls_call]: https://stackoverflow.com/posts/comments/118407731
-[sob_mod]:      src/SOb.bas
-[udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
-[vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
-[sob_typo]:     docs/Typology.md
-[vba_type_fn]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/typename-function
-[vba_type_op]:  https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/typeof-operator
-[sob_tmpl_mtd]: src/SObTemplate.bas#L217-L246
-[vba_byref]:    https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
-[vb_net]:       https://learn.microsoft.com/dotnet/visual-basic
-[vba_tostring]: https://stackoverflow.com/posts/comments/98934630
-[net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
-[vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
-[vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
-[sob_depend]:   #dependency
-[sob_fld]:      docs/Field.md
-[sob_tmpls]:    ../../search?type=code&q=path:src/*Template.bas
-[sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
-[sob_snp_tmpl]: src/SnippetTemplate.bas
-[sob_snp]:      src/Snippet.bas
-[sob_mod_tmpl]: src/SObTemplate.bas
-[ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
-[sob_todo_1]:   src/SObTemplate.bas#L6
-[sob_tmpl_ast]: ../../search?type=code&q=path:src/*Template.bas+content:*
-[sob_cls]:      #typology
-[vba_const]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/declaring-constants
-[vba_enum]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
-[vba_arg]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
-[sob_todo_2]:   src/SObTemplate.bas#L25
-[sob_tmpl_enm]: src/SObTemplate.bas#L26-L29
-[sob_tmpl_f1]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldOne
-[sob_tmpl_f2]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldTwo
-[sob_tmpl_f3]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldThree
-[vbe_drop]:     https://stackoverflow.com/a/57894889
-[sob_tmpl_fld]: ../../search?type=code&q=path:src/*Template.bas+content:*__Field.
-[sob_todo_9]:   src/SObTemplate.bas#L212
-[sob_tmpl_acc]: src/SObTemplate.bas#L171-L213
-[vba_prp_get]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
-[sob_tmpl_get]: src/SObTemplate.bas#L176-L178
-[vba_prp_let]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-let-statement
-[sob_tmpl_scl]: src/SObTemplate.bas#L180-L182
-[vba_prp_set]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-set-statement
-[sob_tmpl_obj]: src/SObTemplate.bas#L191-L193
-[sob_todo_3]:   src/SObTemplate.bas#L64
-[sob_tmpl_ini]: src/SObTemplate.bas#L65-L80
-[sob_flds]:     docs/Fields.md
-[sob_todo_4]:   src/SObTemplate.bas#L99
-[sob_tmpl_arr]: src/SObTemplate.bas#L101-L106
-[sob_tmpl_is]:  src/SObTemplate.bas#L89-L150
-[sob_todo_8]:   src/SObTemplate.bas#L162
-[sob_tmpl_asn]: src/SObTemplate.bas#L163-L166
-[sob_tmpl_as]:  src/SObTemplate.bas#L154-L167
-[sob_todo_11]:  src/SObTemplate.bas#L286
-[sob_tmpl_fmt]: src/SObTemplate.bas#L277-L302
-[sob_todo_12]:  src/SObTemplate.bas#L290
-[sob_vis]:      docs/Visualization.md
-[sob_todo_10]:  src/SObTemplate.bas#L245
-[vba_fun]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/function-statement
-[vba_sub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/sub-statement
-[sob_todo_5]:   src/SObTemplate.bas#L119
-[sob_tmpl_p1]:  src/SObTemplate.bas#L175-L182
-[sob_tmpl_chk]: src/SObTemplate.bas#L111-L140
-[sob_todo_7]:   src/SObTemplate.bas#L148
-[sob_tmpl_err]: src/SObTemplate.bas#L149
-[sob_err_args]: docs/Validation.md#syntax
-[vba_ppg_err]:  https://www.fastercapital.com/content/Error-Handling--Error-Handling-Excellence--Bulletproofing-Your-VBA-Code.html#Error-Bubbling-and-Propagation
-[sob_todo_6]:   src/SObTemplate.bas#L136
-[sob_tmpl_vld]: src/SObTemplate.bas#L130-L140
-[sob_tmpl_cir]: src/SObTemplate.bas#L108
-[vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
-[sob_meta]:     docs/Metadata.md
-[sem_ver]:      https://semver.org
-[sob_cre]:      docs/Creation.md
-[vba_arr_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
-[sob_vali]:     docs/Validation.md
-[vba_prp_call]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-property-procedures
-[vbe_immed]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/immediate-window
-[vba_pub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/public-statement
-[sob_util]:     docs/Utilities.md
-[vba_arr]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
-[vba_err_obj]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/err-object
+  [sob_suite]:    #api
+  [sob_print]:    #visualization
+  [vba_cls]:      https://vbaplanet.com/objects.php
+  [vba_udt]:      https://learn.microsoft.com/office/vba/language/how-to/user-defined-data-type
+  [vba_cons]:     #old-problems
+  [ghlp_repo]:    https://github.com/GregYannes/GitHelp#readme
+  [so_post]:      https://codereview.stackexchange.com/q/293168
+  [so_comm_1]:    https://codereview.stackexchange.com/posts/comments/583913
+  [so_comm_2]:    https://codereview.stackexchange.com/posts/comments/584856
+  [obj_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5995379
+  [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
+  [udt_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971117
+  [udt_silo]:     https://stackoverflow.com/q/38361276
+  [udt_tamp]:     http://cpearson.com/excel/classes.aspx
+  [udt_pass_var]: https://vbforums.com/showthread.php?304617-Storing-a-UDT-in-a-variant-type-mismatch#post1785101
+  [udt_pass_obj]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5540423
+  [udt_pass_clx]: https://vbforums.com/showthread.php?599355-RESOLVED-Addin-a-user-defined-type-to-a-collection
+  [udt_pass_dix]: https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971115
+  [udt_dll]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541509
+  [udt_hack_srl]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5542053
+  [udt_hack_prg]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541375
+  [vba_clx]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
+  [sob_secure]:   src/SOb.bas#L489-L504
+  [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
+  [vba_var]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
+  [sob_setup]:    #setup
+  [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
+  [vba_cls_call]: https://stackoverflow.com/posts/comments/118407731
+  [sob_mod]:      src/SOb.bas
+  [udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
+  [vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
+  [sob_typo]:     docs/Typology.md
+  [vba_type_fn]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/typename-function
+  [vba_type_op]:  https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/typeof-operator
+  [sob_tmpl_mtd]: src/SObTemplate.bas#L217-L246
+  [vba_byref]:    https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
+  [vb_net]:       https://learn.microsoft.com/dotnet/visual-basic
+  [vba_tostring]: https://stackoverflow.com/posts/comments/98934630
+  [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
+  [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
+  [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
+  [sob_depend]:   #dependency
+  [sob_fld]:      docs/Field.md
+  [sob_tmpls]:    ../../search?type=code&q=path:src/*Template.bas
+  [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
+  [sob_snp_tmpl]: src/SnippetTemplate.bas
+  [sob_snp]:      src/Snippet.bas
+  [sob_mod_tmpl]: src/SObTemplate.bas
+  [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
+  [sob_todo_1]:   src/SObTemplate.bas#L6
+  [sob_tmpl_ast]: ../../search?type=code&q=path:src/*Template.bas+content:*
+  [sob_cls]:      #typology
+  [vba_const]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/declaring-constants
+  [vba_enum]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
+  [vba_arg]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
+  [sob_todo_2]:   src/SObTemplate.bas#L25
+  [sob_tmpl_enm]: src/SObTemplate.bas#L26-L29
+  [sob_tmpl_f1]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldOne
+  [sob_tmpl_f2]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldTwo
+  [sob_tmpl_f3]:  ../../search?type=code&q=path:src/*Template.bas+content:FieldThree
+  [vbe_drop]:     https://stackoverflow.com/a/57894889
+  [sob_tmpl_fld]: ../../search?type=code&q=path:src/*Template.bas+content:*__Field.
+  [sob_todo_9]:   src/SObTemplate.bas#L212
+  [sob_tmpl_acc]: src/SObTemplate.bas#L171-L213
+  [vba_prp_get]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
+  [sob_tmpl_get]: src/SObTemplate.bas#L176-L178
+  [vba_prp_let]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-let-statement
+  [sob_tmpl_scl]: src/SObTemplate.bas#L180-L182
+  [vba_prp_set]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-set-statement
+  [sob_tmpl_obj]: src/SObTemplate.bas#L191-L193
+  [sob_todo_3]:   src/SObTemplate.bas#L64
+  [sob_tmpl_ini]: src/SObTemplate.bas#L65-L80
+  [sob_flds]:     docs/Fields.md
+  [sob_todo_4]:   src/SObTemplate.bas#L99
+  [sob_tmpl_arr]: src/SObTemplate.bas#L101-L106
+  [sob_tmpl_is]:  src/SObTemplate.bas#L89-L150
+  [sob_todo_8]:   src/SObTemplate.bas#L162
+  [sob_tmpl_asn]: src/SObTemplate.bas#L163-L166
+  [sob_tmpl_as]:  src/SObTemplate.bas#L154-L167
+  [sob_todo_11]:  src/SObTemplate.bas#L286
+  [sob_tmpl_fmt]: src/SObTemplate.bas#L277-L302
+  [sob_todo_12]:  src/SObTemplate.bas#L290
+  [sob_vis]:      docs/Visualization.md
+  [sob_todo_10]:  src/SObTemplate.bas#L245
+  [vba_fun]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/function-statement
+  [vba_sub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/sub-statement
+  [sob_todo_5]:   src/SObTemplate.bas#L119
+  [sob_tmpl_p1]:  src/SObTemplate.bas#L175-L182
+  [sob_tmpl_chk]: src/SObTemplate.bas#L111-L140
+  [sob_todo_7]:   src/SObTemplate.bas#L148
+  [sob_tmpl_err]: src/SObTemplate.bas#L149
+  [sob_err_args]: docs/Validation.md#syntax
+  [vba_ppg_err]:  https://www.fastercapital.com/content/Error-Handling--Error-Handling-Excellence--Bulletproofing-Your-VBA-Code.html#Error-Bubbling-and-Propagation
+  [sob_todo_6]:   src/SObTemplate.bas#L136
+  [sob_tmpl_vld]: src/SObTemplate.bas#L130-L140
+  [sob_tmpl_cir]: src/SObTemplate.bas#L108
+  [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
+  [sob_meta]:     docs/Metadata.md
+  [sem_ver]:      https://semver.org
+  [sob_cre]:      docs/Creation.md
+  [vba_arr_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
+  [sob_vali]:     docs/Validation.md
+  [vba_prp_call]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-property-procedures
+  [vbe_immed]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/immediate-window
+  [vba_pub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/public-statement
+  [sob_util]:     docs/Utilities.md
+  [vba_arr]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
+  [vba_err_obj]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/err-object
