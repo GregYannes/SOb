@@ -258,15 +258,17 @@ Public Function Dix_Format(ByRef dix As Object, _
 	Optional ByVal indent As String = VBA.vbTab, _
 	Optional ByVal orphan As Boolean = True _
 ) As String
+	' Summarize the "Dix" object with its size...
 	Dim sum As String: sum = Dix_Count(dix)
 	
+	' ...and detail it with a breakdown of its fields.
 	Dim dtl As String: dtl = SOb.Obj_FormatFields0( _
 		"Keys",  "Collection[" & Dix_Keys(dix).Count & "]", _
 		"Items", "Collection[" & Dix_Items(dix).Count & "]", _
 		"Count", Dix_Count(dix) _
 	)
 	
-	' Adjust settings to your satisfaction.
+	' Pass the settings for formatting.
 	Dix_Format = SOb.Obj_Format(dix, _
 		sum := sum, _
 		dtl := dtl, _
