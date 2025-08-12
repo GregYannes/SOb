@@ -23,6 +23,35 @@ While UDTs are restrictively [siloed][udt_silo] between classes and modules, the
 
 The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  You may let other modules access your SOb, yet its fields are ["encrypted"][sob_secure] against the more insidious tampering.  And while you may pass your SObs to generic [`Object`][vba_obj]s (or [`Variant`][vba_var]s), they require no class modules whatsoever—instead you can [easily set them all up][sob_setup] within your existing module!
 
+| Feature            | Description                                                  |   | SOb     | Object  | UDT    |
+| :----------------- | :----------------------------------------------------------- | - | :-----: | :-----: | :----: |
+| Painless           | Is it quick and easy for you to code?                        |   | Yes     | No      | Yes    |
+| Native             | Is it native to VBA?                                         |   | Yes     | Yes     | Yes    |
+| Portable           | Does it work across all platforms?                           |   | Yes     | Yes     | Yes    |
+| Independent        | Is it free of external dependencies?                         |   | Yes     | No      | Yes    |
+| Global             | Can it be used seamlessly across other modules and classes?  |   | Yes[^1] | Yes     | No     |
+| Compilable         | Can its dependents compile in its absence?                   |   | Yes     | No      | No[^2] |
+| Placeholder        | Can it be passed to a generic `Object` (or `Variant`)?       |   | Yes     | Yes     | No[^2] |
+| Collectible        | Can it be included within a `Collection` (or `Dictionary`)?  |   | Yes     | Yes     | No[^2] |
+| Identity           | Is its type identifiable by name, so you can distinguish it? |   | Yes[^3] | Yes[^4] | No     |
+| Methods            | Does it support [procedures][vba_proc] that operate on it?   |   | Yes[^5] | Yes     | No[^6] |
+| Printing           | Does it support pretty printing for visualization?           |   | Yes     | No[^7]  | No     |
+| Private            | Can you hide certain fields (and "methods") from your user?  |   | Yes[^8] | Yes[^8] | No     |
+| Secure             | Are its fields secure against unauthorized editing?          |   | Yes[^9] | Yes     | No     |
+
+
+[^1]: A class module may [call procedures from standard modules][vba_cls_call], like your own module or even the [**`SOb`** module][sob_mod].
+[^2]: Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
+[^3]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
+[^4]: Via the [`TypeName()`][vba_type_fn] function or the [`TypeOf`][vba_type_op] operator.
+[^5]: Technically these ["methods"][sob_tmpl_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, ...)`, where the `sob` is passed [by reference][vba_byref].
+[^6]: Technically you _could_ mimic an SOb and implement "methods"[^5] of the form `UDT_Method(udt, ...)`, where the `udt` is passed [by reference][vba_byref].
+[^7]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
+[^8]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
+[^9]: Others cannot _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
+      
+      However, if you [outsource the framework][sob_depend] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
+
 
 ## Setup ##
 
@@ -254,6 +283,15 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
   [vba_var]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
   [sob_setup]:    #setup
+  [vba_cls_call]: https://stackoverflow.com/posts/comments/118407731
+  [udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
+  [vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
+  [vba_type_fn]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/typename-function
+  [vba_type_op]:  https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/typeof-operator
+  [vb_net]:       https://learn.microsoft.com/dotnet/visual-basic
+  [vba_tostring]: https://stackoverflow.com/posts/comments/98934630
+  [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
+  [sob_depend]:   #dependency
   [sob_tmpls]:    ../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
   [sob_snp_tmpl]: src/SnippetTemplate.bas
