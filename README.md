@@ -41,7 +41,7 @@ To outsource the **`SOb`** framework to a single external dependency, fill out [
 
 > [!WARNING]
 > 
-> By outsourcing, you reduce your security against tampering!  The ["encryption"][sob_secure] is no longer scoped to your module, so others can edit your "private" fields by simply calling [`SOb.Obj_Field()`][sob_flds] on your SOb.
+> By outsourcing, you reduce your security against tampering!  The ["encryption"][sob_secure] is no longer scoped to your module, so others can edit your "private" fields by simply calling [`SOb.Obj_Field()`][sob_fld] on your SOb.
 
 
 ### Template ###
@@ -54,11 +54,11 @@ Fill out either template according to these steps:
      
   1. [`TODO`][sob_todo_2]: Enumerate the [fields][sob_tmpl_enm] you desire for your SOb.  Currently there are three placeholders for these fields: [`FieldOne`][sob_tmpl_f1] and [`FieldTwo`][sob_tmpl_f2] and [`FieldThree`][sob_tmpl_f3].  Feel free to **Find & Replace** these, and to append further fields of your own.
      
-     This way, you can specify a field to (say) [`Obj_Field()`][sob_flds] by simply selecting it from the [dropdown][vbe_drop] for [`Foo__Field.…`][sob_tmpl_fld].
+     This way, you can specify a field to (say) [`Obj_Field()`][sob_fld] by simply selecting it from the [dropdown][vbe_drop] for [`Foo__Field.…`][sob_tmpl_fld].
      
   1. [`TODO`][sob_todo_9]: Implement [accessors][sob_tmpl_acc] for your [`Foo__Field.…`][sob_tmpl_fld] fields.  Each should be a [`Property`][vba_prp] of the form `Foo_…(ByRef foo As Object)`, and you may restrict it to internal usage via the [`Private`][vba_priv] statement.
      
-     Simply wrap [`Obj_Get()`][sob_flds] with a [`Property Get`][vba_prp_get] to [_retrieve_][sob_tmpl_get] a field...
+     Simply wrap [`Obj_Get()`][sob_fld] with a [`Property Get`][vba_prp_get] to [_retrieve_][sob_tmpl_get] a field...
      
      ```vba
      Property Get Foo_FieldOne(ByRef foo As Object) As Integer
@@ -177,8 +177,8 @@ Ascertain the "type" of an SOb...
 
 Access simulated "fields" in an SOb...
 
-  - [`Obj_Field()`][sob_flds]: Read ([`Get`][vba_prp_get]) and write ([`Let`][vba_prp_let] or [`Set`][vba_prp_set]) the field as a [`Property`][vba_prp].
-  - [`Obj_Get()`][sob_flds]: A delegate of [`Property Get`][vba_prp_get] with protection against missing fields.
+  - [`Obj_Field()`][sob_fld]: Read ([`Get`][vba_prp_get]) and write ([`Let`][vba_prp_let] or [`Set`][vba_prp_set]) the field as a [`Property`][vba_prp].
+  - [`Obj_Get()`][sob_fld]: A delegate of [`Property Get`][vba_prp_get] with protection against missing fields.
 
 ...along with metadata about such fields.
 
@@ -260,7 +260,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_mod_tmpl]: src/SObTemplate.bas
   [sob_mod]:      src/SOb.bas
   [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
-  [sob_flds]:     docs/Fields.md
+  [sob_fld]:      docs/Field.md
   [sob_todo_1]:   src/SObTemplate.bas#L6
   [sob_tmpl_ast]: ../../search?type=code&q=path:src/*Template.bas+content:*
   [sob_cls]:      #typology
@@ -287,6 +287,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_tmpl_obj]: src/SObTemplate.bas#L191-L193
   [sob_todo_3]:   src/SObTemplate.bas#L64
   [sob_tmpl_ini]: src/SObTemplate.bas#L65-L80
+  [sob_flds]:     docs/Fields.md
   [sob_todo_4]:   src/SObTemplate.bas#L99
   [sob_tmpl_arr]: src/SObTemplate.bas#L101-L106
   [sob_tmpl_is]:  src/SObTemplate.bas#L89-L150
