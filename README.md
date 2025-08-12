@@ -16,7 +16,7 @@ Like me, you might desire several such data structures, where _some_ fields are 
 
 Unfortunately, neither objects nor UDTs achieve the outcome above!  For every object you include, your users must install an additional class module, and ["classes are a pain"][obj_cons] to develop.  Furthermore, their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].  But if objects are painful, then ["UDTs are _notoriously_ problematic"][udt_cons].
 
-While UDTs are restrictively [siloed][udt_silo] within your module, their fields are still [vulnerable to editing][udt_tamp].  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj], nor can you store them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].  To avoid burdening users with [prohibitive setup][udt_dll], developers have often resorted to [dubious][udt_hack_srl] [hacks][udt_hack_prg]!
+While UDTs are restrictively [siloed][udt_silo] between classes and modules, their fields are still [vulnerable to editing][udt_tamp].  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj], nor can you store them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].  To avoid burdening users with [prohibitive setup][udt_dll], developers have often resorted to [dubious][udt_hack_srl] [hacks][udt_hack_prg]!
 
 
 ### New Solution ###
@@ -240,7 +240,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [obj_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5995379
   [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
   [udt_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971117
-  [udt_silo]:     https://stackoverflow.com/a/41689531
+  [udt_silo]:     https://stackoverflow.com/q/38361276
   [udt_tamp]:     http://cpearson.com/excel/classes.aspx
   [udt_pass_var]: https://vbforums.com/showthread.php?304617-Storing-a-UDT-in-a-variant-type-mismatch#post1785101
   [udt_pass_obj]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5540423
