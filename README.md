@@ -29,15 +29,15 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Native             | Is it native to VBA?                                         |   | ✓              | ✓                  | ✓              |
 | Portable           | Does it work across all platforms?                           |   | ✓              | ✓                  | ✓              |
 | Independent        | Is it free of external dependencies?                         |   | ✓              |                    | ✓              |
-| Global             | Can it be used seamlessly across other modules and classes?  |   | ✓[^1]          | ✓                  |                |
-| Compilable         | Can its dependents compile in its absence?                   |   | ✓              |                    |  [^2]          |
-| Placeholder        | Can it be passed to a generic `Object` (or `Variant`)?       |   | ✓              | ✓                  |  [^2]          |
-| Collectible        | Can it be included within a `Collection` (or `Dictionary`)?  |   | ✓              | ✓                  |  [^2]          |
-| Identity           | Is its type identifiable by name, so you can distinguish it? |   | ✓[^3]          | ✓[^4]              |                |
-| Methods            | Does it support [procedures][vba_proc] that operate on it?   |   | ✓[^5]          | ✓                  |  [^6]          |
-| Printing           | Does it support pretty printing for visualization?           |   | ✓              |  [^7]              |                |
-| Private            | Can you hide certain fields (and "methods") from your user?  |   | ✓[^8]          | ✓[^8]              |                |
-| Secure             | Are its fields secure against unauthorized editing?          |   | ✓[^9]          | ✓                  |                |
+| Global             | Can it be used seamlessly across other modules and classes?  |   | ✓ [^1]         | ✓                  |                |
+| Compilable         | Can its dependents compile in its absence?                   |   | ✓              |                    |   [^2]         |
+| Placeholder        | Can it be passed to a generic `Object` (or `Variant`)?       |   | ✓              | ✓                  |   [^2]         |
+| Collectible        | Can it be included within a `Collection` (or `Dictionary`)?  |   | ✓              | ✓                  |   [^2]         |
+| Identity           | Is its type identifiable by name, so you can distinguish it? |   | ✓ [^3]         | ✓ [^4]             |                |
+| Methods            | Does it support [procedures][vba_proc] that operate on it?   |   | ✓ [^5]         | ✓                  |   [^6]         |
+| Printing           | Does it support pretty printing for visualization?           |   | ✓              |   [^7]             |                |
+| Private            | Can you hide certain fields (and "methods") from your user?  |   | ✓ [^8]         | ✓ [^8]             |                |
+| Secure             | Are its fields secure against unauthorized editing?          |   | ✓ [^9]         | ✓                  |                |
 
 
   [^1]: A class module may [call procedures from standard modules][vba_cls_call], like your own module or even the [**`SOb`** module][sob_mod].
