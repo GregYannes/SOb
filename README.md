@@ -58,7 +58,7 @@ Fill out either template according to these steps:
      
   1. [`TODO`][sob_todo_9]: Implement [accessors][sob_tmpl_acc] for your [`Foo__Field.…`][sob_tmpl_fld] fields.  Each should be a [`Property`][vba_prp] of the form `Foo_…(ByRef foo As Object)`, and you may restrict it to internal usage via the [`Private`][vba_priv] statement.
      
-     Simply wrap [`Obj_Get()`][sob_fld] with a [`Property Get`][vba_prp_get] to [_retrieve_][sob_tmpl_get] a field...
+     Simply wrap [`Obj_Get()`][sob_fld] with a [`Property Get`][vba_prp_get] to [_retrieve_][sob_tmpl_get] a field…
      
      ```vba
      Property Get Foo_FieldOne(ByRef foo As Object) As Integer
@@ -66,7 +66,7 @@ Fill out either template according to these steps:
      End Property
      ```
      
-     ...but implement a [`Property Let`][vba_prp_let] to _update_ a [scalar field][sob_tmpl_scl]...
+     …but implement a [`Property Let`][vba_prp_let] to _update_ a [scalar field][sob_tmpl_scl]…
      
      ```vba
      Property Let Foo_FieldOne(ByRef foo As Object, ByVal val As Integer)
@@ -74,7 +74,7 @@ Fill out either template according to these steps:
      End Property
      ```
      
-     ...or a [`Property Set`][vba_prp_set] to update an [objective field][sob_tmpl_obj].
+     …or a [`Property Set`][vba_prp_set] to update an [objective field][sob_tmpl_obj].
      
      ```vba
      Property Set Foo_FieldTwo(ByRef foo As Object, ByRef val As Range)
@@ -84,7 +84,7 @@ Fill out either template according to these steps:
      
   1. [`TODO`][sob_todo_3]: Initialize the values for your fields, within [`Foo_Initialize()`][sob_tmpl_ini].  Use [`Obj_HasField()`][sob_flds] to test whether a field exists, and when it does not, use your [accessor][sob_tmpl_acc] to set its initial value.
      
-  1. [`TODO`][sob_todo_4]: List all your [`Foo__Field.…`][sob_tmpl_fld] fields in the [`Array(...)`][sob_tmpl_arr] call, within [`IsFoo()`][sob_tmpl_is].
+  1. [`TODO`][sob_todo_4]: List all your [`Foo__Field.…`][sob_tmpl_fld] fields in the [`Array(…)`][sob_tmpl_arr] call, within [`IsFoo()`][sob_tmpl_is].
      
      This way, `IsFoo()` checks that a "Foo" object has all its fields.
      
@@ -92,18 +92,18 @@ Fill out either template according to these steps:
      
      This way, `AsFoo()` can coerce any input (`x`) into a "Foo" object, by extracting fields from the former into the latter.
      
-  1. [`TODO`][sob_todo_11]: Create any summary (`sum`) or detail (`dtl`) you wish, to visually represent your object within [`Foo_Format()`][sob_tmpl_fmt].  The **`SOb`** framework _automatically_ formats these for you: summaries display on a single line...
+  1. [`TODO`][sob_todo_11]: Create any summary (`sum`) or detail (`dtl`) you wish, to visually represent your object within [`Foo_Format()`][sob_tmpl_fmt].  The **`SOb`** framework _automatically_ formats these for you: summaries display on a single line…
      
      > ```
-     > <Foo[sum]>
+     > <Foo[…]>
      > ```
      
-     ...and details display across multiple lines:
+     …and details display across multiple lines:
      
      > ```
      > <Foo: {
-     > 	dtl_1
-     > 	dtl_2
+     > 	…
+     > 	…
      > 	…
      > }>
      > ```
@@ -116,21 +116,21 @@ You may _optionally_ enhance "Foo" with further steps:
 
   9. [`TODO`][sob_todo_10]: Implement any [methods][sob_tmpl_mtd] you desire, which operate on your "Foo" object.  Each should be a [`Function`][vba_fun] or [`Sub`routine][vba_sub] of the form `Foo_…(ByRef foo As Object, …)` where `foo` is followed by any [arguments][vba_arg] needed by the method.  You may restrict it to internal usage via the [`Private`][vba_priv] statement.
      
-  9. [`TODO`][sob_todo_5]: Call all your field accessors like [`Foo_FieldOne()`][sob_tmpl_p1], in the [`Check ...`][sob_tmpl_chk] call within [`IsFoo()`][sob_tmpl_is].
+  9. [`TODO`][sob_todo_5]: Call all your field accessors like [`Foo_FieldOne()`][sob_tmpl_p1], in the [`Check …`][sob_tmpl_chk] call within [`IsFoo()`][sob_tmpl_is].
      
      This way, `IsFoo()` also validates that the "Foo" fields are of the expected type, and so forth.
      
-  9. [`TODO`][sob_todo_7]: Specify which validation errors (like type) you wish to catch, via arguments to the [`Obj_CheckError(...)`][sob_tmpl_err] call within [`IsFoo()`][sob_tmpl_is].  See [`Obj_CheckError()`][sob_err_args] for details.
+  9. [`TODO`][sob_todo_7]: Specify which validation errors (like type) you wish to catch, via arguments to the [`Obj_CheckError(…)`][sob_tmpl_err] call within [`IsFoo()`][sob_tmpl_is].  See [`Obj_CheckError()`][sob_err_args] for details.
      
      This way, `IsFoo()` returns `False` when errors disqualify the input (`x`) as a "Foo" object, while ["bubbling up"][vba_ppg_err] other errors for (say) improper usage.
      
-  9. [`TODO`][sob_todo_6]: Customize any [further validation][sob_tmpl_vld] you wish [`IsFoo()`][sob_tmpl_is] to perform.  Each validation step should assign a `Boolean` value to `IsFoo`...
+  9. [`TODO`][sob_todo_6]: Customize any [further validation][sob_tmpl_vld] you wish [`IsFoo()`][sob_tmpl_is] to perform.  Each validation step should assign a `Boolean` value to `IsFoo`…
      
      ```vba
-     	IsFoo = ...
+     	IsFoo = …
      ```
      
-     ...and finish by [short-circuiting][sob_tmpl_cir] when `False`.
+     …and finish by [short-circuiting][sob_tmpl_cir] when `False`.
      
      ```vba
      	If Not IsFoo Then Exit Function
@@ -163,29 +163,29 @@ Describe the [**`SOb`** module][sob_mod] _itself_.
 
 ### Typology ###
 
-Ascertain the "type" of an SOb...
+Ascertain the "type" of an SOb…
 
   - [`Obj_Class()`][sob_typo]: Retrieve the simulated "class" (`String`) of an SOb.
   - [`IsObj()`][sob_typo]: Test (`Boolean`) if something is an SOb.
 
-...and manipulate that type.
+…and manipulate that type.
 
   - [`AsObj()`][sob_typo]: Cast something as an SOb (`Object`).
 
 
 ### Fields ###
 
-Access simulated "fields" in an SOb...
+Access simulated "fields" in an SOb…
 
   - [`Obj_Field()`][sob_fld]: Read ([`Get`][vba_prp_get]) and write ([`Let`][vba_prp_let] or [`Set`][vba_prp_set]) the field as a [`Property`][vba_prp].
   - [`Obj_Get()`][sob_fld]: A delegate of [`Property Get`][vba_prp_get] with protection against missing fields.
 
-...along with metadata about such fields.
+…along with metadata about such fields.
 
   - [`Obj_FieldCount()`][sob_flds]: The (maximum) count (`Long`) of simulated fields in an SOb.
   - [`Obj_HasField()`][sob_flds]: Test (`Boolean`) if an SOb has a certain field.
-  - [`Obj_HasFields()`][sob_flds]: Test (`Boolean`) if an SOb has an entire set of fields, wrapped in an [`Array()`][vba_arr_fn]...
-  - [`Obj_HasFields0()`][sob_flds]: ...or entered manually.
+  - [`Obj_HasFields()`][sob_flds]: Test (`Boolean`) if an SOb has an entire set of fields, wrapped in an [`Array()`][vba_arr_fn]…
+  - [`Obj_HasFields0()`][sob_flds]: …or entered manually.
 
 
 ### Validation ###
@@ -198,21 +198,21 @@ Validate SObs within advanced implementations of [`Is*()`][sob_tmpl_chk].
 
 ### Visualization ###
 
-Textually visualize the entire SOb...
+Textually visualize the entire SOb…
 
   - [`Obj_Print()`][sob_vis]: Print (`String`) an SOb to the [console][vbe_immed] with automatic formatting.
   - [`Obj_Print0()`][sob_vis]: Print something (`String`) verbatim to the console.
   - [`Obj_Format()`][sob_vis]: Automatically format (`String`) an SOb for printing.
 
-...or specifically its fields in detail.
+…or specifically its fields in detail.
 
-  - [`Obj_FormatFields()`][sob_vis]: Automatically format (`String`) a set of simulated fields, wrapped in an [`Array()`][vba_arr_fn]...
-  - [`Obj_FormatFields0()`][sob_vis]: ...or entered manually with default settings.
+  - [`Obj_FormatFields()`][sob_vis]: Automatically format (`String`) a set of simulated fields, wrapped in an [`Array()`][vba_arr_fn]…
+  - [`Obj_FormatFields0()`][sob_vis]: …or entered manually with default settings.
 
 
 ### Utilities ###
 
-Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][sob_mod]...
+Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][sob_mod]…
 
   - [`Assign()`][sob_util]: Assign any value (scalar or objective) to a variable (by [reference][vba_byref]).
   - [`Txt_Indent()`][sob_util]: Indent (`String`) some lines of text.
