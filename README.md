@@ -283,29 +283,34 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
   [vba_var]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
   [sob_setup]:    #setup
+  [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
   [vba_cls_call]: https://stackoverflow.com/posts/comments/118407731
+  [sob_mod]:      src/SOb.bas
   [udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
   [vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
+  [sob_typo]:     docs/Typology.md
   [vba_type_fn]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/typename-function
   [vba_type_op]:  https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/typeof-operator
+  [sob_tmpl_mtd]: src/SObTemplate.bas#L217-L246
+  [vba_byref]:    https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
   [vb_net]:       https://learn.microsoft.com/dotnet/visual-basic
   [vba_tostring]: https://stackoverflow.com/posts/comments/98934630
   [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
+  [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
+  [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
   [sob_depend]:   #dependency
+  [sob_fld]:      docs/Field.md
   [sob_tmpls]:    ../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
   [sob_snp_tmpl]: src/SnippetTemplate.bas
   [sob_snp]:      src/Snippet.bas
   [sob_mod_tmpl]: src/SObTemplate.bas
-  [sob_mod]:      src/SOb.bas
   [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
-  [sob_fld]:      docs/Field.md
   [sob_todo_1]:   src/SObTemplate.bas#L6
   [sob_tmpl_ast]: ../../search?type=code&q=path:src/*Template.bas+content:*
   [sob_cls]:      #typology
   [vba_const]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/declaring-constants
   [vba_enum]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
-  [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
   [vba_arg]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
   [sob_todo_2]:   src/SObTemplate.bas#L25
   [sob_tmpl_enm]: src/SObTemplate.bas#L26-L29
@@ -316,8 +321,6 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_tmpl_fld]: ../../search?type=code&q=path:src/*Template.bas+content:*__Field.
   [sob_todo_9]:   src/SObTemplate.bas#L212
   [sob_tmpl_acc]: src/SObTemplate.bas#L171-L213
-  [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
-  [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
   [vba_prp_get]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
   [sob_tmpl_get]: src/SObTemplate.bas#L176-L178
   [vba_prp_let]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-let-statement
@@ -338,30 +341,27 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_todo_12]:  src/SObTemplate.bas#L290
   [sob_vis]:      docs/Visualization.md
   [sob_todo_10]:  src/SObTemplate.bas#L245
-  [sob_tmpl_mtd]: src/SObTemplate.bas#L217-L246
   [vba_fun]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/function-statement
   [vba_sub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/sub-statement
   [sob_todo_5]:   src/SObTemplate.bas#L119
   [sob_tmpl_p1]:  src/SObTemplate.bas#L175-L182
   [sob_tmpl_chk]: src/SObTemplate.bas#L111-L140
-  [sob_todo_6]:   src/SObTemplate.bas#L136
-  [sob_tmpl_vld]: src/SObTemplate.bas#L130-L140
-  [sob_tmpl_cir]: src/SObTemplate.bas#L108
   [sob_todo_7]:   src/SObTemplate.bas#L148
   [sob_tmpl_err]: src/SObTemplate.bas#L149
   [sob_err_args]: docs/Validation.md#syntax
   [vba_ppg_err]:  https://www.fastercapital.com/content/Error-Handling--Error-Handling-Excellence--Bulletproofing-Your-VBA-Code.html#Error-Bubbling-and-Propagation
+  [sob_todo_6]:   src/SObTemplate.bas#L136
+  [sob_tmpl_vld]: src/SObTemplate.bas#L130-L140
+  [sob_tmpl_cir]: src/SObTemplate.bas#L108
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
   [sob_cre]:      docs/Creation.md
-  [sob_typo]:     docs/Typology.md
   [vba_arr_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
   [sob_vali]:     docs/Validation.md
   [vba_prp_call]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-property-procedures
   [vbe_immed]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/immediate-window
   [vba_pub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/public-statement
   [sob_util]:     docs/Utilities.md
-  [vba_byref]:    https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
   [vba_arr]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
   [vba_err_obj]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/err-object
