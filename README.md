@@ -70,7 +70,7 @@ To outsource the **`SOb`** framework to a single external dependency, fill out [
 
 > [!WARNING]
 > 
-> By outsourcing, you reduce your security against tampering!  The ["encryption"][sob_secure] is no longer scoped to your module, so others can edit your "private" fields by simply calling [`SOb.Obj_Field()`][sob_fld] on your SOb.
+> By outsourcing, you reduce your security against tampering!  The ["encryption"][sob_secure] is no longer scoped to your module, so others can overwrite[^9] your "private" fields.
 
 
 ### Template ###
