@@ -307,7 +307,7 @@ End Function
 
 ' Print a simulated object with automatic formatting...
 Public Function Obj_Print(ByRef obj As Collection, _
-	Optional ByVal dep As Integer = 1, _
+	Optional ByVal depth As Integer = 1, _
 	Optional ByVal pln As Boolean = False, _
 	Optional ByVal ptr As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
@@ -317,7 +317,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal orf As Boolean = True _
 ) As String
 	Obj_Print = Obj_Format(obj, _
-		dep := dep, _
+		depth := depth, _
 		pln := pln, _
 		ptr := ptr, _
 		sum := sum, _
@@ -341,7 +341,7 @@ End Function
 
 ' Format a simulated object for printing.
 Public Function Obj_Format(ByRef obj As Collection, _
-	Optional ByVal dep As Integer = 1, _
+	Optional ByVal depth As Integer = 1, _
 	Optional ByVal pln As Boolean = False, _
 	Optional ByVal ptr As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
@@ -376,7 +376,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 		' Format the components.
 		Obj_Format = Obj_FormatInfo( _
 			class := cls, _
-			dep := dep, _
+			depth := depth, _
 			pln := pln, _
 			ptr := ptrTxt, _
 			sum := sum, _
@@ -518,7 +518,7 @@ End Sub
 '   }>
 Private Function Obj_FormatInfo( _
 	Optional ByVal class As String = VBA.vbNullString, _
-	Optional ByVal dep As Integer = 1, _
+	Optional ByVal depth As Integer = 1, _
 	Optional ByVal pln As Boolean = False, _
 	Optional ByVal ptr As String = VBA.vbNullString, _
 	Optional ByVal sum As String = VBA.vbNullString, _
@@ -538,8 +538,8 @@ Private Function Obj_FormatInfo( _
 	Const PTR_CLOSE As String = ""
 	
 	' Sanitize depth.
-	If dep < 0 Then
-		dep = 0
+	If depth < 0 Then
+		depth = 0
 	End If
 	
 	' Assemble plain formatting...
@@ -550,7 +550,7 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   	...
 		'   }
-		If dep > 0 Then
+		If depth > 0 Then
 			fmt = Obj_FormatDetails(dtl, pvw := False, ind := ind, orf := orf)
 			
 		' ...or shallowly: {…} or {}
@@ -577,7 +577,7 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   	...
 		'   }>
-		If dep > 0 Then
+		If depth > 0 Then
 			fmt = class & DTL_SEP & Obj_FormatDetails(dtl, pvw := False, ind := ind, orf := orf)
 			
 		' ...or shallowly...

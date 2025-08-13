@@ -292,7 +292,7 @@ Public Function *_Format(ByRef * As Object, _
 		 _
 		 _
 		 _
-		dep := depth, _
+		depth := depth, _
 		pln := plain, _
 		ptr := pointer, _
 		pvw := preview, _

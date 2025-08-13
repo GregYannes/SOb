@@ -272,7 +272,7 @@ Public Function Dix_Format(ByRef dix As Object, _
 	Dix_Format = SOb.Obj_Format(dix, _
 		sum := sum, _
 		dtl := dtl, _
-		dep := depth, _
+		depth := depth, _
 		pln := plain, _
 		ptr := pointer, _
 		pvw := preview, _
