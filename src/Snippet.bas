@@ -239,7 +239,7 @@ End Sub
 
 ' Catches errors for certain checks and propagates all others.
 Private Function Obj_CheckError(Optional ByRef e As ErrObject = Nothing, _
-	Optional ByVal typ As Boolean = True _
+	Optional ByVal type_ As Boolean = True _
 ) As Boolean
 	Const NO_ERR_NUMBER As Integer = 0         ' No error.
 	Const TYP_OBJ_ERR_NUMBER As Integer = 13   ' Invalid type.
@@ -260,7 +260,7 @@ Private Function Obj_CheckError(Optional ByRef e As ErrObject = Nothing, _
 			
 		' Mark specific errors for catching as desired: namely mismatched data types.
 		Case TYP_SCL_ERR_NUMBER, TYP_OBJ_ERR_NUMBER
-			cat = typ
+			cat = type_
 			
 		' Mark all other errors for propagation.
 		Case Else

@@ -132,7 +132,7 @@ Public Function IsDix(ByRef x As Variant, _
 	
 ' Handle inaccessibility.
 CHECK_ERROR:
-	IsDix = SOb.Obj_CheckError(typ := True)
+	IsDix = SOb.Obj_CheckError(type_ := True)
 End Function
 
 
