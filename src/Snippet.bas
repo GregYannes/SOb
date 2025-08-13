@@ -787,9 +787,9 @@ End Sub
 
 ' Test if text contains a substring.
 Private Function Txt_Contains(ByVal txt As String, _
-	ByVal sbs As String _
+	ByVal substring As String _
 ) As Boolean
 	Const IDX_NONE As Long = 0
 	
-	Txt_Contains = (VBA.InStr(txt, sbs) <> IDX_NONE)
+	Txt_Contains = (VBA.InStr(txt, substring) <> IDX_NONE)
 End Function
