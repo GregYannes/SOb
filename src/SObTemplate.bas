@@ -97,7 +97,7 @@ Public Function Is*(ByRef x As Variant, _
 	
 	' Ensure an accurate class with its proper set of fields.
 	' TODO: List all fields for "*" within this 'Array()'.
-	Is* = SOb.IsObj(x, class := CLS_NAME, strict := strict, flds := Array( _
+	Is* = SOb.IsObj(x, class := CLS_NAME, strict := strict, fields := Array( _
 		*__Field.FieldOne, _
 		*__Field.FieldTwo, _
 		*__Field.FieldThree _

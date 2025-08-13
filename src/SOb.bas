@@ -80,7 +80,7 @@ End Property
 ' Test for a simulated object.
 Public Function IsObj(ByRef x As Variant, _
 	Optional ByVal class As String = VBA.vbNullString, _
-	Optional ByRef flds As Variant, _
+	Optional ByRef fields As Variant, _
 	Optional ByVal strict As Boolean = True _
 ) As Boolean
 	' Check if the underlying (Collection) structure is correct...
@@ -102,12 +102,12 @@ Public Function IsObj(ByRef x As Variant, _
 	If Not IsObj Then Exit Function
 	
 	' Optionally check for the presence of specific fields.
-	If Not VBA.IsMissing(flds) Then
-		IsObj = Obj_HasFields(obj, flds := flds)
+	If Not VBA.IsMissing(fields) Then
+		IsObj = Obj_HasFields(obj, fields := fields)
 		
 		' Optionally cap the fields at strictly those specified, rather than a superset.
 		If strict Then
-			Dim nFlds As Long: nFlds = Arr_Length(flds, 1)
+			Dim nFlds As Long: nFlds = Arr_Length(fields, 1)
 			IsObj = (Obj_FieldCount(obj) = nFlds)
 		End If
 	End If
@@ -143,29 +143,29 @@ End Function
 
 ' Get a simulated field as a Property.
 Public Property Get Obj_Field(ByRef obj As Collection, _
-	ByVal fld As Long _
+	ByVal field As Long _
 ) As Variant
-	Dim key As String: Obj_FieldKey key, fld
+	Dim key As String: Obj_FieldKey key, field
 	Assign Obj_Field, Clx_Get(obj, key)
 End Property
 
 
 ' Set a simulated scalar field as a Property...
 Public Property Let Obj_Field(ByRef obj As Collection, _
-	ByVal fld As Long, _
+	ByVal field As Long, _
 	ByVal val As Variant _
 )
-	Dim key As String: Obj_FieldKey key, fld
+	Dim key As String: Obj_FieldKey key, field
 	Clx_Set obj, key, val
 End Property
 
 
 ' ...and a simulated objective field.
 Public Property Set Obj_Field(ByRef obj As Collection, _
-	ByVal fld As Long, _
+	ByVal field As Long, _
 	ByRef val As Variant _
 )
-	Dim key As String: Obj_FieldKey key, fld
+	Dim key As String: Obj_FieldKey key, field
 	Clx_Set obj, key, val
 End Property
 
@@ -173,10 +173,10 @@ End Property
 ' Safely get a simulated (Property) field.
 Public Sub Obj_Get(ByRef var As Variant, _
 	ByRef obj As Collection, _
-	ByVal fld As Long _
+	ByVal field As Long _
 )
 	Dim has As Boolean
-	Dim key As String: Obj_FieldKey key, fld
+	Dim key As String: Obj_FieldKey key, field
 	Dim val As Variant: Assign val, Clx_Get(obj, key, has := has)
 	
 	' Store the value when the field is present.
@@ -204,18 +204,18 @@ End Function
 
 ' Test for a single simulated field.
 Public Function Obj_HasField(ByRef obj As Collection, _
-	ByVal fld As Long _
+	ByVal field As Long _
 ) As Boolean
-	Dim key As String: Obj_FieldKey key, fld
+	Dim key As String: Obj_FieldKey key, field
 	Obj_HasField = Clx_Has(obj, key)
 End Function
 
 
 ' Test programmatically for multiple simulated fields...
 Private Function Obj_HasFields(ByRef obj As Collection, _
-	ByRef flds As Variant _
+	ByRef fields As Variant _
 ) As Boolean
-	Dim n As Long: n = Arr_Length(flds, 1)
+	Dim n As Long: n = Arr_Length(fields, 1)
 	
 	' Short-circuit with TRUE for trivial case.
 	If n < 1 Then
@@ -223,13 +223,13 @@ Private Function Obj_HasFields(ByRef obj As Collection, _
 		Exit Function
 	End If
 	
-	Dim low As Long: low = LBound(flds, 1)
-	Dim up As Long: up = UBound(flds, 1)
+	Dim low As Long: low = LBound(fields, 1)
+	Dim up As Long: up = UBound(fields, 1)
 	
 	' Return FALSE if any fields are nonexistent...
 	Dim i As Long
 	For i = low To up
-		If Not Obj_HasField(obj, flds(i)) Then
+		If Not Obj_HasField(obj, fields(i)) Then
 			Obj_HasFields = False
 			Exit Function
 		End If
@@ -242,10 +242,10 @@ End Function
 
 ' ...or test manually.
 Public Function Obj_HasFields0(ByRef obj As Collection, _
-	ParamArray flds() As Variant _
+	ParamArray fields() As Variant _
 ) As Boolean
-	Dim f() As Variant: f = flds
-	Obj_HasFields0 = Obj_HasFields(obj, flds := f)
+	Dim f() As Variant: f = fields
+	Obj_HasFields0 = Obj_HasFields(obj, fields := f)
 End Function
 
 
@@ -255,7 +255,7 @@ End Function
 ' ######################
 
 ' Checks that simulated fields match the type constraints of their accessors.
-Public Sub Obj_Check(ParamArray flds() As Variant)
+Public Sub Obj_Check(ParamArray fields() As Variant)
 End Sub
 
 
@@ -404,12 +404,12 @@ End Function
 '   Dim fields() As Variant: fields = Array("FieldA", "True", "FieldB", "1", ...)
 '   Obj_FormatFields(fields, vbNewLine)
 Public Function Obj_FormatFields( _
-	ByRef flds As Variant, _
+	ByRef fields As Variant, _
 	Optional ByVal sep As String = VBA.vbNewLine _
 ) As String
 	Const FLD_ARGS As Integer = 2
 	
-	Dim lng As Long: lng = Arr_Length(flds, 1)
+	Dim lng As Long: lng = Arr_Length(fields, 1)
 	Dim n As Long: n = VBA.Int(lng / FLD_ARGS)
 	
 	' Short-circuit for insufficient fields: ""
@@ -418,17 +418,17 @@ Public Function Obj_FormatFields( _
 		Exit Function
 	End If
 	
-	Dim low As Long: low = LBound(flds, 1)
+	Dim low As Long: low = LBound(fields, 1)
 	Dim up As Long: up = n * FLD_ARGS - 1
 	
 	' Render the first field...
 	Dim i As Long: i = low
-	Dim fmt As String: fmt = Obj_FormatField(flds(i), flds(i + 1))
+	Dim fmt As String: fmt = Obj_FormatField(fields(i), fields(i + 1))
 	i = i + FLD_ARGS
 	
 	' ...and append any others.
 	For i = i To up Step FLD_ARGS
-		fmt = fmt & sep & Obj_FormatField(flds(i), flds(i + 1))
+		fmt = fmt & sep & Obj_FormatField(fields(i), fields(i + 1))
 	Next i
 	
 	Obj_FormatFields = fmt
@@ -437,8 +437,8 @@ End Function
 
 ' ...or manually with elegant defaults.
 '   Obj_FormatFields0("FieldA", "True", "FieldB", "1", ...)
-Public Function Obj_FormatFields0(ParamArray flds() As Variant) As String
-	Dim f() As Variant: f = flds
+Public Function Obj_FormatFields0(ParamArray fields() As Variant) As String
+	Dim f() As Variant: f = fields
 	Obj_FormatFields0 = Obj_FormatFields(f)
 End Function
 
@@ -457,7 +457,7 @@ End Function
 
 ' Securely obtain the key for a simulated field: "*.Field_i.xxx"
 Private Sub Obj_FieldKey(ByRef var As String, _
-	ByVal fld As Long _
+	ByVal field As Long _
 )
 	Const FLD_PFX As String = "Field_"
 	Const KEY_SEP As String = "."
@@ -465,9 +465,9 @@ Private Sub Obj_FieldKey(ByRef var As String, _
 	Dim sec As String, key As String
 	
 	Obj_Secret sec
-	fld = fld + 1
+	field = field + 1
 	
-	key = FLD_PFX & VBA.CStr(fld) & KEY_SEP & sec
+	key = FLD_PFX & VBA.CStr(field) & KEY_SEP & sec
 	
 	var = key
 End Sub
