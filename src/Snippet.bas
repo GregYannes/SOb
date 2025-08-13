@@ -7,14 +7,14 @@
 ' #####################
 
 ' Construct a simulated object.
-Private Function New_Obj(ByVal cls As String) As Collection
-	Obj_Initialize New_Obj, cls
+Private Function New_Obj(ByVal class As String) As Collection
+	Obj_Initialize New_Obj, class
 End Function
 
 
 ' Initialize a simulated object.
 Private Sub Obj_Initialize(ByRef obj As Collection, _
-	ByVal cls As String _
+	ByVal class As String _
 )
 	If obj Is Nothing Then
 		Set obj = New Collection
@@ -22,11 +22,11 @@ Private Sub Obj_Initialize(ByRef obj As Collection, _
 	
 	' Update the class if it is missing...
 	If Not Obj_HasClass(obj) Then
-		Obj_Class(obj) = cls
+		Obj_Class(obj) = class
 		
 	' ...or is blank.
 	ElseIf Obj_Class(obj) = VBA.vbNullString Then
-		Obj_Class(obj) = cls
+		Obj_Class(obj) = class
 	End If
 End Sub
 
@@ -45,19 +45,19 @@ End Property
 
 ' ...but never write it directly.
 Private Property Let Obj_Class(ByRef obj As Collection, _
-	ByVal cls As String _
+	ByVal class As String _
 )
-	cls = Excel.Application.WorksheetFunction.Clean(cls)
-	cls = VBA.Trim(cls)
+	class = Excel.Application.WorksheetFunction.Clean(class)
+	class = VBA.Trim(class)
 	
 	Dim key As String: Obj_ClassKey key
-	Clx_Set obj, key, cls
+	Clx_Set obj, key, class
 End Property
 
 
 ' Test for a simulated object.
 Private Function IsObj(ByRef x As Variant, _
-	Optional ByVal cls As String = VBA.vbNullString, _
+	Optional ByVal class As String = VBA.vbNullString, _
 	Optional ByRef flds As Variant, _
 	Optional ByVal strict As Boolean = True _
 ) As Boolean
@@ -74,8 +74,8 @@ Private Function IsObj(ByRef x As Variant, _
 	If Not IsObj Then Exit Function
 	
 	' Optionally check if the class matches expectations.
-	If cls <> VBA.VbNullString Then
-		IsObj = (Obj_Class(obj) = cls)
+	If class <> VBA.VbNullString Then
+		IsObj = (Obj_Class(obj) = class)
 	End If
 	If Not IsObj Then Exit Function
 	
@@ -95,21 +95,21 @@ End Function
 
 ' Cast as a simulated object.
 Private Function AsObj(ByRef x As Variant, _
-	Optional ByVal cls As String = VBA.vbNullString _
+	Optional ByVal class As String = VBA.vbNullString _
 ) As Collection
 	' Cast the underlying structure (to a Collection)...
 	Set AsObj = x
 	
 	' ...and initialize it.
-	If cls = VBA.vbNullString Then
+	If class = VBA.vbNullString Then
 		Obj_Initialize AsObj, VBA.vbNullString
 	Else
-		Obj_Initialize AsObj, cls
+		Obj_Initialize AsObj, class
 	End If
 	
 	' Optionally update the class.
-	If cls <> VBA.vbNullString Then
-		Obj_Class(AsObj) = cls
+	If class <> VBA.vbNullString Then
+		Obj_Class(AsObj) = class
 	End If
 End Function
 
@@ -353,7 +353,7 @@ Private Function Obj_Format(ByRef obj As Collection, _
 		
 		' Format the components.
 		Obj_Format = Obj_FormatInfo( _
-			cls := cls, _
+			class := cls, _
 			dep := dep, _
 			pln := pln, _
 			ptr := ptrTxt, _
@@ -495,7 +495,7 @@ End Sub
 '   	...
 '   }>
 Private Function Obj_FormatInfo( _
-	Optional ByVal cls As String = VBA.vbNullString, _
+	Optional ByVal class As String = VBA.vbNullString, _
 	Optional ByVal dep As Integer = 1, _
 	Optional ByVal pln As Boolean = False, _
 	Optional ByVal ptr As String = VBA.vbNullString, _
@@ -538,17 +538,17 @@ Private Function Obj_FormatInfo( _
 		
 	' ...or rich formatting.
 	Else
-		' Short circuit for missing cls: ""
-		If cls = VBA.vbNullString Then
+		' Short circuit for missing class: ""
+		If class = VBA.vbNullString Then
 			Obj_FormatInfo = VBA.vbNullString
 			Exit Function
 		End If
 		
 		' Clean the class name.
-		cls = Excel.Application.WorksheetFunction.Clean(cls)
-		cls = VBA.Trim(cls)
+		class = Excel.Application.WorksheetFunction.Clean(class)
+		class = VBA.Trim(class)
 		
-		fmt = cls
+		fmt = class
 		
 		' Format deeply with details...
 		'   <Obj: {
@@ -556,24 +556,24 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }>
 		If dep > 0 Then
-			fmt = cls & DTL_SEP & Obj_FormatDetails(dtl, pvw := False, ind := ind, orf := orf)
+			fmt = class & DTL_SEP & Obj_FormatDetails(dtl, pvw := False, ind := ind, orf := orf)
 			
 		' ...or shallowly...
 		Else
 			' ...with maybe a summary: <Obj[...]>
 			If sum <> VBA.vbNullString Then
 				sum = Excel.Application.WorksheetFunction.Clean(sum)
-				fmt = cls & SUM_SEP & SUM_OPEN & sum & SUM_CLOSE
+				fmt = class & SUM_SEP & SUM_OPEN & sum & SUM_CLOSE
 				
 			' ...or maybe a preview of the detail: <Obj: {…}>
 			ElseIf pvw Then
-				fmt = cls & DTL_SEP & Obj_FormatDetails(dtl, pvw := True)
+				fmt = class & DTL_SEP & Obj_FormatDetails(dtl, pvw := True)
 				
 			' ...or maybe a pointer: <Obj @1234567890>
 			ElseIf ptr <> VBA.vbNullString Then
 				ptr = Excel.Application.WorksheetFunction.Clean(ptr)
 				ptr = VBA.Trim(ptr)
-				fmt = cls & PTR_SEP & PTR_OPEN & ptr & PTR_CLOSE
+				fmt = class & PTR_SEP & PTR_OPEN & ptr & PTR_CLOSE
 				
 			' ...or with only the name: <Obj>
 			End If

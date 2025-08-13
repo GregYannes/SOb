@@ -96,7 +96,7 @@ Public Function IsDix(ByRef x As Variant, _
 	' ### Class and Fields ###
 	
 	' Ensure an accurate class with its proper set of fields.
-	IsDix = SOb.IsObj(x, cls := CLS_NAME, strict := strict, flds := Array( _
+	IsDix = SOb.IsObj(x, class := CLS_NAME, strict := strict, flds := Array( _
 		Dix_Field.Keys, _
 		Dix_Field.Items, _
 		Dix_Field.Count _
