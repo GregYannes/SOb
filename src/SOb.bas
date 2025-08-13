@@ -313,7 +313,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview as Boolean = False, _
-	Optional ByVal ind As String = VBA.vbTab, _
+	Optional ByVal indent As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
 	Obj_Print = Obj_Format(obj, _
@@ -323,7 +323,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 		summary := summary, _
 		details := details, _
 		preview := preview, _
-		ind := ind, _
+		indent := indent, _
 		orf := orf _
 	)
 	
@@ -347,7 +347,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview as Boolean = False, _
-	Optional ByVal ind As String = VBA.vbTab, _
+	Optional ByVal indent As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
 	Const DFL_CLS As String = "?"
@@ -382,7 +382,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 			summary := summary, _
 			details := details, _
 			preview := preview, _
-			ind := ind, _
+			indent := indent, _
 			orf := orf _
 		)
 		
@@ -524,7 +524,7 @@ Private Function Obj_FormatInfo( _
 	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview As Boolean = False, _
-	Optional ByVal ind As String = VBA.vbTab, _
+	Optional ByVal indent As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
 	Const OBJ_OPEN As String = "<"
@@ -551,7 +551,7 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }
 		If depth > 0 Then
-			fmt = Obj_FormatDetails(details, preview := False, ind := ind, orf := orf)
+			fmt = Obj_FormatDetails(details, preview := False, indent := indent, orf := orf)
 			
 		' ...or shallowly: {…} or {}
 		Else
@@ -578,7 +578,7 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }>
 		If depth > 0 Then
-			fmt = class & DTL_SEP & Obj_FormatDetails(details, preview := False, ind := ind, orf := orf)
+			fmt = class & DTL_SEP & Obj_FormatDetails(details, preview := False, indent := indent, orf := orf)
 			
 		' ...or shallowly...
 		Else
@@ -617,7 +617,7 @@ End Function
 Private Function Obj_FormatDetails( _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview As Boolean = False, _
-	Optional ByVal ind As String = VBA.vbTab, _
+	Optional ByVal indent As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
 	Const DTL_OPEN As String = "{"
@@ -662,7 +662,7 @@ Private Function Obj_FormatDetails( _
 		
 		' Indent as needed.
 		If brk Then
-			details = VBA.vbNewLine & Txt_Indent(details, ind := ind, bfr := True) & VBA.vbNewLine
+			details = VBA.vbNewLine & Txt_Indent(details, indent := indent, bfr := True) & VBA.vbNewLine
 		End If
 	End If
 	
@@ -711,15 +711,15 @@ End Sub
 
 ' Indent text.
 Public Function Txt_Indent(ByVal txt As String, _
-	Optional ByVal ind As String = VBA.vbTab, _
+	Optional ByVal indent As String = VBA.vbTab, _
 	Optional ByVal bfr As Boolean = True _
 ) As String
 	' Indent the start of every line...
-	txt = VBA.Replace(txt, find := VBA.vbNewLine, replace := VBA.vbNewLine & ind)
+	txt = VBA.Replace(txt, find := VBA.vbNewLine, replace := VBA.vbNewLine & indent)
 	
 	' ...including (optionally) the beginning.
 	If bfr Then
-		txt = ind & txt
+		txt = indent & txt
 	End If
 	
 	Txt_Indent = txt

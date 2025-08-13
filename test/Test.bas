@@ -87,7 +87,7 @@ Private Sub Test_Print(ByRef dix As Object)
 		summary := summary, _
 		details := detail, _
 		preview := preview, _
-		ind := indent, _
+		indent := indent, _
 		orf := orphan
 	
 	Debug.Print
