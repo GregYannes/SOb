@@ -776,12 +776,12 @@ End Sub
 
 ' Get the length (along a dimension) of an array.
 Private Function Arr_Length(ByRef arr As Variant, _
-	Optional ByVal dmn As Long = 1 _
+	Optional ByVal dimension As Long = 1 _
 ) As Long
 	Const EMPTY_ERR_NUMBER As Long = 9  ' Subscript out of range.
 	
 	On Error GoTo BOUND_ERROR
-	Arr_Length = UBound(arr, dmn) - LBound(arr, dmn) + 1
+	Arr_Length = UBound(arr, dimension) - LBound(arr, dimension) + 1
 	Exit Function
 	
 BOUND_ERROR:
