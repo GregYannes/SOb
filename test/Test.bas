@@ -82,7 +82,7 @@ Private Sub Test_Print(ByRef dix As Object)
 	Debug.Print
 	SOb.Obj_Print dix, _
 		depth := depth, _
-		pln := plain, _
+		plain := plain, _
 		ptr := pointer, _
 		sum := summary, _
 		dtl := detail, _

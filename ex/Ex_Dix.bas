@@ -273,7 +273,7 @@ Public Function Dix_Format(ByRef dix As Object, _
 		sum := sum, _
 		dtl := dtl, _
 		depth := depth, _
-		pln := plain, _
+		plain := plain, _
 		ptr := pointer, _
 		pvw := preview, _
 		ind := indent, _

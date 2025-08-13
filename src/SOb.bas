@@ -308,7 +308,7 @@ End Function
 ' Print a simulated object with automatic formatting...
 Public Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal depth As Integer = 1, _
-	Optional ByVal pln As Boolean = False, _
+	Optional ByVal plain As Boolean = False, _
 	Optional ByVal ptr As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
@@ -318,7 +318,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 ) As String
 	Obj_Print = Obj_Format(obj, _
 		depth := depth, _
-		pln := pln, _
+		plain := plain, _
 		ptr := ptr, _
 		sum := sum, _
 		dtl := dtl, _
@@ -342,7 +342,7 @@ End Function
 ' Format a simulated object for printing.
 Public Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal depth As Integer = 1, _
-	Optional ByVal pln As Boolean = False, _
+	Optional ByVal plain As Boolean = False, _
 	Optional ByVal ptr As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
@@ -377,7 +377,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 		Obj_Format = Obj_FormatInfo( _
 			class := cls, _
 			depth := depth, _
-			pln := pln, _
+			plain := plain, _
 			ptr := ptrTxt, _
 			sum := sum, _
 			dtl := dtl, _
@@ -519,7 +519,7 @@ End Sub
 Private Function Obj_FormatInfo( _
 	Optional ByVal class As String = VBA.vbNullString, _
 	Optional ByVal depth As Integer = 1, _
-	Optional ByVal pln As Boolean = False, _
+	Optional ByVal plain As Boolean = False, _
 	Optional ByVal ptr As String = VBA.vbNullString, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
@@ -544,7 +544,7 @@ Private Function Obj_FormatInfo( _
 	
 	' Assemble plain formatting...
 	Dim fmt As String
-	If pln Then		
+	If plain Then		
 		' Format deeply...
 		'   {
 		'   	...

@@ -293,7 +293,7 @@ Public Function *_Format(ByRef * As Object, _
 		 _
 		 _
 		depth := depth, _
-		pln := plain, _
+		plain := plain, _
 		ptr := pointer, _
 		pvw := preview, _
 		ind := indent, _
