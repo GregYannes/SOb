@@ -288,7 +288,7 @@ Private Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal depth As Integer = 1, _
 	Optional ByVal plain As Boolean = False, _
 	Optional ByVal pointer As Boolean = False, _
-	Optional ByVal sum As String = VBA.vbNullString, _
+	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal pvw as Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
@@ -298,7 +298,7 @@ Private Function Obj_Print(ByRef obj As Collection, _
 		depth := depth, _
 		plain := plain, _
 		pointer := pointer, _
-		sum := sum, _
+		summary := summary, _
 		dtl := dtl, _
 		pvw := pvw, _
 		ind := ind, _
@@ -322,7 +322,7 @@ Private Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal depth As Integer = 1, _
 	Optional ByVal plain As Boolean = False, _
 	Optional ByVal pointer As Boolean = False, _
-	Optional ByVal sum As String = VBA.vbNullString, _
+	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal pvw as Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
@@ -357,7 +357,7 @@ Private Function Obj_Format(ByRef obj As Collection, _
 			depth := depth, _
 			plain := plain, _
 			pointer := ptrTxt, _
-			sum := sum, _
+			summary := summary, _
 			dtl := dtl, _
 			pvw := pvw, _
 			ind := ind, _
@@ -499,7 +499,7 @@ Private Function Obj_FormatInfo( _
 	Optional ByVal depth As Integer = 1, _
 	Optional ByVal plain As Boolean = False, _
 	Optional ByVal pointer As String = VBA.vbNullString, _
-	Optional ByVal sum As String = VBA.vbNullString, _
+	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal pvw As Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
@@ -561,9 +561,9 @@ Private Function Obj_FormatInfo( _
 		' ...or shallowly...
 		Else
 			' ...with maybe a summary: <Obj[...]>
-			If sum <> VBA.vbNullString Then
-				sum = Excel.Application.WorksheetFunction.Clean(sum)
-				fmt = class & SUM_SEP & SUM_OPEN & sum & SUM_CLOSE
+			If summary <> VBA.vbNullString Then
+				summary = Excel.Application.WorksheetFunction.Clean(summary)
+				fmt = class & SUM_SEP & SUM_OPEN & summary & SUM_CLOSE
 				
 			' ...or maybe a preview of the detail: <Obj: {…}>
 			ElseIf pvw Then

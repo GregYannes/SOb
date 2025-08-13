@@ -84,7 +84,7 @@ Private Sub Test_Print(ByRef dix As Object)
 		depth := depth, _
 		plain := plain, _
 		pointer := pointer, _
-		sum := summary, _
+		summary := summary, _
 		dtl := detail, _
 		pvw := preview, _
 		ind := indent, _

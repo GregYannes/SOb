@@ -121,7 +121,7 @@ Fill out either template according to these steps:
      
      This way, `AsFoo()` can coerce any input (`x`) into a "Foo" object, by extracting fields from the former into the latter.
      
-  1. [`TODO`][sob_todo_11]: Create any summary (`sum`) or detail (`dtl`) you wish, to visually represent your object within [`Foo_Format()`][sob_tmpl_fmt].  The **`SOb`** framework _automatically_ formats these for you: summaries display on a single line…
+  1. [`TODO`][sob_todo_11]: Create any `summary` or detail (`dtl`) you wish, to visually represent your object within [`Foo_Format()`][sob_tmpl_fmt].  The **`SOb`** framework _automatically_ formats these for you: summaries display on a single line…
      
      > ```
      > <Foo[…]>
@@ -137,7 +137,7 @@ Fill out either template according to these steps:
      > }>
      > ```
      
-  1. [`TODO`][sob_todo_12]: Pass any summary (`sum`) or detail (`dtl`) to [`Obj_Format()`][sob_vis], along with all arguments from [`Foo_Format()`][sob_tmpl_fmt].
+  1. [`TODO`][sob_todo_12]: Pass any `summary` or detail (`dtl`) to [`Obj_Format()`][sob_vis], along with all arguments from [`Foo_Format()`][sob_tmpl_fmt].
      
      This way, others can apply various settings when printing your "Foo" object, including developers who wish to build their own SObs upon "Foo".
 

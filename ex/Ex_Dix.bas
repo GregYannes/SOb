@@ -270,7 +270,7 @@ Public Function Dix_Format(ByRef dix As Object, _
 	
 	' Pass the settings for formatting.
 	Dix_Format = SOb.Obj_Format(dix, _
-		sum := sum, _
+		summary := sum, _
 		dtl := dtl, _
 		depth := depth, _
 		plain := plain, _

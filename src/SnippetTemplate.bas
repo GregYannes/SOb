@@ -283,11 +283,11 @@ Public Function *_Format(ByRef * As Object, _
 	Optional ByVal indent As String = VBA.vbTab, _
 	Optional ByVal orphan As Boolean = True _
 ) As String
-	' TODO: Create any summary ('sum') or detail ('dtl') you desire for 'Obj_Format()'.
+	' TODO: Create any 'summary' or detail ('dtl') you desire for 'Obj_Format()'.
 	' ...
 	
 	' Adjust settings to your satisfaction.
-	' TODO: Pass any such summary ('sum') or detail ('dtl') to 'Obj_Format()'.
+	' TODO: Pass any such 'summary' or detail ('dtl') to 'Obj_Format()'.
 	*_Format = Obj_Format(*, _
 		 _
 		 _
