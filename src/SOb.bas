@@ -309,7 +309,7 @@ End Function
 Public Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal depth As Integer = 1, _
 	Optional ByVal plain As Boolean = False, _
-	Optional ByVal ptr As Boolean = False, _
+	Optional ByVal pointer As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal pvw as Boolean = False, _
@@ -319,7 +319,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 	Obj_Print = Obj_Format(obj, _
 		depth := depth, _
 		plain := plain, _
-		ptr := ptr, _
+		pointer := pointer, _
 		sum := sum, _
 		dtl := dtl, _
 		pvw := pvw, _
@@ -343,7 +343,7 @@ End Function
 Public Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal depth As Integer = 1, _
 	Optional ByVal plain As Boolean = False, _
-	Optional ByVal ptr As Boolean = False, _
+	Optional ByVal pointer As Boolean = False, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal pvw as Boolean = False, _
@@ -369,7 +369,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 		
 		' Optionally record the pointer reference.
 		Dim ptrTxt As String: ptrTxt = VBA.vbNullString
-		If ptr Then
+		If pointer Then
 			ptrTxt = VBA.CStr(VBA.ObjPtr(obj))
 		End If
 		
@@ -378,7 +378,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 			class := cls, _
 			depth := depth, _
 			plain := plain, _
-			ptr := ptrTxt, _
+			pointer := ptrTxt, _
 			sum := sum, _
 			dtl := dtl, _
 			pvw := pvw, _
@@ -520,7 +520,7 @@ Private Function Obj_FormatInfo( _
 	Optional ByVal class As String = VBA.vbNullString, _
 	Optional ByVal depth As Integer = 1, _
 	Optional ByVal plain As Boolean = False, _
-	Optional ByVal ptr As String = VBA.vbNullString, _
+	Optional ByVal pointer As String = VBA.vbNullString, _
 	Optional ByVal sum As String = VBA.vbNullString, _
 	Optional ByVal dtl As String = VBA.vbNullString, _
 	Optional ByVal pvw As Boolean = False, _
@@ -592,10 +592,10 @@ Private Function Obj_FormatInfo( _
 				fmt = class & DTL_SEP & Obj_FormatDetails(dtl, pvw := True)
 				
 			' ...or maybe a pointer: <Obj @1234567890>
-			ElseIf ptr <> VBA.vbNullString Then
-				ptr = Excel.Application.WorksheetFunction.Clean(ptr)
-				ptr = VBA.Trim(ptr)
-				fmt = class & PTR_SEP & PTR_OPEN & ptr & PTR_CLOSE
+			ElseIf pointer <> VBA.vbNullString Then
+				pointer = Excel.Application.WorksheetFunction.Clean(pointer)
+				pointer = VBA.Trim(pointer)
+				fmt = class & PTR_SEP & PTR_OPEN & pointer & PTR_CLOSE
 				
 			' ...or with only the name: <Obj>
 			End If

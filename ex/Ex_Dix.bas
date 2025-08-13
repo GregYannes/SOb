@@ -274,7 +274,7 @@ Public Function Dix_Format(ByRef dix As Object, _
 		dtl := dtl, _
 		depth := depth, _
 		plain := plain, _
-		ptr := pointer, _
+		pointer := pointer, _
 		pvw := preview, _
 		ind := indent, _
 		orf := orphan _
