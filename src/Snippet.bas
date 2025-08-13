@@ -406,7 +406,7 @@ Private Function Obj_FormatFields( _
 	
 	' ...and append any others.
 	For i = i To up Step FLD_ARGS
-		fmt = fmt & sep & Obj_FormatField(fields(i), fields(i + 1))
+		fmt = fmt & separator & Obj_FormatField(fields(i), fields(i + 1))
 	Next i
 	
 	Obj_FormatFields = fmt

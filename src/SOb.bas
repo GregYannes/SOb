@@ -405,7 +405,7 @@ End Function
 '   Obj_FormatFields(fields, vbNewLine)
 Public Function Obj_FormatFields( _
 	ByRef fields As Variant, _
-	Optional ByVal sep As String = VBA.vbNewLine _
+	Optional ByVal separator As String = VBA.vbNewLine _
 ) As String
 	Const FLD_ARGS As Integer = 2
 	
@@ -428,7 +428,7 @@ Public Function Obj_FormatFields( _
 	
 	' ...and append any others.
 	For i = i To up Step FLD_ARGS
-		fmt = fmt & sep & Obj_FormatField(fields(i), fields(i + 1))
+		fmt = fmt & separator & Obj_FormatField(fields(i), fields(i + 1))
 	Next i
 	
 	Obj_FormatFields = fmt
