@@ -26,7 +26,7 @@ Public Sub Test()
 	
 	' ### Typology 1 ###
 	Debug.Print "IsObj(dix) = " & SOb.IsObj(dix)
-	Debug.Print "IsObj(dix, """ & Ex_Dix.DIX_CLS & """) = " & SOb.IsObj(dix, Ex_Dix.DIX_CLS)
+	Debug.Print "IsObj(dix, """ & Ex_Dix.DIX_CLASS & """) = " & SOb.IsObj(dix, Ex_Dix.DIX_CLASS)
 	Debug.Print "IsObj(dix, ""Other"") = " & SOb.IsObj(dix, "Other")
 	
 	Debug.Print

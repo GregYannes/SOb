@@ -7,7 +7,7 @@ Attribute VB_Name = "Ex_Dix"
 ' ###############
 
 ' Class name for the simulated "Dix" object.
-Private Const DIX_CLS As String = "Dix"
+Private Const DIX_CLASS As String = "Dix"
 
 
 
@@ -57,7 +57,7 @@ End Function
 
 ' Initialize a simulated "Dix" object.
 Public Sub Dix_Initialize(ByRef dix As Object)
-	Const CLS_NAME As String = DIX_CLS
+	Const CLS_NAME As String = DIX_CLASS
 	
 	SOb.Obj_Initialize dix, CLS_NAME
 	
@@ -90,7 +90,7 @@ End Sub
 Public Function IsDix(ByRef x As Variant, _
 	Optional ByVal strict As Boolean = False _
 ) As Boolean
-	Const CLS_NAME As String = DIX_CLS
+	Const CLS_NAME As String = DIX_CLASS
 	
 	
 	' ### Class and Fields ###
