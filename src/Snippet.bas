@@ -310,8 +310,8 @@ End Function
 
 
 ' ...or verbatim.
-Private Function Obj_Print0(Optional ByRef fmt As String = VBA.vbNullString) As String
-	Obj_Print0 = fmt
+Private Function Obj_Print0(Optional ByRef format As String = VBA.vbNullString) As String
+	Obj_Print0 = format
 	
 	Debug.Print Obj_Print0
 End Function
