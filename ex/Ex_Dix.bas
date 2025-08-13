@@ -277,6 +277,6 @@ Public Function Dix_Format(ByRef dix As Object, _
 		pointer := pointer, _
 		preview := preview, _
 		indent := indent, _
-		orf := orphan _
+		orphan := orphan _
 	)
 End Function

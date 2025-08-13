@@ -297,6 +297,6 @@ Public Function *_Format(ByRef * As Object, _
 		pointer := pointer, _
 		preview := preview, _
 		indent := indent, _
-		orf := orphan _
+		orphan := orphan _
 	)
 End Function

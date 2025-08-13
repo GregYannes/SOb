@@ -314,7 +314,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview as Boolean = False, _
 	Optional ByVal indent As String = VBA.vbTab, _
-	Optional ByVal orf As Boolean = True _
+	Optional ByVal orphan As Boolean = True _
 ) As String
 	Obj_Print = Obj_Format(obj, _
 		depth := depth, _
@@ -324,7 +324,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 		details := details, _
 		preview := preview, _
 		indent := indent, _
-		orf := orf _
+		orphan := orphan _
 	)
 	
 	Obj_Print0 Obj_Print
@@ -348,7 +348,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview as Boolean = False, _
 	Optional ByVal indent As String = VBA.vbTab, _
-	Optional ByVal orf As Boolean = True _
+	Optional ByVal orphan As Boolean = True _
 ) As String
 	Const DFL_CLS As String = "?"
 	
@@ -383,7 +383,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 			details := details, _
 			preview := preview, _
 			indent := indent, _
-			orf := orf _
+			orphan := orphan _
 		)
 		
 	' ...or display anything else according to VBA defaults.
@@ -525,7 +525,7 @@ Private Function Obj_FormatInfo( _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview As Boolean = False, _
 	Optional ByVal indent As String = VBA.vbTab, _
-	Optional ByVal orf As Boolean = True _
+	Optional ByVal orphan As Boolean = True _
 ) As String
 	Const OBJ_OPEN As String = "<"
 	Const OBJ_CLOSE As String = ">"
@@ -551,7 +551,7 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }
 		If depth > 0 Then
-			fmt = Obj_FormatDetails(details, preview := False, indent := indent, orf := orf)
+			fmt = Obj_FormatDetails(details, preview := False, indent := indent, orphan := orphan)
 			
 		' ...or shallowly: {…} or {}
 		Else
@@ -578,7 +578,7 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }>
 		If depth > 0 Then
-			fmt = class & DTL_SEP & Obj_FormatDetails(details, preview := False, indent := indent, orf := orf)
+			fmt = class & DTL_SEP & Obj_FormatDetails(details, preview := False, indent := indent, orphan := orphan)
 			
 		' ...or shallowly...
 		Else
@@ -618,7 +618,7 @@ Private Function Obj_FormatDetails( _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview As Boolean = False, _
 	Optional ByVal indent As String = VBA.vbTab, _
-	Optional ByVal orf As Boolean = True _
+	Optional ByVal orphan As Boolean = True _
 ) As String
 	Const DTL_OPEN As String = "{"
 	Const DTL_CLOSE As String = "}"
@@ -657,7 +657,7 @@ Private Function Obj_FormatDetails( _
 		'   	...
 		'   }
 		Else
-			brk = orf
+			brk = orphan
 		End If
 		
 		' Indent as needed.
