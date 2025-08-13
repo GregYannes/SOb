@@ -290,7 +290,7 @@ Private Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal pointer As Boolean = False, _
 	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal details As String = VBA.vbNullString, _
-	Optional ByVal pvw as Boolean = False, _
+	Optional ByVal preview as Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
@@ -300,7 +300,7 @@ Private Function Obj_Print(ByRef obj As Collection, _
 		pointer := pointer, _
 		summary := summary, _
 		details := details, _
-		pvw := pvw, _
+		preview := preview, _
 		ind := ind, _
 		orf := orf _
 	)
@@ -324,7 +324,7 @@ Private Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal pointer As Boolean = False, _
 	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal details As String = VBA.vbNullString, _
-	Optional ByVal pvw as Boolean = False, _
+	Optional ByVal preview as Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
@@ -359,7 +359,7 @@ Private Function Obj_Format(ByRef obj As Collection, _
 			pointer := ptrTxt, _
 			summary := summary, _
 			details := details, _
-			pvw := pvw, _
+			preview := preview, _
 			ind := ind, _
 			orf := orf _
 		)
@@ -501,7 +501,7 @@ Private Function Obj_FormatInfo( _
 	Optional ByVal pointer As String = VBA.vbNullString, _
 	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal details As String = VBA.vbNullString, _
-	Optional ByVal pvw As Boolean = False, _
+	Optional ByVal preview As Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
@@ -529,11 +529,11 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }
 		If depth > 0 Then
-			fmt = Obj_FormatDetails(details, pvw := False, ind := ind, orf := orf)
+			fmt = Obj_FormatDetails(details, preview := False, ind := ind, orf := orf)
 			
 		' ...or shallowly: {…} or {}
 		Else
-			fmt = Obj_FormatDetails(details, pvw := True)
+			fmt = Obj_FormatDetails(details, preview := True)
 		End If
 		
 	' ...or rich formatting.
@@ -556,7 +556,7 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }>
 		If depth > 0 Then
-			fmt = class & DTL_SEP & Obj_FormatDetails(details, pvw := False, ind := ind, orf := orf)
+			fmt = class & DTL_SEP & Obj_FormatDetails(details, preview := False, ind := ind, orf := orf)
 			
 		' ...or shallowly...
 		Else
@@ -566,8 +566,8 @@ Private Function Obj_FormatInfo( _
 				fmt = class & SUM_SEP & SUM_OPEN & summary & SUM_CLOSE
 				
 			' ...or maybe a preview of the detail: <Obj: {…}>
-			ElseIf pvw Then
-				fmt = class & DTL_SEP & Obj_FormatDetails(details, pvw := True)
+			ElseIf preview Then
+				fmt = class & DTL_SEP & Obj_FormatDetails(details, preview := True)
 				
 			' ...or maybe a pointer: <Obj @1234567890>
 			ElseIf pointer <> VBA.vbNullString Then
@@ -594,7 +594,7 @@ End Function
 '   }
 Private Function Obj_FormatDetails( _
 	Optional ByVal details As String = VBA.vbNullString, _
-	Optional ByVal pvw As Boolean = False, _
+	Optional ByVal preview As Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
 ) As String
@@ -609,7 +609,7 @@ Private Function Obj_FormatDetails( _
 	#End If
 	
 	' Optionally show only a preview ("{…}") of the details...
-	If pvw Then
+	If preview Then
 		If details <> VBA.vbNullString Then
 			details = VBA.Chr(DTL_PVW)
 		End If
