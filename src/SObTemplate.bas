@@ -4,7 +4,7 @@
 
 ' Class name for the simulated "*" object.
 ' TODO: Name your object.
-Private Const *_CLASS As String = "*"
+Private Const *_CLS As String = "*"
 
 
 
@@ -56,7 +56,7 @@ End Function
 
 ' Initialize a simulated "*" object.
 Private Sub *_Initialize(ByRef * As Object)
-	Const CLS_NAME As String = *_CLASS
+	Const CLS_NAME As String = *_CLS
 	
 	SOb.Obj_Initialize *, CLS_NAME
 	
@@ -90,7 +90,7 @@ End Sub
 Public Function Is*(ByRef x As Variant, _
 	Optional ByVal strict As Boolean = False _
 ) As Boolean
-	Const CLS_NAME As String = *_CLASS
+	Const CLS_NAME As String = *_CLS
 	
 	
 	' ### Class and Fields ###

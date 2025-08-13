@@ -79,7 +79,7 @@ Fill out either template according to these steps:
 
   1. [`TODO`][sob_todo_1]: Replace every [`*`][sob_tmpl_ast] with the (["class"][sob_cls]) name you desire for your SOb.  A simple **Find & Replace** should suffice.
      
-     So if you name your SOb something like "`Foo`", this should yield a `FOO_CLASS` [constant][vba_const] atop your module; along with a `Foo__Field` [enumeration][vba_enum] below; followed by [procedures][vba_proc] of the form `Foo_…()` with a `foo` [argument][vba_arg].
+     So if you name your SOb something like "`Foo`", this should yield a `FOO_CLS` [constant][vba_const] atop your module; along with a `Foo__Field` [enumeration][vba_enum] below; followed by [procedures][vba_proc] of the form `Foo_…()` with a `foo` [argument][vba_arg].
      
   1. [`TODO`][sob_todo_2]: Enumerate the [fields][sob_tmpl_enm] you desire for your SOb.  Currently there are three placeholders for these fields: [`FieldOne`][sob_tmpl_f1] and [`FieldTwo`][sob_tmpl_f2] and [`FieldThree`][sob_tmpl_f3].  Feel free to **Find & Replace** these, and to append further fields of your own.
      
