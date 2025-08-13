@@ -85,7 +85,7 @@ Private Sub Test_Print(ByRef dix As Object)
 		plain := plain, _
 		pointer := pointer, _
 		summary := summary, _
-		dtl := detail, _
+		details := detail, _
 		pvw := preview, _
 		ind := indent, _
 		orf := orphan

@@ -311,7 +311,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal plain As Boolean = False, _
 	Optional ByVal pointer As Boolean = False, _
 	Optional ByVal summary As String = VBA.vbNullString, _
-	Optional ByVal dtl As String = VBA.vbNullString, _
+	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal pvw as Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
@@ -321,7 +321,7 @@ Public Function Obj_Print(ByRef obj As Collection, _
 		plain := plain, _
 		pointer := pointer, _
 		summary := summary, _
-		dtl := dtl, _
+		details := details, _
 		pvw := pvw, _
 		ind := ind, _
 		orf := orf _
@@ -345,7 +345,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal plain As Boolean = False, _
 	Optional ByVal pointer As Boolean = False, _
 	Optional ByVal summary As String = VBA.vbNullString, _
-	Optional ByVal dtl As String = VBA.vbNullString, _
+	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal pvw as Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
@@ -380,7 +380,7 @@ Public Function Obj_Format(ByRef obj As Collection, _
 			plain := plain, _
 			pointer := ptrTxt, _
 			summary := summary, _
-			dtl := dtl, _
+			details := details, _
 			pvw := pvw, _
 			ind := ind, _
 			orf := orf _
@@ -522,7 +522,7 @@ Private Function Obj_FormatInfo( _
 	Optional ByVal plain As Boolean = False, _
 	Optional ByVal pointer As String = VBA.vbNullString, _
 	Optional ByVal summary As String = VBA.vbNullString, _
-	Optional ByVal dtl As String = VBA.vbNullString, _
+	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal pvw As Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
@@ -551,11 +551,11 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }
 		If depth > 0 Then
-			fmt = Obj_FormatDetails(dtl, pvw := False, ind := ind, orf := orf)
+			fmt = Obj_FormatDetails(details, pvw := False, ind := ind, orf := orf)
 			
 		' ...or shallowly: {…} or {}
 		Else
-			fmt = Obj_FormatDetails(dtl, pvw := True)
+			fmt = Obj_FormatDetails(details, pvw := True)
 		End If
 		
 	' ...or rich formatting.
@@ -578,7 +578,7 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }>
 		If depth > 0 Then
-			fmt = class & DTL_SEP & Obj_FormatDetails(dtl, pvw := False, ind := ind, orf := orf)
+			fmt = class & DTL_SEP & Obj_FormatDetails(details, pvw := False, ind := ind, orf := orf)
 			
 		' ...or shallowly...
 		Else
@@ -589,7 +589,7 @@ Private Function Obj_FormatInfo( _
 				
 			' ...or maybe a preview of the detail: <Obj: {…}>
 			ElseIf pvw Then
-				fmt = class & DTL_SEP & Obj_FormatDetails(dtl, pvw := True)
+				fmt = class & DTL_SEP & Obj_FormatDetails(details, pvw := True)
 				
 			' ...or maybe a pointer: <Obj @1234567890>
 			ElseIf pointer <> VBA.vbNullString Then
@@ -615,7 +615,7 @@ End Function
 '   	...
 '   }
 Private Function Obj_FormatDetails( _
-	Optional ByVal dtl As String = VBA.vbNullString, _
+	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal pvw As Boolean = False, _
 	Optional ByVal ind As String = VBA.vbTab, _
 	Optional ByVal orf As Boolean = True _
@@ -632,8 +632,8 @@ Private Function Obj_FormatDetails( _
 	
 	' Optionally show only a preview ("{…}") of the details...
 	If pvw Then
-		If dtl <> VBA.vbNullString Then
-			dtl = VBA.Chr(DTL_PVW)
+		If details <> VBA.vbNullString Then
+			details = VBA.Chr(DTL_PVW)
 		End If
 		
 	' ...and otherwise break out details.
@@ -641,7 +641,7 @@ Private Function Obj_FormatDetails( _
 		Dim brk As Boolean
 		
 		' Not for missing details ("{}")...
-		If dtl = VBA.vbNullString Then
+		If details = VBA.vbNullString Then
 			brk = False
 			
 		' ...but certainly for multiline details...
@@ -649,7 +649,7 @@ Private Function Obj_FormatDetails( _
 		'   	...
 		'   	...
 		'   }
-		ElseIf Txt_Contains(dtl, VBA.vbNewLine) Then
+		ElseIf Txt_Contains(details, VBA.vbNewLine) Then
 			brk = True
 			
 		' ...and optionally for orphan lines...
@@ -662,14 +662,14 @@ Private Function Obj_FormatDetails( _
 		
 		' Indent as needed.
 		If brk Then
-			dtl = VBA.vbNewLine & Txt_Indent(dtl, ind := ind, bfr := True) & VBA.vbNewLine
+			details = VBA.vbNewLine & Txt_Indent(details, ind := ind, bfr := True) & VBA.vbNewLine
 		End If
 	End If
 	
 	' Wrap details in braces.
-	dtl = DTL_OPEN & dtl & DTL_CLOSE
+	details = DTL_OPEN & details & DTL_CLOSE
 	
-	Obj_FormatDetails = dtl
+	Obj_FormatDetails = details
 End Function
 
 
