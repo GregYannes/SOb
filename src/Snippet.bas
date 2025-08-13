@@ -640,7 +640,7 @@ Private Function Obj_FormatDetails( _
 		
 		' Indent as needed.
 		If brk Then
-			details = VBA.vbNewLine & Txt_Indent(details, indent := indent, bfr := True) & VBA.vbNewLine
+			details = VBA.vbNewLine & Txt_Indent(details, indent := indent, before := True) & VBA.vbNewLine
 		End If
 	End If
 	
@@ -690,13 +690,13 @@ End Sub
 ' Indent text.
 Private Function Txt_Indent(ByVal txt As String, _
 	Optional ByVal indent As String = VBA.vbTab, _
-	Optional ByVal bfr As Boolean = True _
+	Optional ByVal before As Boolean = True _
 ) As String
 	' Indent the start of every line...
 	txt = VBA.Replace(txt, find := VBA.vbNewLine, replace := VBA.vbNewLine & indent)
 	
 	' ...including (optionally) the beginning.
-	If bfr Then
+	If before Then
 		txt = indent & txt
 	End If
 	
