@@ -58,8 +58,8 @@ Topics in this project...
 
   - [Properties][vba_prp]
   - [`Property Get`][vba_prp_get]
-  - [`Collection`][vba_clx]
-  - [`Variant`][vba_var]
+  - [`Collection`][vba_clx]s
+  - [`Variant`][vba_var]s
 
 
 

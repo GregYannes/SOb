@@ -47,6 +47,7 @@ These procedures have the following output.
 
 Topics in this project...
 
+  - [Field metadata][sob_flds]
   - [Templates][sob_tmps]
   - [Setup][sob_setup] with templates
   - [Enumerated fields][sob_tmp_enm]
@@ -56,9 +57,9 @@ Topics in this project...
 
   - [Properties][vba_prp]
   - [`Property Get`][vba_prp_get]
-  - [`Collection`][vba_clx]
+  - [`Collection`][vba_clx]s
   - [`Enum`][vba_enum]erations
-  - [`Variant`][vba_var]
+  - [`Variant`][vba_var]s
   - [`Set`][vba_set] Statement
   - [`IsObject()`][vba_isobj]
   - Passing [`ByRef`erence][vba_byref]
@@ -76,5 +77,6 @@ Topics in this project...
   [vba_set]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/set-statement
   [vba_isobj]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/isobject-function
   [vba_byref]:   https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
+  [sob_flds]:    Fields.md
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:   ../README.md#setup

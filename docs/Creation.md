@@ -48,7 +48,7 @@ Topics in this project...
 ...and in VBA.
 
   - [`New`][vba_new] operator
-  - [`Collection`][vba_clx]
+  - [`Collection`][vba_clx]s
 
 
 

@@ -19,7 +19,7 @@ Topics in this project...
 
 ...and elsewhere.
 
-  - [Semantic Versioning][semver]
+  - [Semantic versioning][semver]
 
 
 
