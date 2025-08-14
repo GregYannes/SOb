@@ -38,6 +38,10 @@ These procedures return the following values.
   - `IsObj()` returns `True` if `x` is an SOb, and `False` otherwise.  When `class` is supplied, then `IsObj()` also tests whether the "class" name matches.
   - `AsObj()` returns an SOb ([`Collection`][vba_clx]) with the original fields from `x`.  When `class` is supplied, then `AsObj()` updates the "class" name to match.
 
+> [!WARNING]
+> 
+> `AsObj()` also modifies `x` itself, to match any `class` you supply.
+
 
 ## Details ##
 
