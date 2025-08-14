@@ -119,7 +119,7 @@ Fill out either template according to these steps:
      
   1. [`TODO`][sob_todo_8]: Using your accessors, [assign each field][sob_tmpl_asn] from `obj` to its corresponding field in `AsFoo`, within [`AsFoo()`][sob_tmpl_as].
      
-     This way, `AsFoo()` can coerce any input (`x`) into a "Foo" object, by extracting fields from the former into the latter.
+     This way, `AsFoo()` can cast any input (`x`) to a "Foo" object, by extracting fields from the former into the latter.
      
   1. [`TODO`][sob_todo_11]: Create any `summary` or `details` you wish, to visually represent your object within [`Foo_Format()`][sob_tmpl_fmt].  The **`SOb`** framework _automatically_ formats these for you: summaries display on a single line…
      
