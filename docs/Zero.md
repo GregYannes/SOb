@@ -2,7 +2,7 @@
 
 ## Description ##
 
-The "`0`" suffix denotes a convenience function, which processes its arguments _"as is"_.  In the spirit of [`paste()`][r_paste] and [`paste0()`][r_paste] in the [R][r_lang] language, each `*0()` function is a variation on another `*()` function, which strips away nonessential "settings" in favor of handy defaults.
+The "`0`" suffix denotes a convenience function, which processes its arguments _"as is"_.  In the spirit of [`paste()`][r_paste] and [`paste0()`][r_paste] in [R][r_lang], each `*0()` function is a variation on another `*()` function, which strips away nonessential "settings" in favor of handy defaults.
 
 Currently **`SOb`** offers three such functions:
 
@@ -29,9 +29,16 @@ Obj_FormatFields0(…)
 
 ## See Also ##
 
+Topics in this project...
+
   - [`Obj_HasFields()`][sob_flds]
   - [`Obj_Print()`][sob_vis]
   - [`Obj_FormatFields`][sob_vis]
+
+...and elsewhere.
+
+  - [R][r_lang] language
+  - [`paste()`][r_paste] and [`paste0()`][r_paste]
 
 
 
