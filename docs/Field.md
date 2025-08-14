@@ -1,3 +1,80 @@
 # Field Access #
 
+## Description ##
+
+These procedure access a field within an SOb.
+
+  - `Obj_Field()` reads and writes the field as a [property][vba_prp].
+  - `Obj_Get()` copies the field value into your variable, with protection against nonexistence.  Your ([`Property Get`][vba_prp_get]) field [accessors][sob_tmp_acc] should simply wrap `Obj_Get()`.
+
+
+## Syntax ##
+
+These procedure(s) have the following syntax.
+
+```vba
+Obj_Field(obj, field)
+Obj_Field(obj, field) = val
+Set Obj_Field(obj, field) = val
+
+Obj_Get var, obj, field
+```
+
+They have the following named parameters.
+
+| Name    | Type                    | Required | Default | Description                                                                                                |
+| :------ | :---------------------- | :------: | :------ | :--------------------------------------------------------------------------------------------------------- |
+| `obj`   | [`Collection`][vba_clx] | ✓        |         | An SOb whose field you wish to access.                                                                     |
+| `field` | [`Enum`][vba_enum]      | ✓        |         | The field itself, as [enumerated][sob_rdm_tmp] in your [template][sob_tmp_enm].                            |
+| `val`   | [`Variant`][vba_var]    | ✓        |         | The value you wish to assign your field.<br><br>Use [`Set`][vba_set] when `val` is an [object][vba_isobj]. |
+| `var`   | `Variant`               | ✓        |         | The variable into which `Obj_Get()` should copy the field value ([by reference][vba_byref]).               |
+
+
+## Output ##
+
+These procedures have the following output.
+
+  - `Obj_Field()` returns a [`Variant`][vba_var] with the field value, specifically when [reading][vba_prp_get] the field.
+  - `Obj_Get()` returns no value.  It copies any field value into `var` [by reference][vba_byref], but it leaves `var` untouched when no such `field` exists.
+
+
+## Details ##
+
 ![](../med/banner_unfinished.png)
+
+
+## See Also ##
+
+Topics in this project...
+
+  - [Templates][sob_tmps]
+  - [Setup][sob_setup] with templates
+  - [Enumerated fields][sob_tmp_enm]
+  - [Field accessors][sob_tmp_acc]
+
+...and in VBA.
+
+  - [Properties][vba_prp]
+  - [`Property Get`][vba_prp_get]
+  - [`Collection`][vba_clx]
+  - [`Enum`][vba_enum]erations
+  - [`Variant`][vba_var]
+  - [`Set`][vba_set] Statement
+  - [`IsObject()`][vba_isobj]
+  - Passing [`ByRef`erence][vba_byref]
+
+
+
+  [vba_prp]:     https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
+  [vba_prp_get]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
+  [sob_tmp_acc]: ../src/SObTemplate.bas#L171-L213
+  [vba_clx]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
+  [vba_enum]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
+  [sob_rdm_tmp]: ../README.md#template
+  [sob_tmp_enm]: ../src/SObTemplate.bas#L26-L29
+  [vba_var]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
+  [vba_set]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/set-statement
+  [vba_isobj]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/isobject-function
+  [vba_byref]:   https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
+  [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
+  [sob_setup]:   ../README.md#setup
