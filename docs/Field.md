@@ -2,7 +2,7 @@
 
 ## Description ##
 
-These procedure access a field within an SOb.
+These procedures access a field within an SOb.
 
   - `Obj_Field()` reads and writes the field as a [property][vba_prp].
   - `Obj_Get()` copies the field value into your variable, with protection against nonexistence.  Your ([`Property Get`][vba_prp_get]) field [accessors][sob_tmp_acc] should simply wrap `Obj_Get()`.
