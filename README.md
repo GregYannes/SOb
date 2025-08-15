@@ -48,7 +48,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
   [^6]: Technically you _could_ mimic an SOb and implement "methods"[^5] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
   [^7]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
   [^8]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
-  [^9]: Others cannot _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
+  [^9]: Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
     
     However, if you [outsource the framework][sob_depend] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
 
