@@ -2,7 +2,7 @@
 
 ## Description ##
 
-These functions provide metadata about [fields][sob_fld] in an SOb.
+These functions describe [fields][sob_fld] in an SOb.
 
   - `Obj_FieldCount()` counts (`Long`) the fields in an SOb.
   - `Obj_HasField()` tests if an SOb has a certain field.
