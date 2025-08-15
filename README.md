@@ -9,7 +9,7 @@ With a [full suite][sob_suite] of features at your fingertips — including [pre
 
 I first encountered this use case when developing [**`GitHelp`**][ghlp_repo], which simulates a fielded "library" of documentation.  It demanded an [innovative approach][so_post], and as seasoned developers [chimed][so_comm_1] [in][so_comm_2], this took on a life of its own!
 
-Like me, you might desire several such data structures, where _some_ fields are accessible (or not) to outside users.  These structures (like UDTs) are self-contained within your module, yet (like objects) they can be used by other modules.  Ideally these other modules should still compile in the absence of yours, which should be easy for lay users to (re)install.
+Like me, you might desire several such data structures, where _some_ fields are accessible (or not) to outside users.  These structures (like UDTs) are self-contained within your module, yet (like objects) they [can be used][vba_cls_call] by classes and modules alike.  Ideally these other modules should still compile in the absence of yours, which should be easy for lay users to (re)install.
 
 
 ### Old Problems ###
@@ -266,6 +266,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [so_post]:      https://codereview.stackexchange.com/q/293168
   [so_comm_1]:    https://codereview.stackexchange.com/posts/comments/583913
   [so_comm_2]:    https://codereview.stackexchange.com/posts/comments/584856
+  [vba_cls_call]: https://stackoverflow.com/posts/comments/118407731
   [obj_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5995379
   [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
   [udt_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971117
@@ -284,7 +285,6 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vba_var]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
   [sob_setup]:    #setup
   [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
-  [vba_cls_call]: https://stackoverflow.com/posts/comments/118407731
   [sob_mod]:      src/SOb.bas
   [udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
   [vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
