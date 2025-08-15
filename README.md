@@ -44,8 +44,8 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
   [^2]: Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
   [^3]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
   [^4]: Via the [`TypeName()`][vba_type_fn] function or the [`TypeOf`][vba_type_op] operator.
-  [^5]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, ...)`, where the `sob` is passed [by reference][vba_byref].
-  [^6]: Technically you _could_ mimic an SOb and implement "methods"[^5] of the form `UDT_Method(udt, ...)`, where the `udt` is passed [by reference][vba_byref].
+  [^5]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, …)`, where the `sob` is passed [by reference][vba_byref].
+  [^6]: Technically you _could_ mimic an SOb and implement "methods"[^5] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
   [^7]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
   [^8]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
   [^9]: Others cannot _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.

@@ -13,11 +13,11 @@ These constants describe the [**`SOb`** module][sob_mod] itself.
 
 ## See Also ##
 
-Topics in this project...
+Topics in this project…
 
   - [`SOb.bas`][sob_mod]
 
-...and elsewhere.
+…and elsewhere.
 
   - [Semantic versioning][semver]
 

@@ -50,11 +50,11 @@ These procedures return the following values.
 
 ## See Also ##
 
-Topics in this project...
+Topics in this project…
 
   - [`New_Obj()`][sob_cre]
 
-...and in VBA.
+…and in VBA.
 
   - [Properties][vba_prp]
   - [`Property Get`][vba_prp_get]

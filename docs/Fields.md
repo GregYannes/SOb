@@ -56,7 +56,7 @@ These procedure(s) have the following output.
 
 ## See Also ##
 
-Topics in this project...
+Topics in this project…
 
   - [Fields][sob_fld]
   - [`*0()`][sob_fn0] family
@@ -65,7 +65,7 @@ Topics in this project...
   - [Enumerated fields][sob_tmp_enm]
   - [Field accessors][sob_tmp_acc]
 
-...and in VBA.
+…and in VBA.
 
   - [Arrays][vba_arr]
   - [`Collection`][vba_clx]s

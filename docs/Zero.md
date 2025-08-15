@@ -29,13 +29,13 @@ Obj_FormatFields0(…)
 
 ## See Also ##
 
-Topics in this project...
+Topics in this project…
 
   - [`Obj_HasFields()`][sob_flds]
   - [`Obj_Print()`][sob_vis]
   - [`Obj_FormatFields`][sob_vis]
 
-...and elsewhere.
+…and elsewhere.
 
   - [R][r_lang] language
   - [`paste()`][r_paste] and [`paste0()`][r_paste]

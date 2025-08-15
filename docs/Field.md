@@ -45,7 +45,7 @@ These procedures have the following output.
 
 ## See Also ##
 
-Topics in this project...
+Topics in this project…
 
   - [Field metadata][sob_flds]
   - [Templates][sob_tmps]
@@ -53,7 +53,7 @@ Topics in this project...
   - [Enumerated fields][sob_tmp_enm]
   - [Field accessors][sob_tmp_acc]
 
-...and in VBA.
+…and in VBA.
 
   - [Properties][vba_prp]
   - [`Property Get`][vba_prp_get]

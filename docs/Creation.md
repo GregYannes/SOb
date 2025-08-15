@@ -41,11 +41,11 @@ These procedures have the following output.
 
 ## See Also ##
 
-Topics in this project...
+Topics in this project…
 
   - [`Obj_Class()`][sob_typo]
 
-...and in VBA.
+…and in VBA.
 
   - [`New`][vba_new] operator
   - [`Collection`][vba_clx]s
