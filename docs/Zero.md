@@ -2,7 +2,7 @@
 
 ## Description ##
 
-The "`0`" suffix denotes a convenience function, which processes its arguments _"as is"_.  In the spirit of [`paste()`][r_paste] and [`paste0()`][r_paste] in [R][r_lang], each `*0()` function is a variation on another `*()` function, which strips away nonessential "settings" in favor of handy defaults.
+The "`0`" suffix denotes a convenience function, which processes its arguments "as is".  In the spirit of [`paste()`][r_paste] and [`paste0()`][r_paste] in [R][r_lang], each `*0()` function is a variation on another `*()` function, but strips away nonessential "settings" in favor of handy defaults.
 
 Currently **`SOb`** offers three such functions:
 
