@@ -43,7 +43,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
   [^1]: A class module may [call procedures from standard modules][vba_cls_call], like your own module or even the [**`SOb`** module][sob_mod].
   [^2]: Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
   [^3]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
-  [^4]: Via the [`TypeName()`][vba_type_fn] function or the [`TypeOf`][vba_type_op] operator.
+  [^4]: Via the [`TypeName()`][vba_typ_fn] function or the [`TypeOf`][vba_typ_op] operator.
   [^5]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, …)`, where the `sob` is passed [by reference][vba_byref].
   [^6]: Technically you _could_ mimic an SOb and implement "methods"[^5] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
   [^7]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
@@ -289,8 +289,8 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
   [vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
   [sob_typo]:     docs/Typology.md
-  [vba_type_fn]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/typename-function
-  [vba_type_op]:  https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/typeof-operator
+  [vba_typ_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/typename-function
+  [vba_typ_op]:   https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/typeof-operator
   [sob_tmp_mtd]:  src/SObTemplate.bas#L217-L246
   [vba_byref]:    https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
   [vb_net]:       https://learn.microsoft.com/dotnet/visual-basic

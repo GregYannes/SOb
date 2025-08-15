@@ -71,6 +71,7 @@ Topics in this project…
   - [`Collection`][vba_clx]s
   - [`Enum`][vba_enum]erations
   - [`ParamArray`s][vba_parr]
+  - [Named arguments][vba_nm_args]
   - [`.Item()`][vba_clx_itm] method
 
 
@@ -88,5 +89,5 @@ Topics in this project…
   [sob_rdm_clx]: ../README.md#new-solution
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
-  [sob_setup]:    ../README.md#setup
+  [sob_setup]:   ../README.md#setup
   [sob_tmp_acc]: ../src/SObTemplate.bas#L171-L213
