@@ -19,9 +19,11 @@ These functions have the following syntax.
 Obj_Format(obj, [depth], [plain], [pointer], [summary], [details], [preview], [indent], [orphan])
 
 Obj_Print(obj, [depth], [plain], [pointer], [summary], [details], [preview], [indent], [orphan])
+
 Obj_Print0([format])
 
 Obj_FormatFields(fields, [separator])
+
 Obj_FormatFields0(…)
 ```
 
@@ -78,7 +80,7 @@ Topics in this project…
 
 …in VBA…
 
-  - [`Debug.Print()`][vba_print]
+  - [`.Print()`][vba_print] method
   - [Immediate window][vbe_immed] in the [Visual Basic Editor][vbe] (VBE)
   - [Arrays][vba_arr]
   - [`Collection`][vba_clx]s

@@ -16,19 +16,22 @@ These procedure(s) have the following syntax.
 
 ```vba
 Obj_FieldCount(obj)
+
 Obj_HasField(obj, field)
+
 Obj_HasFields(obj, fields)
+
 Obj_HasFields(obj, …)
 ```
 
 They have the following named[^1] parameters.
 
-| Name     | Type                    | Required | Default | Description                                                                                                    |
-| :------- | :---------------------- | :------: | :------ | :------------------------------------------------------------------------------------------------------------- |
-| `obj`    | [`Collection`][vba_clx] | ✓        |         | An SOb whose field(s) you wish to assess.                                                                      |
-| `field`  | [`Enum`][vba_enum]      | ✓        |         | The [field][sob_fld] itself, as [enumerated][sob_rdm_tmp] in your [template][sob_tmp_enm].                     |
-| `fields` | Array of `Enum`s        | ✓        |         | An [array][vba_arr] of such `field`s.                                                                          |
-| …[^1]    | `Enum`s                 |          |         | The fields themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr]. |
+| Name     | Type                        | Required | Default | Description                                                                                                    |
+| :------- | :-------------------------- | :------: | :------ | :------------------------------------------------------------------------------------------------------------- |
+| `obj`    | [`Collection`][vba_clx]     | ✓        |         | An SOb whose field(s) you wish to assess.                                                                      |
+| `field`  | [`Enum`][vba_enum]          | ✓        |         | The [field][sob_fld] itself, as [enumerated][sob_rdm_tmp] in your [template][sob_tmp_enm].                     |
+| `fields` | [Array][vba_arr] of `Enum`s | ✓        |         | An array of such `field`s.<br><br>This is best achieved via [`Array()`][vba_arr_fn].                           |
+| …[^1]    | `Enum`s                     |          |         | The fields themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr]. |
 
 
   [^1]: [`ParamArray`][vba_parr]s like `…` are not actually passed to a single [named argument][vba_nm_args], but rather as several nameless arguments.
@@ -70,7 +73,7 @@ Topics in this project…
   - [Arrays][vba_arr]
   - [`Collection`][vba_clx]s
   - [`Enum`][vba_enum]erations
-  - [`ParamArray`s][vba_parr]
+  - [`ParamArray`][vba_parr]s
   - [Named arguments][vba_nm_args]
   - [`.Item()`][vba_clx_itm] method
 

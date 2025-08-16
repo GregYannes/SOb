@@ -66,7 +66,7 @@ Topics in this project…
   - [Calling functions][vba_fun_call]
   - [Calling properties][vba_prp_call]
   - [`=`][vba_eq_op] operator
-  - [`ParamArray`s][vba_parr]
+  - [`ParamArray`][vba_parr]s
   - [`Err`][vba_err_obj] object
   - [Named arguments][vba_nm_args]
   - [`Type`][vba_typ_kwd] statement

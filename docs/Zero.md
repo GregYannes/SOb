@@ -35,6 +35,11 @@ Topics in this project…
   - [`Obj_Print()`][sob_vis]
   - [`Obj_FormatFields`][sob_vis]
 
+…in VBA…
+
+  - [`ParamArray`][vba_parr]s
+  - [Arrays][vba_arr]
+
 …and elsewhere.
 
   - [R][r_lang] language
