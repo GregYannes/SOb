@@ -21,7 +21,7 @@ Obj_HasField(obj, field)
 
 Obj_HasFields(obj, fields)
 
-Obj_HasFields(obj, …)
+Obj_HasFields0(obj, …)
 ```
 
 They have the following named[^1] parameters.
