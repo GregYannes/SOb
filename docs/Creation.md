@@ -31,12 +31,65 @@ They have the following named parameters.
 These procedures have the following output.
 
   - `New_Obj()` returns a [`New Collection`][vba_new_clx], with `class` as its ["class" property][sob_typo].
-  - `Obj_Initialize()` operates on `obj` but returns no value.  It ensures that `obj` is an initialized `Collection`, with `class` as its "class" property.
+  - `Obj_Initialize()` operates on `obj` but returns no value.  It ensures that `obj` is an initialized `Collection` with a "class" property.
 
 
 ## Details ##
 
 ![](../med/banner_unfinished.png)
+
+
+## Examples ##
+
+Create an SOb of the **"Foo"** class, and examine it with [`Obj_Class()`][sob_typo].
+
+```vba
+Dim foo As Object: Set foo = New_Obj("Foo")
+
+Debug.Print Obj_Class(foo)
+```
+
+> ```
+> Foo
+> ```
+
+Ensure applicable objects are initialized as SObs of the **"Bar"** class…
+
+```vba
+Debug.Print "Declaring..."
+Dim cBar As Collection, oBar As Object
+
+Debug.Print cBar Is Nothing, oBar Is Nothing
+Debug.Print
+
+Debug.Print "Initializing..."
+Obj_Initialize cBar, "Bar"
+Obj_Initialize oBar, "Bar"
+
+Debug.Print cBar Is Nothing, oBar Is Nothing
+Debug.Print Obj_Class(cBar), Obj_Class(oBar)
+```
+
+> ```
+> Declaring...
+> True          True
+> 
+> Initializing...
+> False         False
+> Bar           Bar
+> ```
+
+…but fail to do likewise for `foo` which is _already_ a **"Foo"**.
+
+```vba
+Obj_Initialize foo, "Bar"
+
+Debug.Print Obj_Class(foo)
+```
+
+> ```
+> Bar
+> ```
 
 
 ## See Also ##
@@ -49,6 +102,7 @@ Topics in this project…
 
   - [`New`][vba_new] operator
   - [`Collection`][vba_clx]s
+  - [`Object`][vba_obj]s
 
 
 
@@ -57,3 +111,4 @@ Topics in this project…
   [sob_cre_dtl]: #details
   [vba_new_clx]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object#remarks
   [sob_typo]:    Typology.md
+  [vba_obj]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
