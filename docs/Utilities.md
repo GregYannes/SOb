@@ -55,6 +55,11 @@ They have the following named parameters.
 | `e`         | `ErrObject`[^3]           |          | [`Err`][vba_err_obj] object | The latest error thrown during execution.                                                                  |
 
 
+> [!NOTE]
+> 
+> Be sure to use the [`vbNewLine`][vba_newln] for line breaks, when you assemble (say) `txt` and other such text.  This uses the newline [specific to the system][sys_newln], and ensures that [`Obj_FormatFields*()`][sob_vis] and `Txt_Indent()` work as expected.
+
+
   [^1]: While this is technically a [`Variant`][vba_var], it accommodates any `var`iable or `val`ue you desire.
   [^2]: The procedure updates this variable by [reference][vba_byref], which overwrites any value it originally had.
   [^3]: The `ErrObject` is not a traditional "type", since there is only [one (global) instance][vba_err_typ] of the `Err` object.
@@ -81,7 +86,12 @@ These procedures have the following output.
 
 ## See Also ##
 
-Topics in VBA…
+Topics in this project…
+
+  - [`Obj_FormatFields()`][sob_vis]
+  - [`Obj_FormatFields0()`][sob_vis]
+
+…and in VBA…
 
   - [`IsObject()`][vba_isobj]
   - Passing [`ByRef`][vba_byref]erence
@@ -93,6 +103,7 @@ Topics in VBA…
   - [Variables][vba_vrb]
   - [`vbTab`][vba_tab]
   - Array [dimensions][vba_arr_dmn]
+  - [`vbNewLine`][vba_newln]
   - [`Variant`][vba_var]s
   - [`.Add()`][vba_clx_add] method
   - [`.Raise()`][vba_err_rse] method
@@ -100,6 +111,7 @@ Topics in VBA…
 …and elsewhere.
 
   - [Horizontal tab][hrz_tab]
+  - [System newline][sys_newln]
 
 
 
@@ -114,6 +126,9 @@ Topics in VBA…
   [vba_tab]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/miscellaneous-constants
   [hrz_tab]:     https://www.ascii-code.com/9
   [vba_arr_dmn]: https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/arrays/array-dimensions
+  [vba_newln]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/miscellaneous-constants
+  [sys_newln]:   https://learn.microsoft.com/dotnet/api/system.environment.newline?view=net-9.0#property-value
+  [sob_vis]:     Visualization.md
   [vba_var]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
   [vba_err_typ]: https://stackoverflow.com/a/55067026
   [vba_clx_add]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/add-method-visual-basic-for-applications
