@@ -90,7 +90,7 @@ Debug.Print Obj_Class(foo)
 ```
 
 > ```
-> Bar
+> Foo
 > ```
 
 
