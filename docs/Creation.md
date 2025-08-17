@@ -55,21 +55,21 @@ Debug.Print Obj_Class(foo)
 
 <br>
 
-Ensure applicable objects are initialized as SObs of the **"Bar"** class…
+Ensure applicable objects are initialized as SObs of the **"Snaf"** class…
 
 ```vba
 Debug.Print "Declaring..."
-Dim cBar As Collection, oBar As Object
+Dim cSnaf As Collection, oSnaf As Object
 
-Debug.Print cBar Is Nothing, oBar Is Nothing
+Debug.Print cSnaf Is Nothing, oSnaf Is Nothing
 Debug.Print
 
 Debug.Print "Initializing..."
-Obj_Initialize cBar, "Bar"
-Obj_Initialize oBar, "Bar"
+Obj_Initialize cSnaf, "Snaf"
+Obj_Initialize oSnaf, "Snaf"
 
-Debug.Print cBar Is Nothing, oBar Is Nothing
-Debug.Print Obj_Class(cBar), Obj_Class(oBar)
+Debug.Print cSnaf Is Nothing, oSnaf Is Nothing
+Debug.Print Obj_Class(cSnaf), Obj_Class(oSnaf)
 ```
 
 > ```
@@ -78,13 +78,13 @@ Debug.Print Obj_Class(cBar), Obj_Class(oBar)
 > 
 > Initializing...
 > False         False
-> Bar           Bar
+> Snaf          Snaf
 > ```
 
 …but fail to do likewise for `foo` which is _already_ a **"Foo"**.
 
 ```vba
-Obj_Initialize foo, "Bar"
+Obj_Initialize foo, "Snaf"
 
 Debug.Print Obj_Class(foo)
 ```

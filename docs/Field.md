@@ -45,22 +45,22 @@ These procedures have the following output.
 
 ## Examples ##
 
-Create and manipulate the `Baz` field of an SOb.
+Create and manipulate the `Bar` field of an SOb.
 
 ```vba
 Enum Foo__Fields
-	Baz
+	Bar
 End Enum
 ```
 
 ```vba
 Debug.Print "Uninitialized:"
 Dim foo1 As Object: Set foo1 = New_Obj("Foo")
-Debug.Print Obj_Field(foo1, Baz)
+Debug.Print Obj_Field(foo1, Bar)
 
 Debug.Print "Initialized:"
-Obj_Field(foo1, Baz) = 42
-Debug.Print Obj_Field(foo1, Baz)
+Obj_Field(foo1, Bar) = 42
+Debug.Print Obj_Field(foo1, Bar)
 ```
 
 > ```
@@ -72,23 +72,23 @@ Debug.Print Obj_Field(foo1, Baz)
 
 <br>
 
-Implement a stable [accessor][sob_tmp_acc] for `Baz`…
+Implement a stable [accessor][sob_tmp_acc] for `Bar`…
 
 ```vba
-Property Get Foo_Baz(foo As Object) As Integer
-	Obj_Get Foo_Baz, foo, Baz
+Property Get Foo_Bar(foo As Object) As Integer
+	Obj_Get Foo_Bar, foo, Bar
 End Property
 
-Property Let Foo_Baz(foo As Object, val As Integer)
-	Obj_Field(foo, Baz) = val
+Property Let Foo_Bar(foo As Object, val As Integer)
+	Let Obj_Field(foo, Bar) = val
 End Property
 ```
 
 …which elegantly manipulates this field…
 
 ```vba
-Foo_Baz(foo1) = -1
-Debug.Print Foo_Baz(foo1)
+Foo_Bar(foo1) = -1
+Debug.Print Foo_Bar(foo1)
 ```
 
 > ```
@@ -98,7 +98,7 @@ Debug.Print Foo_Baz(foo1)
 …and enforces the proper type…
 
 ```vba
-Foo_Baz(foo1) = "Forty-two"
+Foo_Bar(foo1) = "Forty-two"
 ```
 
 > ![][sob_acc_err]
@@ -107,7 +107,7 @@ Foo_Baz(foo1) = "Forty-two"
 
 ```vba"
 Dim foo2 As Object: Set foo2 = New_Obj("Foo")
-Debug.Print Foo_Baz(foo2)
+Debug.Print Foo_Bar(foo2)
 ```
 
 > ```
