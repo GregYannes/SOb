@@ -57,6 +57,108 @@ These procedure(s) have the following output.
 ![](../med/banner_unfinished.png)
 
 
+## Examples ##
+
+[Define][vba_enum] several fields of an SOb…
+
+```vba
+Enum Foo__Fields
+	Bar
+	Baz
+	Qux
+End Enum
+```
+
+…and count them.
+
+```vba
+Debug.Print "Creating..."
+Dim foo As Object: Set foo = New_Obj("Foo")
+Debug.Print Obj_FieldCount(foo)
+
+Debug.Print "Initializing..."
+Obj_Field(foo, Bar) = 10
+Obj_Field(foo, Baz) = "Twenty"
+Obj_Field(foo, Qux) = 30
+Debug.Print Obj_FieldCount(foo)
+```
+
+> ```
+> Creating...
+> 0
+> Initializing...
+> 3
+> ```
+
+<br>
+
+"Trick" the `Obj_FieldCount()` by manipulating this SOb as a [`Collection`][vba_clx]: namely [removing][vba_clx_rmv] its final field (`Qux`) and [adding][vba_clx_add] a "dummy" [`.Item`][vba_clx_itm] in its place.
+
+```vba
+Debug.Print "Removing..."
+foo.Remove foo.Count
+Debug.Print Obj_Field(foo, Qux)
+Debug.Print Obj_FieldCount(foo)
+
+Debug.Print "Adding..."
+foo.Add "IMPOSTER"
+Debug.Print Obj_FieldCount(foo)
+```
+
+> ```
+> Removing...
+> 
+> 2
+> Adding...
+> 3
+> ```
+
+<br>
+
+Test whether each field still exists.
+
+```vba
+Debug.Print Obj_HasField(foo, Bar)
+Debug.Print Obj_HasField(foo, Baz)
+Debug.Print Obj_HasField(foo, Qux)
+```
+
+> ```
+> True
+> True
+> False
+> ```
+
+<br>
+
+Test programmatically whether _all_ fields exist…
+
+```vba
+Dim f1 As Variant: f1 = Array(Bar, Baz)
+Debug.Print Obj_HasFields(foo, f1)
+
+Dim f2 As Variant: f2 = Array(Bar, Baz, Qux)
+Debug.Print Obj_HasFields(foo, f2)
+```
+
+> ```
+> True
+> False
+> ```
+
+…and test them manually.
+
+```vba
+Debug.Print Obj_HasFields0(foo, Bar, Baz)
+Debug.Print Obj_HasFields0(foo, Bar, Baz, Qux)
+```
+
+> ```
+> True
+> False
+> ```
+
+
 ## See Also ##
 
 Topics in this project…
@@ -76,6 +178,8 @@ Topics in this project…
   - [`ParamArray`][vba_parr]s
   - [Named arguments][vba_nm_args]
   - [`.Item()`][vba_clx_itm] method
+  - [`.Remove()`][vba_clx_rmv] method
+  - [`.Add()`][vba_clx_add] method
 
 
 
@@ -91,6 +195,8 @@ Topics in this project…
   [sob_typo]:    Typology.md
   [sob_rdm_clx]: ../README.md#new-solution
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
+  [vba_clx_rmv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/remove-method-visual-basic-for-applications
+  [vba_clx_add]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/add-method-visual-basic-for-applications
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:   ../README.md#setup
   [sob_tmp_acc]: ../src/SObTemplate.bas#L171-L213
