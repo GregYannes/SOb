@@ -45,7 +45,7 @@ These procedures have the following output.
 
 ## Examples ##
 
-Create and manipulate the `Bar` field of an SOb.
+[Define][vba_enum] the `Bar` field of an SOb…
 
 ```vba
 Enum Foo__Fields
@@ -53,20 +53,22 @@ Enum Foo__Fields
 End Enum
 ```
 
+…and manipulate that field.
+
 ```vba
-Debug.Print "Uninitialized:"
+Debug.Print "Creating..."
 Dim foo1 As Object: Set foo1 = New_Obj("Foo")
 Debug.Print Obj_Field(foo1, Bar)
 
-Debug.Print "Initialized:"
+Debug.Print "Initializing..."
 Obj_Field(foo1, Bar) = 42
 Debug.Print Obj_Field(foo1, Bar)
 ```
 
 > ```
-> Uninitialized:
+> Creating...
 > 
-> Initialized:
+> Initializing...
 > 42
 > ```
 
