@@ -212,7 +212,7 @@ End Function
 
 
 ' Test programmatically for multiple simulated fields...
-Private Function Obj_HasFields(ByRef obj As Collection, _
+Public Function Obj_HasFields(ByRef obj As Collection, _
 	ByRef fields As Variant _
 ) As Boolean
 	Dim n As Long: n = Arr_Length(fields, 1)
