@@ -92,7 +92,7 @@ Debug.Print Obj_FieldCount(foo)
 
 <br>
 
-"Trick" the `Obj_FieldCount()` by manipulating this SOb as a [`Collection`][vba_clx]: namely [removing][vba_clx_rmv] its final field (`Qux`) and [adding][vba_clx_add] a "dummy" [`.Item`][vba_clx_itm] in its place.
+"Trick" the `Obj_FieldCount()` by manipulating this SOb as a [`Collection`][vba_clx]: namely [removing][vba_clx_rmv] its [final][vba_clx_cnt] field (`Qux`) and [adding][vba_clx_add] a "dummy" [`.Item`][vba_clx_itm] in its place.
 
 ```vba
 Debug.Print "Removing..."
@@ -197,6 +197,7 @@ Topics in this project…
   [sob_rdm_clx]: ../README.md#new-solution
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
   [vba_clx_rmv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/remove-method-visual-basic-for-applications
+  [vba_clx_cnt]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/count-property-visual-basic-for-applications
   [vba_clx_add]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/add-method-visual-basic-for-applications
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:   ../README.md#setup
