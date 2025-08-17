@@ -53,6 +53,8 @@ Debug.Print Obj_Class(foo)
 > Foo
 > ```
 
+<br>
+
 Ensure applicable objects are initialized as SObs of the **"Bar"** class…
 
 ```vba
