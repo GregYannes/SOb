@@ -54,6 +54,152 @@ These procedures return the following values.
 ![](../med/banner_unfinished.png)
 
 
+## Examples ##
+
+Create an SOb of the **"Foo"** class, and examine it with `Obj_Class()`.
+
+```vba
+Dim foo As Object: Set foo = New_Obj("Foo")
+
+Debug.Print Obj_Class(foo)
+```
+
+> ```
+> Foo
+> ```
+
+<br>
+
+Test whether something is an SOb…
+
+```vba
+Dim clx As Collection: Set clx = New Collection
+Dim obj As Object: Set obj = New Collection
+
+Debug.Print IsObj(foo)
+Debug.Print IsObj(clx), IsObj(obj)
+```
+
+> ```
+> True
+> False         False
+> ```
+
+…of the **"Foo"** class or the **"Snaf"** class.
+
+```vba
+Debug.Print IsObj(foo, "Foo")
+Debug.Print IsObj(foo, "Snaf")
+```
+
+> ```
+> True
+> False
+> ```
+
+<br>
+
+Define the fields for a **"Foo"** object…
+
+```vba
+Enum Foo__Fields
+	Bar
+	Baz
+	Qux
+End Enum
+```
+
+…and test that `foo` has them all.
+
+```vba
+Dim aFields As Variant: aFields = Array(Bar, Baz, Qux)
+
+Debug.Print "Some fields..."
+Obj_Field(foo, Bar) = 10
+Obj_Field(foo, Baz) = "Twenty"
+Debug.Print IsObj(foo, "Foo", aFields)
+
+Debug.Print "All fields..."
+Obj_Field(foo, Qux) = 30
+Debug.Print IsObj(foo, "Foo", aFields)
+```
+
+> ```
+> Some fields...
+> False
+> All Fields...
+> True
+> ```
+
+<br>
+
+Test `foo` leniently and strictly.
+
+```vba
+Debug.Print "Exact..."
+Debug.Print IsObj(foo, "Foo", aFields, strict := False)
+Debug.Print IsObj(foo, "Foo", aFields, strict := True)
+
+foo.Add "IMPOSTER"
+
+Debug.Print "Extra..."
+Debug.Print IsObj(foo, "Foo", aFields, strict := False)
+Debug.Print IsObj(foo, "Foo", aFields, strict := True)
+```
+
+> ```
+> Exact...
+> True
+> True
+> Extra...
+> True
+> False
+> ```
+
+<br>
+
+Cast applicable objects as SObs of the **"Snaf"** class…
+
+```vba
+Debug.Print "Declaring..."
+Dim cSnaf As Collection: Set cSnaf = New Collection
+Dim oSnaf As Object: Set oSnaf = New Collection
+
+Debug.Print IsObj(cSnaf, "Snaf"), IsObj(oSnaf, "Snaf")
+Debug.Print
+
+Debug.Print "Casting..."
+Set cSnaf = AsObj(cSnaf, "Snaf")
+Set oSnaf = AsObj(oSnaf, "Snaf")
+
+Debug.Print IsObj(cSnaf, "Snaf"), IsObj(oSnaf, "Snaf")
+Debug.Print Obj_Class(cSnaf), Obj_Class(oSnaf)
+```
+
+> ```
+> Declaring...
+> False         False
+> 
+> Casting...
+> True          True
+> Snaf          Snaf
+> ```
+
+…and do likewise for `foo` which was originally a **"Foo"**.
+
+```vba
+Set foo = AsObj(foo, "Snaf")
+
+Debug.Print IsObj(foo, "Snaf")
+Debug.Print Obj_Class(foo)
+```
+
+> ```
+> True
+> Snaf
+> ```
+
+
 ## See Also ##
 
 Topics in this project…
