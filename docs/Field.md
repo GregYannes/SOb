@@ -43,6 +43,78 @@ These procedures have the following output.
 ![](../med/banner_unfinished.png)
 
 
+## Examples ##
+
+Create and manipulate the `Baz` field of an SOb.
+
+```vba
+Enum Foo__Fields
+	Baz
+End Enum
+```
+
+```vba
+Debug.Print "Uninitialized:"
+Dim foo1 As Object: Set foo1 = New_Obj("Foo")
+Debug.Print Obj_Field(foo1, Baz)
+
+Debug.Print "Initialized:"
+Obj_Field(foo1, Baz) = 42
+Debug.Print Obj_Field(foo1, Baz)
+```
+
+> ```
+> Uninitialized:
+> 
+> Initialized:
+> 42
+> ```
+
+<br>
+
+Implement a stable [accessor][sob_tmp_acc] for `Baz`…
+
+```vba
+Property Get Foo_Baz(foo As Object) As Integer
+	Obj_Get Foo_Baz, foo, Baz
+End Property
+
+Property Let Foo_Baz(foo As Object, val As Integer)
+	Obj_Field(foo, Baz) = val
+End Property
+```
+
+…which elegantly manipulates this field…
+
+```vba
+Foo_Baz(foo1) = -1
+Debug.Print Foo_Baz(foo1)
+```
+
+> ```
+> -1
+> ```
+
+…and enforces the proper type…
+
+```vba
+Foo_Baz(foo1) = "Forty-two"
+```
+
+> ![][sob_acc_err]
+
+…but defaults to an [unitialized value][vba_emp] when the data is missing.
+
+```vba"
+Dim foo2 As Object: Set foo2 = New_Obj("Foo")
+Debug.Print Foo_Baz(foo2)
+```
+
+> ```
+> 0
+> ```
+
+
 ## See Also ##
 
 Topics in this project…
@@ -63,6 +135,7 @@ Topics in this project…
   - [`Set`][vba_set] Statement
   - [`IsObject()`][vba_isobj]
   - Passing [`ByRef`erence][vba_byref]
+  - [Uninitialized values][vba_emp]
 
 
 
@@ -78,5 +151,7 @@ Topics in this project…
   [vba_isobj]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/isobject-function
   [vba_byref]:   https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
   [sob_flds]:    Fields.md
+  [sob_acc_err]: ../med/vbe_error_field_type.png
+  [vba_emp]:     https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#empty
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:   ../README.md#setup
