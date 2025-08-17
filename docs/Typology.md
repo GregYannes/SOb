@@ -6,7 +6,7 @@ These procedures ascertain and manipulate the "type" of an SOb.
 
   - `Obj_Class()` gets the "class" name of an SOb, which is a [read-only property][vba_prp_get].
   - `IsObj()` tests whether something is an SOb, originally constructed by [`New_Obj()`][sob_cre].
-  - `AsObj()` casts something to an SOb, or dies trying.
+  - `AsObj()` ["casts"][vba_cast] something to an SOb, or dies trying.
 
 
 ## Syntax ##
@@ -46,7 +46,7 @@ These procedures return the following values.
 
 > [!WARNING]
 > 
-> `AsObj()` also modifies `x` itself, to match any `class` you supply.
+> `AsObj()` also modifies your original `x` variable, to match any `class` you supply.
 
 
 ## Details ##
@@ -158,7 +158,7 @@ Debug.Print IsObj(foo, "Foo", aFields, strict := True)
 
 <br>
 
-Cast applicable objects as SObs of the **"Snaf"** class…
+["Cast"][vba_cast] applicable objects as SObs of the **"Snaf"** class…
 
 ```vba
 Debug.Print "Declaring..."
@@ -216,6 +216,7 @@ Topics in this project…
 
   - [Properties][vba_prp]
   - [`Property Get`][vba_prp_get]
+  - [Casting][vba_cast]
   - [`Collection`][vba_clx]s
   - [`Variant`][vba_var]s
   - [Arrays][vba_arr]
@@ -226,6 +227,7 @@ Topics in this project…
 
   [vba_prp_get]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
   [sob_cre]:     Creation.md
+  [vba_cast]:    https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/directcast-operator
   [vba_clx]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
   [vba_var]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
   [vba_arr]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
