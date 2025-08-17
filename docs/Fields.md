@@ -190,6 +190,7 @@ Topics in this project…
   [vba_enum]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
   [sob_rdm_tmp]: ../README.md#template
   [sob_tmp_enm]: ../src/SObTemplate.bas#L26-L29
+  [vba_arr_fn]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
   [vba_parr]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-parameter-arrays
   [vba_nm_args]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
   [sob_typo]:    Typology.md
