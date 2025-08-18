@@ -354,4 +354,4 @@ Topics in this project…
   [vbe_err_ex]:  ../med/vbe_error_13.png
   [vba_rng_adr]: https://learn.microsoft.com/office/vba/api/excel.range.address
   [vba_sct_nt]:  https://learn.microsoft.com/office/vba/excel/concepts/cells-and-ranges/refer-to-cells-by-using-shortcut-notation
-  [vba_errs]:     https://learn.microsoft.com/office/vba/language/reference/error-messages
+  [vba_errs]:    https://learn.microsoft.com/office/vba/language/reference/error-messages
