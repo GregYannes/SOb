@@ -153,7 +153,7 @@ Topics in this project…
   [vba_isobj]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/isobject-function
   [vba_byref]:   https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
   [sob_flds]:    Fields.md
-  [sob_acc_err]: ../med/vbe_error_field_type.png
+  [sob_acc_err]: ../med/vbe_error_13.png
   [vba_emp]:     https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#empty
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:   ../README.md#setup
