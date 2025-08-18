@@ -6,13 +6,13 @@ These procedures support **`SOb`** and are handy for your general use.
 
   - `Assign()` assigns any value (scalar or [objective][vba_isobj]) to your variable by [reference][vba_byref].
   - `Txt_Indent()` indents some text.
-  - `Txt_Contains()` tests if some text contains a substring.
+  - `Txt_Contains()` detects a substring within some text.
 
 > [!NOTE]
 > 
-> Text detection is [case-sensitive][vba_txt_cmp] with `Txt_Contains()`.
+> Text detection is [case-sensitive][vba_txt_cmp].
 
-  - `Clx_Has()` tests if a [`Collection`][vba_clx] contains an [`.Item`][vba_clx_itm].
+  - `Clx_Has()` detects an [`.Item`][vba_clx_itm] within a [`Collection`][vba_clx].
   - `Clx_Get()` safely retrieves an [`.Item`][vba_clx_itm] from a `Collection`.
   - `Clx_Set()` sets the value of an `.Item` in a `Collection`.
   - `Arr_Length()` gets the length of an [array][vba_arr].
