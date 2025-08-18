@@ -89,6 +89,209 @@ These procedures have the following output.
 ![](../med/banner_unfinished.png)
 
 
+## Examples ##
+
+Assign scalar values to [variables][vba_vrb]…
+
+```vba
+Dim sVar As String, vVar As Variant
+
+Assign sVar, "first text"
+Debug.Print sVar
+
+Assign vVar, sVar
+Debug.Print vVar
+
+Assign vVar, "second text"
+Debug.Print vVar
+
+Assign sVar, vVar
+Debug.Print sVar
+```
+
+> ```
+> first text
+> first text
+> second text
+> second text
+> ```
+
+…and [objective][vba_isobj] values.
+
+```vba
+Dim rVar As Range, oVar As Object
+
+Assign rVar, [A1:B2]
+Debug.Print rVar.Address
+
+Assign vVar, rVar
+Debug.Print vVar.Address
+
+Assign oVar, vVar
+Debug.Print oVar.Address
+```
+
+> ```
+> $A$1:$B$2
+> $A$1:$B$2
+> $A$1:$B$2
+> ```
+
+<br>
+
+Indent some text.
+
+```vba
+Dim text As String
+text = "First line."  & vbNewLine & _
+       "Second line." & vbNewLine & _
+       "Third line."
+
+Debug.Print Txt_Indent(text)
+Debug.Print
+
+Debug.Print Txt_Indent(text, before := False)
+Debug.Print
+
+Debug.Print Txt_Indent(text, indent := "--> ")
+```
+
+> ```
+> 	First line.
+> 	Second line.
+> 	Third line.
+> 
+> First line.
+> 	Second line.
+> 	Third line.
+> 
+> --> First line.
+> --> Second line.
+> --> Third line.
+> ```
+
+<br>
+
+Detect some text.
+
+```vba
+Debug.Print Txt_Contains(text, "First")
+Debug.Print Txt_Contains(text, "FIRST")
+Debug.Print Txt_Contains(text, "Fourth")
+```
+
+> ```
+> True
+> False
+> False
+> ```
+
+<br>
+
+Detect an [`.Item`][vba_clx_itm] within a [`Collection`][vba_clx]…
+
+```vba
+Dim clx As Collection: Set clx = New Collection
+clx.Add 10, key := "first"
+
+Debug.Print Clx_Has(clx, 1)
+Debug.Print Clx_Has(clx, "first")
+
+Debug.Print Clx_Has(clx, 2)
+Debug.Print Clx_Has(clx, "second")
+```
+
+> ```
+> True
+> True
+> False
+> False
+> ```
+
+…and get its value…
+
+```vba
+Dim flag As Boolean: flag = False
+
+Debug.Print Clx_Get(clx, 1)
+Debug.Print Clx_Get(clx, "first", has := flag)
+Debug.Print flag
+
+Debug.Print Clx_Get(clx, 2)
+Debug.Print Clx_Get(clx, "second", has := flag)
+Debug.Print flag
+```
+
+> ```
+> 10
+> 10
+> True
+> 
+> 
+> False
+> ```
+
+…and set its value.
+
+```vba
+Clx_Set clx, "first", -1
+Debug.Print clx.Item("first")
+
+Clx_Set clx, "second", 20
+Debug.Print clx.Item("second")
+```
+
+> ```
+> -1
+> 20
+> ```
+
+<br>
+
+Measure an [array][vba_arr].
+
+```vba
+Debug.Print "Declaring..."
+Dim arr() As Variant
+Debug.Print Arr_Length(arr)
+
+Debug.Print "Initializing..."
+ReDim arr(1 To 2, 0 To 3)
+Debug.Print Arr_Length(arr)
+Debug.Print Arr_Length(arr, dimension := 2)
+```
+
+> ```
+> Declaring...
+> 0
+> Initializing...
+> 2
+> 4
+> ```
+
+<br>
+
+[Propagate][vba_ppg_err] the latest [error][vba_err_obj].
+
+```vba
+Debug.Print "Catching..."
+On Error GoTo Propagate
+	
+	Dim num As Integer: num = "Text"
+	Debug.Print "Succeeding..."
+	
+Propagate:
+	Debug.Print "Propagating..."
+	Err_Raise
+```
+
+> ```
+> Catching...
+> Propagating...
+> ```
+> ![][vbe_err_ex]
+
+
 ## See Also ##
 
 Topics in this project…
@@ -140,3 +343,4 @@ Topics in this project…
   [vba_err_typ]: https://stackoverflow.com/a/55067026
   [vba_clx_add]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/add-method-visual-basic-for-applications
   [vba_err_rse]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/raise-method
+  [vbe_err_ex]:  ../med/vbe_error_13.png
