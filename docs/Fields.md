@@ -59,7 +59,7 @@ These procedure(s) have the following output.
 
 ## Examples ##
 
-[Define][vba_enum] several fields of an SOb…
+[Define][vba_enum] several [fields][sob_fld] of an SOb…
 
 ```vba
 Enum Foo__Fields

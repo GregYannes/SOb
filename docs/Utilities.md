@@ -274,13 +274,13 @@ Debug.Print Arr_Length(arr, dimension := 2)
 [Propagate][vba_ppg_err] the latest [error][vba_err_obj].
 
 ```vba
-Debug.Print "Catching..."
-On Error GoTo Propagate
+	Debug.Print "Catching..."
+	On Error GoTo PROPAGATE
 	
 	Dim num As Integer: num = "Text"
 	Debug.Print "Succeeding..."
 	
-Propagate:
+PROPAGATE:
 	Debug.Print "Propagating..."
 	Err_Raise
 ```
