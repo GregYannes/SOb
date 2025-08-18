@@ -63,6 +63,7 @@ Topics in this project…
 …and in VBA.
 
   - [Error propagation][vba_ppg_err]
+  - [Error messages][vba_errs]
   - [Calling functions][vba_fun_call]
   - [Calling properties][vba_prp_call]
   - [`=`][vba_eq_op] operator

@@ -138,6 +138,7 @@ Topics in this project…
   - [`IsObject()`][vba_isobj]
   - Passing [`ByRef`erence][vba_byref]
   - [Uninitialized values][vba_emp]
+  - [Error messages][vba_errs]
 
 
 
@@ -157,3 +158,4 @@ Topics in this project…
   [vba_emp]:     https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#empty
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:   ../README.md#setup
+  [vba_errs]:     https://learn.microsoft.com/office/vba/language/reference/error-messages

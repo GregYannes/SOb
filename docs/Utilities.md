@@ -316,6 +316,7 @@ Topics in this project…
   - [`Variant`][vba_var]s
   - [`.Add()`][vba_clx_add] method
   - [`.Raise()`][vba_err_rse] method
+  - [Error messages][vba_errs]
 
 …and elsewhere.
 
@@ -344,3 +345,4 @@ Topics in this project…
   [vba_clx_add]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/add-method-visual-basic-for-applications
   [vba_err_rse]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/raise-method
   [vbe_err_ex]:  ../med/vbe_error_13.png
+  [vba_errs]:     https://learn.microsoft.com/office/vba/language/reference/error-messages
