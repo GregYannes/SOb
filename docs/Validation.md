@@ -48,6 +48,143 @@ These procedure(s) have the following output.
 ![](../med/banner_unfinished.png)
 
 
+## Examples ##
+
+[Define][vba_enum] a few [fields][sob_fld] of an SOb…
+
+```vba
+Enum Foo__Fields
+	Bar
+	Baz
+	Qux
+End Enum
+```
+
+…along with their [accessors][sob_tmp_acc].
+
+```vba
+Property Get Foo_Bar(foo As Object) As Integer
+	Obj_Get Foo_Bar, foo, Bar
+End Property
+
+Property Let Foo_Bar(foo As Object, val As Integer)
+	Let Obj_Field(foo, Bar) = val
+End Property
+
+
+Property Get Foo_Baz(foo As Object) As String
+	Obj_Get Foo_Baz, foo, Baz
+End Property
+
+Property Let Foo_Baz(foo As Object, val As String)
+	Let Obj_Field(foo, Baz) = val
+End Property
+
+
+Property Get Foo_Qux(foo As Object) As Range
+	Obj_Get Foo_Qux, foo, Qux
+End Property
+
+Property Set Foo_Qux(foo As Object, val As Range)
+	Set Obj_Field(foo, Qux) = val
+End Property
+```
+
+<br>
+
+Check those accessors…
+
+```vba
+Sub Check_Example(foo As Object)
+	Debug.Print "Catching..."
+	On Error GoTo CHECK_ERROR
+	
+	Debug.Print "Checking..."
+	Obj_Check Foo_Bar(foo), Foo_Baz(foo), Foo_Qux(foo)
+	
+	Debug.Print "Succeeding..."
+	
+CHECK_ERROR:
+	Debug.Print "Handling..."
+	Debug.Print Obj_CheckError(type_ := True)
+End Sub
+```
+
+…with proper fields[^5] that pass the check…
+
+```vba
+Dim foo As Object: Set foo = New_Obj("Foo")
+
+Foo_Bar(foo) = 10
+Foo_Baz(foo) = "Twenty"
+Set Foo_Qux(foo) = [A1:B2]
+
+Check_Example foo
+```
+
+> ```
+> Catching...
+> Checking...
+> Succeeding...
+> Handling...
+> True
+> ```
+
+…with tampered fields that fail the check…
+
+```vba
+Obj_Field(foo, Bar) = "Ten"
+
+Check_Example foo
+```
+
+> ```
+> Catching...
+> Checking...
+> Handling...
+> False
+> ```
+
+```vba
+Set Obj_Field(foo, Bar) = [A1:B2]
+
+Check_Example foo
+```
+
+> ```
+> Catching...
+> Checking...
+> Handling...
+> False
+> ```
+
+…and with irrelevant errors that ["bubble up"][vba_ppg_err].
+
+```vba
+	Debug.Print "Catching..."
+	On Error GoTo CHECK_ERROR
+	
+	Debug.Print "Checking..."
+	Dim num As Double: num = 1 / 0
+	
+	Debug.Print "Succeeding..."
+	
+CHECK_ERROR:
+	Debug.Print "Handling..."
+	Debug.Print Obj_CheckError(type_ := True)
+```
+
+> ```
+> Catching...
+> Checking...
+> Handling...
+> ```
+> ![][sob_chk_err]
+
+
+  [^5]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
+
+
 ## See Also ##
 
 Topics in this project…
@@ -71,6 +208,10 @@ Topics in this project…
   - [`Err`][vba_err_obj] object
   - [Named arguments][vba_nm_args]
   - [`Type`][vba_typ_kwd] statement
+  - [`Enum`][vba_enum]erations
+  - [`Range`][vba_rng]s
+  - [`.Address`][vba_rng_adr] property
+  - [Shortcut notation][vba_sct_nt]
 
 
 
@@ -91,6 +232,11 @@ Topics in this project…
   [vba_nm_args]:  https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
   [vba_err_typ]:  https://stackoverflow.com/a/55067026
   [vba_typ_kwd]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/type-statement
+  [vba_enum]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
+  [sob_chk_err]:  ../med/vbe_error_11.png
+  [vba_rng]:      https://learn.microsoft.com/office/vba/api/excel.range(object)
+  [vba_rng_adr]:  https://learn.microsoft.com/office/vba/api/excel.range.address
+  [vba_sct_nt]:   https://learn.microsoft.com/office/vba/excel/concepts/cells-and-ranges/refer-to-cells-by-using-shortcut-notation
   [sob_tmps]:     ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:    ../README.md#setup
   [vba_errs]:     https://learn.microsoft.com/office/vba/language/reference/error-messages
