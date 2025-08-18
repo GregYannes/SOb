@@ -7,6 +7,11 @@ These procedures support **`SOb`** and are handy for your general use.
   - `Assign()` assigns any value (scalar or [objective][vba_isobj]) to your variable by [reference][vba_byref].
   - `Txt_Indent()` indents some text.
   - `Txt_Contains()` tests if some text contains a substring.
+
+> [!NOTE]
+> 
+> Text detection is [case-sensitive][vba_txt_cmp] with `Txt_Contains()`.
+
   - `Clx_Has()` tests if a [`Collection`][vba_clx] contains an [`.Item`][vba_clx_itm].
   - `Clx_Get()` safely retrieves an [`.Item`][vba_clx_itm] from a `Collection`.
   - `Clx_Set()` sets the value of an `.Item` in a `Collection`.
@@ -95,6 +100,7 @@ Topics in this project…
 
   - [`IsObject()`][vba_isobj]
   - Passing [`ByRef`][vba_byref]erence
+  - [Case sensitivity][vba_txt_cmp]
   - [`Collection`][vba_clx]s
   - [`.Item()`][vba_clx_itm] method
   - [Arrays][vba_arr]
@@ -117,6 +123,7 @@ Topics in this project…
 
   [vba_isobj]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/isobject-function
   [vba_byref]:   https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
+  [vba_txt_cmp]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/instr-function#settings
   [vba_clx]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
   [vba_arr]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
