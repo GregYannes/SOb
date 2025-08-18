@@ -23,11 +23,11 @@ CheckError([e], [type_])
 
 They have the following named parameters.
 
-| Name        | Type                           | Required | Default                     | Description                                                                                                                                                                             |
-| :---------- | :----------------------------- | :------: | :-------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| …[^2]       | Accessor [calls][vba_prp_call] |          |                             | The calls themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr].                                                                           |
-| `e`         | `ErrObject`[^3]                |          | [`Err`][vba_err_obj] object | The latest error, thrown during validation.                                                                                                                                             |
-| `type_`[^4] | `Boolean`                      |          | `True`                      | Should `CheckError()` catch (`True`) errors for fields of the wrong type?<ul><li>[**`Error 13`**][vba_err_13] for scalars.</li><li>[**`Error 450`**][vba_err_450] for objects.</li><ul> |
+| Name        | Type                           | Required | Default                     | Description                                                                                                   |
+| :---------- | :----------------------------- | :------: | :-------------------------- | :------------------------------------------------------------------------------------------------------------ |
+| …[^2]       | Accessor [calls][vba_prp_call] |          |                             | The calls themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr]. |
+| `e`         | `ErrObject`[^3]                |          | [`Err`][vba_err_obj] object | The latest error, thrown during validation.                                                                   |
+| `type_`[^4] | `Boolean`                      |          | `True`                      | Should `CheckError()` catch (`True`) errors for fields of the wrong type?                                     |
 
 
   [^2]: [`ParamArray`][vba_parr]s like `…` are not actually passed to a single [named argument][vba_nm_args], but rather as several nameless arguments.
@@ -146,7 +146,20 @@ Check_Example foo
 > ```
 
 ```vba
-Set Obj_Field(foo, Bar) = [A1:B2]
+Set Obj_Field(foo, Bar) = New Collection
+
+Check_Example foo
+```
+
+> ```
+> Catching...
+> Checking...
+> Handling...
+> False
+> ```
+
+```vba
+Set Obj_Field(foo, Qux) = New Collection
 
 Check_Example foo
 ```
@@ -229,7 +242,7 @@ Topics in this project…
   [vba_parr]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-parameter-arrays
   [vba_err_obj]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/err-object
   [vba_err_450]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/wrong-number-of-arguments-error-450
-  [vba_nm_args]:  https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
+  [vba_nm_args]:  https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-sub-and-function-procedures#pass-named-arguments
   [vba_err_typ]:  https://stackoverflow.com/a/55067026
   [vba_typ_kwd]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/type-statement
   [vba_enum]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
