@@ -116,7 +116,7 @@ Debug.Print sVar
 > second text
 > ```
 
-…and [objective][vba_isobj] values.
+…and [objective][vba_isobj] values like [`Range`][vba_rng]s[^4].
 
 ```vba
 Dim rVar As Range, oVar As Object
@@ -292,6 +292,9 @@ Propagate:
 > ![][vbe_err_ex]
 
 
+  [^4]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
+
+
 ## See Also ##
 
 Topics in this project…
@@ -316,6 +319,9 @@ Topics in this project…
   - [`Variant`][vba_var]s
   - [`.Add()`][vba_clx_add] method
   - [`.Raise()`][vba_err_rse] method
+  - [`Range`][vba_rng]s
+  - [`.Address`][vba_rng_adr] property
+  - [Shortcut notation][vba_sct_nt]
   - [Error messages][vba_errs]
 
 …and elsewhere.
@@ -344,5 +350,8 @@ Topics in this project…
   [vba_err_typ]: https://stackoverflow.com/a/55067026
   [vba_clx_add]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/add-method-visual-basic-for-applications
   [vba_err_rse]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/raise-method
+  [vba_rng]:     https://learn.microsoft.com/office/vba/api/excel.range(object)
   [vbe_err_ex]:  ../med/vbe_error_13.png
+  [vba_rng_adr]: https://learn.microsoft.com/office/vba/api/excel.range.address
+  [vba_sct_nt]:  https://learn.microsoft.com/office/vba/excel/concepts/cells-and-ranges/refer-to-cells-by-using-shortcut-notation
   [vba_errs]:     https://learn.microsoft.com/office/vba/language/reference/error-messages
