@@ -49,11 +49,6 @@ These procedures return the following values.
 > `AsObj()` also modifies your original `x` variable, to match any `class` you supply.
 
 
-## Details ##
-
-![](../med/banner_unfinished.png)
-
-
 ## Examples ##
 
 ### Creation ###

@@ -34,11 +34,6 @@ These procedures have the following output.
   - `Obj_Initialize()` operates on `obj` but returns no value.  It ensures that `obj` is an initialized `Collection` with a "class" property.
 
 
-## Details ##
-
-![](../med/banner_unfinished.png)
-
-
 ## Examples ##
 
 ### Creation ###

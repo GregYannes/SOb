@@ -84,11 +84,6 @@ These procedures have the following output.
   - `Err_Raise()` returns no value.  It [raises][vba_err_rse] the latest [`Err`][vba_err_obj]or without forcing you to specify its details.
 
 
-## Details ##
-
-![](../med/banner_unfinished.png)
-
-
 ## Examples ##
 
 ### Assignment ###

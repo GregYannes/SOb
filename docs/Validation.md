@@ -43,11 +43,6 @@ These procedure(s) have the following output.
   - `CheckError()` returns `True` if no error occurred, and `False` for errors (like [type][vba_err_13]) you wish to catch (`type_ := True`).  But it ["bubbles up"][vba_ppg_err] any other error.
 
 
-## Details ##
-
-![](../med/banner_unfinished.png)
-
-
 ## Examples ##
 
 [Define][vba_enum] a few [fields][sob_fld] of an SOb…

@@ -22,11 +22,6 @@ Obj_FormatFields0(…)
 ```
 
 
-## Details ##
-
-![](../med/banner_unfinished.png)
-
-
 ## See Also ##
 
 Topics in this project…

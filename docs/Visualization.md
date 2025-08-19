@@ -66,11 +66,6 @@ These functions have the following output.
   - `Obj_FormatFields0()` does likewise for all pairs in `…`.
 
 
-## Details ##
-
-![](../med/banner_unfinished.png)
-
-
 ## Examples ##
 
 ### Field Formatting ###
