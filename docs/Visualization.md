@@ -33,15 +33,15 @@ They have the following named parameters.
 | :---------- | :-------------------------------- | :------: | :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `obj`       | [`Collection`][vba_clx]           | ✓        |                          | An SOb you wish to visualize.                                                                                                                                                               |
 | `depth`     | `Integer`                         |          | `1`                      | The depth to which the visualization should expand: `0` shows a `summary`, while positive expands to any `details`.                                                                         |
-| `plain`     | `Boolean`                         |          | `False`                  | Format the SOb in plain format (`True`) rather than rich (`False`)?  See [**Details**][sob_vis_dtl] for appearance.                                                                         |
+| `plain`     | `Boolean`                         |          | `False`                  | Format the SOb in plain format (`True`) rather than rich (`False`)?  See [**Examples**][sob_vis_ex] for appearance.                                                                         |
 | `pointer`   | `Boolean`                         |          | `False`                  | Fall back to showing the [pointer][vba_ptr] (`True`) for `obj`, when we have neither `summary` nor `preview`?                                                                               |
 | `summary`   | `String`                          |          | `""`                     | An expression summarizing the contents of `obj` on a single line, when `depth := 0`.  See `preview` and `pointer` for fallbacks when `summary := ""`.                                       |
-| `details`   | `String`                          |          | `""`                     | Expressions detailing the contents of `obj` across multiple lines, when `depth > 0`.  See [**Details**][sob_vis_dtl] for formatting with `Obj_FormatFields*()`.                             |
-| `preview`   | `Boolean`                         |          | `False`                  | Fall back to showing a preview of the `details`, when we have no `summary`?  See [**Details**][sob_vis_dtl] for appearance.                                                                 |
+| `details`   | `String`                          |          | `""`                     | Expressions detailing the contents of `obj` across multiple lines, when `depth > 0`.  See [**Examples**][sob_vis_ex] for formatting with `Obj_FormatFields*()`.                             |
+| `preview`   | `Boolean`                         |          | `False`                  | Fall back to showing a preview of the `details`, when we have no `summary`?  See [**Examples**][sob_vis_ex] for appearance.                                                                 |
 | `indent`    | `String`                          |          | [`vbTab`][vba_tab]       | The indentation used for nesting `details`.  Defaults to a standard [horizontal tab][hrz_tab] like most indentation.                                                                        |
 | `orphan`    | `Boolean`                         |          | `True`                   | Should a single line of `details` still be nested (`True`) or remain on a single line (`False`)?                                                                                            |
 | `format`    | `String`                          |          | `""`                     | Output for the console, which should already be formatted as desired.                                                                                                                       |
-| `fields`    | [Array][vba_arr] of `String`s[^1] | ✓        |                          | An array with pairs of (textual) expressions: a field name followed by its value.  See [**Details**][sob_vis_dtl] for appearance.<br><br>This is best achieved via [`Array()`][vba_arr_fn]. |
+| `fields`    | [Array][vba_arr] of `String`s[^1] | ✓        |                          | An array with pairs of (textual) expressions: a field name followed by its value.  See [**Examples**][sob_vis_ex] for appearance.<br><br>This is best achieved via [`Array()`][vba_arr_fn]. |
 | `separator` | `String`                          |          | [`vbNewLine`][vba_newln] | The textual separator displayed between each pairing and the next.  Defaults to the [system newline][sys_newln], so each pair (`.field = value`) gets its own line.                         |
 | …[^2]       | `String`s                         |          |                          | The pairs themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr].                                                                               |
 
@@ -582,7 +582,7 @@ Topics in this project…
   [sob_fld]:     Field.md
   [vba_arr]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
   [vba_clx]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
-  [sob_vis_dtl]: #details
+  [sob_vis_ex]:  #examples
   [vba_ptr]:     https://classicvb.net/tips/varptr
   [vba_tab]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/miscellaneous-constants
   [hrz_tab]:     https://www.ascii-code.com/9
