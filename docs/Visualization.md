@@ -361,10 +361,10 @@ Foo_Bar(foo1) = -1
 Foo_Baz(foo1) = "text"
 Set Foo_Qux(foo1) = [C3:D4]
 
-Foo_Print(foo1, depth := 0)
+Foo_Print foo1, depth := 0
 Debug.Print
 
-Foo_Print(foo1, depth := 1)
+Foo_Print foo1, depth := 1
 ```
 
 > ```
@@ -382,10 +382,10 @@ Foo_Print(foo1, depth := 1)
 …and plainly.
 
 ```vba
-Foo_Print(foo1, depth := 0, plain := True)
+Foo_Print foo1, depth := 0, plain := True
 Debug.Print
 
-Foo_Print(foo1, depth := 1, plain := True)
+Foo_Print foo1, depth := 1, plain := True
 ```
 
 > ```
@@ -419,11 +419,11 @@ End Enum
 …along with their [accessors][sob_tmp_acc].
 
 ```vba
-Property Get Snaf_TxtField(snaf As Object) As Double
+Property Get Snaf_TxtField(snaf As Object) As String
 	Obj_Get Snaf_TxtField, snaf, TxtField
 End Property
 
-Property Let Snaf_TxtField(snaf As Object, val As Double)
+Property Let Snaf_TxtField(snaf As Object, val As String)
 	Let Obj_Field(snaf, TxtField) = val
 End Property
 
@@ -432,7 +432,7 @@ Property Get Snaf_FooField(snaf As Object) As Object
 	Obj_Get Snaf_FooField, snaf, FooField
 End Property
 
-Property Let Snaf_FooField(snaf As Object, val As Object)
+Property Set Snaf_FooField(snaf As Object, val As Object)
 	Set Obj_Field(snaf, FooField) = val
 End Property
 ```
@@ -450,7 +450,7 @@ Function Snaf_Print(snaf As Object, _
 	
 	Dim sDetails As String: sDetails = Obj_FormatFields0( _
 		"TxtField", """" & Snaf_TxtField(snaf) & """", _
-		"Situation", Foo_Format(Snaf_FooField(snaf), depth := depth - 1, plain := plain) _
+		"FooField", Foo_Format(Snaf_FooField(snaf), depth := depth - 1, plain := plain) _
 	)
 	
 	Snaf_Print = Obj_Format(snaf, _
@@ -476,13 +476,13 @@ Dim snaf1 As Object: Set snaf1 = New_Obj("Snaf")
 Snaf_TxtField(snaf1) = "some more text"
 Set Snaf_FooField(snaf1) = foo1
 
-Snaf_Print(snaf1, depth := 0)
+Snaf_Print snaf1, depth := 0
 Debug.Print
 
-Snaf_Print(snaf1, depth := 1)
+Snaf_Print snaf1, depth := 1
 Debug.Print
 
-Snaf_Print(snaf1, depth := 2)
+Snaf_Print snaf1, depth := 2
 ```
 
 > ```
@@ -508,13 +508,13 @@ Snaf_Print(snaf1, depth := 2)
 …and in plain format.
 
 ```vba
-Snaf_Print(snaf1, depth := 0, plain := True)
+Snaf_Print snaf1, depth := 0, plain := True
 Debug.Print
 
-Snaf_Print(snaf1, depth := 1, plain := True)
+Snaf_Print snaf1, depth := 1, plain := True
 Debug.Print
 
-Snaf_Print(snaf1, depth := 2, plain := True)
+Snaf_Print snaf1, depth := 2, plain := True
 ```
 
 > ```
