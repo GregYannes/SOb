@@ -127,9 +127,9 @@ Debug.Print fFormat
 Print a **"Foo"** object in `detail`…
 
 ```vba
-Dim foo As Object: Set foo = New_Obj("Foo")
+Dim foo1 As Object: Set foo1 = New_Obj("Foo")
 
-Obj_Print foo, depth := 1, details := fFormat
+Obj_Print foo1, depth := 1, details := fFormat
 ```
 
 > ```
@@ -145,7 +145,7 @@ Obj_Print foo, depth := 1, details := fFormat
 …and in `summary`.
 
 ```vba
-Obj_Print foo, depth := 0, summary := "3"
+Obj_Print foo1, depth := 0, summary := "3"
 ```
 
 > ```
@@ -158,10 +158,10 @@ Obj_Print foo, depth := 0, summary := "3"
 In the absence of a `summary`, default to a `preview` of any `details`…
 
 ```vba
-Obj_Print foo, depth := 0, preview := True
+Obj_Print foo1, depth := 0, preview := True
 Debug.Print
 
-Obj_Print foo, depth := 0, preview := True, details := fFormat
+Obj_Print foo1, depth := 0, preview := True, details := fFormat
 ```
 
 > ```
@@ -175,7 +175,7 @@ Obj_Print foo, depth := 0, preview := True, details := fFormat
 …or to the `pointer`…
 
 ```vba
-Obj_Print foo, depth := 0, pointer := True
+Obj_Print foo1, depth := 0, pointer := True
 ```
 
 > ```
@@ -187,7 +187,7 @@ Obj_Print foo, depth := 0, pointer := True
 …or keep it simple.
 
 ```vba
-Obj_Print foo, depth := 0
+Obj_Print foo1, depth := 0
 ```
 
 > ```
@@ -200,10 +200,10 @@ Obj_Print foo, depth := 0
 Format plainly in `detail`…
 
 ```vba
-Obj_Print foo, depth := 1, plain := True
+Obj_Print foo1, depth := 1, plain := True
 Debug.Print
 
-Obj_Print foo, depth := 1, plain := True, details := fFormat
+Obj_Print foo1, depth := 1, plain := True, details := fFormat
 ```
 
 > ```
@@ -221,10 +221,10 @@ Obj_Print foo, depth := 1, plain := True, details := fFormat
 …and in `summary`.
 
 ```vba
-Obj_Print foo, depth := 0, plain := True
+Obj_Print foo1, depth := 0, plain := True
 Debug.Print
 
-Obj_Print foo, depth := 0, plain := True, details := fFormat
+Obj_Print foo1, depth := 0, plain := True, details := fFormat
 ```
 
 > ```
@@ -239,10 +239,10 @@ Obj_Print foo, depth := 0, plain := True, details := fFormat
 Play with orphan lines…
 
 ```vba
-Obj_Print foo, depth := 1, details := ".Bar = 10", orphan := False
+Obj_Print foo1, depth := 1, details := ".Bar = 10", orphan := False
 Debug.Print
 
-Obj_Print foo, depth := 1, details := ".Bar = 10", orphan := True
+Obj_Print foo1, depth := 1, details := ".Bar = 10", orphan := True
 ```
 
 > ```
@@ -258,7 +258,7 @@ Obj_Print foo, depth := 1, details := ".Bar = 10", orphan := True
 …and indentation.
 
 ```vba
-Obj_Print foo, depth := 1, details := fFormat, indent := "--> "
+Obj_Print foo1, depth := 1, details := fFormat, indent := "--> "
 ```
 
 > ```
@@ -357,8 +357,6 @@ End Function
 Print a **"Foo"** object[^4] richly…
 
 ```vba
-Dim foo1 As Object: Set foo1 = New_Obj("Foo")
-
 Foo_Bar(foo1) = -1
 Foo_Baz(foo1) = "text"
 Set Foo_Qux(foo1) = [C3:D4]
