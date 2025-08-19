@@ -71,6 +71,188 @@ These functions have the following output.
 ![](../med/banner_unfinished.png)
 
 
+## Examples ##
+
+Format some [field][sob_fld] expressions programmatically…
+
+```vba
+Dim fFormat As String
+Dim aFields As Variant: aFields = Array( _
+	"Bar", "10", _
+	"Baz", """Twenty""", _
+	"Qux", "30" _
+)
+
+fFormat = Obj_FormatFields(aFields)
+Debug.Print fFormat
+Debug.Print
+
+fFormat = Obj_FormatFields(aFields, separator := ", ")
+Debug.Print fFormat
+```
+
+> ```
+> .Bar = 10
+> .Baz = "Twenty"
+> .Qux = 30
+> 
+> .Bar = 10, .Baz = "Twenty", .Qux = 30
+> ```
+
+…and manually.
+
+```vba
+fFormat = Obj_FormatFields0( _
+	"Bar", "10", _
+	"Baz", """Twenty""", _
+	"Qux", "30" _
+)
+
+Debug.Print fFormat
+```
+
+> ```
+> .Bar = 10
+> .Baz = "Twenty"
+> .Qux = 30
+> ```
+
+<br>
+
+Print a **"Foo"** object in `detail`…
+
+```vba
+Dim foo As Object: Set foo = New_Obj("Foo")
+
+Obj_Print foo, depth := 1, details := fFormat
+```
+
+> ```
+> <Foo: {
+> 	.Bar = 10
+> 	.Baz = "Twenty"
+> 	.Qux = 30
+> }>
+> ```
+
+…and in `summary`.
+
+```vba
+Obj_Print foo, depth := 0, summary := "3"
+```
+
+> ```
+> <Foo[3]>
+> ```
+
+<br>
+
+In the absence of a `summary`, default to a `preview` of any `details`…
+
+```vba
+Obj_Print foo, depth := 0, preview := True
+
+Debug.Print
+
+Obj_Print foo, depth := 0, preview := True, details := fFormat
+```
+
+> ```
+> <Foo: {}>
+> 
+> <Foo: {…}>
+> ```
+
+…or to the `pointer`…
+
+```vba
+Obj_Print foo, depth := 0, pointer := True
+```
+
+> ```
+> <Foo @105553142930832>
+> ```
+
+…or keep it simple.
+
+```vba
+Obj_Print foo, depth := 0
+```
+
+> ```
+> <Foo>
+> ```
+
+<br>
+
+Format plainly in `detail`…
+
+```vba
+Obj_Print foo, depth := 1, plain := True
+Debug.Print
+
+Obj_Print foo, depth := 1, plain := True, details := fFormat
+```
+
+> ```
+> {}
+> 
+> {
+> 	.Bar = 10
+> 	.Baz = "Twenty"
+> 	.Qux = 30
+> }
+> ```
+
+…and in `summary`.
+
+```vba
+Obj_Print foo, depth := 0, plain := True
+Debug.Print
+
+Obj_Print foo, depth := 0, plain := True, details := fFormat
+```
+
+> ```
+> {}
+> 
+> {…}
+> ```
+
+<br>
+
+Play with orphan lines…
+
+```vba
+Obj_Print foo, depth := 1, details := ".Bar = 10", orphan := False
+Debug.Print
+
+Obj_Print foo, depth := 1, details := ".Bar = 10", orphan := True
+```
+
+> ```
+> <Foo: {.Bar = 10}>
+> 
+> <Foo: {
+> 	.Bar = 10
+> }>
+> ```
+
+…and indentation.
+
+```vba
+Obj_Print foo, depth := 1, details := fFormat, indent := "--> "
+```
+
+> ```
+> <Foo: {
+> --> .Bar = 10
+> --> .Baz = "Twenty"
+> --> .Qux = 30
+> }>
+> ```
+
+
 ## See Also ##
 
 Topics in this project…
