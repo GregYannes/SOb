@@ -23,7 +23,7 @@ They have the following named parameters.
 | Name    | Type                    | Required | Default | Description                                                    |
 | :------ | :---------------------- | :------: | :------ | :------------------------------------------------------------- |
 | `obj`   | [`Collection`][vba_clx] | ✓        |         | An SOb you wish to initialize.                                 |
-| `class` | `String`                | ✓        |         | The "class" name of your SOb.  See [**Details**][sob_cre_dtl]. |
+| `class` | `String`                | ✓        |         | The "class" name of your SOb.  See [**Examples**][sob_cre_ex]. |
 
 
 ## Output ##
@@ -115,7 +115,7 @@ Topics in this project…
 
   [vba_new]:     https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/new-operator
   [vba_clx]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
-  [sob_cre_dtl]: #details
+  [sob_cre_ex]:  #examples
   [vba_new_clx]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object#remarks
   [sob_typo]:    Typology.md
   [vba_obj]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
