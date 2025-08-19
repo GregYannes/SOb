@@ -38,11 +38,6 @@ These procedures have the following output.
   - `Obj_Get()` returns no value.  It copies any field value into `var` [by reference][vba_byref], but it leaves `var` untouched when no such `field` exists.
 
 
-## Details ##
-
-![](../med/banner_unfinished.png)
-
-
 ## Examples ##
 
 ### Backend Access ###

@@ -52,11 +52,6 @@ These procedure(s) have the following output.
   - `Obj_HasFields0()` does likewise for all fields in `…`.
 
 
-## Details ##
-
-![](../med/banner_unfinished.png)
-
-
 ## Examples ##
 
 ### Count Fields ###
