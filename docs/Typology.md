@@ -56,6 +56,8 @@ These procedures return the following values.
 
 ## Examples ##
 
+### Creation ###
+
 Create an SOb of the **"Foo"** class, and examine it with `Obj_Class()`.
 
 ```vba
@@ -68,7 +70,8 @@ Debug.Print Obj_Class(foo)
 > Foo
 > ```
 
-<br>
+
+### Simple Identification ###
 
 Test whether something is an SOb…
 
@@ -85,6 +88,8 @@ Debug.Print IsObj(clx), IsObj(obj)
 > False         False
 > ```
 
+<br>
+
 …of the **"Foo"** class or the **"Snaf"** class.
 
 ```vba
@@ -97,7 +102,8 @@ Debug.Print IsObj(foo, "Snaf")
 > False
 > ```
 
-<br>
+
+### Enhanced Identification ###
 
 Define the fields for a **"Foo"** object…
 
@@ -108,6 +114,8 @@ Enum Foo__Fields
 	Qux
 End Enum
 ```
+
+<br>
 
 …and test that `foo` has them all.
 
@@ -156,7 +164,8 @@ Debug.Print IsObj(foo, "Foo", aFields, strict := True)
 > False
 > ```
 
-<br>
+
+### Casting ###
 
 ["Cast"][vba_cast] applicable objects as SObs of the **"Snaf"** class…
 
@@ -184,6 +193,8 @@ Debug.Print Obj_Class(cSnaf), Obj_Class(oSnaf)
 > True          True
 > Snaf          Snaf
 > ```
+
+<br>
 
 …and do likewise for `foo` which was originally a **"Foo"**.
 

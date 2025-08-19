@@ -41,6 +41,8 @@ These procedures have the following output.
 
 ## Examples ##
 
+### Creation ###
+
 Create an SOb of the **"Foo"** class, and examine it with [`Obj_Class()`][sob_typo].
 
 ```vba
@@ -53,7 +55,8 @@ Debug.Print Obj_Class(foo)
 > Foo
 > ```
 
-<br>
+
+### Initialization ###
 
 Ensure applicable objects are initialized as SObs of the **"Snaf"** class…
 
@@ -80,6 +83,8 @@ Debug.Print Obj_Class(cSnaf), Obj_Class(oSnaf)
 > False         False
 > Snaf          Snaf
 > ```
+
+<br>
 
 …but fail to do likewise for `foo` which is _already_ a **"Foo"**.
 

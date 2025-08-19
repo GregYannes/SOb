@@ -60,6 +60,8 @@ Enum Foo__Fields
 End Enum
 ```
 
+<br>
+
 …along with their [accessors][sob_tmp_acc].
 
 ```vba
@@ -110,6 +112,8 @@ CHECK_ERROR:
 End Sub
 ```
 
+<br>
+
 …with proper fields[^5] that pass the check…
 
 ```vba
@@ -130,6 +134,8 @@ Check_Example foo
 > True
 > ```
 
+<br>
+
 …with tampered fields that fail the check…
 
 ```vba
@@ -145,6 +151,8 @@ Check_Example foo
 > False
 > ```
 
+<br>
+
 ```vba
 Set Obj_Field(foo, Bar) = New Collection
 
@@ -158,6 +166,8 @@ Check_Example foo
 > False
 > ```
 
+<br>
+
 ```vba
 Set Obj_Field(foo, Qux) = New Collection
 
@@ -170,6 +180,8 @@ Check_Example foo
 > Handling...
 > False
 > ```
+
+<br>
 
 …and with irrelevant errors that ["bubble up"][vba_ppg_err].
 

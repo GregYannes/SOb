@@ -59,6 +59,8 @@ These procedure(s) have the following output.
 
 ## Examples ##
 
+### Count Fields ###
+
 [Define][vba_enum] several [fields][sob_fld] of an SOb…
 
 ```vba
@@ -68,6 +70,8 @@ Enum Foo__Fields
 	Qux
 End Enum
 ```
+
+<br>
 
 …and count them.
 
@@ -113,7 +117,8 @@ Debug.Print Obj_FieldCount(foo)
 > 3
 > ```
 
-<br>
+
+### Check Existence ###
 
 Test whether each field still exists.
 
@@ -145,6 +150,8 @@ Debug.Print Obj_HasFields(foo, f2)
 > True
 > False
 > ```
+
+<br>
 
 …and test them manually.
 

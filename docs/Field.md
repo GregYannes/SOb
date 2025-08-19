@@ -45,6 +45,8 @@ These procedures have the following output.
 
 ## Examples ##
 
+### Backend Access ###
+
 [Define][vba_enum] the `Bar` field of an SOb…
 
 ```vba
@@ -52,6 +54,8 @@ Enum Foo__Fields
 	Bar
 End Enum
 ```
+
+<br>
 
 …and manipulate that field.
 
@@ -72,7 +76,8 @@ Debug.Print Obj_Field(foo1, Bar)
 > 42
 > ```
 
-<br>
+
+### Implement Accessors ###
 
 Implement a stable [accessor][sob_tmp_acc] for `Bar`…
 
@@ -86,6 +91,8 @@ Property Let Foo_Bar(foo As Object, val As Integer)
 End Property
 ```
 
+<br>
+
 …which elegantly manipulates this field…
 
 ```vba
@@ -97,6 +104,8 @@ Debug.Print Foo_Bar(foo1)
 > -1
 > ```
 
+<br>
+
 …and enforces the proper type…
 
 ```vba
@@ -104,6 +113,8 @@ Foo_Bar(foo1) = "Forty-two"
 ```
 
 > ![][sob_acc_err]
+
+<br>
 
 …but defaults to an [unitialized value][vba_emp] when the data is missing.
 

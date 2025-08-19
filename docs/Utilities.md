@@ -91,6 +91,8 @@ These procedures have the following output.
 
 ## Examples ##
 
+### Assignment ###
+
 Assign scalar values to [variables][vba_vrb]…
 
 ```vba
@@ -115,6 +117,8 @@ Debug.Print sVar
 > second text
 > second text
 > ```
+
+<br>
 
 …and [objective][vba_isobj] values like [`Range`][vba_rng]s[^4].
 
@@ -170,7 +174,8 @@ Debug.Print Txt_Indent(text, indent := "--> ")
 > --> Third line.
 > ```
 
-<br>
+
+### Text Detection ###
 
 Detect some text.
 
@@ -186,7 +191,8 @@ Debug.Print Txt_Contains(text, "Fourth")
 > False
 > ```
 
-<br>
+
+### Manipulate `Collection`s ###
 
 Detect an [`.Item`][vba_clx_itm] within a [`Collection`][vba_clx]…
 
@@ -207,6 +213,8 @@ Debug.Print Clx_Has(clx, "second")
 > False
 > False
 > ```
+
+<br>
 
 …and get its value…
 
@@ -231,6 +239,8 @@ Debug.Print flag
 > False
 > ```
 
+<br>
+
 …and set its value.
 
 ```vba
@@ -246,7 +256,8 @@ Debug.Print clx.Item("second")
 > 20
 > ```
 
-<br>
+
+### Array Length ###
 
 Measure an [array][vba_arr].
 
@@ -269,7 +280,8 @@ Debug.Print Arr_Length(arr, dimension := 2)
 > 4
 > ```
 
-<br>
+
+### Error Propagation ###
 
 [Propagate][vba_ppg_err] the latest [error][vba_err_obj].
 
