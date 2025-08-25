@@ -119,25 +119,22 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
 
 
 
-  [sob_secure]:   src/SOb.bas#L489-L504
-  [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
-  [sob_mod]:      src/SOb.bas
-  [sob_tmp_mtd]:  src/SObTemplate.bas#L217-L246
-  [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
-  [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
-  [sob_outsrc]:   #outsourced
-  [sob_fld]:      docs/Field.md
   [sob_tmps]:     ../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
   [sob_snp_tmp]:  src/SnippetTemplate.bas
   [sob_snp]:      src/Snippet.bas
   [sob_mod_tmp]:  src/SObTemplate.bas
+  [sob_mod]:      src/SOb.bas
   [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
+  [sob_secure]:   src/SOb.bas#L489-L504
+  [sob_outsrc]:   #outsourced
+  [sob_fld]:      docs/Field.md
   [sob_todo_1]:   src/SObTemplate.bas#L6
   [sob_tmp_ast]:  ../../search?type=code&q=path:src/*Template.bas+content:*
   [sob_cls]:      #typology
   [vba_const]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/declaring-constants
   [vba_enum]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
+  [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
   [vba_arg]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
   [sob_todo_2]:   src/SObTemplate.bas#L25
   [sob_tmp_enm]:  src/SObTemplate.bas#L26-L29
@@ -148,6 +145,8 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
   [sob_tmp_fld]:  ../../search?type=code&q=path:src/*Template.bas+content:*__Field.
   [sob_todo_9]:   src/SObTemplate.bas#L212
   [sob_tmp_acc]:  src/SObTemplate.bas#L171-L213
+  [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
+  [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
   [vba_prp_get]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
   [sob_tmp_get]:  src/SObTemplate.bas#L176-L178
   [vba_prp_let]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-let-statement
@@ -168,6 +167,7 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
   [sob_todo_12]:  src/SObTemplate.bas#L290
   [sob_vis]:      docs/Visualization.md
   [sob_todo_10]:  src/SObTemplate.bas#L245
+  [sob_tmp_mtd]:  src/SObTemplate.bas#L217-L246
   [vba_fun]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/function-statement
   [vba_sub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/sub-statement
   [sob_todo_5]:   src/SObTemplate.bas#L119
