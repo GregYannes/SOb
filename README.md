@@ -55,7 +55,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 
 ## Setup ##
 
-Setup is quick and painless with [handy templates][sob_tmps].  Simply fill out the [`TODO`][sob_todos]s and paste the result in your module!
+Setup is quick and painless with [handy templates][sob_tmps].  Simply fill out the [`TODO`][sob_todos]s and paste the result in your module!  See [here][sob_doc_sup] for detailed instructions.
 
 
 ### Consolidated ###
@@ -207,6 +207,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_fld]:      docs/Field.md
   [sob_tmps]:     ../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
+  [sob_doc_sup]:  docs/Setup.md
   [sob_snp_tmp]:  src/SnippetTemplate.bas
   [sob_snp]:      src/Snippet.bas
   [sob_mod_tmp]:  src/SObTemplate.bas
