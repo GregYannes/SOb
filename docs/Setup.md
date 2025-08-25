@@ -1,14 +1,14 @@
-## Setup ##
+# Setup #
 
 Setup is quick and painless with [handy templates][sob_tmps].  Simply fill out the [`TODO`][sob_todos]s and paste the result in your module!
 
 
-### Consolidated ###
+## Consolidated ##
 
 To consolidate everything within your existing module, fill out [`SnippetTemplate.bas`][sob_snp_tmp] and paste into your module.  Then paste [`Snippet.bas`][sob_snp] alongside it.
 
 
-### Outsourced ###
+## Outsourced ##
 
 To outsource the **`SOb`** framework to a single external dependency, fill out [`SObTemplate.bas`][sob_mod_tmp] and paste into your module.  Then instruct your end user to import the [`SOb.bas`][sob_mod] module, which you may reference as a [submodule][ghub_submod] in your repo.
 
@@ -23,7 +23,7 @@ To outsource the **`SOb`** framework to a single external dependency, fill out [
     However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
 
 
-### Template ###
+## Template ##
 
 Fill out either template according to these steps:
 
