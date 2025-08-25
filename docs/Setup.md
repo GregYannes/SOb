@@ -119,45 +119,10 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
 
 
 
-  [sob_suite]:    #api
-  [sob_print]:    #visualization
-  [vba_cls]:      https://vbaplanet.com/objects.php
-  [vba_udt]:      https://learn.microsoft.com/office/vba/language/how-to/user-defined-data-type
-  [vba_cons]:     #old-problems
-  [ghlp_repo]:    https://github.com/GregYannes/GitHelp#readme
-  [so_post]:      https://codereview.stackexchange.com/q/293168
-  [so_comm_1]:    https://codereview.stackexchange.com/posts/comments/583913
-  [so_comm_2]:    https://codereview.stackexchange.com/posts/comments/584856
-  [vba_cls_call]: https://stackoverflow.com/posts/comments/118407731
-  [obj_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5995379
-  [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
-  [udt_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971117
-  [udt_silo]:     https://stackoverflow.com/q/38361276
-  [udt_tamp]:     http://cpearson.com/excel/classes.aspx
-  [udt_pass_var]: https://vbforums.com/showthread.php?304617-Storing-a-UDT-in-a-variant-type-mismatch#post1785101
-  [udt_pass_obj]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5540423
-  [udt_pass_clx]: https://vbforums.com/showthread.php?599355-RESOLVED-Addin-a-user-defined-type-to-a-collection
-  [udt_pass_dix]: https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971115
-  [udt_dll]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541509
-  [udt_hack_srl]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5542053
-  [udt_hack_prg]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541375
-  [vba_clx]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
   [sob_secure]:   src/SOb.bas#L489-L504
-  [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
-  [vba_var]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
-  [sob_setup]:    #setup
   [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
   [sob_mod]:      src/SOb.bas
-  [udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
-  [vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
-  [sob_typo]:     docs/Typology.md
-  [vba_typ_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/typename-function
-  [vba_typ_op]:   https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/typeof-operator
   [sob_tmp_mtd]:  src/SObTemplate.bas#L217-L246
-  [vba_byref]:    https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
-  [vb_net]:       https://learn.microsoft.com/dotnet/visual-basic
-  [vba_tostring]: https://stackoverflow.com/posts/comments/98934630
-  [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
   [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
   [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
   [sob_outsrc]:   #outsourced
@@ -215,15 +180,3 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
   [sob_todo_6]:   src/SObTemplate.bas#L136
   [sob_tmp_vld]:  src/SObTemplate.bas#L130-L140
   [sob_tmp_cir]:  src/SObTemplate.bas#L108
-  [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
-  [sob_meta]:     docs/Metadata.md
-  [sem_ver]:      https://semver.org
-  [sob_cre]:      docs/Creation.md
-  [vba_arr_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
-  [sob_vali]:     docs/Validation.md
-  [vba_prp_call]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-property-procedures
-  [vbe_immed]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/immediate-window
-  [vba_pub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/public-statement
-  [sob_util]:     docs/Utilities.md
-  [vba_arr]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
-  [vba_err_obj]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/err-object
