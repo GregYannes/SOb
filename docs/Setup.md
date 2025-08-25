@@ -18,6 +18,11 @@ To outsource the **`SOb`** framework to a single external dependency, fill out [
 > By outsourcing, you reduce your security against tampering!  The ["encryption"][sob_secure] is no longer scoped to your module, so others can overwrite[^9] your "private" fields.
 
 
+  [^9]: Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
+    
+    However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
+
+
 ### Template ###
 
 Fill out either template according to these steps:
