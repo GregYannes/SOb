@@ -211,53 +211,13 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_snp]:      src/Snippet.bas
   [sob_mod_tmp]:  src/SObTemplate.bas
   [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
-  [sob_todo_1]:   src/SObTemplate.bas#L6
-  [sob_tmp_ast]:  ../../search?type=code&q=path:src/*Template.bas+content:*
-  [sob_cls]:      #typology
-  [vba_const]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/declaring-constants
-  [vba_enum]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
-  [vba_arg]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
-  [sob_todo_2]:   src/SObTemplate.bas#L25
-  [sob_tmp_enm]:  src/SObTemplate.bas#L26-L29
-  [sob_tmp_f1]:   ../../search?type=code&q=path:src/*Template.bas+content:FieldOne
-  [sob_tmp_f2]:   ../../search?type=code&q=path:src/*Template.bas+content:FieldTwo
-  [sob_tmp_f3]:   ../../search?type=code&q=path:src/*Template.bas+content:FieldThree
-  [vbe_drop]:     https://stackoverflow.com/a/57894889
-  [sob_tmp_fld]:  ../../search?type=code&q=path:src/*Template.bas+content:*__Field.
-  [sob_todo_9]:   src/SObTemplate.bas#L212
   [sob_tmp_acc]:  src/SObTemplate.bas#L171-L213
   [vba_prp_get]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
-  [sob_tmp_get]:  src/SObTemplate.bas#L176-L178
   [vba_prp_let]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-let-statement
-  [sob_tmp_scl]:  src/SObTemplate.bas#L180-L182
   [vba_prp_set]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-set-statement
-  [sob_tmp_obj]:  src/SObTemplate.bas#L191-L193
-  [sob_todo_3]:   src/SObTemplate.bas#L64
-  [sob_tmp_ini]:  src/SObTemplate.bas#L65-L80
   [sob_flds]:     docs/Fields.md
-  [sob_todo_4]:   src/SObTemplate.bas#L99
-  [sob_tmp_arr]:  src/SObTemplate.bas#L101-L106
-  [sob_tmp_is]:   src/SObTemplate.bas#L89-L150
-  [sob_todo_8]:   src/SObTemplate.bas#L162
-  [sob_tmp_asn]:  src/SObTemplate.bas#L163-L166
-  [sob_tmp_as]:   src/SObTemplate.bas#L154-L167
-  [sob_todo_11]:  src/SObTemplate.bas#L286
-  [sob_tmp_fmt]:  src/SObTemplate.bas#L277-L302
-  [sob_todo_12]:  src/SObTemplate.bas#L290
   [sob_vis]:      docs/Visualization.md
-  [sob_todo_10]:  src/SObTemplate.bas#L245
-  [vba_fun]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/function-statement
-  [vba_sub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/sub-statement
-  [sob_todo_5]:   src/SObTemplate.bas#L119
-  [sob_tmp_p1]:   src/SObTemplate.bas#L175-L182
   [sob_tmp_chk]:  src/SObTemplate.bas#L111-L140
-  [sob_todo_7]:   src/SObTemplate.bas#L148
-  [sob_tmp_err]:  src/SObTemplate.bas#L149
-  [sob_err_args]: docs/Validation.md#syntax
-  [vba_ppg_err]:  https://www.fastercapital.com/content/Error-Handling--Error-Handling-Excellence--Bulletproofing-Your-VBA-Code.html#Error-Bubbling-and-Propagation
-  [sob_todo_6]:   src/SObTemplate.bas#L136
-  [sob_tmp_vld]:  src/SObTemplate.bas#L130-L140
-  [sob_tmp_cir]:  src/SObTemplate.bas#L108
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
