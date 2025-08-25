@@ -211,20 +211,20 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_snp]:      src/Snippet.bas
   [sob_mod_tmp]:  src/SObTemplate.bas
   [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
-  [sob_tmp_acc]:  src/SObTemplate.bas#L171-L213
-  [vba_prp_get]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
-  [vba_prp_let]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-let-statement
-  [vba_prp_set]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-set-statement
-  [sob_flds]:     docs/Fields.md
-  [sob_vis]:      docs/Visualization.md
-  [sob_tmp_chk]:  src/SObTemplate.bas#L111-L140
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
   [sob_cre]:      docs/Creation.md
+  [vba_prp_get]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
+  [vba_prp_let]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-let-statement
+  [vba_prp_set]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-set-statement
+  [sob_flds]:     docs/Fields.md
   [vba_arr_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
+  [sob_tmp_chk]:  src/SObTemplate.bas#L111-L140
   [sob_vali]:     docs/Validation.md
   [vba_prp_call]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-property-procedures
+  [sob_tmp_acc]:  src/SObTemplate.bas#L171-L213
+  [sob_vis]:      docs/Visualization.md
   [vbe_immed]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/immediate-window
   [vba_pub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/public-statement
   [sob_util]:     docs/Utilities.md
