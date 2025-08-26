@@ -50,7 +50,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
   [^8]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
   [^9]: Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
     
-    However, if you [outsource the framework][sob_depend] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
+    However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
 
 
 ## Setup ##
@@ -63,7 +63,7 @@ Setup is quick and painless with [handy templates][sob_tmps].  Simply fill out t
 To consolidate everything within your existing module, fill out [`SnippetTemplate.bas`][sob_snp_tmp] and paste into your module.  Then paste [`Snippet.bas`][sob_snp] alongside it.
 
 
-### Dependency ###
+### Outsourced ###
 
 To outsource the **`SOb`** framework to a single external dependency, fill out [`SObTemplate.bas`][sob_mod_tmp] and paste into your module.  Then instruct your end user to import the [`SOb.bas`][sob_mod] module, which you may reference as a [submodule][ghub_submod] in your repo.
 
@@ -298,7 +298,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
   [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
   [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
-  [sob_depend]:   #dependency
+  [sob_outsrc]:   #outsourced
   [sob_fld]:      docs/Field.md
   [sob_tmps]:     ../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
