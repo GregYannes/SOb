@@ -33,29 +33,6 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Secure             | Are its fields secure against unauthorized editing?                               | ✓ [^16]        | ✓                 |   [^17]        |
 
 
-  [^1]:  ["Classes are a pain"][obj_cons] to develop.
-  [^2]:  To avoid burdening users with [prohibitive setup][udt_dll], developers have often resorted to [dubious][udt_hack_srl] [hacks][udt_hack_prg]!
-  [^3]:  For every object you include, your users must install an additional class module.
-  [^4]:  A class module may [call procedures from standard modules][vba_cls_call], like your own module or even the [**`SOb`** module][sob_mod].
-  [^5]:  UDTs are restrictively [siloed][udt_silo] between classes and modules.
-    
-    There is only one exception[^7].
-  [^6]:  Their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].
-  [^7]:  Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
-  [^8]:  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj]…
-  [^9]:  …nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].
-  [^10]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
-  [^11]: Via the [`TypeName()`][vba_typ_fn] function or the [`TypeOf`][vba_typ_op] operator.
-  [^12]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, …)`, where the `sob` is passed [by reference][vba_byref].
-  [^13]: Technically you _could_ mimic an SOb and implement "methods"[^12] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
-  [^14]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
-  [^15]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
-  [^16]: Its fields are ["encrypted"][sob_secure] against the more insidious tampering.  Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
-    
-    However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
-  [^17]: Their fields are still [vulnerable to editing][udt_tamp].
-
-
 ## Setup ##
 
 Setup is quick and painless with [handy templates][sob_tmps].  Simply fill out the [`TODO`][sob_todos]s and paste the result in your module!  See [here][sob_doc_sup] for detailed instructions.
@@ -153,6 +130,30 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
 
 
 
+  [^1]:  ["Classes are a pain"][obj_cons] to develop.
+  [^2]:  To avoid burdening users with [prohibitive setup][udt_dll], developers have often resorted to [dubious][udt_hack_srl] [hacks][udt_hack_prg]!
+  [^3]:  For every object you include, your users must install an additional class module.
+  [^4]:  A class module may [call procedures from standard modules][vba_cls_call], like your own module or even the [**`SOb`** module][sob_mod].
+  [^5]:  UDTs are restrictively [siloed][udt_silo] between classes and modules.
+    
+    There is only one exception[^7].
+  [^6]:  Their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].
+  [^7]:  Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
+  [^8]:  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj]…
+  [^9]:  …nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].
+  [^10]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
+  [^11]: Via the [`TypeName()`][vba_typ_fn] function or the [`TypeOf`][vba_typ_op] operator.
+  [^12]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, …)`, where the `sob` is passed [by reference][vba_byref].
+  [^13]: Technically you _could_ mimic an SOb and implement "methods"[^12] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
+  [^14]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
+  [^15]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
+  [^16]: Its fields are ["encrypted"][sob_secure] against the more insidious tampering.  Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
+    
+    However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
+  [^17]: Their fields are still [vulnerable to editing][udt_tamp].
+
+
+
   [sob_suite]:    #api
   [sob_print]:    #visualization
   [vba_cls]:      https://vbaplanet.com/objects.php
@@ -170,33 +171,6 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
   [vba_dix]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/dictionary-object
   [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
-  [udt_dll]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541509
-  [udt_hack_srl]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5542053
-  [udt_hack_prg]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541375
-  [vba_cls_call]: https://stackoverflow.com/posts/comments/118407731
-  [sob_mod]:      src/SOb.bas
-  [udt_silo]:     https://stackoverflow.com/q/38361276
-  [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
-  [udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
-  [vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
-  [udt_pass_var]: https://vbforums.com/showthread.php?304617-Storing-a-UDT-in-a-variant-type-mismatch#post1785101
-  [udt_pass_obj]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5540423
-  [udt_pass_clx]: https://vbforums.com/showthread.php?599355-RESOLVED-Addin-a-user-defined-type-to-a-collection
-  [udt_pass_dix]: https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971115
-  [sob_typo]:     docs/Typology.md
-  [vba_typ_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/typename-function
-  [vba_typ_op]:   https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/typeof-operator
-  [sob_tmp_mtd]:  src/SObTemplate.bas#L217-L246
-  [vba_byref]:    https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
-  [vb_net]:       https://learn.microsoft.com/dotnet/visual-basic
-  [vba_tostring]: https://stackoverflow.com/posts/comments/98934630
-  [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
-  [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
-  [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
-  [sob_secure]:   src/SOb.bas#L489-L504
-  [sob_outsrc]:   docs/Setup.md#outsourced
-  [sob_fld]:      docs/Field.md
-  [udt_tamp]:     http://cpearson.com/excel/classes.aspx
   [sob_tmps]:     ../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
   [sob_doc_sup]:  docs/Setup.md
@@ -204,13 +178,18 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_snp]:      src/Snippet.bas
   [sob_consld]:   docs/Setup.md#consolidated
   [sob_mod_tmp]:  src/SObTemplate.bas
+  [sob_mod]:      src/SOb.bas
+  [sob_outsrc]:   docs/Setup.md#outsourced
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
   [sob_cre]:      docs/Creation.md
+  [sob_typo]:     docs/Typology.md
+  [sob_fld]:      docs/Field.md
   [vba_prp_get]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
   [vba_prp_let]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-let-statement
   [vba_prp_set]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-set-statement
+  [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
   [sob_flds]:     docs/Fields.md
   [vba_arr_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
   [sob_tmp_chk]:  src/SObTemplate.bas#L111-L140
@@ -221,5 +200,27 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vbe_immed]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/immediate-window
   [vba_pub]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/public-statement
   [sob_util]:     docs/Utilities.md
+  [vba_byref]:    https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
+  [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
   [vba_arr]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
   [vba_err_obj]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/err-object
+  [udt_dll]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541509
+  [udt_hack_srl]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5542053
+  [udt_hack_prg]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541375
+  [vba_cls_call]: https://stackoverflow.com/posts/comments/118407731
+  [udt_silo]:     https://stackoverflow.com/q/38361276
+  [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
+  [udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
+  [vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
+  [udt_pass_var]: https://vbforums.com/showthread.php?304617-Storing-a-UDT-in-a-variant-type-mismatch#post1785101
+  [udt_pass_obj]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5540423
+  [udt_pass_clx]: https://vbforums.com/showthread.php?599355-RESOLVED-Addin-a-user-defined-type-to-a-collection
+  [udt_pass_dix]: https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971115
+  [vba_typ_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/typename-function
+  [vba_typ_op]:   https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/typeof-operator
+  [sob_tmp_mtd]:  src/SObTemplate.bas#L217-L246
+  [vb_net]:       https://learn.microsoft.com/dotnet/visual-basic
+  [vba_tostring]: https://stackoverflow.com/posts/comments/98934630
+  [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
+  [sob_secure]:   src/SOb.bas#L489-L504
+  [udt_tamp]:     http://cpearson.com/excel/classes.aspx
