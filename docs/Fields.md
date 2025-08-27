@@ -45,7 +45,7 @@ These procedure(s) have the following output.
 
 > [!NOTE]
 > 
-> This is technically an _upper bound_ on the field count, since an SOb is [built on][sob_rdm_clx] a [`Collection`][vba_clx] which may hold extra [`.Item`][vba_clx_itm]s beyond its fields.
+> This is technically an _upper bound_ on the field count, since an SOb is [built on][sob_doc_clx] a [`Collection`][vba_clx] which may hold extra [`.Item`][vba_clx_itm]s beyond its fields.
 
   - `Obj_HasField()` returns `True` if `field` is present in `obj`, and `False` otherwise.
   - `Obj_HasFields()` returns `True` if _all_ `fields` are present in `obj`, and `False` otherwise.
@@ -196,11 +196,11 @@ Topics in this project…
   [vba_parr]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-parameter-arrays
   [vba_nm_args]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
   [sob_typo]:    Typology.md
-  [sob_rdm_clx]: ../README.md#the-sob-story
+  [sob_doc_clx]: Creation.md#details
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
   [vba_clx_rmv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/remove-method-visual-basic-for-applications
   [vba_clx_cnt]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/count-property-visual-basic-for-applications
   [vba_clx_add]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/add-method-visual-basic-for-applications
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
-  [sob_setup]:   ../README.md#setup
+  [sob_setup]:   Setup.md
   [sob_tmp_acc]: ../src/SObTemplate.bas#L171-L213

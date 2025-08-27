@@ -258,6 +258,6 @@ Topics in this project…
   [vba_rng_adr]:  https://learn.microsoft.com/office/vba/api/excel.range.address
   [vba_sct_nt]:   https://learn.microsoft.com/office/vba/excel/concepts/cells-and-ranges/refer-to-cells-by-using-shortcut-notation
   [sob_tmps]:     ../../../search?type=code&q=path:src/*Template.bas
-  [sob_setup]:    ../README.md#setup
+  [sob_setup]:    Setup.md
   [vba_errs]:     https://learn.microsoft.com/office/vba/language/reference/error-messages
   [vba_fun_call]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-sub-and-function-procedures

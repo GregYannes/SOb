@@ -163,5 +163,5 @@ Topics in this project…
   [sob_acc_err]: ../med/vbe_error_13.png
   [vba_emp]:     https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#empty
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
-  [sob_setup]:   ../README.md#setup
+  [sob_setup]:   Setup.md
   [vba_errs]:    https://learn.microsoft.com/office/vba/language/reference/error-messages

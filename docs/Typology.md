@@ -244,5 +244,5 @@ Topics in this project…
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
   [sob_flds]:    Fields.md
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
-  [sob_setup]:   ../README.md#setup
+  [sob_setup]:   Setup.md
   [vba_prp]:     https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
