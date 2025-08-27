@@ -65,11 +65,6 @@ They have the following named parameters.
 > Be sure to use the [`vbNewLine`][vba_newln] for line breaks, when you assemble (say) `txt` and other such text.  This uses the newline [specific to the system][sys_newln], and ensures that [`Obj_FormatFields*()`][sob_vis] and `Txt_Indent()` work as expected.
 
 
-  [^1]: While this is technically a [`Variant`][vba_var], it accommodates any `var`iable or `val`ue you desire.
-  [^2]: The procedure updates this variable by [reference][vba_byref], which overwrites any value it originally had.
-  [^3]: The `ErrObject` is not a traditional "type", since there is only [one (global) instance][vba_err_typ] of the `Err` object.
-
-
 ## Output ##
 
 These procedures have the following output.
@@ -300,9 +295,6 @@ PROPAGATE:
 > ![][vbe_err_ex]
 
 
-  [^4]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
-
-
 ## See Also ##
 
 Topics in this project…
@@ -339,6 +331,13 @@ Topics in this project…
 
 
 
+  [^1]: While this is technically a [`Variant`][vba_var], it accommodates any `var`iable or `val`ue you desire.
+  [^2]: The procedure updates this variable by [reference][vba_byref], which overwrites any value it originally had.
+  [^3]: The `ErrObject` is not a traditional "type", since there is only [one (global) instance][vba_err_typ] of the `Err` object.
+  [^4]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
+
+
+
   [vba_isobj]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/isobject-function
   [vba_byref]:   https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
   [vba_txt_cmp]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/instr-function#settings
@@ -354,12 +353,12 @@ Topics in this project…
   [vba_newln]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/miscellaneous-constants
   [sys_newln]:   https://learn.microsoft.com/dotnet/api/system.environment.newline?view=net-9.0#property-value
   [sob_vis]:     Visualization.md
-  [vba_var]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
-  [vba_err_typ]: https://stackoverflow.com/a/55067026
   [vba_clx_add]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/add-method-visual-basic-for-applications
   [vba_err_rse]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/raise-method
   [vba_rng]:     https://learn.microsoft.com/office/vba/api/excel.range(object)
   [vbe_err_ex]:  ../med/vbe_error_13.png
+  [vba_var]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
   [vba_rng_adr]: https://learn.microsoft.com/office/vba/api/excel.range.address
   [vba_sct_nt]:  https://learn.microsoft.com/office/vba/excel/concepts/cells-and-ranges/refer-to-cells-by-using-shortcut-notation
   [vba_errs]:    https://learn.microsoft.com/office/vba/language/reference/error-messages
+  [vba_err_typ]: https://stackoverflow.com/a/55067026

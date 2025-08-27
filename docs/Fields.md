@@ -34,9 +34,6 @@ They have the following named[^1] parameters.
 | …[^1]    | `Enum`s                     |          |         | The fields themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr]. |
 
 
-  [^1]: [`ParamArray`][vba_parr]s like `…` are not actually passed to a single [named argument][vba_nm_args], but rather as several nameless arguments.
-
-
 ## Output ##
 
 These procedure(s) have the following output.
@@ -185,6 +182,10 @@ Topics in this project…
 
 
 
+  [^1]: [`ParamArray`][vba_parr]s like `…` are not actually passed to a single [named argument][vba_nm_args], but rather as several nameless arguments.
+
+
+
   [sob_fld]:     Field.md
   [vba_arr]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
   [sob_fn0]:     Zero.md
@@ -194,7 +195,6 @@ Topics in this project…
   [sob_tmp_enm]: ../src/SObTemplate.bas#L26-L29
   [vba_arr_fn]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
   [vba_parr]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-parameter-arrays
-  [vba_nm_args]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
   [sob_typo]:    Typology.md
   [sob_doc_clx]: Creation.md#details
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
@@ -204,3 +204,4 @@ Topics in this project…
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:   Setup.md
   [sob_tmp_acc]: ../src/SObTemplate.bas#L171-L213
+  [vba_nm_args]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments

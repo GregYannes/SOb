@@ -18,11 +18,6 @@ To outsource the **`SOb`** framework to a single external dependency, fill out [
 > By outsourcing, you reduce your security against tampering!  The ["encryption"][sob_secure] is no longer scoped to your module, so others can overwrite[^1] your "private" fields.
 
 
-  [^1]: Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
-    
-    However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
-
-
 ## Template ##
 
 Fill out either template according to these steps:
@@ -440,6 +435,12 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
 
 
 
+  [^1]: Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
+    
+    However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
+
+
+
   [sob_tmps]:     ../../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../../search?type=code&q=path:src/*Template.bas+content:TODO:
   [sob_snp_tmp]:  ../src/SnippetTemplate.bas
@@ -448,8 +449,6 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
   [sob_mod]:      ../src/SOb.bas
   [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
   [sob_secure]:   ../src/SOb.bas#L489-L504
-  [sob_outsrc]:   #outsourced
-  [sob_fld]:      Field.md
   [sob_todo_1]:   ../src/SObTemplate.bas#L6
   [sob_tmp_ast]:  ../../../search?type=code&q=path:src/*Template.bas+content:*
   [sob_typo]:     Typology.md
@@ -462,6 +461,7 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
   [sob_tmp_f1]:   ../../../search?type=code&q=path:src/*Template.bas+content:FieldOne
   [sob_tmp_f2]:   ../../../search?type=code&q=path:src/*Template.bas+content:FieldTwo
   [sob_tmp_f3]:   ../../../search?type=code&q=path:src/*Template.bas+content:FieldThree
+  [sob_fld]:      Field.md
   [vbe_drop]:     https://stackoverflow.com/a/57894889
   [sob_tmp_fld]:  ../../../search?type=code&q=path:src/*Template.bas+content:*__Field.
   [sob_todo_9]:   ../src/SObTemplate.bas#L212
@@ -501,3 +501,4 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
   [sob_todo_6]:   ../src/SObTemplate.bas#L136
   [sob_tmp_vld]:  ../src/SObTemplate.bas#L130-L140
   [sob_tmp_cir]:  ../src/SObTemplate.bas#L108
+  [sob_outsrc]:   #outsourced

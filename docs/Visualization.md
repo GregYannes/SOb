@@ -51,10 +51,6 @@ They have the following named parameters.
 > Be sure to use the [`vbNewLine`][vba_newln] for line breaks, when you assemble (say) `details` and other such text.  This uses the newline [specific to the system][sys_newln], and ensures that `Obj_FormatFields*()` and [`Txt_Indent()`][sob_utils] work as expected.
 
 
-  [^1]: You may use a `String()` array, or a `Variant()` array containing `String`s.
-  [^2]: [`ParamArray`][vba_parr]s like `…` are not actually passed to a single [named argument][vba_nm_args], but rather as several nameless arguments.
-
-
 ## Output ##
 
 These functions have the following output.
@@ -394,10 +390,6 @@ Foo_Print foo1, depth := 1, plain := True
 > ```
 
 
-  [^3]: Use [`CStr()`][vba_cstr] to convert various values into textual `String`s.
-  [^4]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
-
-
 ### Nested Printing ###
 
 [Define][vba_enum] a few [fields][sob_fld] for an SOb of class **"Snaf"**…
@@ -570,6 +562,13 @@ Topics in this project…
 
 
 
+  [^1]: You may use a `String()` array, or a `Variant()` array containing `String`s.
+  [^2]: [`ParamArray`][vba_parr]s like `…` are not actually passed to a single [named argument][vba_nm_args], but rather as several nameless arguments.
+  [^3]: Use [`CStr()`][vba_cstr] to convert various values into textual `String`s.
+  [^4]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
+
+
+
   [pprint]:      https://en.wikipedia.org/wiki/Pretty-printing
   [vba_print]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/print-method
   [vbe_immed]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/immediate-window
@@ -586,16 +585,16 @@ Topics in this project…
   [sys_newln]:   https://learn.microsoft.com/dotnet/api/system.environment.newline?view=net-9.0#property-value
   [vba_parr]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-parameter-arrays
   [sob_utils]:   Utilities.md
-  [vba_nm_args]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
   [vba_enum]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
   [sob_tmp_acc]: ../src/SObTemplate.bas#L171-L213
   [sob_tmp_fmt]: ../src/SObTemplate.bas#L277-L302
   [sob_tmp_prn]: ../src/SObTemplate.bas#L254-L273
-  [vba_cstr]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/type-conversion-functions
-  [vba_rng]:     https://learn.microsoft.com/office/vba/api/excel.range(object)
-  [vba_rng_adr]: https://learn.microsoft.com/office/vba/api/excel.range.address
-  [vba_sct_nt]:  https://learn.microsoft.com/office/vba/excel/concepts/cells-and-ranges/refer-to-cells-by-using-shortcut-notation
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:   Setup.md
   [sob_tmp_enm]: ../src/SObTemplate.bas#L26-L29
   [vbe]:         https://learn.microsoft.com/office/vba/library-reference/concepts/getting-started-with-vba-in-office#macros-and-the-visual-basic-editor
+  [vba_nm_args]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
+  [vba_cstr]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/type-conversion-functions
+  [vba_rng]:     https://learn.microsoft.com/office/vba/api/excel.range(object)
+  [vba_rng_adr]: https://learn.microsoft.com/office/vba/api/excel.range.address
+  [vba_sct_nt]:  https://learn.microsoft.com/office/vba/excel/concepts/cells-and-ranges/refer-to-cells-by-using-shortcut-notation

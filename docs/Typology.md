@@ -32,10 +32,6 @@ They have the following named parameters.
 | `strict` | `Boolean`                               |          | `True`  | Must that SOb contain _only_ (`True`) those `fields`, or may `x` contain[^1] further [`.Item`][vba_clx_itm]s[^2] (`False`) and still qualify? |
 
 
-  [^1]: As determined by [`Obj_HasFields()`][sob_flds].
-  [^2]: As counted by [`Obj_FieldCount()`][sob_flds].
-
-
 ## Output ##
 
 These procedures return the following values.
@@ -231,6 +227,11 @@ Topics in this project…
 
 
 
+  [^1]: As determined by [`Obj_HasFields()`][sob_flds].
+  [^2]: As counted by [`Obj_FieldCount()`][sob_flds].
+
+
+
   [vba_prp_get]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/property-get-statement
   [sob_cre]:     Creation.md
   [vba_cast]:    https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/directcast-operator
@@ -242,7 +243,7 @@ Topics in this project…
   [sob_doc_tmp]: Setup.md#template
   [sob_tmp_enm]: ../src/SObTemplate.bas#L26-L29
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
-  [sob_flds]:    Fields.md
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:   Setup.md
+  [sob_flds]:    Fields.md
   [vba_prp]:     https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
