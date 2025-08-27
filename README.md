@@ -42,17 +42,16 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 
 
   [^1]:  ["Classes are a pain"][obj_cons] to develop.
+  [^2]:  To avoid burdening users with [prohibitive setup][udt_dll], developers have often resorted to [dubious][udt_hack_srl] [hacks][udt_hack_prg]!
   [^3]:  For every object you include, your users must install an additional class module.
+  [^4]:  A class module may [call procedures from standard modules][vba_cls_call], like your own module or even the [**`SOb`** module][sob_mod].
   [^5]:  UDTs are restrictively [siloed][udt_silo] between classes and modules.
     
     There is only one exception[^7].
   [^6]:  Their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].
-  [^17]: Their fields are still [vulnerable to editing][udt_tamp].
+  [^7]:  Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
   [^8]:  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj]…
   [^9]:  …nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].
-  [^2]:  To avoid burdening users with [prohibitive setup][udt_dll], developers have often resorted to [dubious][udt_hack_srl] [hacks][udt_hack_prg]!
-  [^4]:  A class module may [call procedures from standard modules][vba_cls_call], like your own module or even the [**`SOb`** module][sob_mod].
-  [^7]:  Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
   [^10]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
   [^11]: Via the [`TypeName()`][vba_typ_fn] function or the [`TypeOf`][vba_typ_op] operator.
   [^12]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, …)`, where the `sob` is passed [by reference][vba_byref].
@@ -62,6 +61,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
   [^16]: Its fields are ["encrypted"][sob_secure] against the more insidious tampering.  Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
     
     However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
+  [^17]: Their fields are still [vulnerable to editing][udt_tamp].
 
 
 ## Setup ##
