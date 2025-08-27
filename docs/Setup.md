@@ -27,7 +27,7 @@ To outsource the **`SOb`** framework to a single external dependency, fill out [
 
 Fill out either template according to these steps:
 
-  1. [`TODO`][sob_todo_1]: Replace every [`*`][sob_tmp_ast] with the (["class"][sob_cls]) name you desire for your SOb.  A simple **Find & Replace** should suffice.
+  1. [`TODO`][sob_todo_1]: Replace every [`*`][sob_tmp_ast] with the (["class"][sob_typo]) name you desire for your SOb.  A simple **Find & Replace** should suffice.
      
      So if you name your SOb something like "`Foo`", this should yield a `FOO_CLS` [constant][vba_const] atop your module…
      
@@ -452,7 +452,7 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
   [sob_fld]:      Field.md
   [sob_todo_1]:   ../src/SObTemplate.bas#L6
   [sob_tmp_ast]:  ../../../search?type=code&q=path:src/*Template.bas+content:*
-  [sob_cls]:      ../README.md#typology
+  [sob_typo]:     Typology.md
   [vba_const]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/declaring-constants
   [vba_enum]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
   [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
