@@ -25,22 +25,32 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 
 | <ins>Feature</ins> | <ins>Description</ins>                                       |   | <ins>SOb</ins> | <ins>Object</ins>  | <ins>UDT</ins> |
 | :----------------- | :----------------------------------------------------------- | - | :------------- | :----------------- | :------------- |
-| Painless           | Is it quick and easy for you to code?                        |   | ✓              |                    | ✓              |
-| Installable        | Is it quick and easy for lay _users_ to install your code?   |   | ✓              |                    | ✓              |
+| Painless           | Is it quick and easy for you to code?                        |   | ✓              |   [^a]             | ✓              |
+| Installable        | Is it quick and easy for lay _users_ to install your code?   |   | ✓              |   [^h]             | ✓              |
 | Native             | Is it native to VBA?                                         |   | ✓              | ✓                  | ✓              |
 | Portable           | Does it work across all platforms?                           |   | ✓              | ✓                  | ✓              |
-| Independent        | Is it free of external dependencies?                         |   | ✓              |                    | ✓              |
-| Global             | Can it be used seamlessly across other modules and classes?  |   | ✓ [^1]         | ✓                  |                |
-| Compilable         | Can its dependents compile in its absence?                   |   | ✓              |                    |   [^2]         |
-| Placeholder        | Can it be passed to a generic `Object` (or `Variant`)?       |   | ✓              | ✓                  |   [^2]         |
-| Collectible        | Can it be included within a `Collection` (or `Dictionary`)?  |   | ✓              | ✓                  |   [^2]         |
+| Independent        | Is it free of external dependencies?                         |   | ✓              |   [^b]             | ✓              |
+| Global             | Can it be used seamlessly across other modules and classes?  |   | ✓ [^1]         | ✓                  |   [^c]         |
+| Compilable         | Can its dependents compile in its absence?                   |   | ✓              |   [^d]             |   [^2]         |
+| Placeholder        | Can it be passed to a generic `Object` (or `Variant`)?       |   | ✓              | ✓ [^f]             |   [^2]         |
+| Collectible        | Can it be included within a `Collection` (or `Dictionary`)?  |   | ✓              | ✓ [^g]             |   [^2]         |
 | Identity           | Is its type identifiable by name, so you can distinguish it? |   | ✓ [^3]         | ✓ [^4]             |                |
 | Methods            | Does it support [procedures][vba_proc] that operate on it?   |   | ✓ [^5]         | ✓                  |   [^6]         |
 | Printing           | Does it support pretty printing for visualization?           |   | ✓              |   [^7]             |                |
 | Private            | Can you hide certain fields (and "methods") from your user?  |   | ✓ [^8]         | ✓ [^8]             |                |
-| Secure             | Are its fields secure against unauthorized editing?          |   | ✓ [^9]         | ✓                  |                |
+| Secure             | Are its fields secure against unauthorized editing?          |   | ✓ [^9]         | ✓                  |   [^e]         |
 
 
+  [^a]: ["Classes are a pain"][obj_cons] to develop.
+  [^b]: For every object you include, your users must install an additional class module.
+  [^c]: UDTs are restrictively [siloed][udt_silo] between classes and modules.
+    
+    There is only one exception[^2].
+  [^d]: Their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].
+  [^e]: Their fields are still [vulnerable to editing][udt_tamp].
+  [^f]: You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj]…
+  [^g]: …nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].
+  [^h]: To avoid burdening users with [prohibitive setup][udt_dll], developers have often resorted to [dubious][udt_hack_srl] [hacks][udt_hack_prg]!
   [^1]: A class module may [call procedures from standard modules][vba_cls_call], like your own module or even the [**`SOb`** module][sob_mod].
   [^2]: Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
   [^3]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
@@ -49,7 +59,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
   [^6]: Technically you _could_ mimic an SOb and implement "methods"[^5] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
   [^7]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
   [^8]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
-  [^9]: Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
+  [^9]: Its fields are ["encrypted"][sob_secure] against the more insidious tampering.  Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
     
     However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
 
