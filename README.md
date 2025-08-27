@@ -57,20 +57,8 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 
 Setup is quick and painless with [handy templates][sob_tmps].  Simply fill out the [`TODO`][sob_todos]s and paste the result in your module!  See [here][sob_doc_sup] for detailed instructions.
 
-
-### Consolidated ###
-
-To consolidate everything within your existing module, fill out [`SnippetTemplate.bas`][sob_snp_tmp] and paste into your module.  Then paste [`Snippet.bas`][sob_snp] alongside it.
-
-
-### Outsourced ###
-
-To outsource the **`SOb`** framework to a single external dependency, fill out [`SObTemplate.bas`][sob_mod_tmp] and paste into your module.  Then instruct your end user to import the [`SOb.bas`][sob_mod] module, which you may reference as a [submodule][ghub_submod] in your repo.
-
-
-> [!WARNING]
-> 
-> By outsourcing, you reduce your security against tampering!  The ["encryption"][sob_secure] is no longer scoped to your module, so others can overwrite[^9] your "private" fields.
+  - To consolidate everything within your module, use [`SnippetTemplate.bas`][sob_snp_tmp] alongside [`Snippet.bas`][sob_snp].  See [here][sob_consld] for details.
+  - To outsource the **`SOb`** framework to a dependency, use [`SObTemplate.bas`][sob_mod_tmp] but import [`SOb.bas`][sob_mod] separately.  See [here][sob_outsrc] for details.
 
 
 ## API ##
@@ -203,15 +191,15 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
   [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
   [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
-  [sob_outsrc]:   #outsourced
+  [sob_outsrc]:   docs/Setup.md#outsourced
   [sob_fld]:      docs/Field.md
   [sob_tmps]:     ../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
   [sob_doc_sup]:  docs/Setup.md
   [sob_snp_tmp]:  src/SnippetTemplate.bas
   [sob_snp]:      src/Snippet.bas
+  [sob_consld]:   docs/Setup.md#consolidated
   [sob_mod_tmp]:  src/SObTemplate.bas
-  [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
