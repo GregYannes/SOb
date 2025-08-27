@@ -34,11 +34,11 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Compilable         | Can its dependents compile in its absence?                   |   | ✓              |   [^6]             |   [^7]         |
 | Placeholder        | Can it be passed to a generic `Object` (or `Variant`)?       |   | ✓              | ✓ [^8]             |   [^7]         |
 | Collectible        | Can it be included within a `Collection` (or `Dictionary`)?  |   | ✓              | ✓ [^9]             |   [^7]         |
-| Identity           | Is its type identifiable by name, so you can distinguish it? |   | ✓ [^10]         | ✓ [^11]             |                |
-| Methods            | Does it support [procedures][vba_proc] that operate on it?   |   | ✓ [^12]         | ✓                  |   [^13]         |
-| Printing           | Does it support pretty printing for visualization?           |   | ✓              |   [^14]             |                |
-| Private            | Can you hide certain fields (and "methods") from your user?  |   | ✓ [^15]         | ✓ [^15]             |                |
-| Secure             | Are its fields secure against unauthorized editing?          |   | ✓ [^16]         | ✓                  |   [^17]         |
+| Identity           | Is its type identifiable by name, so you can distinguish it? |   | ✓ [^10]        | ✓ [^11]            |                |
+| Methods            | Does it support [procedures][vba_proc] that operate on it?   |   | ✓ [^12]        | ✓                  |   [^13]        |
+| Printing           | Does it support pretty printing for visualization?           |   | ✓              |   [^14]            |                |
+| Private            | Can you hide certain fields (and "methods") from your user?  |   | ✓ [^15]        | ✓ [^15]            |                |
+| Secure             | Are its fields secure against unauthorized editing?          |   | ✓ [^16]        | ✓                  |   [^17]        |
 
 
   [^1]: ["Classes are a pain"][obj_cons] to develop.
