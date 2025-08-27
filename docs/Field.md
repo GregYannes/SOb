@@ -25,7 +25,7 @@ They have the following named parameters.
 | Name    | Type                    | Required | Default | Description                                                                                                |
 | :------ | :---------------------- | :------: | :------ | :--------------------------------------------------------------------------------------------------------- |
 | `obj`   | [`Collection`][vba_clx] | ✓        |         | An SOb whose field you wish to access.                                                                     |
-| `field` | [`Enum`][vba_enum]      | ✓        |         | The field itself, as [enumerated][sob_rdm_tmp] in your [template][sob_tmp_enm].                            |
+| `field` | [`Enum`][vba_enum]      | ✓        |         | The field itself, as [enumerated][sob_doc_tmp] in your [template][sob_tmp_enm].                            |
 | `val`   | [`Variant`][vba_var]    | ✓        |         | The value you wish to assign your field.<br><br>Use [`Set`][vba_set] when `val` is an [object][vba_isobj]. |
 | `var`   | `Variant`               | ✓        |         | The variable into which `Obj_Get()` should copy the field value ([by reference][vba_byref]).               |
 
@@ -153,7 +153,7 @@ Topics in this project…
   [sob_tmp_acc]: ../src/SObTemplate.bas#L171-L213
   [vba_clx]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
   [vba_enum]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
-  [sob_rdm_tmp]: ../README.md#template
+  [sob_doc_tmp]: Setup.md#template
   [sob_tmp_enm]: ../src/SObTemplate.bas#L26-L29
   [vba_var]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
   [vba_set]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/set-statement

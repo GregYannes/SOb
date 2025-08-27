@@ -28,7 +28,7 @@ They have the following named parameters.
 | `obj`    | [`Collection`][vba_clx]                 | ✓        |         | An SOb whose "class" name you desire.                                                                                                         |
 | `x`      | [`Variant`][vba_var]                    | ✓        |         | A value which _might_ be an SOb (or not).                                                                                                     |
 | `class`  | `String`                                |          |         | The "class" name you wish to match.                                                                                                           |
-| `fields` | [Array][vba_arr] of [`Enum`][vba_enum]s |          |         | All [fields][sob_fld] _required_ by an SOb of that `class`, as [enumerated][sob_rdm_tmp] in your [template][sob_tmp_enm].                     |
+| `fields` | [Array][vba_arr] of [`Enum`][vba_enum]s |          |         | All [fields][sob_fld] _required_ by an SOb of that `class`, as [enumerated][sob_doc_tmp] in your [template][sob_tmp_enm].                     |
 | `strict` | `Boolean`                               |          | `True`  | Must that SOb contain _only_ (`True`) those `fields`, or may `x` contain[^1] further [`.Item`][vba_clx_itm]s[^2] (`False`) and still qualify? |
 
 
@@ -239,7 +239,7 @@ Topics in this project…
   [vba_arr]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
   [vba_enum]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
   [sob_fld]:     Field.md
-  [sob_rdm_tmp]: ../README.md#template
+  [sob_doc_tmp]: Setup.md#template
   [sob_tmp_enm]: ../src/SObTemplate.bas#L26-L29
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
   [sob_flds]:    Fields.md

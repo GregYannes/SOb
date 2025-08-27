@@ -29,7 +29,7 @@ They have the following named[^1] parameters.
 | Name     | Type                        | Required | Default | Description                                                                                                    |
 | :------- | :-------------------------- | :------: | :------ | :------------------------------------------------------------------------------------------------------------- |
 | `obj`    | [`Collection`][vba_clx]     | ✓        |         | An SOb whose field(s) you wish to assess.                                                                      |
-| `field`  | [`Enum`][vba_enum]          | ✓        |         | The [field][sob_fld] itself, as [enumerated][sob_rdm_tmp] in your [template][sob_tmp_enm].                     |
+| `field`  | [`Enum`][vba_enum]          | ✓        |         | The [field][sob_fld] itself, as [enumerated][sob_doc_tmp] in your [template][sob_tmp_enm].                     |
 | `fields` | [Array][vba_arr] of `Enum`s | ✓        |         | An array of such `field`s.<br><br>This is best achieved via [`Array()`][vba_arr_fn].                           |
 | …[^1]    | `Enum`s                     |          |         | The fields themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr]. |
 
@@ -190,7 +190,7 @@ Topics in this project…
   [sob_fn0]:     Zero.md
   [vba_clx]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
   [vba_enum]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
-  [sob_rdm_tmp]: ../README.md#template
+  [sob_doc_tmp]: Setup.md#template
   [sob_tmp_enm]: ../src/SObTemplate.bas#L26-L29
   [vba_arr_fn]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
   [vba_parr]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-parameter-arrays
