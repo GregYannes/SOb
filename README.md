@@ -164,26 +164,25 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [so_comm_2]:    https://codereview.stackexchange.com/posts/comments/584856
   [vba_cls_call]: https://stackoverflow.com/posts/comments/118407731
   [obj_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5995379
-  [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
   [udt_cons]:     https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971117
+  [vba_clx]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
+  [sob_setup]:    #setup
+  [vba_var]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
+  [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
+  [vba_dix]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/dictionary-object
+  [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
+  [udt_dll]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541509
+  [udt_hack_srl]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5542053
+  [udt_hack_prg]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541375
+  [sob_mod]:      src/SOb.bas
   [udt_silo]:     https://stackoverflow.com/q/38361276
-  [udt_tamp]:     http://cpearson.com/excel/classes.aspx
+  [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
+  [udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
+  [vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
   [udt_pass_var]: https://vbforums.com/showthread.php?304617-Storing-a-UDT-in-a-variant-type-mismatch#post1785101
   [udt_pass_obj]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5540423
   [udt_pass_clx]: https://vbforums.com/showthread.php?599355-RESOLVED-Addin-a-user-defined-type-to-a-collection
   [udt_pass_dix]: https://mrexcel.com/board/threads/is-it-possible-to-assign-udt-as-item-of-collection-dictionary.1221049#post-5971115
-  [udt_dll]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541509
-  [udt_hack_srl]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5542053
-  [udt_hack_prg]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541375
-  [vba_clx]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
-  [sob_secure]:   src/SOb.bas#L489-L504
-  [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
-  [vba_var]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/variant-data-type
-  [sob_setup]:    #setup
-  [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
-  [sob_mod]:      src/SOb.bas
-  [udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
-  [vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
   [sob_typo]:     docs/Typology.md
   [vba_typ_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/typename-function
   [vba_typ_op]:   https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/typeof-operator
@@ -194,8 +193,10 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
   [vba_priv]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/private-statement
   [vba_prp]:      https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#property
+  [sob_secure]:   src/SOb.bas#L489-L504
   [sob_outsrc]:   docs/Setup.md#outsourced
   [sob_fld]:      docs/Field.md
+  [udt_tamp]:     http://cpearson.com/excel/classes.aspx
   [sob_tmps]:     ../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
   [sob_doc_sup]:  docs/Setup.md
@@ -222,4 +223,3 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_util]:     docs/Utilities.md
   [vba_arr]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
   [vba_err_obj]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/err-object
-  [vba_dix]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/dictionary-object
