@@ -248,7 +248,6 @@ Topics in this project…
   [vba_eq_op]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/equals-operator
   [vba_parr]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-parameter-arrays
   [vba_err_obj]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/err-object
-  [vba_err_450]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/wrong-number-of-arguments-error-450
   [vba_nm_args]:  https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-sub-and-function-procedures#pass-named-arguments
   [vba_err_typ]:  https://stackoverflow.com/a/55067026
   [vba_typ_kwd]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/type-statement

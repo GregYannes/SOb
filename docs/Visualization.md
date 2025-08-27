@@ -591,11 +591,11 @@ Topics in this project…
   [sob_tmp_acc]: ../src/SObTemplate.bas#L171-L213
   [sob_tmp_fmt]: ../src/SObTemplate.bas#L277-L302
   [sob_tmp_prn]: ../src/SObTemplate.bas#L254-L273
-  [sob_tmp_enm]: ../src/SObTemplate.bas#L26-L29
-  [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
-  [sob_setup]:   Setup.md
-  [vbe]:         https://learn.microsoft.com/office/vba/library-reference/concepts/getting-started-with-vba-in-office#macros-and-the-visual-basic-editor
   [vba_cstr]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/type-conversion-functions
   [vba_rng]:     https://learn.microsoft.com/office/vba/api/excel.range(object)
   [vba_rng_adr]: https://learn.microsoft.com/office/vba/api/excel.range.address
   [vba_sct_nt]:  https://learn.microsoft.com/office/vba/excel/concepts/cells-and-ranges/refer-to-cells-by-using-shortcut-notation
+  [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
+  [sob_setup]:   Setup.md
+  [sob_tmp_enm]: ../src/SObTemplate.bas#L26-L29
+  [vbe]:         https://learn.microsoft.com/office/vba/library-reference/concepts/getting-started-with-vba-in-office#macros-and-the-visual-basic-editor

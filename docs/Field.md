@@ -159,9 +159,9 @@ Topics in this project…
   [vba_set]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/set-statement
   [vba_isobj]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/isobject-function
   [vba_byref]:   https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
-  [sob_flds]:    Fields.md
   [sob_acc_err]: ../med/vbe_error_13.png
   [vba_emp]:     https://learn.microsoft.com/office/vba/language/glossary/vbe-glossary#empty
+  [sob_flds]:    Fields.md
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:   Setup.md
   [vba_errs]:    https://learn.microsoft.com/office/vba/language/reference/error-messages
