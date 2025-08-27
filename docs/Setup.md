@@ -174,25 +174,25 @@ Fill out either template according to these steps:
      Simply wrap [`Obj_Get()`][sob_fld] with a [`Property Get`][vba_prp_get] to [_retrieve_][sob_tmp_get] a field…
      
      ```vba
-     Property Get Foo_FieldOne(ByRef foo As Object) As Integer
-     	Obj_Get Foo_FieldOne, foo, Foo__Field.FieldOne
-     End Property
+     	Property Get Foo_Bar(ByRef foo As Object) As Boolean
+     		Obj_Get Foo_Bar, foo, Foo__Field.Bar
+     	End Property
      ```
      
      …but implement a [`Property Let`][vba_prp_let] to _update_ a [scalar field][sob_tmp_scl]…
      
      ```vba
-     Property Let Foo_FieldOne(ByRef foo As Object, ByVal val As Integer)
-     	Let Foo_FieldOne = val
-     End Property
+     	Property Let Foo_Bar(ByRef foo As Object, ByVal val As Boolean)
+     		Let Foo_Bar = val
+     	End Property
      ```
      
      …or a [`Property Set`][vba_prp_set] to update an [objective field][sob_tmp_obj].
      
      ```vba
-     Property Set Foo_FieldTwo(ByRef foo As Object, ByRef val As Range)
-     	Set Foo_FieldTwo = val
-     End Property
+     	Property Set Foo_Baz(ByRef foo As Object, ByRef val As Range)
+     		Set Foo_Baz = val
+     	End Property
      ```
      
   1. [`TODO`][sob_todo_3]: Initialize the values for your fields, within [`Foo_Initialize()`][sob_tmp_ini].  Use [`Obj_HasField()`][sob_flds] to test whether a field exists, and when it does not, use your [accessor][sob_tmp_acc] to set its initial value.
@@ -427,13 +427,13 @@ You may _optionally_ enhance "Foo" with further steps:
   9. [`TODO`][sob_todo_6]: Customize any [further validation][sob_tmp_vld] you wish [`IsFoo()`][sob_tmp_is] to perform.  Each validation step should assign a `Boolean` value to `IsFoo`…
      
      ```vba
-     	IsFoo = …
+     		IsFoo = …
      ```
      
      …and finish by [short-circuiting][sob_tmp_cir] when `False`.
      
      ```vba
-     	If Not IsFoo Then Exit Function
+     		If Not IsFoo Then Exit Function
      ```
 
 Now you are ready to work with "Foo" objects, within your module and elsewhere!
