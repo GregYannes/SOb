@@ -23,22 +23,22 @@ While UDTs are restrictively [siloed][udt_silo] between classes and modules, the
 
 The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  You may let other modules access your SOb, yet its fields are ["encrypted"][sob_secure] against the more insidious tampering.  And while you may pass your SObs to generic [`Object`][vba_obj]s (or [`Variant`][vba_var]s), they require no class modules whatsoever—instead you can [easily set them all up][sob_setup] within your existing module!
 
-| <ins>Feature</ins> | <ins>Description</ins>                                       |   | <ins>SOb</ins> | <ins>Object</ins>  | <ins>UDT</ins> |
-| :----------------- | :----------------------------------------------------------- | - | :------------- | :----------------- | :------------- |
-| Painless           | Is it quick and easy for you to code?                        |   | ✓              |   [^1]             | ✓              |
-| Installable        | Is it quick and easy for lay _users_ to install your code?   |   | ✓              |   [^2]             | ✓              |
-| Native             | Is it native to VBA?                                         |   | ✓              | ✓                  | ✓              |
-| Portable           | Does it work across all platforms?                           |   | ✓              | ✓                  | ✓              |
-| Independent        | Is it free of external dependencies?                         |   | ✓              |   [^3]             | ✓              |
-| Global             | Can it be used seamlessly across other modules and classes?  |   | ✓ [^4]         | ✓                  |   [^5]         |
-| Compilable         | Can its dependents compile in its absence?                   |   | ✓              |   [^6]             |   [^7]         |
-| Placeholder        | Can it be passed to a generic `Object` (or `Variant`)?       |   | ✓              | ✓ [^8]             |   [^7]         |
-| Collectible        | Can it be included within a `Collection` (or `Dictionary`)?  |   | ✓              | ✓ [^9]             |   [^7]         |
-| Identity           | Is its type identifiable by name, so you can distinguish it? |   | ✓ [^10]        | ✓ [^11]            |                |
-| Methods            | Does it support [procedures][vba_proc] that operate on it?   |   | ✓ [^12]        | ✓                  |   [^13]        |
-| Printing           | Does it support pretty printing for visualization?           |   | ✓              |   [^14]            |                |
-| Private            | Can you hide certain fields (and "methods") from your user?  |   | ✓ [^15]        | ✓ [^15]            |                |
-| Secure             | Are its fields secure against unauthorized editing?          |   | ✓ [^16]        | ✓                  |   [^17]        |
+| <ins>Feature</ins> | <ins>Description</ins>                                                             |   | <ins>SOb</ins> | <ins>Object</ins>  | <ins>UDT</ins> |
+| :----------------- | :--------------------------------------------------------------------------------- | - | :------------- | :----------------- | :------------- |
+| Painless           | Is it quick and easy for you to code?                                              |   | ✓              |   [^1]             | ✓              |
+| Installable        | Is it quick and easy for lay _users_ to install your code?                         |   | ✓              |   [^2]             | ✓              |
+| Native             | Is it native to VBA?                                                               |   | ✓              | ✓                  | ✓              |
+| Portable           | Does it work across all platforms?                                                 |   | ✓              | ✓                  | ✓              |
+| Independent        | Is it free of external dependencies?                                               |   | ✓              |   [^3]             | ✓              |
+| Global             | Can it be used seamlessly across other modules and classes?                        |   | ✓ [^4]         | ✓                  |   [^5]         |
+| Compilable         | Can its dependents compile in its absence?                                         |   | ✓              |   [^6]             |   [^7]         |
+| Placeholder        | Can it be passed to a generic [`Variant`][vba_var] or [`Object`][vba_obj]?         |   | ✓              | ✓ [^8]             |   [^7]         |
+| Collectible        | Can it be included within a [`Collection`][vba_clx] (or [`Dictionary`][vba_dix])?  |   | ✓              | ✓ [^9]             |   [^7]         |
+| Identity           | Is its type identifiable by name, so you can distinguish it?                       |   | ✓ [^10]        | ✓ [^11]            |                |
+| Methods            | Does it support [procedures][vba_proc] that operate on it?                         |   | ✓ [^12]        | ✓                  |   [^13]        |
+| Printing           | Does it support pretty printing for visualization?                                 |   | ✓              |   [^14]            |                |
+| Private            | Can you hide certain fields (and "methods") from your user?                        |   | ✓ [^15]        | ✓ [^15]            |                |
+| Secure             | Are its fields secure against unauthorized editing?                                |   | ✓ [^16]        | ✓                  |   [^17]        |
 
 
   [^1]:  ["Classes are a pain"][obj_cons] to develop.
@@ -230,3 +230,4 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_util]:     docs/Utilities.md
   [vba_arr]:      https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
   [vba_err_obj]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/err-object
+  [vba_dix]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/dictionary-object
