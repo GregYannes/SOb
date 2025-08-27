@@ -196,7 +196,7 @@ Topics in this project…
   [vba_parr]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-parameter-arrays
   [vba_nm_args]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-named-arguments-and-optional-arguments
   [sob_typo]:    Typology.md
-  [sob_rdm_clx]: ../README.md#new-solution
+  [sob_rdm_clx]: ../README.md#the-sob-story
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
   [vba_clx_rmv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/remove-method-visual-basic-for-applications
   [vba_clx_cnt]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/count-property-visual-basic-for-applications

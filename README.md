@@ -9,19 +9,11 @@ With a [full suite][sob_suite] of features at your fingertips — including [pre
 
 I first encountered this use case when developing [**`GitHelp`**][ghlp_repo], which simulates a fielded "library" of documentation.  It demanded an [innovative approach][so_post], and as seasoned developers [chimed][so_comm_1] [in][so_comm_2], this took on a life of its own!
 
-Like me, you might desire several such data structures, where _some_ fields are accessible (or not) to outside users.  These structures (like UDTs) are self-contained within your module, yet (like objects) they [can be used][vba_cls_call] by classes and modules alike.  Ideally these other modules should still compile in the absence of yours, which should be easy for lay users to (re)install.
+Like me, you might desire several such data structures, where _some_ fields are accessible (or not) to outside users.  These structures (like UDTs) are self-contained within your module, yet (like objects) they [can be used][vba_cls_call] by [object classes][vba_cls] and modules alike.  Ideally these other modules should still compile in the absence of yours, which should be easy for lay users to (re)install.
 
+Unfortunately, neither objects nor UDTs achieve this outcome!  For every object you include, your users must install an additional class module.  But if objects ["are a pain"][obj_cons], then ["UDTs are _notoriously_ problematic"][udt_cons].
 
-### Old Problems ###
-
-Unfortunately, neither objects nor UDTs achieve the outcome above!  For every object you include, your users must install an additional class module, and ["classes are a pain"][obj_cons] to develop.  Furthermore, their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].  But if objects are painful, then ["UDTs are _notoriously_ problematic"][udt_cons].
-
-While UDTs are restrictively [siloed][udt_silo] between classes and modules, their fields are still [vulnerable to editing][udt_tamp].  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj], nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].  To avoid burdening users with [prohibitive setup][udt_dll], developers have often resorted to [dubious][udt_hack_srl] [hacks][udt_hack_prg]!
-
-
-### New Solution ###
-
-The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  You may let other modules access your SOb, yet its fields are ["encrypted"][sob_secure] against the more insidious tampering.  And while you may pass your SObs to generic [`Object`][vba_obj]s (or [`Variant`][vba_var]s), they require no class modules whatsoever—instead you can [easily set them all up][sob_setup] within your existing module!
+The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  And unlike classes, your SObs carry no baggage whatsoever—you can [easily set them all up][sob_setup] within your existing module!
 
 | <ins>Feature</ins> | <ins>Description</ins>                                                             |   | <ins>SOb</ins> | <ins>Object</ins>  | <ins>UDT</ins> |
 | :----------------- | :--------------------------------------------------------------------------------- | - | :------------- | :----------------- | :------------- |
@@ -165,7 +157,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_print]:    #visualization
   [vba_cls]:      https://vbaplanet.com/objects.php
   [vba_udt]:      https://learn.microsoft.com/office/vba/language/how-to/user-defined-data-type
-  [vba_cons]:     #old-problems
+  [vba_cons]:     #the-sob-story
   [ghlp_repo]:    https://github.com/GregYannes/GitHelp#readme
   [so_post]:      https://codereview.stackexchange.com/q/293168
   [so_comm_1]:    https://codereview.stackexchange.com/posts/comments/583913
