@@ -26,6 +26,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | <ins>Feature</ins> | <ins>Description</ins>                                       |   | <ins>SOb</ins> | <ins>Object</ins>  | <ins>UDT</ins> |
 | :----------------- | :----------------------------------------------------------- | - | :------------- | :----------------- | :------------- |
 | Painless           | Is it quick and easy for you to code?                        |   | ✓              |                    | ✓              |
+| Installable        | Is it quick and easy for lay _users_ to install your code?   |   | ✓              |                    | ✓              |
 | Native             | Is it native to VBA?                                         |   | ✓              | ✓                  | ✓              |
 | Portable           | Does it work across all platforms?                           |   | ✓              | ✓                  | ✓              |
 | Independent        | Is it free of external dependencies?                         |   | ✓              |                    | ✓              |
