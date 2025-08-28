@@ -8,9 +8,9 @@ These procedures support **`SOb`** and are handy for your general use.
   - `Txt_Indent()` indents some text.
   - `Txt_Contains()` detects a substring within some text.
 
-> [!NOTE]
+> [!TIP]
 > 
-> Text detection is [case-sensitive][vba_txt_cmp].
+> You may specify whether detection is [case-`sensitive`][vba_txt_cmp].
 
   - `Clx_Has()` detects an [`.Item`][vba_clx_itm] within a [`Collection`][vba_clx].
   - `Clx_Get()` safely retrieves an [`.Item`][vba_clx_itm] from a `Collection`.
@@ -28,7 +28,7 @@ Assign var, val
 
 Txt_Indent(txt, [indent], [before])
 
-Txt_Contains(txt, subtext)
+Txt_Contains(txt, subtext, [sensitive])
 
 Clx_Has(clx, index)
 
@@ -50,7 +50,8 @@ They have the following named parameters.
 | `txt`       | `String`                  | ✓        |                             | Some text.                                                                                                 |
 | `indent`    | `String`                  |          | [`vbTab`][vba_tab]          | The spacing used to indent `txt`.  Defaults to a standard [horizontal tab][hrz_tab] like most indentation. |
 | `before`    | `Boolean`                 |          | `True`                      | Indent (`True`) the first line of `txt`?                                                                   |
-| `subtext`   | `String`                  | ✓        |                             | The substring to seek within `txt`.                                                                        |
+| `subtext`   | `String`                  | ✓        |                             | The substring to detect within `txt`.                                                                      |
+| `sensitive` | `Boolean`                 |          | `True`                      | Should detection be [case-sensitive][vba_txt_cmp] (`True`) or insensitive (`False`)?                       |
 | `clx`       | [`Collection`][vba_clx]   | ✓        |                             | Any `Collection`.                                                                                          |
 | `index`     | `Long`<br><br>`String`    | ✓        |                             | The position (`Long`) or key (`String`) of the [`.Item`][vba_clx_itm] in `clx`.                            |
 | `has`       | `Boolean`                 |          |                             | A flag[^2] variable to track whether `clx` actually _has_ (`True`) an `.Item` at `index`.                  |
@@ -173,12 +174,14 @@ Detect some text.
 ```vba
 Debug.Print Txt_Contains(text, "First")
 Debug.Print Txt_Contains(text, "FIRST")
+Debug.Print Txt_Contains(text, "FIRST", sensitive := False)
 Debug.Print Txt_Contains(text, "Fourth")
 ```
 
 > ```
 > True
 > False
+> True
 > False
 > ```
 

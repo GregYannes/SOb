@@ -649,7 +649,7 @@ Private Function Obj_FormatDetails( _
 		'   	...
 		'   	...
 		'   }
-		ElseIf Txt_Contains(details, VBA.vbNewLine) Then
+		ElseIf Txt_Contains(details, VBA.vbNewLine, sensitive := True) Then
 			brk = True
 			
 		' ...and optionally for orphan lines...
@@ -809,9 +809,18 @@ End Sub
 
 ' Test if text contains a substring.
 Private Function Txt_Contains(ByVal txt As String, _
-	ByVal subtext As String _
+	ByVal subtext As String, _
+	Optional ByVal sensitive As Boolean = True _
 ) As Boolean
+	Const IDX_START As Long = 1
 	Const IDX_NONE As Long = 0
 	
-	Txt_Contains = (VBA.InStr(txt, subtext) <> IDX_NONE)
+	Dim comp As VBA.vbCompareMethod
+	If sensitive Then
+		comp = VBA.VbCompareMethod.vbBinaryCompare
+	Else
+		comp = VBA.VbCompareMethod.vbTextCompare
+	End If
+	
+	Txt_Contains = (VBA.InStr(IDX_START, txt, subtext, comp) <> IDX_NONE)
 End Function
