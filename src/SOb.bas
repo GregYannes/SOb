@@ -810,17 +810,20 @@ End Sub
 ' Test if text contains a substring.
 Private Function Txt_Contains(ByVal txt As String, _
 	ByVal subtext As String, _
+	Optional ByVal start As Long = 1, _
 	Optional ByVal sensitive As Boolean = True _
 ) As Boolean
-	Const IDX_START As Long = 1
 	Const IDX_NONE As Long = 0
 	
-	Dim comp As VBA.vbCompareMethod
+	' Optionally use case-sensitive comparison...
+	Dim comp As VBA.VbCompareMethod
 	If sensitive Then
 		comp = VBA.VbCompareMethod.vbBinaryCompare
+		
+	' ...or insensitive comparison.
 	Else
 		comp = VBA.VbCompareMethod.vbTextCompare
 	End If
 	
-	Txt_Contains = (VBA.InStr(IDX_START, txt, subtext, comp) <> IDX_NONE)
+	Txt_Contains = (VBA.InStr(start, txt, subtext, comp) <> IDX_NONE)
 End Function

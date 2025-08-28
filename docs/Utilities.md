@@ -28,7 +28,7 @@ Assign var, val
 
 Txt_Indent(txt, [indent], [before])
 
-Txt_Contains(txt, subtext, [sensitive])
+Txt_Contains(txt, subtext, [start], [sensitive])
 
 Clx_Has(clx, index)
 
@@ -51,6 +51,7 @@ They have the following named parameters.
 | `indent`    | `String`                  |          | [`vbTab`][vba_tab]          | The spacing used to indent `txt`.  Defaults to a standard [horizontal tab][hrz_tab] like most indentation. |
 | `before`    | `Boolean`                 |          | `True`                      | Indent (`True`) the first line of `txt`?                                                                   |
 | `subtext`   | `String`                  | ✓        |                             | The substring to detect within `txt`.                                                                      |
+| `start`     | `Long`                    |          | `1`                         | The position in `txt` where detection should start.                                                        |
 | `sensitive` | `Boolean`                 |          | `True`                      | Should detection be [case-sensitive][vba_txt_cmp] (`True`) or insensitive (`False`)?                       |
 | `clx`       | [`Collection`][vba_clx]   | ✓        |                             | Any `Collection`.                                                                                          |
 | `index`     | `Long`<br><br>`String`    | ✓        |                             | The position (`Long`) or key (`String`) of the [`.Item`][vba_clx_itm] in `clx`.                            |
@@ -173,6 +174,7 @@ Detect some text.
 
 ```vba
 Debug.Print Txt_Contains(text, "First")
+Debug.Print Txt_Contains(text, "First", start := 5)
 Debug.Print Txt_Contains(text, "FIRST")
 Debug.Print Txt_Contains(text, "FIRST", sensitive := False)
 Debug.Print Txt_Contains(text, "Fourth")
@@ -180,6 +182,7 @@ Debug.Print Txt_Contains(text, "Fourth")
 
 > ```
 > True
+> False
 > False
 > True
 > False
