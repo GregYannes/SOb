@@ -28,7 +28,7 @@ Assign var, val
 
 Txt_Indent(txt, [indent], [before])
 
-Txt_Contains(txt, substring)
+Txt_Contains(txt, subtext)
 
 Clx_Has(clx, index)
 
@@ -50,7 +50,7 @@ They have the following named parameters.
 | `txt`       | `String`                  | ✓        |                             | Some text.                                                                                                 |
 | `indent`    | `String`                  |          | [`vbTab`][vba_tab]          | The spacing used to indent `txt`.  Defaults to a standard [horizontal tab][hrz_tab] like most indentation. |
 | `before`    | `Boolean`                 |          | `True`                      | Indent (`True`) the first line of `txt`?                                                                   |
-| `substring` | `String`                  | ✓        |                             | The substring to seek within `txt`.                                                                        |
+| `subtext`   | `String`                  | ✓        |                             | The substring to seek within `txt`.                                                                        |
 | `clx`       | [`Collection`][vba_clx]   | ✓        |                             | Any `Collection`.                                                                                          |
 | `index`     | `Long`<br><br>`String`    | ✓        |                             | The position (`Long`) or key (`String`) of the [`.Item`][vba_clx_itm] in `clx`.                            |
 | `has`       | `Boolean`                 |          |                             | A flag[^2] variable to track whether `clx` actually _has_ (`True`) an `.Item` at `index`.                  |
@@ -71,7 +71,7 @@ These procedures have the following output.
 
   - `Assign()` returns no value, but rather assigns the `val`ue to your `var`iable by [reference][vba_byref].
   - `Txt_Indent()` returns a `String` where each line of `txt` is indented with `indent`.
-  - `Txt_Contains()` returns `True` when `txt` contains the `substring`, and `False` otherwise.
+  - `Txt_Contains()` returns `True` when `txt` contains the `subtext`, and `False` otherwise.
   - `Clx_Has()` returns `True` when `clx` has an [`.Item`][vba_clx_itm] at `index`, and `False` otherwise.
   - `Clx_Get()` returns a `Variant` with the value at `index`, or swallows the error when no such `.Item` exists.
   - `Clx_Set()` returns no value.  It assigns the `val`ue to any `.Item` at `key`, or [adds][vba_clx_add] it when it does not already exist.
