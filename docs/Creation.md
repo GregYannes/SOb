@@ -81,7 +81,7 @@ Debug.Print Obj_Class(cSnaf), Obj_Class(oSnaf)
 
 <br>
 
-…but leave `foo` untouched because it is _already_ a **"Foo"**.
+…but fail to do likewise for `foo` which is _already_ a **"Foo"**.
 
 ```vba
 Obj_Initialize foo, "Snaf"
