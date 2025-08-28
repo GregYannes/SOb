@@ -50,7 +50,7 @@ They have the following named parameters.
 | `txt`       | `String`                  | ✓        |                             | Some text.                                                                                                 |
 | `indent`    | `String`                  |          | [`vbTab`][vba_tab]          | The spacing used to indent `txt`.  Defaults to a standard [horizontal tab][hrz_tab] like most indentation. |
 | `before`    | `Boolean`                 |          | `True`                      | Indent (`True`) the first line of `txt`?                                                                   |
-| `substring` | `String`                  | ✓        |                             | The substring to seek within `txt.                                                                         |
+| `substring` | `String`                  | ✓        |                             | The substring to seek within `txt`.                                                                        |
 | `clx`       | [`Collection`][vba_clx]   | ✓        |                             | Any `Collection`.                                                                                          |
 | `index`     | `Long`<br><br>`String`    | ✓        |                             | The position (`Long`) or key (`String`) of the [`.Item`][vba_clx_itm] in `clx`.                            |
 | `has`       | `Boolean`                 |          |                             | A flag[^2] variable to track whether `clx` actually _has_ (`True`) an `.Item` at `index`.                  |
