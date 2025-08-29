@@ -16,9 +16,9 @@ These functions support ["pretty printing"][pprint] for SObs.
 These functions have the following syntax.
 
 ```vba
-Obj_Format(obj, [depth], [plain], [pointer], [summary], [details], [preview], [indent], [orphan])
+Obj_Format(obj, [depth], [plain], [pointer], [summary], [details], [preview], [indent], [orphan], [break])
 
-Obj_Print(obj, [depth], [plain], [pointer], [summary], [details], [preview], [indent], [orphan])
+Obj_Print(obj, [depth], [plain], [pointer], [summary], [details], [preview], [indent], [orphan], [break])
 
 Obj_Print0([format])
 
@@ -40,15 +40,16 @@ They have the following named parameters.
 | `preview`   | `Boolean`                         |          | `False`                  | Fall back to showing a preview of the `details`, when we have no `summary`?  See [**Examples**][sob_vis_ex] for appearance.                                                                 |
 | `indent`    | `String`                          |          | [`vbTab`][vba_tab]       | The indentation used for nesting `details`.  Defaults to a standard [horizontal tab][hrz_tab] like most indentation.                                                                        |
 | `orphan`    | `Boolean`                         |          | `True`                   | Should a single line of `details` still be nested (`True`) or remain on a single line (`False`)?                                                                                            |
+| `break`     | `String`                          |          | [`vbNewLine`][vba_newln] | The linebreak which identifies where lines in `details` should be indented.  See [`Txt_Indent()`][sob_utils] for details on [usage][sob_brk_use].                                           |
 | `format`    | `String`                          |          | `""`                     | Output for the console, which should already be formatted as desired.                                                                                                                       |
 | `fields`    | [Array][vba_arr] of `String`s[^1] | ✓        |                          | An array with pairs of (textual) expressions: a field name followed by its value.  See [**Examples**][sob_vis_ex] for appearance.<br><br>This is best achieved via [`Array()`][vba_arr_fn]. |
-| `separator` | `String`                          |          | [`vbNewLine`][vba_newln] | The textual separator displayed between each pairing and the next.  Defaults to the [system newline][sys_newln], so each pair (`.field = value`) gets its own line.                         |
+| `separator` | `String`                          |          | `vbNewLine`              | The textual separator displayed between each pairing and the next.  Defaults to the [system newline][sys_newln], so each pair (`.field = value`) gets its own line.                         |
 | …[^2]       | `String`s                         |          |                          | The pairs themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr].                                                                               |
 
 
-> [!NOTE]
+> [!TIP]
 > 
-> Be sure to use the [`vbNewLine`][vba_newln] for line breaks, when you assemble (say) `details` and other such text.  This uses the newline [specific to the system][sys_newln], and ensures that `Obj_FormatFields*()` and [`Txt_Indent()`][sob_utils] work as expected.
+> Use [`vbNewLine`][vba_newln] for line breaks, when you assemble (say) `details` and other such text.  This uses the newline [specific to the system][sys_newln], and helps `Obj_FormatFields*()` and [`Txt_Indent()`][sob_utils] work frictionlessly.
 
 
 ## Output ##
@@ -246,7 +247,7 @@ Obj_Print foo1, depth := 1, details := ".Bar = 10", orphan := True
 
 <br>
 
-…and indentation.
+…and with indentation…
 
 ```vba
 Obj_Print foo1, depth := 1, details := fFormat, indent := "--> "
@@ -257,6 +258,22 @@ Obj_Print foo1, depth := 1, details := fFormat, indent := "--> "
 > --> .Bar = 10
 > --> .Baz = "Twenty"
 > --> .Qux = [$A$1:$B$2]
+> }>
+> ```
+
+<br>
+
+…at various breaks.
+
+```vba
+Obj_Print foo1, depth := 1, details := fFormat, indent := " -->", break := "="
+```
+
+> ```
+> <Foo: {
+> .Bar = --> 10
+> .Baz = --> "Twenty"
+> .Qux = --> [$A$1:$B$2]
 > }>
 > ```
 
@@ -328,7 +345,8 @@ Function Foo_Format(foo As Object, _
 		depth := depth, _
 		plain := plain, _
 		indent := vbTab, _
-		orphan := False _
+		orphan := False, _
+		break := vbNewLine _
 	)
 End Function
 
@@ -446,7 +464,8 @@ Function Snaf_Print(snaf As Object, _
 		depth := depth, _
 		plain := plain, _
 		indent := vbTab, _
-		orphan := False _
+		orphan := False, _
+		break := vbNewLine _
 	)
 	
 	Obj_Print0 Snaf_Print
@@ -529,6 +548,7 @@ Topics in this project…
 
   - [`*0()`][sob_fn0] family
   - [Fields][sob_fld]
+  - [`Txt_Indent()`][sob_utils]
   - [Templates][sob_tmps]
   - [Setup][sob_setup] with templates
   - [Enumerated fields][sob_tmp_enm]
@@ -580,11 +600,12 @@ Topics in this project…
   [vba_ptr]:     https://classicvb.net/tips/varptr
   [vba_tab]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/miscellaneous-constants
   [hrz_tab]:     https://www.ascii-code.com/9
-  [vba_arr_fn]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
   [vba_newln]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/miscellaneous-constants
+  [sob_utils]:   Utilities.md
+  [sob_brk_use]: Utilities.md#text-indentation
+  [vba_arr_fn]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/array-function
   [sys_newln]:   https://learn.microsoft.com/dotnet/api/system.environment.newline?view=net-9.0#property-value
   [vba_parr]:    https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-parameter-arrays
-  [sob_utils]:   Utilities.md
   [vba_enum]:    https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
   [sob_tmp_acc]: ../src/SObTemplate.bas#L171-L213
   [sob_tmp_fmt]: ../src/SObTemplate.bas#L277-L302

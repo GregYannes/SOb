@@ -26,7 +26,7 @@ These procedures have the following syntax.
 ```vba
 Assign var, val
 
-Txt_Indent(txt, [indent], [before])
+Txt_Indent(txt, [indent], [before], [break])
 
 Txt_Contains(txt, subtext, [start], [compare])
 
@@ -49,6 +49,7 @@ They have the following named parameters.
 | `val`       | [^1]                             | ✓        |                      | The value you wish to assign.                                                                                                                                  |
 | `txt`       | `String`                         | ✓        |                      | Some text.                                                                                                                                                     |
 | `indent`    | `String`                         |          | [`vbTab`][vba_tab]   | The spacing used to indent `txt`.  Defaults to a standard [horizontal tab][hrz_tab] like most indentation.                                                     |
+| `break`     | `String`                         |          | [`vbNewLine`][vba_newln] | The linebreak which identifies where lines in `txt` should be indented.  Defaults to the [system newline][sys_newln] for convenience.                      |
 | `before`    | `Boolean`                        |          | `True`               | Indent (`True`) the first line of `txt`?                                                                                                                       |
 | `subtext`   | `String`                         | ✓        |                      | The substring to detect within `txt`.                                                                                                                          |
 | `start`     | `Long`                           |          | `1`                  | The position in `txt` where detection should start.                                                                                                            |
@@ -61,9 +62,9 @@ They have the following named parameters.
 | `dimension` | `Long`                           |          | `1`                  | The [dimension][vba_arr_dmn] along which you wish to measure `arr`.                                                                                            |
 
 
-> [!NOTE]
+> [!TIP]
 > 
-> Be sure to use the [`vbNewLine`][vba_newln] for line breaks, when you assemble (say) `txt` and other such text.  This uses the newline [specific to the system][sys_newln], and ensures that [`Obj_FormatFields*()`][sob_vis] and `Txt_Indent()` work as expected.
+> Use [`vbNewLine`][vba_newln] for line breaks, when you assemble (say) `txt` and other such text.  This uses the newline [specific to the system][sys_newln], and helps [`Obj_FormatFields*()`][sob_vis] and `Txt_Indent()` work frictionlessly.
 
 
 ## Output ##
@@ -150,6 +151,9 @@ Debug.Print Txt_Indent(text, before := False)
 Debug.Print
 
 Debug.Print Txt_Indent(text, indent := "--> ")
+Debug.Print
+
+Debug.Print Txt_Indent(text, indent := "--> ", break := " ")
 ```
 
 > ```
@@ -164,6 +168,10 @@ Debug.Print Txt_Indent(text, indent := "--> ")
 > --> First line.
 > --> Second line.
 > --> Third line.
+> 
+> First --> line.
+> Second --> line.
+> Third --> line.
 > ```
 
 
@@ -329,8 +337,8 @@ Topics in this project…
   - [`Err`][vba_err_obj] object
   - [Variables][vba_vrb]
   - [`vbTab`][vba_tab]
-  - Array [dimensions][vba_arr_dmn]
   - [`vbNewLine`][vba_newln]
+  - Array [dimensions][vba_arr_dmn]
   - [`Variant`][vba_var]s
   - [`.Add()`][vba_clx_add] method
   - [`.Raise()`][vba_err_rse] method
@@ -364,10 +372,10 @@ Topics in this project…
   [vba_vrb]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/declaring-variables
   [vba_tab]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/miscellaneous-constants
   [hrz_tab]:     https://www.ascii-code.com/9
-  [vba_opt_cmp]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-compare-statement
-  [vba_arr_dmn]: https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/arrays/array-dimensions
   [vba_newln]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/miscellaneous-constants
   [sys_newln]:   https://learn.microsoft.com/dotnet/api/system.environment.newline?view=net-9.0#property-value
+  [vba_opt_cmp]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-compare-statement
+  [vba_arr_dmn]: https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/arrays/array-dimensions
   [sob_vis]:     Visualization.md
   [vba_clx_add]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/add-method-visual-basic-for-applications
   [vba_err_rse]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/raise-method
