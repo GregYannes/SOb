@@ -329,8 +329,7 @@ Function Foo_Format(foo As Object, _
 		depth := depth, _
 		plain := plain, _
 		orphan := False, _
-		indent := vbTab, _
-		break := vbNewLine _
+		indent := vbTab _
 	)
 End Function
 
@@ -448,8 +447,7 @@ Function Snaf_Print(snaf As Object, _
 		depth := depth, _
 		plain := plain, _
 		orphan := False, _
-		indent := vbTab, _
-		break := vbNewLine _
+		indent := vbTab _
 	)
 	
 	Obj_Print0 Snaf_Print
