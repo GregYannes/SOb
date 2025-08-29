@@ -20,10 +20,10 @@ Obj_CheckError([type_])
 
 They have the following named parameters.
 
-| Name        | Type                           | Required | Default                     | Description                                                                                                   |
-| :---------- | :----------------------------- | :------: | :-------------------------- | :------------------------------------------------------------------------------------------------------------ |
-| …[^2]       | Accessor [calls][vba_prp_call] |          |                             | The calls themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr]. |
-| `type_`[^3] | `Boolean`                      |          | `True`                      | Should `Obj_CheckError()` catch (`True`) errors for fields of the wrong type?                                 |
+| Name        | Type                           | Required | Default | Description                                                                                                   |
+| :---------- | :----------------------------- | :------: | :------ | :------------------------------------------------------------------------------------------------------------ |
+| …[^2]       | Accessor [calls][vba_prp_call] |          |         | The calls themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr]. |
+| `type_`[^3] | `Boolean`                      |          | `True`  | Should `Obj_CheckError()` catch (`True`) errors for fields of the wrong type?                                 |
 
 
 ## Output ##
