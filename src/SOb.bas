@@ -267,11 +267,6 @@ Public Function Obj_CheckError( _
 	Const TYP_OBJ_ERR_NUMBER As Integer = 13   ' Invalid type.
 	Const TYP_SCL_ERR_NUMBER As Integer = 450  ' Wrong number of arguments or invalid property assignment.
 	
-	' Default to last error.
-	If e Is Nothing Then
-		Set e = VBA.Err
-	End If
-	
 	' Handle various errors.
 	Dim cat As Boolean
 	Select Case VBA.Err.Number
@@ -795,10 +790,6 @@ End Function
 
 ' Throw the latest error object.
 Private Sub Err_Raise()
-	If e Is Nothing Then
-		Set e = VBA.Err
-	End If
-	
 	VBA.Err.Raise number := VBA.Err.Number, _
 		source := VBA.Err.Source, _
 		description := VBA.Err.Description, _
