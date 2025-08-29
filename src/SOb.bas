@@ -649,7 +649,7 @@ Private Function Obj_FormatDetails( _
 		'   	...
 		'   	...
 		'   }
-		ElseIf Txt_Contains(details, VBA.vbNewLine, sensitive := True) Then
+		ElseIf Txt_Contains(details, VBA.vbNewLine, compare := VBA.vbBinaryCompare) Then
 			brk = True
 			
 		' ...and optionally for orphan lines...
@@ -811,19 +811,18 @@ End Sub
 Private Function Txt_Contains(ByVal txt As String, _
 	ByVal subtext As String, _
 	Optional ByVal start As Long = 1, _
-	Optional ByVal sensitive As Boolean = True _
+	Optional ByVal compare As VBA.VbCompareMethod = -1 _
 ) As Boolean
+	Const OPT_COMP As Long = -1
 	Const IDX_NONE As Long = 0
 	
-	' Optionally use case-sensitive comparison...
-	Dim comp As VBA.VbCompareMethod
-	If sensitive Then
-		comp = VBA.VbCompareMethod.vbBinaryCompare
-		
-	' ...or insensitive comparison.
+	' Default to Option Compare for matching text.
+	Dim idx As Long
+	If compare = OPT_COMP Then
+		idx = VBA.InStr(start, txt, subtext)
 	Else
-		comp = VBA.VbCompareMethod.vbTextCompare
+		idx = VBA.InStr(start, txt, subtext, compare)
 	End If
 	
-	Txt_Contains = (VBA.InStr(start, txt, subtext, comp) <> IDX_NONE)
+	Txt_Contains = (idx <> IDX_NONE)
 End Function

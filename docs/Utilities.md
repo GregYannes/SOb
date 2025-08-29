@@ -10,7 +10,7 @@ These procedures support **`SOb`** and are handy for your general use.
 
 > [!TIP]
 > 
-> You may specify whether detection is [case-`sensitive`][vba_txt_cmp].
+> You may specify whether detection is [case-sensitive][vba_txt_cmp].
 
   - `Clx_Has()` detects an [`.Item`][vba_clx_itm] within a [`Collection`][vba_clx].
   - `Clx_Get()` safely retrieves an [`.Item`][vba_clx_itm] from a `Collection`.
@@ -28,7 +28,7 @@ Assign var, val
 
 Txt_Indent(txt, [indent], [before])
 
-Txt_Contains(txt, subtext, [start], [sensitive])
+Txt_Contains(txt, subtext, [start], [compare])
 
 Clx_Has(clx, index)
 
@@ -52,7 +52,7 @@ They have the following named parameters.
 | `before`    | `Boolean`                 |          | `True`                      | Indent (`True`) the first line of `txt`?                                                                   |
 | `subtext`   | `String`                  | ✓        |                             | The substring to detect within `txt`.                                                                      |
 | `start`     | `Long`                    |          | `1`                         | The position in `txt` where detection should start.                                                        |
-| `sensitive` | `Boolean`                 |          | `True`                      | Should detection be [case-sensitive][vba_txt_cmp] (`True`) or insensitive (`False`)?                       |
+| `compare`   | [`VbCompareMethod`][vba_txt_cmp] |          | `vbUseCompareOption`        | Should detection be case-sensitive (`vbBinaryCompare`) or insensitive (`vbTextCompare`)?<br><br>Defaults to the current setting for [`Option Compare`][vba_opt_cmp]. |
 | `clx`       | [`Collection`][vba_clx]   | ✓        |                             | Any `Collection`.                                                                                          |
 | `index`     | `Long`<br><br>`String`    | ✓        |                             | The position (`Long`) or key (`String`) of the [`.Item`][vba_clx_itm] in `clx`.                            |
 | `has`       | `Boolean`                 |          |                             | A flag[^2] variable to track whether `clx` actually _has_ (`True`) an `.Item` at `index`.                  |
@@ -170,14 +170,22 @@ Debug.Print Txt_Indent(text, indent := "--> ")
 
 ### Text Detection ###
 
-Detect some text.
+Apply [modular settings][vba_opt_cmp] for [case sensitivity][vba_txt_cmp]…
+
+```vba
+Option Compare Binary
+```
+
+<br>
+
+…and detect some text.
 
 ```vba
 Debug.Print Txt_Contains(text, "First")
 Debug.Print Txt_Contains(text, "Second", start := 12)
 Debug.Print Txt_Contains(text, "Second", start := 13)
 Debug.Print Txt_Contains(text, "THIRD")
-Debug.Print Txt_Contains(text, "THIRD", sensitive := False)
+Debug.Print Txt_Contains(text, "THIRD", compare := vbTextCompare)
 Debug.Print Txt_Contains(text, "Fourth")
 ```
 
@@ -331,6 +339,7 @@ Topics in this project…
   - [`.Address`][vba_rng_adr] property
   - [Shortcut notation][vba_sct_nt]
   - [Error messages][vba_errs]
+  - [`Option Compare`][vba_opt_cmp]
 
 …and elsewhere.
 
@@ -357,6 +366,7 @@ Topics in this project…
   [vba_vrb]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/declaring-variables
   [vba_tab]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/miscellaneous-constants
   [hrz_tab]:     https://www.ascii-code.com/9
+  [vba_opt_cmp]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-compare-statement
   [vba_arr_dmn]: https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/arrays/array-dimensions
   [vba_newln]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/miscellaneous-constants
   [sys_newln]:   https://learn.microsoft.com/dotnet/api/system.environment.newline?view=net-9.0#property-value
