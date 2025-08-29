@@ -10,7 +10,7 @@ These procedures support **`SOb`** and are handy for your general use.
 
 > [!TIP]
 > 
-> You may specify whether detection is [case-sensitive][vba_txt_cmp].
+> You may specify whether detection is [case-sensitive][vba_cmp_mtd].
 
   - `Clx_Has()` detects an [`.Item`][vba_clx_itm] within a [`Collection`][vba_clx].
   - `Clx_Get()` safely retrieves an [`.Item`][vba_clx_itm] from a `Collection`.
@@ -52,7 +52,7 @@ They have the following named parameters.
 | `before`    | `Boolean`                        |          | `True`                      | Indent (`True`) the first line of `txt`?                                                                                                                             |
 | `subtext`   | `String`                         | ✓        |                             | The substring to detect within `txt`.                                                                                                                                |
 | `start`     | `Long`                           |          | `1`                         | The position in `txt` where detection should start.                                                                                                                  |
-| `compare`   | [`VbCompareMethod`][vba_txt_cmp] |          | `vbUseCompareOption`        | Should detection be case-sensitive (`vbBinaryCompare`) or insensitive (`vbTextCompare`)?<br><br>Defaults to the current setting for [`Option Compare`][vba_opt_cmp]. |
+| `compare`   | [`VbCompareMethod`][vba_cmp_mtd] |          | `vbUseCompareOption`        | Should detection be case-sensitive (`vbBinaryCompare`) or insensitive (`vbTextCompare`)?<br><br>Defaults to the current setting for [`Option Compare`][vba_opt_cmp]. |
 | `clx`       | [`Collection`][vba_clx]          | ✓        |                             | Any `Collection`.                                                                                                                                                    |
 | `index`     | `Long`<br>`String`               | ✓        |                             | The position (`Long`) or key (`String`) of the [`.Item`][vba_clx_itm] in `clx`.                                                                                      |
 | `has`       | `Boolean`                        |          |                             | A flag[^2] variable to track whether `clx` actually _has_ (`True`) an `.Item` at `index`.                                                                            |
@@ -170,7 +170,7 @@ Debug.Print Txt_Indent(text, indent := "--> ")
 
 ### Text Detection ###
 
-Apply [modular settings][vba_opt_cmp] for [case sensitivity][vba_txt_cmp]…
+Apply [modular settings][vba_opt_cmp] for [case sensitivity][vba_cmp_mtd]…
 
 ```vba
 Option Compare Binary
@@ -322,7 +322,7 @@ Topics in this project…
 
   - [`IsObject()`][vba_isobj]
   - Passing [`ByRef`][vba_byref]erence
-  - [Case sensitivity][vba_txt_cmp]
+  - [Case sensitivity][vba_cmp_mtd]
   - [`Collection`][vba_clx]s
   - [`.Item()`][vba_clx_itm] method
   - [Arrays][vba_arr]
@@ -357,7 +357,7 @@ Topics in this project…
 
   [vba_isobj]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/isobject-function
   [vba_byref]:   https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
-  [vba_txt_cmp]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/strcomp-function#settings
+  [vba_cmp_mtd]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/strcomp-function#settings
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
   [vba_clx]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
   [vba_arr]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
