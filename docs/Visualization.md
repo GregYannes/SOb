@@ -247,7 +247,7 @@ Obj_Print foo1, depth := 1, details := ".Bar = 10", orphan := True
 
 <br>
 
-…and with indentation…
+…and indentation.
 
 ```vba
 Obj_Print foo1, depth := 1, details := fFormat, indent := "--> "
@@ -258,22 +258,6 @@ Obj_Print foo1, depth := 1, details := fFormat, indent := "--> "
 > --> .Bar = 10
 > --> .Baz = "Twenty"
 > --> .Qux = [$A$1:$B$2]
-> }>
-> ```
-
-<br>
-
-…at various breaks.
-
-```vba
-Obj_Print foo1, depth := 1, details := fFormat, indent := " -->", break := "="
-```
-
-> ```
-> <Foo: {
-> .Bar = --> 10
-> .Baz = --> "Twenty"
-> .Qux = --> [$A$1:$B$2]
 > }>
 > ```
 
