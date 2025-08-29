@@ -260,7 +260,7 @@ End Sub
 
 
 ' Catches errors for certain checks and propagates all others.
-Public Function Obj_CheckError(Optional ByRef e As ErrObject = Nothing, _
+Public Function Obj_CheckError( _
 	Optional ByVal type_ As Boolean = True _
 ) As Boolean
 	Const NO_ERR_NUMBER As Integer = 0         ' No error.
@@ -274,7 +274,7 @@ Public Function Obj_CheckError(Optional ByRef e As ErrObject = Nothing, _
 	
 	' Handle various errors.
 	Dim cat As Boolean
-	Select Case e.Number
+	Select Case VBA.Err.Number
 		' Short-circuit with TRUE for no error.
 		Case NO_ERR_NUMBER
 			Obj_CheckError = True
@@ -295,7 +295,7 @@ Public Function Obj_CheckError(Optional ByRef e As ErrObject = Nothing, _
 		
 	' ...and propagate all others.
 	Else
-		Err_Raise e
+		Err_Raise
 	End If
 End Function
 
@@ -743,7 +743,7 @@ ITEM_ERROR:
 	If VBA.Err.Number = POS_ERR_NUMBER Or VBA.Err.Number = KEY_ERR_NUMBER Then
 		Clx_Has = False
 	Else
-		Err_Raise VBA.Err
+		Err_Raise
 	End If
 End Function
 
@@ -788,22 +788,22 @@ BOUND_ERROR:
 	If VBA.Err.Number = EMPTY_ERR_NUMBER Then
 		Arr_Length = 0
 	Else
-		Err_Raise VBA.Err
+		Err_Raise
 	End If
 End Function
 
 
-' Throw an error object.
-Private Sub Err_Raise(Optional ByRef e As ErrObject = Nothing)
+' Throw the latest error object.
+Private Sub Err_Raise()
 	If e Is Nothing Then
 		Set e = VBA.Err
 	End If
 	
-	VBA.Err.Raise number := e.Number, _
-		source := e.Source, _
-		description := e.Description, _
-		helpFile := e.HelpFile, _
-		helpContext := e.HelpContext
+	VBA.Err.Raise number := VBA.Err.Number, _
+		source := VBA.Err.Source, _
+		description := VBA.Err.Description, _
+		helpFile := VBA.Err.HelpFile, _
+		helpContext := VBA.Err.HelpContext
 End Sub
 
 

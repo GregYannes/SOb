@@ -15,7 +15,7 @@ These procedures have the following syntax.
 ```vba
 Obj_Check …
 
-Obj_CheckError([e], [type_])
+Obj_CheckError([type_])
 ```
 
 They have the following named parameters.
@@ -23,7 +23,6 @@ They have the following named parameters.
 | Name        | Type                           | Required | Default                     | Description                                                                                                   |
 | :---------- | :----------------------------- | :------: | :-------------------------- | :------------------------------------------------------------------------------------------------------------ |
 | …[^2]       | Accessor [calls][vba_prp_call] |          |                             | The calls themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr]. |
-| `e`         | `ErrObject`[^3]                |          | [`Err`][vba_err_obj] object | The latest error, thrown during validation.                                                                   |
 | `type_`[^4] | `Boolean`                      |          | `True`                      | Should `Obj_CheckError()` catch (`True`) errors for fields of the wrong type?                                 |
 
 
@@ -214,7 +213,6 @@ Topics in this project…
   - [Calling properties][vba_prp_call]
   - [`=`][vba_eq_op] operator
   - [`ParamArray`][vba_parr]s
-  - [`Err`][vba_err_obj] object
   - [Named arguments][vba_nm_args]
   - [`Type`][vba_typ_kwd] statement
   - [`Enum`][vba_enum]erations
@@ -226,7 +224,6 @@ Topics in this project…
 
   [^1]: While you may [call a function][vba_fun_prns] without parentheses, and ignore its return value, you may _not_ thus [call a property][vba_prp_call] without assigning it ([`=`][vba_eq_op]).
   [^2]: [`ParamArray`][vba_parr]s like `…` are not actually passed to a single [named argument][vba_nm_args], but rather as several nameless arguments.
-  [^3]: The `ErrObject` is not a traditional "type", since there is only [one (global) instance][vba_err_typ] of the `Err` object.
   [^4]: The underscore (`_`) prevents `type_` from clashing with the [`Type`][vba_typ_kwd] keyword.
   [^5]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
 
@@ -242,7 +239,6 @@ Topics in this project…
   [sob_tmp_rtn]:  ../src/SObTemplate.bas#L149
   [vba_prp_call]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-property-procedures
   [vba_parr]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/understanding-parameter-arrays
-  [vba_err_obj]:  https://learn.microsoft.com/office/vba/language/reference/user-interface-help/err-object
   [vba_enum]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/enum-statement
   [sob_chk_err]:  ../med/vbe_error_11.png
   [sob_tmps]:     ../../../search?type=code&q=path:src/*Template.bas
@@ -256,4 +252,3 @@ Topics in this project…
   [vba_rng_adr]:  https://learn.microsoft.com/office/vba/api/excel.range.address
   [vba_sct_nt]:   https://learn.microsoft.com/office/vba/excel/concepts/cells-and-ranges/refer-to-cells-by-using-shortcut-notation
   [vba_fun_prns]: https://learn.microsoft.com/office/vba/language/concepts/getting-started/calling-sub-and-function-procedures#use-parentheses-when-calling-function-procedures
-  [vba_err_typ]:  https://stackoverflow.com/a/55067026

@@ -38,7 +38,7 @@ Clx_Set clx, key, val
 
 Arr_Length(arr, [dimension])
 
-Err_Raise [e]
+Err_Raise
 ```
 
 They have the following named parameters.
@@ -59,7 +59,6 @@ They have the following named parameters.
 | `key`       | `String`                         | ✓        |                             | The `key` of the `.Item` in `clx`, whose `val`ue you wish to set.                                                                                                    |
 | `arr`       | [Array][vba_arr]                 | ✓        |                             | Any array.                                                                                                                                                           |
 | `dimension` | `Long`                           |          | `1`                         | The [dimension][vba_arr_dmn] along which you wish to measure `arr`.                                                                                                  |
-| `e`         | `ErrObject`[^3]                  |          | [`Err`][vba_err_obj] object | The latest error thrown during execution.                                                                                                                            |
 
 
 > [!NOTE]
@@ -350,7 +349,6 @@ Topics in this project…
 
   [^1]: While this is technically a [`Variant`][vba_var], it accommodates any `var`iable or `val`ue you desire.
   [^2]: The procedure updates this variable by [reference][vba_byref], which overwrites any value it originally had.
-  [^3]: The `ErrObject` is not a traditional "type", since there is only [one (global) instance][vba_err_typ] of the `Err` object.
   [^4]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
 
 
@@ -379,4 +377,3 @@ Topics in this project…
   [vba_rng_adr]: https://learn.microsoft.com/office/vba/api/excel.range.address
   [vba_sct_nt]:  https://learn.microsoft.com/office/vba/excel/concepts/cells-and-ranges/refer-to-cells-by-using-shortcut-notation
   [vba_errs]:    https://learn.microsoft.com/office/vba/language/reference/error-messages
-  [vba_err_typ]: https://stackoverflow.com/a/55067026
