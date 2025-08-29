@@ -38,6 +38,11 @@ These procedures return the following values.
 
   - `Obj_Class()` returns the "class" name (`String`) of `obj`.
   - `IsObj()` returns `True` if `x` is an SOb, and `False` otherwise.  When `class` is supplied, then `IsObj()` also tests whether the "class" name matches.
+
+> [!NOTE]
+> 
+> Matching for `class` is [case-sensitive][vba_cmp_mtd], unlike class names in [VBA syntax][vba_naming].
+
   - `AsObj()` returns an SOb ([`Collection`][vba_clx]) with the original fields from `x`.  When `class` is supplied, then `AsObj()` updates the "class" name to match.
 
 > [!WARNING]
@@ -85,11 +90,13 @@ Debug.Print IsObj(clx), IsObj(obj)
 
 ```vba
 Debug.Print IsObj(foo, "Foo")
+Debug.Print IsObj(foo, "foO")
 Debug.Print IsObj(foo, "Snaf")
 ```
 
 > ```
 > True
+> False
 > False
 > ```
 
@@ -224,6 +231,8 @@ Topics in this project…
   - [Arrays][vba_arr]
   - [`Enum`][vba_enum]erations
   - [`.Item()`][vba_clx_itm] method
+  - [Case sensitivity][vba_cmp_mtd]
+  - [Naming syntax][vba_naming]
 
 
 
@@ -243,6 +252,8 @@ Topics in this project…
   [sob_doc_tmp]: Setup.md#template
   [sob_tmp_enm]: ../src/SObTemplate.bas#L26-L29
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
+  [vba_cmp_mtd]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/strcomp-function#settings
+  [vba_naming]:  https://learn.microsoft.com/office/vba/language/concepts/getting-started/visual-basic-naming-rules
   [sob_tmps]:    ../../../search?type=code&q=path:src/*Template.bas
   [sob_setup]:   Setup.md
   [sob_flds]:    Fields.md
