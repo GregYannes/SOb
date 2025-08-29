@@ -96,7 +96,7 @@ Public Function IsObj(ByRef x As Variant, _
 	If Not IsObj Then Exit Function
 	
 	' Optionally check if the class matches expectations.
-	If class <> VBA.VbNullString Then
+	If class <> VBA.vbNullString Then
 		IsObj = (Obj_Class(obj) = class)
 	End If
 	If Not IsObj Then Exit Function
