@@ -111,7 +111,7 @@ Debug.Print sVar
 
 <br>
 
-…and [objective][vba_isobj] values like [`Range`][vba_rng]s[^4].
+…and [objective][vba_isobj] values like [`Range`][vba_rng]s[^3].
 
 ```vba
 Dim rVar As Range, oVar As Object
@@ -349,7 +349,7 @@ Topics in this project…
 
   [^1]: While this is technically a [`Variant`][vba_var], it accommodates any `var`iable or `val`ue you desire.
   [^2]: The procedure updates this variable by [reference][vba_byref], which overwrites any value it originally had.
-  [^4]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
+  [^3]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
 
 
 

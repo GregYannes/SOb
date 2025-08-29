@@ -23,7 +23,7 @@ They have the following named parameters.
 | Name        | Type                           | Required | Default                     | Description                                                                                                   |
 | :---------- | :----------------------------- | :------: | :-------------------------- | :------------------------------------------------------------------------------------------------------------ |
 | …[^2]       | Accessor [calls][vba_prp_call] |          |                             | The calls themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr]. |
-| `type_`[^4] | `Boolean`                      |          | `True`                      | Should `Obj_CheckError()` catch (`True`) errors for fields of the wrong type?                                 |
+| `type_`[^3] | `Boolean`                      |          | `True`                      | Should `Obj_CheckError()` catch (`True`) errors for fields of the wrong type?                                 |
 
 
 ## Output ##
@@ -100,7 +100,7 @@ End Sub
 
 <br>
 
-…with proper fields[^5] that pass the check…
+…with proper fields[^4] that pass the check…
 
 ```vba
 Dim foo As Object: Set foo = New_Obj("Foo")
@@ -224,8 +224,8 @@ Topics in this project…
 
   [^1]: While you may [call a function][vba_fun_prns] without parentheses, and ignore its return value, you may _not_ thus [call a property][vba_prp_call] without assigning it ([`=`][vba_eq_op]).
   [^2]: [`ParamArray`][vba_parr]s like `…` are not actually passed to a single [named argument][vba_nm_args], but rather as several nameless arguments.
-  [^4]: The underscore (`_`) prevents `type_` from clashing with the [`Type`][vba_typ_kwd] keyword.
-  [^5]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
+  [^3]: The underscore (`_`) prevents `type_` from clashing with the [`Type`][vba_typ_kwd] keyword.
+  [^4]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
 
 
 
