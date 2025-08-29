@@ -637,13 +637,13 @@ Private Function Obj_FormatDetails( _
 			details = VBA.Chr(DTL_PVW)
 		End If
 		
-	' ...and otherwise break out details.
+	' ...and otherwise expand details.
 	Else
-		Dim brk As Boolean
+		Dim exp As Boolean
 		
 		' Not for missing details ("{}")...
 		If details = VBA.vbNullString Then
-			brk = False
+			exp = False
 			
 		' ...but certainly for multiline details...
 		'   {
@@ -651,18 +651,18 @@ Private Function Obj_FormatDetails( _
 		'   	...
 		'   }
 		ElseIf Txt_Contains(details, VBA.vbNewLine, compare := VBA.vbBinaryCompare) Then
-			brk = True
+			exp = True
 			
 		' ...and optionally for orphan lines...
 		'   {
 		'   	...
 		'   }
 		Else
-			brk = orphan
+			exp = orphan
 		End If
 		
 		' Indent as needed.
-		If brk Then
+		If exp Then
 			details = VBA.vbNewLine & Txt_Indent(details, indent := indent, before := True, break := break) & VBA.vbNewLine
 		End If
 	End If
