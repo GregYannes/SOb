@@ -174,13 +174,15 @@ Detect some text.
 
 ```vba
 Debug.Print Txt_Contains(text, "First")
-Debug.Print Txt_Contains(text, "First", start := 5)
-Debug.Print Txt_Contains(text, "FIRST")
-Debug.Print Txt_Contains(text, "FIRST", sensitive := False)
+Debug.Print Txt_Contains(text, "Second", start := 12)
+Debug.Print Txt_Contains(text, "Second", start := 13)
+Debug.Print Txt_Contains(text, "THIRD")
+Debug.Print Txt_Contains(text, "THIRD", sensitive := False)
 Debug.Print Txt_Contains(text, "Fourth")
 ```
 
 > ```
+> True
 > True
 > False
 > False
