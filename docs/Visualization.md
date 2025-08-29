@@ -16,9 +16,9 @@ These functions support ["pretty printing"][pprint] for SObs.
 These functions have the following syntax.
 
 ```vba
-Obj_Format(obj, [depth], [plain], [pointer], [summary], [details], [preview], [indent], [orphan], [break])
+Obj_Format(obj, [depth], [plain], [pointer], [summary], [details], [preview], [orphan], [indent], [break])
 
-Obj_Print(obj, [depth], [plain], [pointer], [summary], [details], [preview], [indent], [orphan], [break])
+Obj_Print(obj, [depth], [plain], [pointer], [summary], [details], [preview], [orphan], [indent], [break])
 
 Obj_Print0([format])
 
@@ -38,8 +38,8 @@ They have the following named parameters.
 | `summary`   | `String`                          |          | `""`                     | An expression summarizing the contents of `obj` on a single line, when `depth := 0`.  See `preview` and `pointer` for fallbacks when `summary := ""`.                                       |
 | `details`   | `String`                          |          | `""`                     | Expressions detailing the contents of `obj` across multiple lines, when `depth > 0`.  See [**Examples**][sob_vis_ex] for formatting with `Obj_FormatFields*()`.                             |
 | `preview`   | `Boolean`                         |          | `False`                  | Fall back to showing a preview of the `details`, when we have no `summary`?  See [**Examples**][sob_vis_ex] for appearance.                                                                 |
-| `indent`    | `String`                          |          | [`vbTab`][vba_tab]       | The indentation used for nesting `details`.  Defaults to a standard [horizontal tab][hrz_tab] like most indentation.                                                                        |
 | `orphan`    | `Boolean`                         |          | `True`                   | Should a single line of `details` still be nested (`True`) or remain on a single line (`False`)?                                                                                            |
+| `indent`    | `String`                          |          | [`vbTab`][vba_tab]       | The indentation used for nesting `details`.  Defaults to a standard [horizontal tab][hrz_tab] like most indentation.                                                                        |
 | `break`     | `String`                          |          | [`vbNewLine`][vba_newln] | The linebreak which identifies where lines in `details` should be indented.  See [`Txt_Indent()`][sob_utils] for details on [usage][sob_brk_use].                                           |
 | `format`    | `String`                          |          | `""`                     | Output for the console, which should already be formatted as desired.                                                                                                                       |
 | `fields`    | [Array][vba_arr] of `String`s[^1] | ✓        |                          | An array with pairs of (textual) expressions: a field name followed by its value.  See [**Examples**][sob_vis_ex] for appearance.<br><br>This is best achieved via [`Array()`][vba_arr_fn]. |
@@ -344,8 +344,8 @@ Function Foo_Format(foo As Object, _
 		details := sDetails, _
 		depth := depth, _
 		plain := plain, _
-		indent := vbTab, _
 		orphan := False, _
+		indent := vbTab, _
 		break := vbNewLine _
 	)
 End Function
@@ -463,8 +463,8 @@ Function Snaf_Print(snaf As Object, _
 		details := sDetails, _
 		depth := depth, _
 		plain := plain, _
-		indent := vbTab, _
 		orphan := False, _
+		indent := vbTab, _
 		break := vbNewLine _
 	)
 	
