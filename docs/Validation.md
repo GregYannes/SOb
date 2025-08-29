@@ -4,8 +4,8 @@
 
 These procedures help you validate [advanced implementations][sob_tmp_chk] of [`Is*()`][sob_tmp_is], where invalid input would otherwise crash.  Such validation helps your `Is*()` function identify your SObs precisely, beyond the basics supported by [`IsObj()`][sob_typo].
 
-  - `Check()` conveniently calls your [accessors][sob_tmp_acc], merely to check that they work.  This lets you ignore the [field][sob_fld] value[^1] itself.
-  - `CheckError()` catches certain errors (like [type mismatch][vba_err_13]) that invalidate the check, but it [propagates][vba_ppg_err] all other errors.  Your `Is*` function should [return][sob_tmp_rtn] the (`Boolean`) result of `CheckError()`.
+  - `Obj_Check()` conveniently calls your [accessors][sob_tmp_acc], merely to check that they work.  This lets you ignore the [field][sob_fld] value[^1] itself.
+  - `Obj_CheckError()` catches certain errors (like [type mismatch][vba_err_13]) that invalidate the check, but it [propagates][vba_ppg_err] all other errors.  Your `Is*` function should [return][sob_tmp_rtn] the (`Boolean`) result of `Obj_CheckError()`.
 
 
 ## Syntax ##
@@ -13,9 +13,9 @@ These procedures help you validate [advanced implementations][sob_tmp_chk] of [`
 These procedures have the following syntax.
 
 ```vba
-Check …
+Obj_Check …
 
-CheckError([e], [type_])
+Obj_CheckError([e], [type_])
 ```
 
 They have the following named parameters.
@@ -24,15 +24,15 @@ They have the following named parameters.
 | :---------- | :----------------------------- | :------: | :-------------------------- | :------------------------------------------------------------------------------------------------------------ |
 | …[^2]       | Accessor [calls][vba_prp_call] |          |                             | The calls themselves, entered as individual arguments.<br><br>This is technically a [`ParamArray`][vba_parr]. |
 | `e`         | `ErrObject`[^3]                |          | [`Err`][vba_err_obj] object | The latest error, thrown during validation.                                                                   |
-| `type_`[^4] | `Boolean`                      |          | `True`                      | Should `CheckError()` catch (`True`) errors for fields of the wrong type?                                     |
+| `type_`[^4] | `Boolean`                      |          | `True`                      | Should `Obj_CheckError()` catch (`True`) errors for fields of the wrong type?                                 |
 
 
 ## Output ##
 
 These procedure(s) have the following output.
 
-  - `Check()` is inert and returns no value.  It swallows the [accessor][sob_tmp_acc] calls, unless some call throws an error on its own.
-  - `CheckError()` returns `True` if no error occurred, and `False` for errors (like [type][vba_err_13]) you wish to catch (`type_ := True`).  But it ["bubbles up"][vba_ppg_err] any other error.
+  - `Obj_Check()` is inert and returns no value.  It swallows the [accessor][sob_tmp_acc] calls, unless some call throws an error on its own.
+  - `Obj_CheckError()` returns `True` if no error occurred, and `False` for errors (like [type][vba_err_13]) you wish to catch (`type_ := True`).  But it ["bubbles up"][vba_ppg_err] any other error.
 
 
 ## Examples ##

@@ -359,7 +359,7 @@ You may _optionally_ enhance "Foo" with further steps:
      +	End Function
      ```
      
-  9. [`TODO`][sob_todo_5]: Call all your field accessors like [`Foo_FieldOne()`][sob_tmp_p1], in the [`Check …`][sob_tmp_chk] call within [`IsFoo()`][sob_tmp_is].
+  9. [`TODO`][sob_todo_5]: Call all your field accessors like [`Foo_FieldOne()`][sob_tmp_p1], in the [`Obj_Check …`][sob_tmp_chk] call within [`IsFoo()`][sob_tmp_is].
      
      ```diff
      	Public Function IsFoo(ByRef x As Variant, _
