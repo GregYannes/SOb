@@ -357,7 +357,7 @@ Topics in this project…
 
   [vba_isobj]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/isobject-function
   [vba_byref]:   https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference
-  [vba_txt_cmp]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/instr-function#settings
+  [vba_txt_cmp]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/strcomp-function#settings
   [vba_clx_itm]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/item-method-visual-basic-for-applications
   [vba_clx]:     https://learn.microsoft.com/office/vba/language/reference/user-interface-help/collection-object
   [vba_arr]:     https://learn.microsoft.com/office/vba/language/concepts/getting-started/using-arrays
