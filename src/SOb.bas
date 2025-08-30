@@ -721,7 +721,7 @@ Public Function Txt_Indent(ByVal txt As String, _
 	Optional ByVal break As String = VBA.vbNewLine _
 ) As String
 	' Indent the start of every line...
-	txt = VBA.Replace(txt, find := break, replace := break & indent)
+	txt = VBA.Replace(txt, find := break, replace := break & indent, compare := VBA.vbBinaryCompare)
 	
 	' ...including (optionally) the beginning.
 	If before Then

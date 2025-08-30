@@ -49,7 +49,7 @@ They have the following named parameters.
 | `val`       | [^1]                             | ✓        |                          | The value you wish to assign.                                                                                                                                  |
 | `txt`       | `String`                         | ✓        |                          | Some text.                                                                                                                                                     |
 | `indent`    | `String`                         |          | [`vbTab`][vba_tab]       | The spacing used to indent `txt`.  Defaults to a standard [horizontal tab][hrz_tab] like most indentation.                                                     |
-| `break`     | `String`                         |          | [`vbNewLine`][vba_newln] | The linebreak which identifies where lines in `txt` should be indented.  Defaults to the [system newline][sys_newln] for convenience.                          |
+| `break`     | `String`                         |          | [`vbNewLine`][vba_newln] | The linebreak[^3] which identifies where lines in `txt` should be indented.  Defaults to the [system newline][sys_newln] for convenience.                      |
 | `before`    | `Boolean`                        |          | `True`                   | Indent (`True`) the first line of `txt`?                                                                                                                       |
 | `subtext`   | `String`                         | ✓        |                          | The substring to detect within `txt`.                                                                                                                          |
 | `start`     | `Long`                           |          | `1`                      | The position in `txt` where detection should start.                                                                                                            |
@@ -112,7 +112,7 @@ Debug.Print sVar
 
 <br>
 
-…and [objective][vba_isobj] values like [`Range`][vba_rng]s[^3].
+…and [objective][vba_isobj] values like [`Range`][vba_rng]s[^4].
 
 ```vba
 Dim rVar As Range, oVar As Object
@@ -357,7 +357,8 @@ Topics in this project…
 
   [^1]: While this is technically a [`Variant`][vba_var], it accommodates any `var`iable or `val`ue you desire.
   [^2]: The procedure updates this variable by [reference][vba_byref], which overwrites any value it originally had.
-  [^3]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
+  [^3]: This `break` is [case-sensitive][vba_cmp_mtd] because such delimiters should be uniform.
+  [^4]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
 
 
 
