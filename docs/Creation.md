@@ -60,6 +60,7 @@ Debug.Print "Declaring..."
 Dim cSnaf As Collection, oSnaf As Object
 
 Debug.Print cSnaf Is Nothing, oSnaf Is Nothing
+Debug.Print Obj_Class(cSnaf), Obj_Class(oSnaf)
 Debug.Print
 
 Debug.Print "Initializing..."
@@ -73,6 +74,7 @@ Debug.Print Obj_Class(cSnaf), Obj_Class(oSnaf)
 > ```
 > Declaring...
 > True          True
+> 
 > 
 > Initializing...
 > False         False

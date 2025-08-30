@@ -57,12 +57,15 @@ These procedures return the following values.
 Create an SOb of the **"Foo"** class, and examine it with `Obj_Class()`.
 
 ```vba
-Dim foo As Object: Set foo = New_Obj("Foo")
+Dim foo As Object
+Debug.Print Obj_Class(foo)
 
+Set foo = New_Obj("Foo")
 Debug.Print Obj_Class(foo)
 ```
 
 > ```
+> 
 > Foo
 > ```
 
@@ -177,6 +180,7 @@ Dim cSnaf As Collection: Set cSnaf = New Collection
 Dim oSnaf As Object: Set oSnaf = New Collection
 
 Debug.Print IsObj(cSnaf, "Snaf"), IsObj(oSnaf, "Snaf")
+Debug.Print Obj_Class(cSnaf), Obj_Class(oSnaf)
 Debug.Print
 
 Debug.Print "Casting..."
@@ -190,6 +194,7 @@ Debug.Print Obj_Class(cSnaf), Obj_Class(oSnaf)
 > ```
 > Declaring...
 > False         False
+> 
 > 
 > Casting...
 > True          True

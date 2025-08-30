@@ -60,6 +60,8 @@ End Sub
 
 ' The class of a simulated object: the developer may read it...
 Public Property Get Obj_Class(ByRef obj As Collection) As String
+	If obj Is Nothing Then Exit Function
+	
 	Dim key As String: Obj_ClassKey key
 	Obj_Class = Clx_Get(obj, key)
 End Property
