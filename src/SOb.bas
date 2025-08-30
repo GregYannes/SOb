@@ -83,6 +83,10 @@ Public Function IsObj(ByRef x As Variant, _
 	Optional ByRef fields As Variant, _
 	Optional ByVal strict As Boolean = True _
 ) As Boolean
+	' Case-insensitive.
+	Const COMP_MTD As Integer = VBA.vbTextCompare
+	Const COMP_EQ As Integer = 0
+	
 	' Check if the underlying (Collection) structure is correct...
 	IsObj = VBA.IsObject(x)
 	If Not IsObj Then Exit Function
@@ -97,7 +101,7 @@ Public Function IsObj(ByRef x As Variant, _
 	
 	' Optionally check if the class matches expectations.
 	If class <> VBA.vbNullString Then
-		IsObj = (Obj_Class(obj) = class)
+		IsObj = (VBA.StrComp(Obj_Class(obj), class, COMP_MTD) = COMP_EQ)
 	End If
 	If Not IsObj Then Exit Function
 	

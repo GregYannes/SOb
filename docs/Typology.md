@@ -41,7 +41,7 @@ These procedures return the following values.
 
 > [!NOTE]
 > 
-> Matching for `class` is [case-sensitive][vba_cmp_mtd], unlike class names in [VBA syntax][vba_naming].
+> Matching for `class` is [case-insensitive][vba_cmp_mtd], much like class names in [VBA syntax][vba_naming].
 
   - `AsObj()` returns an SOb ([`Collection`][vba_clx]) with the original fields from `x`.  When `class` is supplied, then `AsObj()` updates the "class" name to match.
 
@@ -96,7 +96,7 @@ Debug.Print IsObj(foo, "Snaf")
 
 > ```
 > True
-> False
+> True
 > False
 > ```
 
