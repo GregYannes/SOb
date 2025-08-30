@@ -72,15 +72,19 @@ Debug.Print Obj_Class(foo)
 Test whether something is an SOb…
 
 ```vba
-Dim clx As Collection: Set clx = New Collection
-Dim obj As Object: Set obj = New Collection
-
 Debug.Print IsObj(foo)
+
+Dim clx As Collection, obj As Object
+Debug.Print IsObj(clx), IsObj(obj)
+
+Set clx = New Collection
+Set obj = New Collection
 Debug.Print IsObj(clx), IsObj(obj)
 ```
 
 > ```
 > True
+> False         False
 > False         False
 > ```
 

@@ -92,6 +92,10 @@ Public Function IsObj(ByRef x As Variant, _
 	If Not IsObj Then Exit Function
 	
 	Dim obj As Object: Set obj = x
+	
+	IsObj = Not obj Is Nothing
+	If Not IsObj Then Exit Function
+	
 	IsObj = (TypeOf obj Is Collection)
 	If Not IsObj Then Exit Function
 	
