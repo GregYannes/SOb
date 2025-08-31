@@ -752,11 +752,12 @@ Private Function Clx_Has(ByRef clx As Collection, _
 	Exit Function
 	
 ITEM_ERROR:
-	If VBA.Err.Number = POS_ERR_NUMBER Or VBA.Err.Number = KEY_ERR_NUMBER Then
-		Clx_Has = False
-	Else
-		Err_Raise
-	End If
+	Select Case VBA.Err.Number
+		Case POS_ERR_NUMBER, KEY_ERR_NUMBER
+			Clx_Has = False
+		Case Else
+			Err_Raise
+	End Select
 End Function
 
 
@@ -797,11 +798,12 @@ Private Function Arr_Length(ByRef arr As Variant, _
 	Exit Function
 	
 BOUND_ERROR:
-	If VBA.Err.Number = EMPTY_ERR_NUMBER Then
-		Arr_Length = 0
-	Else
-		Err_Raise
-	End If
+	Select Case VBA.Err.Number
+		Case EMPTY_ERR_NUMBER
+			Arr_Length = 0
+		Case Else
+			Err_Raise
+	End Select
 End Function
 
 
