@@ -770,15 +770,15 @@ Private Function Clx_Get(ByRef clx As Collection, _
 	Const KEY_ERR_NUMBER As Long = 5  ' Invalid procedure call or argument.
 	
 	On Error GoTo ITEM_ERROR
-	clx.Item index
+	Assign Clx_Get, clx.Item(index)
 	
-	Clx_Has = True
+	has = True
 	Exit Function
 	
 ITEM_ERROR:
 	Select Case VBA.Err.Number
 		Case POS_ERR_NUMBER, KEY_ERR_NUMBER
-			Clx_Has = False
+			has = False
 		Case Else
 			Err_Raise
 	End Select
