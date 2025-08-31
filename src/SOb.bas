@@ -742,22 +742,7 @@ End Function
 Private Function Clx_Has(ByRef clx As Collection, _
 	ByVal index As Variant _
 ) As Boolean
-	Const POS_ERR_NUMBER As Long = 9  ' Subscript out of range.
-	Const KEY_ERR_NUMBER As Long = 5  ' Invalid procedure call or argument.
-	
-	On Error GoTo ITEM_ERROR
-	clx.Item index
-	
-	Clx_Has = True
-	Exit Function
-	
-ITEM_ERROR:
-	Select Case VBA.Err.Number
-		Case POS_ERR_NUMBER, KEY_ERR_NUMBER
-			Clx_Has = False
-		Case Else
-			Err_Raise
-	End Select
+	Clx_Get clx, index, has := Clx_Has
 End Function
 
 
