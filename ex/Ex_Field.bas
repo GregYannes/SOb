@@ -6,7 +6,7 @@ Attribute VB_Name = "Ex_Field"
 ' ## Enumerations ##
 ' ##################
 
-Enum Foo__Fields
+Private Enum Foo__Fields
 	Bar
 End Enum
 
