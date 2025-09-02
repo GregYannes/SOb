@@ -11,12 +11,12 @@ I first encountered this use case when developing [**`GitHelp`**][ghlp_repo], wh
 
 Like me, you might desire several such data structures, where _some_ fields are accessible (or not) to outside users.  These structures (like UDTs) are self-contained within your module, yet (like objects) they can be used by [object classes][vba_cls] and modules alike.  Ideally these other modules should still compile in the absence of yours, which should be easy for lay users to (re)install.
 
-Unfortunately, neither objects nor UDTs achieve this outcome!  For every object you include, your users must install an additional class module.  But if objects ["are a pain"][obj_cons], then ["UDTs are _notoriously_ problematic"][udt_cons].
+Unfortunately, neither objects nor UDTs achieve this outcome!  For every object you include, your users must install an additional class module.  And if objects ["are a pain"][obj_cons], then ["UDTs are _notoriously_ problematic"][udt_cons].
 
 
 ## Advantages ##
 
-The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  And unlike classes, your SObs carry no baggage whatsoever—you can [easily set them all up][sob_setup] within your existing module!
+The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  And unlike classes, your SObs carry no baggage whatsoever—you can [easily set them _all_ up][sob_setup] within your existing module!
 
 | <ins>Feature</ins> | <ins>Description</ins>                                                            | <ins>SOb</ins> | <ins>Object</ins> | <ins>UDT</ins> |
 | :----------------- | :-------------------------------------------------------------------------------- | :------------- | :---------------- | :------------- |
