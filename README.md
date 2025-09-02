@@ -13,6 +13,9 @@ Like me, you might desire several such data structures, where _some_ fields are 
 
 Unfortunately, neither objects nor UDTs achieve this outcome!  For every object you include, your users must install an additional class module.  But if objects ["are a pain"][obj_cons], then ["UDTs are _notoriously_ problematic"][udt_cons].
 
+
+## Advantages ##
+
 The **`SOb`** framework addresses all these shortcomings.  It builds your SOb atop a [`Collection`][vba_clx], which is native to VBA across platforms (Windows and Mac).  And unlike classes, your SObs carry no baggage whatsoever—you can [easily set them all up][sob_setup] within your existing module!
 
 | <ins>Feature</ins> | <ins>Description</ins>                                                            | <ins>SOb</ins> | <ins>Object</ins> | <ins>UDT</ins> |
@@ -158,7 +161,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_print]:    #visualization
   [vba_cls]:      https://vbaplanet.com/objects.php
   [vba_udt]:      https://learn.microsoft.com/office/vba/language/how-to/user-defined-data-type
-  [vba_cons]:     #the-sob-story
+  [vba_cons]:     #advantages
   [ghlp_repo]:    https://github.com/GregYannes/GitHelp#readme
   [so_post]:      https://codereview.stackexchange.com/q/293168
   [so_comm_1]:    https://codereview.stackexchange.com/posts/comments/583913
