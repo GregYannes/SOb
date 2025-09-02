@@ -74,7 +74,7 @@ Debug.Print Obj_Class(cSnaf), Obj_Class(oSnaf)
 > ```
 > Declaring...
 > True          True
-> 
+>               
 > 
 > Initializing...
 > False         False
