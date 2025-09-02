@@ -68,7 +68,7 @@ Debug.Print Obj_Field(foo1, Bar)
 > Creating...
 > 
 > Initializing...
-> 42
+>  42 
 > ```
 
 
@@ -96,7 +96,7 @@ Debug.Print Foo_Bar(foo1)
 ```
 
 > ```
-> -1
+> -1 
 > ```
 
 <br>
@@ -119,7 +119,7 @@ Debug.Print Foo_Bar(foo2)
 ```
 
 > ```
-> 0
+>  0 
 > ```
 
 
