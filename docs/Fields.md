@@ -81,9 +81,9 @@ Debug.Print Obj_FieldCount(foo)
 
 > ```
 > Creating...
-> 0
+>  0 
 > Initializing...
-> 3
+>  3 
 > ```
 
 <br>
@@ -104,9 +104,9 @@ Debug.Print Obj_FieldCount(foo)
 > ```
 > Removing...
 > 
-> 2
+>  2 
 > Adding...
-> 3
+>  3 
 > ```
 
 
