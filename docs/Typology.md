@@ -140,7 +140,7 @@ Debug.Print IsObj(foo, "Foo", aFields)
 > ```
 > Some fields...
 > False
-> All Fields...
+> All fields...
 > True
 > ```
 
@@ -194,7 +194,7 @@ Debug.Print Obj_Class(cSnaf), Obj_Class(oSnaf)
 > ```
 > Declaring...
 > False         False
-> 
+>               
 > 
 > Casting...
 > True          True
