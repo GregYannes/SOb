@@ -153,7 +153,7 @@ Debug.Print
 Debug.Print Txt_Indent(text, indent := "--> ")
 Debug.Print
 
-Debug.Print Txt_Indent(text, indent := "--> ", break := " ")
+Debug.Print Txt_Indent(text, indent := "--> ", break := " ", before := False)
 ```
 
 > ```
