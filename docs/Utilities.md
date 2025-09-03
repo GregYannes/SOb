@@ -189,8 +189,8 @@ Option Compare Binary
 
 ```vba
 Debug.Print Txt_Contains(text, "First")
-Debug.Print Txt_Contains(text, "Second", start := 12)
 Debug.Print Txt_Contains(text, "Second", start := 13)
+Debug.Print Txt_Contains(text, "Second", start := 14)
 Debug.Print Txt_Contains(text, "THIRD")
 Debug.Print Txt_Contains(text, "THIRD", compare := vbTextCompare)
 Debug.Print Txt_Contains(text, "Fourth")
