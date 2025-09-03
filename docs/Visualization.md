@@ -171,7 +171,7 @@ Obj_Print foo1, depth := 0, pointer := True
 ```
 
 > ```
-> <Foo @105553142930832>
+> <Foo @105553139684512>
 > ```
 
 <br>
