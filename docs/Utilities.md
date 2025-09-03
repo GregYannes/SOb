@@ -245,8 +245,8 @@ Debug.Print flag
 ```
 
 > ```
-> 10
-> 10
+>  10 
+>  10 
 > True
 > 
 > 
@@ -266,8 +266,8 @@ Debug.Print clx.Item("second")
 ```
 
 > ```
-> -1
-> 20
+> -1 
+>  20 
 > ```
 
 
@@ -288,10 +288,10 @@ Debug.Print Arr_Length(arr, dimension := 2)
 
 > ```
 > Declaring...
-> 0
+>  0 
 > Initializing...
-> 2
-> 4
+>  2 
+>  4 
 > ```
 
 
