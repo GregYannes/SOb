@@ -1,3 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Force recognition of .bas files as VBA rather than Visual Basic 6.0
 *.bas linguist-language=VBA
