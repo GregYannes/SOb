@@ -6,3 +6,4 @@
 
 # Exclude backend files from release
 .git* export-ignore
+dev   export-ignore
