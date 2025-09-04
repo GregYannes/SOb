@@ -3,3 +3,6 @@
 
 # Force recognition of .bas files as VBA rather than Visual Basic 6.0
 *.bas linguist-language=VBA
+
+# Exclude backend files from release
+.git* export-ignore
