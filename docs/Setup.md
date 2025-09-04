@@ -449,7 +449,7 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
   [sob_mod_tmp]:  ../src/SObTemplate.bas
   [sob_mod]:      ../src/SOb.bas
   [ghub_submod]:  https://github.blog/open-source/git/working-with-submodules
-  [sob_secure]:   ../src/SOb.bas#L489-L504
+  [sob_secure]:   ../src/SOb.bas#L498-L513
   [sob_todo_1]:   ../src/SObTemplate.bas#L6
   [sob_tmp_ast]:  ../../../search?type=code&q=path:src/*Template.bas+content:*
   [sob_typo]:     Typology.md

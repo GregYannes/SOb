@@ -225,5 +225,5 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vb_net]:       https://learn.microsoft.com/dotnet/visual-basic
   [vba_tostring]: https://stackoverflow.com/posts/comments/98934630
   [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
-  [sob_secure]:   src/SOb.bas#L489-L504
+  [sob_secure]:   src/SOb.bas#L498-L513
   [udt_tamp]:     http://cpearson.com/excel/classes.aspx
