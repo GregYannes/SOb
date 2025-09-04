@@ -38,6 +38,8 @@ End Sub
 
 ' The class of a simulated object: the developer may read it...
 Private Property Get Obj_Class(ByRef obj As Collection) As String
+	If obj Is Nothing Then Exit Function
+	
 	Dim key As String: Obj_ClassKey key
 	Obj_Class = Clx_Get(obj, key)
 End Property
@@ -61,11 +63,19 @@ Private Function IsObj(ByRef x As Variant, _
 	Optional ByRef fields As Variant, _
 	Optional ByVal strict As Boolean = True _
 ) As Boolean
+	' Case-insensitive.
+	Const COMP_MTD As Integer = VBA.vbTextCompare
+	Const COMP_EQ As Integer = 0
+	
 	' Check if the underlying (Collection) structure is correct...
 	IsObj = VBA.IsObject(x)
 	If Not IsObj Then Exit Function
 	
 	Dim obj As Object: Set obj = x
+	
+	IsObj = Not obj Is Nothing
+	If Not IsObj Then Exit Function
+	
 	IsObj = (TypeOf obj Is Collection)
 	If Not IsObj Then Exit Function
 	
@@ -74,8 +84,8 @@ Private Function IsObj(ByRef x As Variant, _
 	If Not IsObj Then Exit Function
 	
 	' Optionally check if the class matches expectations.
-	If class <> VBA.VbNullString Then
-		IsObj = (Obj_Class(obj) = class)
+	If class <> VBA.vbNullString Then
+		IsObj = (VBA.StrComp(Obj_Class(obj), class, COMP_MTD) = COMP_EQ)
 	End If
 	If Not IsObj Then Exit Function
 	
@@ -238,21 +248,16 @@ End Sub
 
 
 ' Catches errors for certain checks and propagates all others.
-Private Function Obj_CheckError(Optional ByRef e As ErrObject = Nothing, _
+Private Function Obj_CheckError( _
 	Optional ByVal type_ As Boolean = True _
 ) As Boolean
 	Const NO_ERR_NUMBER As Integer = 0         ' No error.
 	Const TYP_OBJ_ERR_NUMBER As Integer = 13   ' Invalid type.
 	Const TYP_SCL_ERR_NUMBER As Integer = 450  ' Wrong number of arguments or invalid property assignment.
 	
-	' Default to last error.
-	If e Is Nothing Then
-		Set e = VBA.Err
-	End If
-	
 	' Handle various errors.
 	Dim cat As Boolean
-	Select Case e.Number
+	Select Case VBA.Err.Number
 		' Short-circuit with TRUE for no error.
 		Case NO_ERR_NUMBER
 			Obj_CheckError = True
@@ -273,7 +278,7 @@ Private Function Obj_CheckError(Optional ByRef e As ErrObject = Nothing, _
 		
 	' ...and propagate all others.
 	Else
-		Err_Raise e
+		Err_Raise
 	End If
 End Function
 
@@ -291,8 +296,9 @@ Private Function Obj_Print(ByRef obj As Collection, _
 	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview as Boolean = False, _
+	Optional ByVal orphan As Boolean = True, _
 	Optional ByVal indent As String = VBA.vbTab, _
-	Optional ByVal orphan As Boolean = True _
+	Optional ByVal break As String = VBA.vbNewLine _
 ) As String
 	Obj_Print = Obj_Format(obj, _
 		depth := depth, _
@@ -301,8 +307,9 @@ Private Function Obj_Print(ByRef obj As Collection, _
 		summary := summary, _
 		details := details, _
 		preview := preview, _
+		orphan := orphan, _
 		indent := indent, _
-		orphan := orphan _
+		break := break _
 	)
 	
 	Obj_Print0 Obj_Print
@@ -325,8 +332,9 @@ Private Function Obj_Format(ByRef obj As Collection, _
 	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview as Boolean = False, _
+	Optional ByVal orphan As Boolean = True, _
 	Optional ByVal indent As String = VBA.vbTab, _
-	Optional ByVal orphan As Boolean = True _
+	Optional ByVal break As String = VBA.vbNewLine _
 ) As String
 	Const DFL_CLS As String = "?"
 	
@@ -360,8 +368,9 @@ Private Function Obj_Format(ByRef obj As Collection, _
 			summary := summary, _
 			details := details, _
 			preview := preview, _
+			orphan := orphan, _
 			indent := indent, _
-			orphan := orphan _
+			break := break _
 		)
 		
 	' ...or display anything else according to VBA defaults.
@@ -502,8 +511,9 @@ Private Function Obj_FormatInfo( _
 	Optional ByVal summary As String = VBA.vbNullString, _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview As Boolean = False, _
+	Optional ByVal orphan As Boolean = True, _
 	Optional ByVal indent As String = VBA.vbTab, _
-	Optional ByVal orphan As Boolean = True _
+	Optional ByVal break As String = VBA.vbNewLine _
 ) As String
 	Const OBJ_OPEN As String = "<"
 	Const OBJ_CLOSE As String = ">"
@@ -529,7 +539,7 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }
 		If depth > 0 Then
-			fmt = Obj_FormatDetails(details, preview := False, indent := indent, orphan := orphan)
+			fmt = Obj_FormatDetails(details, preview := False, orphan := orphan, indent := indent, break := break)
 			
 		' ...or shallowly: {…} or {}
 		Else
@@ -556,7 +566,7 @@ Private Function Obj_FormatInfo( _
 		'   	...
 		'   }>
 		If depth > 0 Then
-			fmt = class & DTL_SEP & Obj_FormatDetails(details, preview := False, indent := indent, orphan := orphan)
+			fmt = class & DTL_SEP & Obj_FormatDetails(details, preview := False, orphan := orphan, indent := indent, break := break)
 			
 		' ...or shallowly...
 		Else
@@ -595,8 +605,9 @@ End Function
 Private Function Obj_FormatDetails( _
 	Optional ByVal details As String = VBA.vbNullString, _
 	Optional ByVal preview As Boolean = False, _
+	Optional ByVal orphan As Boolean = True, _
 	Optional ByVal indent As String = VBA.vbTab, _
-	Optional ByVal orphan As Boolean = True _
+	Optional ByVal break As String = VBA.vbNewLine _
 ) As String
 	Const DTL_OPEN As String = "{"
 	Const DTL_CLOSE As String = "}"
@@ -614,33 +625,33 @@ Private Function Obj_FormatDetails( _
 			details = VBA.Chr(DTL_PVW)
 		End If
 		
-	' ...and otherwise break out details.
+	' ...and otherwise expand details.
 	Else
-		Dim brk As Boolean
+		Dim exp As Boolean
 		
 		' Not for missing details ("{}")...
 		If details = VBA.vbNullString Then
-			brk = False
+			exp = False
 			
 		' ...but certainly for multiline details...
 		'   {
 		'   	...
 		'   	...
 		'   }
-		ElseIf Txt_Contains(details, VBA.vbNewLine) Then
-			brk = True
+		ElseIf Txt_Contains(details, VBA.vbNewLine, start := 1, compare := VBA.vbBinaryCompare) Then
+			exp = True
 			
 		' ...and optionally for orphan lines...
 		'   {
 		'   	...
 		'   }
 		Else
-			brk = orphan
+			exp = orphan
 		End If
 		
 		' Indent as needed.
-		If brk Then
-			details = VBA.vbNewLine & Txt_Indent(details, indent := indent, before := True) & VBA.vbNewLine
+		If exp Then
+			details = VBA.vbNewLine & Txt_Indent(details, indent := indent, before := True, break := break) & VBA.vbNewLine
 		End If
 	End If
 	
@@ -690,10 +701,11 @@ End Sub
 ' Indent text.
 Private Function Txt_Indent(ByVal txt As String, _
 	Optional ByVal indent As String = VBA.vbTab, _
-	Optional ByVal before As Boolean = True _
+	Optional ByVal before As Boolean = True, _
+	Optional ByVal break As String = VBA.vbNewLine _
 ) As String
 	' Indent the start of every line...
-	txt = VBA.Replace(txt, find := VBA.vbNewLine, replace := VBA.vbNewLine & indent)
+	txt = VBA.Replace(txt, find := break, replace := break & indent, compare := VBA.vbBinaryCompare)
 	
 	' ...including (optionally) the beginning.
 	If before Then
@@ -708,21 +720,7 @@ End Function
 Private Function Clx_Has(ByRef clx As Collection, _
 	ByVal index As Variant _
 ) As Boolean
-	Const POS_ERR_NUMBER As Long = 9  ' Subscript out of range.
-	Const KEY_ERR_NUMBER As Long = 5  ' Invalid procedure call or argument.
-	
-	On Error GoTo ITEM_ERROR
-	clx.Item index
-	
-	Clx_Has = True
-	Exit Function
-	
-ITEM_ERROR:
-	If VBA.Err.Number = POS_ERR_NUMBER Or VBA.Err.Number = KEY_ERR_NUMBER Then
-		Clx_Has = False
-	Else
-		Err_Raise VBA.Err
-	End If
+	Clx_Get clx, index, has := Clx_Has
 End Function
 
 
@@ -731,11 +729,22 @@ Private Function Clx_Get(ByRef clx As Collection, _
 	ByVal index As Variant, _
 	Optional ByRef has As Boolean _
 ) As Variant
-	has = Clx_Has(clx, index)
+	Const POS_ERR_NUMBER As Long = 9  ' Subscript out of range.
+	Const KEY_ERR_NUMBER As Long = 5  ' Invalid procedure call or argument.
 	
-	If has Then
-		Assign Clx_Get, clx.Item(index)
-	End If
+	On Error GoTo ITEM_ERROR
+	Assign Clx_Get, clx.Item(index)
+	
+	has = True
+	Exit Function
+	
+ITEM_ERROR:
+	Select Case VBA.Err.Number
+		Case POS_ERR_NUMBER, KEY_ERR_NUMBER
+			has = False
+		Case Else
+			Err_Raise
+	End Select
 End Function
 
 
@@ -763,33 +772,41 @@ Private Function Arr_Length(ByRef arr As Variant, _
 	Exit Function
 	
 BOUND_ERROR:
-	If VBA.Err.Number = EMPTY_ERR_NUMBER Then
-		Arr_Length = 0
-	Else
-		Err_Raise VBA.Err
-	End If
+	Select Case VBA.Err.Number
+		Case EMPTY_ERR_NUMBER
+			Arr_Length = 0
+		Case Else
+			Err_Raise
+	End Select
 End Function
 
 
-' Throw an error object.
-Private Sub Err_Raise(Optional ByRef e As ErrObject = Nothing)
-	If e Is Nothing Then
-		Set e = VBA.Err
-	End If
-	
-	VBA.Err.Raise number := e.Number, _
-		source := e.Source, _
-		description := e.Description, _
-		helpFile := e.HelpFile, _
-		helpContext := e.HelpContext
+' Throw the latest error object.
+Private Sub Err_Raise()
+	VBA.Err.Raise number := VBA.Err.Number, _
+		source := VBA.Err.Source, _
+		description := VBA.Err.Description, _
+		helpFile := VBA.Err.HelpFile, _
+		helpContext := VBA.Err.HelpContext
 End Sub
 
 
 ' Test if text contains a substring.
 Private Function Txt_Contains(ByVal txt As String, _
-	ByVal substring As String _
+	ByVal subtext As String, _
+	Optional ByVal start As Long = 1, _
+	Optional ByVal compare As VBA.VbCompareMethod = -1 _
 ) As Boolean
+	Const OPT_COMP As Long = -1
 	Const IDX_NONE As Long = 0
 	
-	Txt_Contains = (VBA.InStr(txt, substring) <> IDX_NONE)
+	' Default to Option Compare for matching text.
+	Dim idx As Long
+	If compare = OPT_COMP Then
+		idx = VBA.InStr(start, txt, subtext)
+	Else
+		idx = VBA.InStr(start, txt, subtext, compare)
+	End If
+	
+	Txt_Contains = (idx <> IDX_NONE)
 End Function

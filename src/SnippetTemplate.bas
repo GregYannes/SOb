@@ -116,7 +116,7 @@ Public Function Is*(ByRef x As Variant, _
 	' ' Ensure the field accessors all work.
 	' On Error GoTo CHECK_ERROR
 	' 
-	' ' TODO: Call all your field accessors within this 'Check()'.
+	' ' TODO: Call all your field accessors within this check.
 	' If Is* Then Obj_Check _
 	' 	*_FieldOne(obj), _
 	' 	*_FieldTwo(obj), _
