@@ -190,7 +190,7 @@ Fill out either template according to these steps:
      	End Property
      ```
      
-  1. [`TODO`][sob_todo_3]: Initialize the values for your fields, within [`Foo_Initialize()`][sob_tmp_ini].  Use [`Obj_HasField()`][sob_flds] to test whether a field exists, and when it does not, use your [accessor][sob_tmp_acc] to set its initial value.
+  1. [`TODO`][sob_todo_3]: Initialize the values for your fields, within [`Foo_Initialize()`][sob_tmp_ini].  Use [`Obj_HasField()`][sob_flds] to test whether a field exists, and when it does not, use your [accessor][sob_tmp_acc] to set its initial value[^2].
      
      ```diff
      	Private Sub Foo_Initialize(ByRef foo As Object)
@@ -438,6 +438,7 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
   [^1]: Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
     
     However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
+  [^2]: You may specify a [`Range`][vba_rng] with its [`.Address`][vba_rng_adr] in [shortcut notation][vba_sct_nt]: `[A1:B2]`.
 
 
 
@@ -502,3 +503,6 @@ Now you are ready to work with "Foo" objects, within your module and elsewhere!
   [sob_tmp_vld]:  ../src/SObTemplate.bas#L130-L140
   [sob_tmp_cir]:  ../src/SObTemplate.bas#L108
   [sob_outsrc]:   #outsourced
+  [vba_rng]:      https://learn.microsoft.com/office/vba/api/excel.range(object)
+  [vba_rng_adr]:  https://learn.microsoft.com/office/vba/api/excel.range.address
+  [vba_sct_nt]:   https://learn.microsoft.com/office/vba/excel/concepts/cells-and-ranges/refer-to-cells-by-using-shortcut-notation
