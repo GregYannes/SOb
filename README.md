@@ -26,7 +26,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Portable           | Does it work across all platforms?                                                | ✓              | ✓                 | ✓              |
 | Independent        | Is it free of external dependencies?                                              | ✓              |   [^3]            | ✓              |
 | Global             | Can it be used seamlessly across other modules and classes?                       | ✓ [^4]         | ✓                 |   [^5]         |
-| Compilable         | Can its dependents compile in its absence?                                        | ✓              |   [^6]            |   [^7]         |
+| Compilation        | Can its dependents compile in its absence?                                        | ✓              |   [^6]            |   [^7]         |
 | Placeholder        | Can it be passed to a generic [`Variant`][vba_var] or [`Object`][vba_obj]?        | ✓              | ✓ [^8]            |   [^7]         |
 | Collectible        | Can it be included within a [`Collection`][vba_clx] (or [`Dictionary`][vba_dix])? | ✓              | ✓ [^9]            |   [^7]         |
 | Identity           | Is its type identifiable by name, so you can distinguish it?                      | ✓ [^10]        | ✓ [^11]           |                |
