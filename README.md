@@ -157,6 +157,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
     There is only one exception[^7].
   [^6]:  Their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].
   [^7]:  Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
+  [^8]:  Their fields are still [vulnerable to editing][udt_tamp].
   [^9]:  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj]…
   [^10]: …nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].
   [^11]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
@@ -164,12 +165,11 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [^13]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, …)`, where the `sob` is passed [by reference][vba_byref].
   [^14]: Technically you _could_ mimic an SOb and implement "methods"[^13] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
   [^15]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
+  [^16]: .
   [^17]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
   [^18]: Its fields are ["encrypted"][sob_secure] against the more insidious tampering.  Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
     
     However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
-  [^8]: Their fields are still [vulnerable to editing][udt_tamp].
-  [^16]: .
 
 
 
