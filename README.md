@@ -27,11 +27,13 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Independent        | Is it free of external dependencies?                                              | ✓              |   [^3]            | ✓              |
 | Global             | Can it be used seamlessly across other modules and classes?                       | ✓ [^4]         | ✓                 |   [^5]         |
 | Compilation        | Can its dependents compile in its absence?                                        | ✓              |   [^6]            |   [^7]         |
+| Instantiation      | Can you dynamically declare new instances _after_ design time?                    | ✓              | ✓ [^17]           |   [^17]        |
 | Placeholder        | Can it be passed to a generic [`Variant`][vba_var] or [`Object`][vba_obj]?        | ✓              | ✓ [^8]            |   [^7]         |
 | Collectible        | Can it be included within a [`Collection`][vba_clx] (or [`Dictionary`][vba_dix])? | ✓              | ✓ [^9]            |   [^7]         |
 | Identity           | Is its type identifiable by name, so you can distinguish it?                      | ✓ [^10]        | ✓ [^11]           |                |
-| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^12]        | ✓                 |   [^13]        |
+| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^12]        | ✓                 |   [^17][^13]   |
 | Printing           | Does it support pretty printing for visualization?                                | ✓              |   [^14]           |                |
+| Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^18]        | ✓ [^17]           |   [^17]        |
 | Private            | Can you hide certain fields (and "methods") from your user?                       | ✓ [^15]        | ✓ [^15]           |                |
 | Secure             | Are its fields secure against unauthorized editing?                               | ✓ [^16]        | ✓                 |   [^17]        |
 
@@ -154,6 +156,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
     
     However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
   [^17]: Their fields are still [vulnerable to editing][udt_tamp].
+  [^18]: .
 
 
 
