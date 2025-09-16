@@ -190,7 +190,6 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
   [vba_dix]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/dictionary-object
   [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
-  [sob_sup_tmp]:  docs/Setup.md#template
   [sob_tmps]:     ../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
   [sob_doc_sup]:  docs/Setup.md
@@ -200,6 +199,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_mod_tmp]:  src/SObTemplate.bas
   [sob_mod]:      src/SOb.bas
   [sob_outsrc]:   docs/Setup.md#outsourced
+  [sob_sup_tmp]:  docs/Setup.md#template
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
@@ -232,6 +232,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vb_bind]:      https://learn.microsoft.com/dotnet/visual-basic/programming-guide/language-features/early-late-binding
   [udt_lib]:      https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5541458
   [vba_typ_lib]:  https://learn.microsoft.com/office/vba/language/how-to/set-reference-to-a-type-library
+  [udt_tamp]:     http://cpearson.com/excel/classes.aspx
   [udt_pass_var]: https://vbforums.com/showthread.php?304617-Storing-a-UDT-in-a-variant-type-mismatch#post1785101
   [udt_pass_obj]: https://vbforums.com/showthread.php?893813-Passing-UDT-as-variant-for-saving-loading-UDTs#post5540423
   [udt_pass_clx]: https://vbforums.com/showthread.php?599355-RESOLVED-Addin-a-user-defined-type-to-a-collection
@@ -243,4 +244,3 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vba_tostring]: https://stackoverflow.com/posts/comments/98934630
   [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
   [sob_secure]:   src/SOb.bas#L498-L513
-  [udt_tamp]:     http://cpearson.com/excel/classes.aspx
