@@ -46,6 +46,19 @@ Setup is quick and painless with [handy templates][sob_tmps].  Simply fill out t
   - To outsource the **`SOb`** framework to a dependency, use [`SObTemplate.bas`][sob_mod_tmp] but import [`SOb.bas`][sob_mod] separately.  See [here][sob_outsrc] for details.
 
 
+## Usage ##
+
+Using an SOb is analogous to using an object.  The **`SOb`** framework provides a [backend][sob_suite], which lets you [implement][sob_sup_tmp] your frontend for your actual SOb.
+
+| <ins>Action</ins> |   | <ins>Frontend</ins> | <ins>Backend</ins>       |   | <ins>Object</ins> |   | <ins>UDT</ins> |
+| :---------------- | - | :------------------ | :----------------------- | - | :---------------- | - | :------------- |
+| Declaration       |   | `Dim x As Object`   | `Dim x As Object`        |   | `Dim x As Foo`    |   | `Dim x As Foo` |
+| Instantiation     |   | `Set x = New_Foo()` | `Set x = New_Obj("Foo")` |   | `Set x = New Foo` |   |                |
+| Reading           |   | `Foo_Bar(x)`        | `Obj_Field(x, Bar)`      |   | `x.Bar`           |   | `x.Bar`        |
+| Writing           |   | `Foo_Bar(x) = 1`    | `Obj_Field(x, Bar) = 1`  |   | `x.Bar = 1`       |   | `x.Bar = 1`    |
+| Invocation        |   | `Foo_Fun(x, …)`     |                          |   | `x.Fun(…)`        |   |                |
+
+
 ## API ##
 
 Here are all the features provided by **`SOb`** for developers.  To avoid confusing _your_ users, the [**`SOb`** module][sob_mod] hides its own functions from Excel, via [`Option Private`][vba_opt_priv].
@@ -177,6 +190,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vba_obj]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/object-data-type
   [vba_dix]:      https://learn.microsoft.com/office/vba/language/reference/user-interface-help/dictionary-object
   [vba_proc]:     https://learn.microsoft.com/office/vba/language/how-to/create-a-procedure
+  [sob_sup_tmp]:  docs/Setup.md#template
   [sob_tmps]:     ../../search?type=code&q=path:src/*Template.bas
   [sob_todos]:    ../../search?type=code&q=path:src/*Template.bas+content:TODO:
   [sob_doc_sup]:  docs/Setup.md
