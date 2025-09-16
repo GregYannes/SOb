@@ -27,15 +27,15 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Independent        | Is it free of external dependencies?                                              | ✓              |   [^3]            | ✓              |
 | Global             | Can it be used seamlessly across other modules and classes?                       | ✓ [^4]         | ✓                 |   [^5]         |
 | Compilation        | Can its dependents compile in its absence?                                        | ✓              |   [^6]            |   [^7]         |
-| Instantiation      | Can you dynamically declare new instances _after_ design time?                    | ✓              | ✓ [^8]           |   [^8]        |
+| Instantiation      | Can you dynamically declare new instances _after_ design time?                    | ✓              | ✓ [^8]            |   [^8]         |
 | Placeholder        | Can it be passed to a generic [`Variant`][vba_var] or [`Object`][vba_obj]?        | ✓              | ✓ [^9]            |   [^7]         |
-| Collectible        | Can it be included within a [`Collection`][vba_clx] (or [`Dictionary`][vba_dix])? | ✓              | ✓ [^10]            |   [^7]         |
+| Collectible        | Can it be included within a [`Collection`][vba_clx] (or [`Dictionary`][vba_dix])? | ✓              | ✓ [^10]           |   [^7]         |
 | Identity           | Is its type identifiable by name, so you can distinguish it?                      | ✓ [^11]        | ✓ [^12]           |                |
-| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^13]        | ✓                 |   [^8][^14]   |
+| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^13]        | ✓                 |   [^8][^14]    |
 | Printing           | Does it support pretty printing for visualization?                                | ✓              |   [^15]           |                |
-| Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^16]        | ✓ [^8]           |   [^8]        |
+| Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^16]        | ✓ [^8]            |   [^8]         |
 | Private            | Can you hide certain fields (and "methods") from your user?                       | ✓ [^17]        | ✓ [^17]           |                |
-| Secure             | Are its fields secure against unauthorized editing?                               | ✓ [^18]        | ✓                 |   [^8]        |
+| Secure             | Are its fields secure against unauthorized editing?                               | ✓ [^18]        | ✓                 |   [^8]         |
 
 
 ## Setup ##
@@ -158,7 +158,7 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [^6]:  Their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].
   [^7]:  Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
   [^9]:  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj]…
-  [^10]:  …nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].
+  [^10]: …nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].
   [^11]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
   [^12]: Via the [`TypeName()`][vba_typ_fn] function or the [`TypeOf`][vba_typ_op] operator.
   [^13]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, …)`, where the `sob` is passed [by reference][vba_byref].
