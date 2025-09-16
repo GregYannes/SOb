@@ -27,15 +27,15 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Independent        | Is it free of external dependencies?                                              | ✓              |   [^3]            | ✓              |
 | Global             | Can it be used seamlessly across other modules and classes?                       | ✓ [^4]         | ✓                 |   [^5]         |
 | Compilation        | Can its dependents compile in its absence?                                        | ✓              |   [^6]            |   [^7]         |
-| Instantiation      | Can you dynamically declare new instances _after_ design time?                    | ✓              | ✓ [^17]           |   [^17]        |
-| Placeholder        | Can it be passed to a generic [`Variant`][vba_var] or [`Object`][vba_obj]?        | ✓              | ✓ [^8]            |   [^7]         |
-| Collectible        | Can it be included within a [`Collection`][vba_clx] (or [`Dictionary`][vba_dix])? | ✓              | ✓ [^9]            |   [^7]         |
-| Identity           | Is its type identifiable by name, so you can distinguish it?                      | ✓ [^10]        | ✓ [^11]           |                |
-| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^12]        | ✓                 |   [^17][^13]   |
-| Printing           | Does it support pretty printing for visualization?                                | ✓              |   [^14]           |                |
-| Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^18]        | ✓ [^17]           |   [^17]        |
-| Private            | Can you hide certain fields (and "methods") from your user?                       | ✓ [^15]        | ✓ [^15]           |                |
-| Secure             | Are its fields secure against unauthorized editing?                               | ✓ [^16]        | ✓                 |   [^17]        |
+| Instantiation      | Can you dynamically declare new instances _after_ design time?                    | ✓              | ✓ [^8]           |   [^8]        |
+| Placeholder        | Can it be passed to a generic [`Variant`][vba_var] or [`Object`][vba_obj]?        | ✓              | ✓ [^9]            |   [^7]         |
+| Collectible        | Can it be included within a [`Collection`][vba_clx] (or [`Dictionary`][vba_dix])? | ✓              | ✓ [^10]            |   [^7]         |
+| Identity           | Is its type identifiable by name, so you can distinguish it?                      | ✓ [^11]        | ✓ [^12]           |                |
+| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^13]        | ✓                 |   [^8][^14]   |
+| Printing           | Does it support pretty printing for visualization?                                | ✓              |   [^15]           |                |
+| Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^16]        | ✓ [^8]           |   [^8]        |
+| Private            | Can you hide certain fields (and "methods") from your user?                       | ✓ [^17]        | ✓ [^17]           |                |
+| Secure             | Are its fields secure against unauthorized editing?                               | ✓ [^18]        | ✓                 |   [^8]        |
 
 
 ## Setup ##
@@ -157,19 +157,19 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
     There is only one exception[^7].
   [^6]:  Their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].
   [^7]:  Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
-  [^8]:  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj]…
-  [^9]:  …nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].
-  [^10]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
-  [^11]: Via the [`TypeName()`][vba_typ_fn] function or the [`TypeOf`][vba_typ_op] operator.
-  [^12]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, …)`, where the `sob` is passed [by reference][vba_byref].
-  [^13]: Technically you _could_ mimic an SOb and implement "methods"[^12] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
-  [^14]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
-  [^15]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
-  [^16]: Its fields are ["encrypted"][sob_secure] against the more insidious tampering.  Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
+  [^9]:  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj]…
+  [^10]:  …nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].
+  [^11]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
+  [^12]: Via the [`TypeName()`][vba_typ_fn] function or the [`TypeOf`][vba_typ_op] operator.
+  [^13]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, …)`, where the `sob` is passed [by reference][vba_byref].
+  [^14]: Technically you _could_ mimic an SOb and implement "methods"[^13] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
+  [^15]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
+  [^17]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
+  [^18]: Its fields are ["encrypted"][sob_secure] against the more insidious tampering.  Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
     
     However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
-  [^17]: Their fields are still [vulnerable to editing][udt_tamp].
-  [^18]: .
+  [^8]: Their fields are still [vulnerable to editing][udt_tamp].
+  [^16]: .
 
 
 
