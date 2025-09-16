@@ -2,7 +2,7 @@
 
 The **`SOb`** framework lets you simulate "objects" in VBA.
 
-With a [full suite][sob_suite] of features at your fingertips — including [pretty printing][sob_print] — your <ins>**s**</ins>imulated <ins>**ob**</ins>ject ("**SOb**") can replicate an [object][vba_cls] or [UDT][vba_udt] without the [frustrating downsides][vba_cons].  No matter how many **SOb**s you need, or where you need them, this framework supports them within your _existing_ code.  No imports are needed!
+With a [full suite][sob_suite] of features at your fingertips — including [pretty printing][sob_print] — your <ins>**s**</ins>imulated <ins>**ob**</ins>ject ("**SOb**") mimics an [object][vba_cls] or [UDT][vba_udt] without the [frustrating downsides][vba_cons].  No matter how many **SOb**s you need, or where you need them, this framework supports them within your _existing_ code.  No imports are needed!
 
 
 ## The **`SOb`** Story ##
