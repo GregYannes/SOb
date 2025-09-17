@@ -27,13 +27,13 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Independent        | Is it free of external dependencies?                                              | ✓              |   [^3]            | ✓              |
 | Global             | Can it be used seamlessly across other modules and classes?                       | ✓ [^4]         | ✓                 |   [^5]         |
 | Compilation        | Can its dependents compile in its absence?                                        | ✓              |   [^6]            |   [^7]         |
-| Instantiation      | Can you dynamically declare new instances _after_ design time?                    | ✓              | ✓ [^8]            |   [^8]         |
+| Instantiation      | Can you dynamically declare new instances _after_ design time?                    | ✓              | ✓ [^a]            |   [^d]         |
 | Placeholder        | Can it be passed to a generic [`Variant`][vba_var] or [`Object`][vba_obj]?        | ✓              | ✓ [^9]            |   [^7]         |
 | Collectible        | Can it be included within a [`Collection`][vba_clx] (or [`Dictionary`][vba_dix])? | ✓              | ✓ [^10]           |   [^7]         |
 | Identity           | Is its type identifiable by name, so you can distinguish it?                      | ✓ [^11]        | ✓ [^12]           |                |
-| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^13]        | ✓                 |   [^8][^14]    |
+| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^13]        | ✓ [^f]            |   [^b][^14]    |
 | Printing           | Does it support pretty printing for visualization?                                | ✓              |   [^15]           |                |
-| Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^16]        | ✓ [^8]            |   [^8]         |
+| Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^16]        | ✓ [^c]            |   [^e]         |
 | Private            | Can you hide certain fields (and "methods") from your user?                       | ✓ [^17]        | ✓ [^17]           |                |
 | Secure             | Are its fields secure against unauthorized editing?                               | ✓ [^18]        | ✓                 |   [^8]         |
 
@@ -183,6 +183,12 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [^18]: Its fields are ["encrypted"][sob_secure] against the more insidious tampering.  Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
     
     However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
+  [^a]:  You [may declare][obj_inst] new instances of objects at runtime, using the [`New`][vba_new] keyword…
+  [^d]:  …but you [may not declare][udt_inst] new instances of UDTs.
+  [^f]:  Objects [support][obj_act] methods for performing actions…
+  [^b]:  …but UDTs [do not support][udt_inact] methods and ["cannot carry out actions"][udt_inact].
+  [^c]:  Objects use [`Property`][vba_prp_set] procedures to [validate][obj_valid] values for fields…
+  [^e]:  …but UDTs have [no mechanism][udt_tamp] for validation.
 
 
 
@@ -257,7 +263,13 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [vba_typ_fn]:   https://learn.microsoft.com/office/vba/language/reference/user-interface-help/typename-function
   [vba_typ_op]:   https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/typeof-operator
   [sob_tmp_mtd]:  src/SObTemplate.bas#L217-L246
+  [udt_inact]:    http://cpearson.com/excel/classes.aspx#:~:text=cannot%20carry%20out%20actions
   [vb_net]:       https://learn.microsoft.com/dotnet/visual-basic
   [vba_tostring]: https://stackoverflow.com/posts/comments/98934630
   [net_tostring]: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-object-tostring
   [sob_secure]:   src/SOb.bas#L498-L513
+  [obj_inst]:     http://cpearson.com/excel/classes.aspx#:~:text=New%20instances%20of%20a%20class%20may%20be%20created
+  [vba_new]:      https://learn.microsoft.com/dotnet/visual-basic/language-reference/operators/new-operator
+  [udt_inst]:     http://cpearson.com/excel/classes.aspx#:~:text=you%20can%27t%20declare%20new%20instances%20of%20a%20Type
+  [obj_act]:      http://cpearson.com/excel/classes.aspx#:~:text=classes%20have%20methods
+  [obj_valid]:    http://cpearson.com/excel/classes.aspx#:~:text=properties%20of%20a%20class%20can%20be%20set%20or%20retrieved
