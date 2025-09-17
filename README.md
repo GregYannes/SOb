@@ -50,6 +50,9 @@ Setup is quick and painless with [handy templates][sob_tmps].  Simply fill out t
 
 Using an SOb is analogous to using an object.  The **`SOb`** framework provides a [backend][sob_suite], which lets you [implement][sob_sup_tmp] your frontend for your actual SOb.
 
+
+See [documentation][sob_docs] for further details and concrete [examples][sob_doc_ex].
+
 | <ins>Action</ins> |   | <ins>Frontend</ins> | <ins>Backend</ins>       |   | <ins>Object</ins> |   | <ins>UDT</ins> |
 | :---------------- | - | :------------------ | :----------------------- | - | :---------------- | - | :------------- |
 | Declaration       |   | `Dim x As Object`   | `Dim x As Object`        |   | `Dim x As Foo`    |   | `Dim x As Foo` |
@@ -200,6 +203,8 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [sob_mod]:      src/SOb.bas
   [sob_outsrc]:   docs/Setup.md#outsourced
   [sob_sup_tmp]:  docs/Setup.md#template
+  [sob_docs]:     docs/
+  [sob_doc_ex]:   ../../search?type=code&q=path:docs/*.md+content:%2F^%23%2B%5Cs%2BExamples%5Cs%2B%23%2B$%2F
   [vba_opt_priv]: https://learn.microsoft.com/office/vba/language/reference/user-interface-help/option-private-statement
   [sob_meta]:     docs/Metadata.md
   [sem_ver]:      https://semver.org
