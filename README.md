@@ -170,25 +170,25 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
     There is only one exception[^7].
   [^6]:  Their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].
   [^7]:  Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
-  [^24]: Their fields are still [vulnerable to editing][udt_tamp].
+  [^8]:  You [may declare][obj_inst] new instances of objects at runtime, using the [`New`][vba_new] keyword…
+  [^9]:  …but you [may not declare][udt_inst] new instances of UDTs.
   [^10]: You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj]…
   [^11]: …nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].
   [^12]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
   [^13]: Via the [`TypeName()`][vba_typ_fn] function or the [`TypeOf`][vba_typ_op] operator.
   [^14]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, …)`, where the `sob` is passed [by reference][vba_byref].
+  [^15]: Objects [support][obj_act] methods for performing actions…
+  [^16]: …but UDTs [do not support][udt_inact] methods and ["cannot carry out actions"][udt_inact].
   [^17]: Technically UDTs do not support intrinsic methods[^16], but you _could_ mimic an SOb and implement "methods"[^14] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
   [^18]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
   [^19]: The [accessors][sob_tmp_acc] for your SOb are [`Property`][vba_prp_set] procedures, in which you may validate input[^20] before assigning it to the field.
+  [^20]: Objects use [`Property`][vba_prp_set] procedures to [validate][obj_valid] values for fields…
+  [^21]: …but UDTs have [no mechanism][udt_tamp] for validation.
   [^22]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
   [^23]: Its fields are ["encrypted"][sob_secure] against the more insidious tampering.  Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
     
     However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
-  [^8]:  You [may declare][obj_inst] new instances of objects at runtime, using the [`New`][vba_new] keyword…
-  [^9]:  …but you [may not declare][udt_inst] new instances of UDTs.
-  [^15]: Objects [support][obj_act] methods for performing actions…
-  [^16]: …but UDTs [do not support][udt_inact] methods and ["cannot carry out actions"][udt_inact].
-  [^20]: Objects use [`Property`][vba_prp_set] procedures to [validate][obj_valid] values for fields…
-  [^21]: …but UDTs have [no mechanism][udt_tamp] for validation.
+  [^24]: Their fields are still [vulnerable to editing][udt_tamp].
 
 
 
