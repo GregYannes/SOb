@@ -28,14 +28,14 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Global             | Can it be used seamlessly across other modules and classes?                       | ✓ [^4]         | ✓                 |   [^5]         |
 | Compilation        | Can its dependents compile in its absence?                                        | ✓              |   [^6]            |   [^7]         |
 | Instantiation      | Can you dynamically declare new instances _after_ design time?                    | ✓              | ✓ [^8]            |   [^9]         |
-| Placeholder        | Can it be passed to a generic [`Variant`][vba_var] or [`Object`][vba_obj]?        | ✓              | ✓ [^10]            |   [^7]         |
+| Placeholder        | Can it be passed to a generic [`Variant`][vba_var] or [`Object`][vba_obj]?        | ✓              | ✓ [^10]           |   [^7]         |
 | Collectible        | Can it be included within a [`Collection`][vba_clx] (or [`Dictionary`][vba_dix])? | ✓              | ✓ [^11]           |   [^7]         |
 | Identity           | Is its type identifiable by name, so you can distinguish it?                      | ✓ [^12]        | ✓ [^13]           |                |
-| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^14]        | ✓ [^15]            |   [^16][^17]    |
+| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^14]        | ✓ [^15]           |   [^16][^17]   |
 | Printing           | Does it support pretty printing for visualization?                                | ✓              |   [^18]           |                |
-| Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^19]        | ✓ [^20]            |   [^21]         |
+| Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^19]        | ✓ [^20]           |   [^21]        |
 | Private            | Can you hide certain fields (and "methods") from your user?                       | ✓ [^22]        | ✓ [^22]           |                |
-| Secure             | Are its fields secure against unauthorized editing?                               | ✓ [^23]        | ✓                 |   [^24]         |
+| Secure             | Are its fields secure against unauthorized editing?                               | ✓ [^23]        | ✓                 |   [^24]        |
 
 
 ## Setup ##
@@ -170,8 +170,8 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
     There is only one exception[^7].
   [^6]:  Their absence can derail compilation, unless other modules inefficiently resort to [late-binding][vb_bind].
   [^7]:  Not unless you [reference the UDT][udt_lib] in a [type library][vba_typ_lib].
-  [^24]:  Their fields are still [vulnerable to editing][udt_tamp].
-  [^10]:  You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj]…
+  [^24]: Their fields are still [vulnerable to editing][udt_tamp].
+  [^10]: You cannot pass them to placeholders like [`Variant`][udt_pass_var] or [`Object`][udt_pass_obj]…
   [^11]: …nor can you include them within a [`Collection`][udt_pass_clx] or (on Windows) a [`Dictionary`][udt_pass_dix].
   [^12]: Via [`Obj_Class()`][sob_typo] and [`IsObj()`][sob_typo].
   [^13]: Via the [`TypeName()`][vba_typ_fn] function or the [`TypeOf`][vba_typ_op] operator.
@@ -185,10 +185,10 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
     However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
   [^8]:  You [may declare][obj_inst] new instances of objects at runtime, using the [`New`][vba_new] keyword…
   [^9]:  …but you [may not declare][udt_inst] new instances of UDTs.
-  [^15]:  Objects [support][obj_act] methods for performing actions…
-  [^16]:  …but UDTs [do not support][udt_inact] methods and ["cannot carry out actions"][udt_inact].
-  [^20]:  Objects use [`Property`][vba_prp_set] procedures to [validate][obj_valid] values for fields…
-  [^21]:  …but UDTs have [no mechanism][udt_tamp] for validation.
+  [^15]: Objects [support][obj_act] methods for performing actions…
+  [^16]: …but UDTs [do not support][udt_inact] methods and ["cannot carry out actions"][udt_inact].
+  [^20]: Objects use [`Property`][vba_prp_set] procedures to [validate][obj_valid] values for fields…
+  [^21]: …but UDTs have [no mechanism][udt_tamp] for validation.
 
 
 
