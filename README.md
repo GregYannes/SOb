@@ -31,7 +31,7 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Placeholder        | Can it be passed to a generic [`Variant`][vba_var] or [`Object`][vba_obj]?        | ✓              | ✓ [^10]           |   [^7]         |
 | Collectible        | Can it be included within a [`Collection`][vba_clx] (or [`Dictionary`][vba_dix])? | ✓              | ✓ [^11]           |   [^7]         |
 | Identity           | Is its type identifiable by name, so you can distinguish it?                      | ✓ [^12]        | ✓ [^13]           |                |
-| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^14]        | ✓ [^15]           |   [^16][^17]   |
+| Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^14]        | ✓ [^15]           |   [^16]        |
 | Printing           | Does it support pretty printing for visualization?                                | ✓              |   [^18]           |                |
 | Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^19]        | ✓ [^20]           |   [^21]        |
 | Private            | Can you hide certain fields (and "methods") from your user?                       | ✓ [^22]        | ✓ [^22]           |                |
@@ -178,8 +178,9 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [^13]: Via the [`TypeName()`][vba_typ_fn] function or the [`TypeOf`][vba_typ_op] operator.
   [^14]: Technically these ["methods"][sob_tmp_mtd] are simply modular [procedures][vba_proc] of the form `SOb_Method(sob, …)`, where the `sob` is passed [by reference][vba_byref].
   [^15]: Objects [support][obj_act] methods for performing actions…
-  [^16]: …but UDTs [do not support][udt_inact] methods and ["cannot carry out actions"][udt_inact].
-  [^17]: Technically UDTs do not support intrinsic methods[^16], but you _could_ mimic an SOb and implement "methods"[^14] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
+  [^16]: …but UDTs [do not support][udt_inact] methods and "cannot carry out actions".
+    
+    Technically, you _could_ imitate an SOb and implement "methods"[^14] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
   [^18]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
   [^19]: The [accessors][sob_tmp_acc] for your SOb are [`Property`][vba_prp_set] procedures, in which you may validate input[^20] before assigning it to the field.
   [^20]: Objects use [`Property`][vba_prp_set] procedures to [validate][obj_valid] values for fields…
