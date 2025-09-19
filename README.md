@@ -32,10 +32,10 @@ The **`SOb`** framework addresses all these shortcomings.  It builds your SOb at
 | Collectible        | Can it be included within a [`Collection`][vba_clx] (or [`Dictionary`][vba_dix])? | ✓              | ✓ [^11]           |   [^7]         |
 | Identity           | Is its type identifiable by name, so you can distinguish it?                      | ✓ [^12]        | ✓ [^13]           |                |
 | Methods            | Does it support [procedures][vba_proc] that operate on it?                        | ✓ [^14]        | ✓ [^15]           |   [^16]        |
-| Printing           | Does it support pretty printing for visualization?                                | ✓              |   [^18]           |                |
-| Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^19]        | ✓ [^20]           |   [^21]        |
-| Private            | Can you hide certain fields (and "methods") from your user?                       | ✓ [^22]        | ✓ [^22]           |                |
-| Secure             | Are its fields secure against unauthorized editing?                               | ✓ [^23]        | ✓                 |   [^24]        |
+| Printing           | Does it support pretty printing for visualization?                                | ✓              |   [^17]           |                |
+| Validation         | Can it validate values before they are assigned to fields?                        | ✓ [^18]        | ✓ [^19]           |   [^20]        |
+| Private            | Can you hide certain fields (and "methods") from your user?                       | ✓ [^21]        | ✓ [^21]           |                |
+| Secure             | Are its fields secure against unauthorized editing?                               | ✓ [^22]        | ✓                 |   [^23]        |
 
 
 ## Setup ##
@@ -181,15 +181,15 @@ Perform broadly useful ([`Public`][vba_pub]) tasks via the [**`SOb`** module][so
   [^16]: …but UDTs [do not support][udt_inact] methods and "cannot carry out actions".
     
     Technically, you _could_ imitate an SOb and implement "methods"[^14] of the form `UDT_Method(udt, …)`, where the `udt` is passed [by reference][vba_byref].
-  [^18]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
-  [^19]: The [accessors][sob_tmp_acc] for your SOb are [`Property`][vba_prp_set] procedures, in which you may validate input[^20] before assigning it to the field.
-  [^20]: Objects use [`Property`][vba_prp_set] procedures to [validate][obj_valid] values for fields…
-  [^21]: …but UDTs have [no mechanism][udt_tamp] for validation.
-  [^22]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
-  [^23]: Its fields are ["encrypted"][sob_secure] against the more insidious tampering.  Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
+  [^17]: Unlike [.NET][vb_net] and other languages, VBA [does not implement][vba_tostring] a prototypical [`.ToString()`][net_tostring] method for objects.
+  [^18]: The [accessors][sob_tmp_acc] for your SOb are [`Property`][vba_prp_set] procedures, in which you may validate input[^19] before assigning it to the field.
+  [^19]: Objects use [`Property`][vba_prp_set] procedures to [validate][obj_valid] values for fields…
+  [^20]: …but UDTs have [no mechanism][udt_tamp] for validation.
+  [^21]: Via the [`Private`][vba_priv] keyword for [properties][vba_prp] (and [procedures][vba_proc]).
+  [^22]: Its fields are ["encrypted"][sob_secure] against the more insidious tampering.  Others cannot typically _overwrite_ the value of a "private" field in your SOb—though they can _remove_ the field, which effectively resets it to an uninitialized state.
     
     However, if you [outsource the framework][sob_outsrc] from your module to the [**`SOb`** module][sob_mod], then others _can_ overwrite it via [`SOb.Obj_Field()`][sob_fld].
-  [^24]: Their fields are still [vulnerable to editing][udt_tamp].
+  [^23]: Their fields are still [vulnerable to editing][udt_tamp].
 
 
 
